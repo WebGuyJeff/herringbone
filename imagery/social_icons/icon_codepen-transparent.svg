@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" id="svg8" version="1.1" viewBox="0 0 100 100" height="100" width="100">
+  <g id="iconcodepen" display="inline" fill="none" fill-opacity="1">
+    <circle cx="50" cy="50" id="iconcodepen_background" r="50" display="inline" stroke-width=".871"/>
+    <path d="M13.165 37.61L50 13.165 86.835 37.61v24.78L50 86.835 13.165 62.39zm0 0L50 62.39l36.835-24.78m0 24.78L50 37.61 13.165 62.39M50 13.165V37.61m0 24.78v24.445" id="iconcodepen_logo" opacity="1" stroke="#262422" stroke-width="6.329" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dasharray="none" stroke-opacity="1"/>
+  </g>
+</svg>

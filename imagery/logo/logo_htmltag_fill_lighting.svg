@@ -1,0 +1,66 @@
+<svg id="htmlTagLogo" 
+  class="header_logo"
+  viewBox=" 0 0 200 200"
+  preserveAspectRatio="xMidYMid meet"
+  visibility="visible"
+  xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="lightemboss">
+      <feGaussianBlur stdDeviation="2.2" result="blurgaus"/>
+      <feSpecularLighting
+        in="blurgaus"
+        result="lightblur"
+        style="lighting-color: #fff;"
+        specularConstant="1.4" specularExponent="44" surfaceScale="7">
+        <feDistantLight id="lightdirection"
+          azimuth="190" elevation="30"/>
+      </feSpecularLighting>
+      <feComposite
+        in="lightblur"
+        in2="SourceGraphic"
+        result="composite-0"
+        operator="arithmetic"
+        k1="0" k2="1.4" k3="1"
+        x="0"
+      />
+    </filter>
+    <linearGradient id="gradchrome"
+      spreadMethod="pad"
+      x1="0" y1="90%" x2="0" y2="0%">
+      <stop offset="0%" style="stop-color: #deecf5;"/>
+      <stop offset="18%" style="stop-color: #faf2db;"/>
+      <stop offset="26%" style="stop-color: #cfddde;"/>
+      <stop offset="35%" style="stop-color: #eac050;"/>
+      <stop offset="45%" style="stop-color: #211800;"/>
+      <stop offset="46%" style="stop-color: #fefefe;"/>
+      <stop offset="54%" style="stop-color: #b7d1ed;"/>
+      <stop offset="62%" style="stop-color: #33b5ff;"/>
+      <stop offset="75%" style="stop-color: #5a54d3;"/>
+      <stop offset="100%" style="stop-color: #deecf5;"/>
+    </linearGradient>
+  </defs>
+  <pattern id="pattchrome"
+    width="100%"
+    height="100%">
+    <rect id="grpchrome"
+      fill="url(#gradchrome)"
+      width="200%" height="200%"
+      x="-50%" y="-50%">
+    </rect>
+  </pattern>
+  <g>
+    <title>JeffersonReal.com</title>
+    <path
+      id="pathlemon"
+      visibility="hidden"
+      fill="#1c1c1c"
+      d="M 100 0 H 180 A 20 20 0 0 1 200 20 V 100 A 100 100 0 0 1 100 200 H 20 A 20 20 0 0 1 0 180 V 100 A 100 100 0 0 1 100 0 Z">
+    </path>
+    <path
+      id="pathtag"
+      fill="url(#pattchrome)"
+      filter="url(#lightemboss)"
+      d="M 180 88 C 180 94.6274 174.6274 100 168 100 L 156 100 L 156 44 L 100 44 L 100 32 C 100 25.3726 105.3726 20 112 20 L 180 20 Z M 71.2722 48.7287 L 84.3313 35.6674 L 130.6728 139.1202 C 132.4165 143.0127 131.5457 148.453 128.7278 151.2713 L 115.6687 164.3326 L 69.3272 60.8798 C 67.5835 56.9873 68.4543 51.547 71.2722 48.7287 Z M 100 156 L 100 168 C 100 174.6274 94.6274 180 88 180 L 20 180 L 20 112 C 20 105.3726 25.3726 100 32 100 L 44 100 L 44 156 Z">
+    </path>
+  </g>
+</svg>

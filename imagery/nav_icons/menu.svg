@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   preserveAspectRatio="xMidYMid meet"
+   x="0"
+   y="0"
+   viewBox="0 0 100 100"
+   width="100"
+   height="100">
+  <circle
+   id="svg_naviconbackground"
+   cx="50"
+   cy="50"
+   r="50"
+   opacity="0"
+   fill="#262422"
+   fill-opacity="0"
+   stroke-width=".1"
+   stroke-linecap="square"
+   paint-order="markers stroke fill"
+   style="fill:none;stroke:none;opacity:0" />
+  <path
+   id="svg_menu"
+   d="M27.499 42.5c-1.92 0-3.838.733-5.302 2.198a7.499 7.499 0 000 10.606 7.499 7.499 0 0010.605 0 7.499 7.499 0 000-10.606A7.479 7.479 0 0027.5 42.5zm22.5 0c-1.92 0-3.837.733-5.302 2.198a7.499 7.499 0 000 10.606 7.499 7.499 0 0010.606 0 7.499 7.499 0 000-10.606 7.479 7.479 0 00-5.304-2.198zm22.5 0c-1.919 0-3.837.733-5.301 2.198a7.499 7.499 0 000 10.606 7.499 7.499 0 0010.605 0 7.499 7.499 0 000-10.606A7.479 7.479 0 0072.5 42.5z"
+   stroke-width=".116"
+   style="fill:#262422;fill-opacity:1;stroke:none" />
+</svg>
