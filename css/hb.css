@@ -143,7 +143,7 @@ Font Size         Line Height
 
     /* FONT DEFAULTS */
     color: var(--hb_black);
-    font: 300 1em var(--hb_font-secondary);
+    font: 300 1em var(--hb_font-primary);
 
     /* FLUID ROOT UNITS (14px @ 768 - 18px @ 1920) */
     font-size: clamp(0.875rem, calc(0.875rem + ((1vw - 0.48rem) * 0.3534)), 1.125rem);
@@ -331,10 +331,15 @@ body::-webkit-scrollbar-thumb {
 }
 
 .column {
-    display: flex;
-    flex-flow: column;
+    width: 100%;
+    max-width: calc(38rem + 6%);
+    margin: 0 auto;
+    padding: 0 3%;
 }
 
+.column img {
+    max-width: 100%;
+}
 
 .aspect1-1 {
     aspect-ratio: 1 / 1;
@@ -369,14 +374,18 @@ Impact  | Inter           | hb_font-primary
 * * * * * * * * * * * * * * * * * * * * * * * * */
 
 .cheese {
-    padding: 0 3%;
-    max-width: 34rem;
     color: var(--hb_black);
-    font-family: var(--hb_font-secondary);
+    font-family: var(--hb_font-primary);
     font-size: var(--hb_font-base);
     font-weight: 300;
+    letter-spacing: -0.01rem;
     line-height: 1.688rem;
+    text-align: left;
 }
+
+.weight400       { font-weight: 400; }
+.textAlignCenter { text-align: center; }
+.textAlignRight  { text-align: right; }
 
 h1,
 h2,
@@ -410,7 +419,7 @@ h2 {
     line-height: 2.563rem;
 }
 
-h2.boom {
+h2.laurel {
     margin-bottom: 4vw;
     font-size: clamp(7vw, 9vw ,10vw);
     font-weight: 100;
@@ -418,12 +427,12 @@ h2.boom {
     line-height: 1.1;
 }
 
-h2 .ting {
+h2 .hardy {
     font-weight: 900;
 }
 
 @media (min-width: 48em) {
-    h2.boom {
+    h2.laurel {
         margin-bottom: 4vw;
         font-size: clamp(3.5vw, 4.5vw ,5vw);
         font-weight: 100;
@@ -614,15 +623,146 @@ strong {
 }
 
 
-/*------------------------------------------------- 1.6 GUTENBURG CLASSES ----*/
+/*-------------------------------------------- 1.6 WORDPRESS CORE CLASSES ----*/
 
+!!Comment out original values for reference !!
 
-.aligncenter {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
+.alignnone {
+    /* margin: 5px 20px 20px 0; */
 }
 
+.aligncenter,
+div.aligncenter {
+    display: block;
+    /*  margin: 5px auto 5px auto; */
+}
+
+.alignright {
+    float:right;
+    /* margin: 5px 0 20px 20px; */
+}
+
+.alignleft {
+    float: left;
+    /* margin: 5px 20px 20px 0; */
+}
+
+a img.alignright {
+    float: right;
+    /* margin: 5px 0 20px 20px; */
+}
+
+a img.alignnone {
+    /* margin: 5px 20px 20px 0; */
+}
+
+a img.alignleft {
+    float: left;
+    /* margin: 5px 20px 20px 0; */
+}
+
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wp-caption {
+    background: #fff;
+    border: 0.0625rem solid var(--hb_grey);
+    /* border: 1px solid #f0f0f0; */
+    max-width: 96%; /* Image does not overflow the content area */
+    padding: 0.3125rem 0.1875rem 0.625rem;
+    /* padding: 5px 3px 10px; */
+    text-align: center;
+}
+
+.wp-caption.alignnone {
+    /* margin: 5px 20px 20px 0; */
+}
+
+.wp-caption.alignleft {
+    /* margin: 5px 20px 20px 0; */
+}
+
+.wp-caption.alignright {
+    /* margin: 5px 0 20px 20px; */
+}
+
+/* Herrinbone Edits START */
+
+.alignnone,
+.alignleft,
+a img.alignnone,
+a img.alignleft,
+.wp-caption.alignnone,
+.wp-caption.alignleft {
+    margin: 0.3125rem 1.25rem 1.25rem 0;
+    /*  margin: 5px 20px 20px 0; */
+}
+
+.aligncenter,
+div.aligncenter {
+    margin: 0.3125rem auto;
+    /*  margin: 5px auto 5px auto; */
+}
+
+.alignright,
+a img.alignright,
+.wp-caption.alignright {
+    margin: 0.3125rem 0 1.25rem 1.25rem;
+    /* margin: 5px 0 20px 20px; */
+}
+
+/* Herrinbone Edits END */
+
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 98.5%;
+    padding: 0;
+    width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+    /* font-size: 11px; */
+    /* line-height: 17px; */
+    margin: 0;
+    /* padding: 0 4px 5px; */
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+	background-color: #eee;
+	clip: auto !important;
+	clip-path: none;
+	color: #444;
+	display: block;
+	font-size: 1em;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+	/* Above WP toolbar. */
+}
 
 /*=========================================================== 2. ELEMENTS ====*/
 /*----------------------------------------------------------- 2.1 Imagery ----*/

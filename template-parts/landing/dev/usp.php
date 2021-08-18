@@ -12,22 +12,24 @@ wp_enqueue_script( 'hb_usp_js' );
 ?>
 
 
-<div class="landing_content" style="--row: 1 / -1; --col: full-l / full-r;">
+<div class="landing_content cheese" style="--row: 1 / -1; --col: full-l / full-r;">
 
     <input type="checkbox" checked class="usp_state" id="usp_default">
     <div class="usp_card">
         <div class="usp_blurb">
-            <h2 class="usp_title">Working With Me</h2>
-            <p>
-                There are many benefits to working with me, not least becauase it's
-                just easy! My ethos is founded on honesty and openness with the
-                simple objective of client satisfaction. Keeping this clear goal in
-                mind has allowed me to maintain lasting relationships with all my
-                clients whilst we’ve built some awesome WWW together. Explore the
-                cacti to learn more.
-            </p>
-            <span class="usp_instruction">Tap a cactus</span>
-            <label for="usp_default" class="usp_button green">Learn More</label>
+            <div class="column">
+                <h2 class="usp_title">Working With Me</h2>
+                <p>
+                    There are many benefits to working with me, not least becauase it's
+                    just easy! My ethos is founded on honesty and openness with the
+                    simple objective of client satisfaction. Keeping this clear goal in
+                    mind has allowed me to maintain lasting relationships with all my
+                    clients whilst we’ve built some awesome WWW together. Explore the
+                    cacti to learn more.
+                </p>
+                <span class="usp_instruction">Tap a cactus</span>
+                <label for="usp_default" class="usp_button green">Learn More</label>
+            </div>
         </div>
     </div>
 
@@ -46,11 +48,13 @@ wp_enqueue_script( 'hb_usp_js' );
             </svg>
         </label>
         <div class="usp_blurb">
-            <h3 class="usp_subtitle">Complete Solution</h3>
-            <p>
-                Design, Research, Dev, Deploy, Support, Hosting, If there's a hiccup - you know who to talk to and when it all goes right; that's me too! Being a one-man website machine means I can foresee concerns early in the project and adapt to suit. No back and forth between design and development teams and I have all the answers ready for you. This means 1. I can be efficient and 2. I know what it takes to get every aspect of the job done. When I manage larger projects I have insight for days yo.
-            </p>
-            <label for="usp_complete" class="usp_button red">Back</label>
+            <div class="column">
+                <h3 class="usp_subtitle">Complete Solution</h3>
+                <p>
+                    Design, Research, Dev, Deploy, Support, Hosting, If there's a hiccup - you know who to talk to and when it all goes right; that's me too! Being a one-man website machine means I can foresee concerns early in the project and adapt to suit. No back and forth between design and development teams and I have all the answers ready for you. This means 1. I can be efficient and 2. I know what it takes to get every aspect of the job done. When I manage larger projects I have insight for days yo.
+                </p>
+                <label for="usp_complete" class="usp_button red">Back</label>
+            </div>
         </div>
     </div>
 
@@ -69,11 +73,13 @@ wp_enqueue_script( 'hb_usp_js' );
             </svg>
         </label>
         <div class="usp_blurb">
-            <h3 class="usp_subtitle">Personal Service</h3>
-            <p>
-                I'll always be your direct point of contact and all resource will come from me unless we planned otherwise. Getting to know you means I understand how the project should take shape to best suit your collaboration style, and ultimately how the website fits you - the brand. You will never be a number!
-            </p>
-            <label for="usp_personal" class="usp_button red">Back</label>
+            <div class="column">
+                <h3 class="usp_subtitle">Personal Service</h3>
+                <p>
+                    I'll always be your direct point of contact and all resource will come from me unless we planned otherwise. Getting to know you means I understand how the project should take shape to best suit your collaboration style, and ultimately how the website fits you - the brand. You will never be a number!
+                </p>
+                <label for="usp_personal" class="usp_button red">Back</label>
+            </div>
         </div>
     </div>
 
@@ -93,11 +99,13 @@ wp_enqueue_script( 'hb_usp_js' );
             </svg>
         </label>
         <div class="usp_blurb">
-            <h3 class="usp_subtitle">Flexibility</h3>
-            <p>
-                I can quickly adapt to your needs and make instant decisions to benefit us both. If something needs to be pushed through pronto I can adjust the project to suit. You forgot about pages x, y and z? No problem, I'm already planning them into the project and I'll have a quote over shortly.
-            </p>
-            <label for="usp_flexibility" class="usp_button red">Back</label>
+            <div class="column">
+                <h3 class="usp_subtitle">Flexibility</h3>
+                <p>
+                    I can quickly adapt to your needs and make instant decisions to benefit us both. If something needs to be pushed through pronto I can adjust the project to suit. You forgot about pages x, y and z? No problem, I'm already planning them into the project and I'll have a quote over shortly.
+                </p>
+                <label for="usp_flexibility" class="usp_button red">Back</label>
+            </div>
         </div>
     </div>
 
@@ -119,11 +127,13 @@ wp_enqueue_script( 'hb_usp_js' );
             </svg>
         </label>
         <div class="usp_blurb">
-            <h3 class="usp_subtitle">Experience</h3>
-            <p>
-                I come swinging many swords and can't think of anything you could throw at me that wouldn't be achievable. If you have a website problem I've likely had to solve it before and if you think you have something I can't solve... well now you've gone and done it. Challenge accepted!
-            </p>
-            <label for="usp_experience" class="usp_button red">Back</label>
+            <div class="column">
+                <h3 class="usp_subtitle">Experience</h3>
+                <p>
+                    I come swinging many swords and can't think of anything you could throw at me that wouldn't be achievable. If you have a website problem I've likely had to solve it before and if you think you have something I can't solve... well now you've gone and done it. Challenge accepted!
+                </p>
+                <label for="usp_experience" class="usp_button red">Back</label>
+            </div>
         </div>
     </div>
 
@@ -145,11 +155,13 @@ wp_enqueue_script( 'hb_usp_js' );
             </svg>
         </label>
         <div class="usp_blurb">
-            <h3 class="usp_subtitle">Value For Money</h3>
-            <p>
-                No agency overheads means your budget goes on getting work done, not keeping the A/C running.
-            </p>
-            <label for="usp_value" class="usp_button red">Back</label>
+            <div class="column">
+                <h3 class="usp_subtitle">Value For Money</h3>
+                <p>
+                    No agency overheads means your budget goes on getting work done, not keeping the A/C running.
+                </p>
+                <label for="usp_value" class="usp_button red">Back</label>
+            </div>
         </div>
     </div>
 
@@ -170,13 +182,15 @@ wp_enqueue_script( 'hb_usp_js' );
             </svg>
         </label>
         <div class="usp_blurb">
-            <h3 class="usp_subtitle">Aftercare</h3>
-            <p>
-                I build servers from bare metal, engineering my own stacks with turbo-tuned http configs, ultra-hardened SSL and caching that serves the user the page before they click the button (literally). I also serve your website fast, reliably, and without you having to worry about what any of that means. I now operate my own hosting network in London as part of the UK's first 100% renewable energy driven server farm, so you can rest easy, knowing your website is powered by sustainably-farmed buttercups*.
-                <br><br>
-                *not powered by buttercups, but planet-friendly and wonderful none the less.
-            </p>
-            <label for="usp_aftercare" class="usp_button red">Back</label>
+            <div class="column">
+                <h3 class="usp_subtitle">Aftercare</h3>
+                <p>
+                    I build servers from bare metal, engineering my own stacks with turbo-tuned http configs, ultra-hardened SSL and caching that serves the user the page before they click the button (literally). I also serve your website fast, reliably, and without you having to worry about what any of that means. I now operate my own hosting network in London as part of the UK's first 100% renewable energy driven server farm, so you can rest easy, knowing your website is powered by sustainably-farmed buttercups*.
+                    <br><br>
+                    *not powered by buttercups, but planet-friendly and wonderful none the less.
+                </p>
+                <label for="usp_aftercare" class="usp_button red">Back</label>
+            </div>
         </div>
 
     </div>

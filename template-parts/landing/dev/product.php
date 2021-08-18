@@ -8,14 +8,14 @@
  */
 ?>
 
-<div class="landing_content" style="--row: 1 / -1; --col: threetwo-l / threetwo-r;">
+<div class="landing_content cheese" style="--row: 1 / -1; --col: threetwo-l / threetwo-r;">
     <div class="quadrant">
 
         <div class="column cheese">
 
             <header>
-                <h2 class="boom">
-                    What does a <span class="ting">website developer</span> do?
+                <h2 class="laurel">
+                    What does a <span class="hardy">website developer</span> do?
                 </h2>
             </header>
 
