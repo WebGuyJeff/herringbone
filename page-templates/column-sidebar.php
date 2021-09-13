@@ -58,4 +58,4 @@ get_header(); ?>
 </div>
 
 <?php get_footer(); ?>
-<!-- column-sidebar.php -->
+<!-- template: column-sidebar.php -->

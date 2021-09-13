@@ -40,3 +40,4 @@
     <?php } ?>
 
 </div><!-- /.blog-post -->
+<!-- template: content.php -->

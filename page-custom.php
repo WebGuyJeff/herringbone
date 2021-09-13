@@ -42,3 +42,4 @@
 </div>
 
 <?php get_footer(); ?>
+<!-- template: page-custom.php -->

@@ -41,3 +41,4 @@
 </div>
 
 <?php get_footer(); ?>
+<!-- template: home.php -->

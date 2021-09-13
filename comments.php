@@ -34,3 +34,4 @@
     <?php comment_form(); ?>
 
 </div>
+<!-- template: comments.php -->

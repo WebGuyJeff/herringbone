@@ -20,3 +20,4 @@
     <?php the_content(); ?>
 
 </div><!-- /.blog-post -->
+<!-- template: content-single.php -->

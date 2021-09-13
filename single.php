@@ -39,3 +39,4 @@ https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
 </div>
 
 <?php get_footer(); ?>
+<!-- template: single.php -->

@@ -29,3 +29,4 @@
 </div>
 
 <?php get_footer(); ?>
+<!-- template: page-contact.php -->

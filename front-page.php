@@ -57,4 +57,5 @@ wp_enqueue_script( 'hb_hideheader_js' );
 <?php
 /* Contact form modal */
 get_template_part( 'template-parts/modal', 'contact' );
-get_footer();
+get_footer(); ?>
+<!-- template: front-page.php -->

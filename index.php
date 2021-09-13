@@ -43,3 +43,4 @@
 </div>
 
 <?php get_footer(); ?>
+<!-- template: index.php -->
