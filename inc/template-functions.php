@@ -16,20 +16,20 @@ function herringbone_body_classes( $classes ) {
 	if ( ! is_singular() ) {
 		$classes[] = 'singular-false';
 	} else {
-        $classes[] = 'singular-true';
-    }
+		$classes[] = 'singular-true';
+	}
 
 	// Add a class when there is no sidebar present.
 	if ( ! is_active_sidebar( 'sidebar-left' ) ) {
 		$classes[] = 'side_left-false';
 	} elseif ( ! is_active_sidebar( 'sidebar-right' ) ) {
-        $classes[] = 'side_right-false';
-    }
+		$classes[] = 'side_right-false';
+	}
 
-    // Add a class when the page is a landing page
-    if ( is_page( 'web-developer' ) || is_page( 'wordpress-developer' ) || is_front_page() ) {
+	// Add a class when the page is a landing page
+	if ( is_page( 'web-developer' ) || is_page( 'wordpress-developer' ) || is_front_page() ) {
 		$classes[] = 'landing_page';
-    }
+	}
 
 	return $classes;
 }

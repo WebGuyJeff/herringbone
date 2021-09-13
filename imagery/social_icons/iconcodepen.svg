@@ -1,13 +1,13 @@
 <svg preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg8" version="1.1" viewBox="0 0 100 100" height="100" width="100">
   <defs id="defs">
-    <radialGradient gradientTransform="matrix(-.94035 -1.62873 1.64322 -.94863 -92.96 146.97)" gradientUnits="userSpaceOnUse" r="57.375" fy="91.963" fx="-7.494" cy="91.963" cx="-7.494" id="radialGradient97" xlink:href="#linearGradient95"/>
-    <linearGradient id="linearGradient95">
-      <stop id="stop91" offset="0" stop-color="#ffff00" stop-opacity="1"/>
-      <stop id="stop93" offset="1" stop-color="#ab37c8" stop-opacity="1"/>
-    </linearGradient>
+	<radialGradient gradientTransform="matrix(-.94035 -1.62873 1.64322 -.94863 -92.96 146.97)" gradientUnits="userSpaceOnUse" r="57.375" fy="91.963" fx="-7.494" cy="91.963" cx="-7.494" id="radialGradient97" xlink:href="#linearGradient95"/>
+	<linearGradient id="linearGradient95">
+	  <stop id="stop91" offset="0" stop-color="#ffff00" stop-opacity="1"/>
+	  <stop id="stop93" offset="1" stop-color="#ab37c8" stop-opacity="1"/>
+	</linearGradient>
   </defs>
   <g id="iconcodepen" display="inline" fill-opacity="1">
-    <circle cx="50" cy="50" id="iconcodepen_background" r="50" display="inline" fill="url(#radialGradient97)" stroke-width=".871"/>
-    <path d="M13.165 37.61L50 13.165 86.835 37.61v24.78L50 86.835 13.165 62.39zm0 0L50 62.39l36.835-24.78m0 24.78L50 37.61 13.165 62.39M50 13.165V37.61m0 24.78v24.445" id="iconcodepen_logo" opacity="1" fill="none" stroke="#262422" stroke-width="6.329" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dasharray="none" stroke-opacity="1"/>
+	<circle cx="50" cy="50" id="iconcodepen_background" r="50" display="inline" fill="url(#radialGradient97)" stroke-width=".871"/>
+	<path d="M13.165 37.61L50 13.165 86.835 37.61v24.78L50 86.835 13.165 62.39zm0 0L50 62.39l36.835-24.78m0 24.78L50 37.61 13.165 62.39M50 13.165V37.61m0 24.78v24.445" id="iconcodepen_logo" opacity="1" fill="none" stroke="#262422" stroke-width="6.329" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dasharray="none" stroke-opacity="1"/>
   </g>
 </svg>

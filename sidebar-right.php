@@ -10,10 +10,10 @@
 
 <aside class="sides">
 
-    <?php if ( is_active_sidebar( 'sidebar-right' ) ) : ?>
-        <?php dynamic_sidebar( 'sidebar-right' ); ?>
-    <?php else : ?>
-        <!-- Time to add some widgets! -->
-    <?php endif; ?>
+	<?php if ( is_active_sidebar( 'sidebar-right' ) ) : ?>
+		<?php dynamic_sidebar( 'sidebar-right' ); ?>
+	<?php else : ?>
+		<!-- Time to add some widgets! -->
+	<?php endif; ?>
 
 </aside>

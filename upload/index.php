@@ -12,12 +12,12 @@
 </header>
 <main class="main">
   <div class="flexbox flexbox-half">
-    <div class="content">
+	<div class="content">
 
-      <?php include  $_SERVER['DOCUMENT_ROOT'] . "/modules/formUpload/formUpload.html";?>
-      <script src="/modules/formUpload/formUpload.js"></script>
+	  <?php include  $_SERVER['DOCUMENT_ROOT'] . "/modules/formUpload/formUpload.html";?>
+	  <script src="/modules/formUpload/formUpload.js"></script>
 
-    </div>
+	</div>
   </div>
 </main>
 <footer class="footer">

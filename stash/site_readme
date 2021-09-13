@@ -5,7 +5,7 @@
 
   o Document  JeffersonReal.com Index
   o Version   0.1
-  o Author    Jefferson Real
+  o Author	Jefferson Real
   o Contact   me@jeffersonreal.com
 
 
@@ -14,9 +14,9 @@
 ~o Directory Index o~
 
 
-  ROOT                       ~Site pages, templates and .index.readme (this file)
+  ROOT					   ~Site pages, templates and .index.readme (this file)
   ├─animation
-  ├─css                      ~Global styles (modules contain dedicated css files)
+  ├─css					  ~Global styles (modules contain dedicated css files)
   ├─imagery
   │ ├─favicon
   │ ├─logo
@@ -70,10 +70,10 @@ block/element/modifier separation and reserving hyphens for css variables and an
 unforeseen naming problems. camelCase also maps directly to javascript without the need
 for additional translation.
 
-                BLOCK, ELEMENT, MODIFIER, VALUE
+				BLOCK, ELEMENT, MODIFIER, VALUE
 
 classic style:  block-name__elem-name_mod-name_mod-val
-camelCase:      blockName_elemName_modName_modVal
+camelCase:	  blockName_elemName_modName_modVal
 
 
 
@@ -86,9 +86,9 @@ camelCase:      blockName_elemName_modName_modVal
 html
   head
   body
-    header
-    main
-    footer
+	header
+	main
+	footer
 html
 
 
@@ -122,8 +122,8 @@ form
   form_input
   
 button
-      
-      
+	  
+	  
 ~o Mobile o~
 
 ThumbNav
@@ -132,6 +132,6 @@ ThumbNav
 ~o Desktop o~
 
 Nav
-      
-      
-      
+	  
+	  
+	  

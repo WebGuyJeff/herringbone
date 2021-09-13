@@ -11,12 +11,12 @@ body {
 }
 
   .err {
-    color: #ffffff;
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 11rem;
-    position:absolute;
-    left: 20%;
-    top: 8%;
+	color: #ffffff;
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 11rem;
+	position:absolute;
+	left: 20%;
+	top: 8%;
   }
 
 .far {
@@ -28,22 +28,22 @@ body {
 }
 
  .err2 {
-    color: #ffffff;
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 11rem;
-    position:absolute;
-    left: 68%;
-    top: 8%;
+	color: #ffffff;
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 11rem;
+	position:absolute;
+	left: 68%;
+	top: 8%;
   }
 
 .msg {
-    text-align: center;
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 1.6rem;
-    position:absolute;
-    left: 16%;
-    top: 45%;
-    width: 75%;
+	text-align: center;
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 1.6rem;
+	position:absolute;
+	left: 16%;
+	top: 45%;
+	width: 75%;
   }
 
 a {

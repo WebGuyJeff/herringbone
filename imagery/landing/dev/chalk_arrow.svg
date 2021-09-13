@@ -1,59 +1,59 @@
 <svg xmlns="http://www.w3.org/2000/svg" class="svg_chalkArrow" width="200" height="150" version="1.1" viewBox="0 0 200 150">
-    <defs id="defs2">
-        <filter
-             x="-0.066476233"
-             width="1.1329613"
-             y="-0.061382979"
-             height="1.122766"
-             style="color-interpolation-filters:sRGB"
-             id="jr-chalk-daily">
-            <feTurbulence
-               type="turbulence"
-               numOctaves="8"
-               baseFrequency="0.22716629745176176"
-               seed="191"
-               id="feTurbulence4509"
-               result="result10" />
-            <feColorMatrix
-               result="result5"
-               values="1"
-               id="feColorMatrix4511"
-               type="luminanceToAlpha" />
-            <feComposite
-               in="SourceGraphic"
-               operator="arithmetic"
-               id="feComposite4513"
-               in2="result5"
-               result="result9"
-               k1="-2.3389464987199862"
-               k2="-0.46584651968573354"
-               k3="-0.22216107212217651"
-               k4="2.0182222700388408" />
-            <feMorphology
-               operator="erode"
-               radius="0.12458954881501677"
-               result="result3"
-               id="feMorphology4515" />
-            <feDisplacementMap
-               in="result3"
-               xChannelSelector="R"
-               yChannelSelector="G"
-               scale="0.12640567875174094"
-               result="result4"
-               id="feDisplacementMap4517"
-               in2="result3" />
-            <feComposite
-               k3="-0.89223743158545155"
-               k1="2.1708308505473166"
-               result="result2"
-               operator="in"
-               in2="result4"
-               id="feComposite4519"
-               k4="0.053924732962570943"
-               k2="-0.73060116525423702"
-               in="SourceGraphic" />
-        </filter>
-    </defs>
-    <path id="path897" fill="none" fill-opacity="1" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="7" d="M63.6 55.6a206.9 206.9 0 01-51 56.7C38.4 117 66 123.4 87.8 137" filter="url(#jr-chalk-daily)"/>
-    <path id="path883" fill="none" fill-opacity="1" stroke="#fff" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="7" d="M12.6 112.3c79.7-17.3 122-28.3 175.7-99" filter="url(#jr-chalk-daily)"/>
+	<defs id="defs2">
+		<filter
+			 x="-0.066476233"
+			 width="1.1329613"
+			 y="-0.061382979"
+			 height="1.122766"
+			 style="color-interpolation-filters:sRGB"
+			 id="jr-chalk-daily">
+			<feTurbulence
+			   type="turbulence"
+			   numOctaves="8"
+			   baseFrequency="0.22716629745176176"
+			   seed="191"
+			   id="feTurbulence4509"
+			   result="result10" />
+			<feColorMatrix
+			   result="result5"
+			   values="1"
+			   id="feColorMatrix4511"
+			   type="luminanceToAlpha" />
+			<feComposite
+			   in="SourceGraphic"
+			   operator="arithmetic"
+			   id="feComposite4513"
+			   in2="result5"
+			   result="result9"
+			   k1="-2.3389464987199862"
+			   k2="-0.46584651968573354"
+			   k3="-0.22216107212217651"
+			   k4="2.0182222700388408" />
+			<feMorphology
+			   operator="erode"
+			   radius="0.12458954881501677"
+			   result="result3"
+			   id="feMorphology4515" />
+			<feDisplacementMap
+			   in="result3"
+			   xChannelSelector="R"
+			   yChannelSelector="G"
+			   scale="0.12640567875174094"
+			   result="result4"
+			   id="feDisplacementMap4517"
+			   in2="result3" />
+			<feComposite
+			   k3="-0.89223743158545155"
+			   k1="2.1708308505473166"
+			   result="result2"
+			   operator="in"
+			   in2="result4"
+			   id="feComposite4519"
+			   k4="0.053924732962570943"
+			   k2="-0.73060116525423702"
+			   in="SourceGraphic" />
+		</filter>
+	</defs>
+	<path id="path897" fill="none" fill-opacity="1" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="7" d="M63.6 55.6a206.9 206.9 0 01-51 56.7C38.4 117 66 123.4 87.8 137" filter="url(#jr-chalk-daily)"/>
+	<path id="path883" fill="none" fill-opacity="1" stroke="#fff" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="7" d="M12.6 112.3c79.7-17.3 122-28.3 175.7-99" filter="url(#jr-chalk-daily)"/>
 </svg>

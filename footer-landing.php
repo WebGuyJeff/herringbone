@@ -1,6 +1,6 @@
 <?php
 /**
- * Herringbone Theme Template - Footer.
+ * Herringbone Theme Template - Footer Variant for Landing Pages.
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
@@ -47,4 +47,4 @@
 
 </body>
 </html>
-<!-- template: footer.php -->
+<!-- template: footer-landing.php -->
