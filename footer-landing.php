@@ -9,12 +9,11 @@
 ?>
 <footer class="footer sauce">
 
-
 	<div class="footerNav">
 
 		<?php wp_nav_menu(
 			  array(
-				  'theme_location'  => 'footernav',
+				  'theme_location'  => 'landingfooternav',
 				  'items_wrap'	  => '%3$s',
 				  'menu_class'	  => 'nav',
 				  'container'	   => 'div',

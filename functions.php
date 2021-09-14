@@ -141,6 +141,8 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 				'headernav' => esc_html__( 'Header Desktop Navigation', 'herringbone' ),
 				'footernav' => esc_html__( 'Footer Global Navigation', 'herringbone' ),
 				'legallink' => esc_html__( 'Footer Legal Link', 'herringbone' ),
+				'landingheadernav' => esc_html__( 'Landing Page Header Menu', 'herringbone' ),
+				'landingfooternav' => esc_html__( 'Landing Page Footer Menu', 'herringbone' ),
 			)
 		);
 

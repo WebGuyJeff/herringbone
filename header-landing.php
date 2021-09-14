@@ -43,7 +43,7 @@
 
 			<?php wp_nav_menu(
 				  array(
-					  'theme_location'  => 'headernav',
+					  'theme_location'  => 'landingheadernav',
 					  'items_wrap'	  => '%3$s',
 					  'menu_class'	  => 'nav',
 					  'container'	   => 'nav',
