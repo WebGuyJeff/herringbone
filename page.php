@@ -1,4 +1,6 @@
 <?php
+//namespace Herringbone;
+
 /**
  * Template Name: Page
  *

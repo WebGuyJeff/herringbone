@@ -1,9 +1,8 @@
-<!--
-The template for displaying all single posts
-https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
--->
+<?php
+//namespace Herringbone;
 
-<?php get_header(); ?>
+get_header();
+?>
 
 
 <main class="base"> <?php //MAIN CONTENT COLUMN ?>

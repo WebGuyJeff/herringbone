@@ -1,4 +1,6 @@
 <?php
+//namespace Herringbone\Page_Templates;
+
 /**
  * Template Name: Full Width Page
  *

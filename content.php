@@ -1,3 +1,9 @@
+<?php
+//namespace Herringbone;
+
+
+?>
+
 <div class="blog-post">
 
 	<h1 id="title" class="cheese_h1 cheese_title">

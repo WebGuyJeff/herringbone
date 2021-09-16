@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php
+//namespace Herringbone;
+
+get_header();
+?>
 
 
 <main class="base"> <?php //MAIN CONTENT COLUMN ?>

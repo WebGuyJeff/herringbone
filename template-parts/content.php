@@ -1,4 +1,6 @@
 <?php
+//namespace Herringbone\Template_Parts;
+
 /**
  * Template part for displaying posts
  *

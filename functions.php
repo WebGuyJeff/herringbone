@@ -1,4 +1,6 @@
 <?php
+//namespace Herringbone;
+
 /**
  * Herringbone Theme Functions.php config file.
  *
@@ -6,6 +8,12 @@
  * @author Jefferson Real <me@jeffersonreal.com>
  * @copyright Copyright (c) 2021, Jefferson Real
  */
+
+
+/**
+ * Load the PHP autoloader from it's own file
+ */
+require_once get_template_directory( __FILE__ ) . '/autoload.php';
 
 
 /**
@@ -35,13 +43,7 @@ function herringbone_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'herringbone_scripts' );
 
-/**
- * Disable unneeded Gutenberg Stylesheet
- */
-function hb_deregister_styles() {
-	wp_dequeue_style( 'wp-block-library' );
-}
-add_action( 'wp_print_styles', 'hb_deregister_styles', 100 );
+
 
 // ======================================================= Basic WordPress setup
 
@@ -62,7 +64,7 @@ add_filter( 'auto_update_theme', '__return_false' );
 function herringbone_widgets_init() {
 	register_sidebar(
 		array(
-			'name'		  => esc_html__( 'Left Sidebar', 'herringbone' ),
+			'name'		    => esc_html__( 'Left Sidebar', 'herringbone' ),
 			'id'			=> 'sidebar-left',
 			'description'   => esc_html__( 'Used for article contents and includes right sidebar content at mid-width.', 'herringbone' ),
 			'before_widget' => '<section id="%1$s" class="sauce widget %2$s">',
@@ -73,7 +75,7 @@ function herringbone_widgets_init() {
 	);
 	register_sidebar(
 		array(
-			'name'		  => esc_html__( 'Right Sidebar', 'herringbone' ),
+			'name'		    => esc_html__( 'Right Sidebar', 'herringbone' ),
 			'id'			=> 'sidebar-right',
 			'description'   => esc_html__( 'Used for related content and unimportant stuff.', 'herringbone' ),
 			'before_widget' => '<section id="%1$s" class="sauce widget %2$s">',
@@ -88,12 +90,12 @@ add_action( 'widgets_init', 'herringbone_widgets_init' );
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/includes/template-tags.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/template-functions.php';
+require get_template_directory() . '/includes/template-functions.php';
 
 
 if ( ! function_exists( 'herringbone_setup' ) ) :
@@ -141,8 +143,8 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 				'headernav' => esc_html__( 'Header Desktop Navigation', 'herringbone' ),
 				'footernav' => esc_html__( 'Footer Global Navigation', 'herringbone' ),
 				'legallink' => esc_html__( 'Footer Legal Link', 'herringbone' ),
-				'landingheadernav' => esc_html__( 'Landing Page Header Menu', 'herringbone' ),
-				'landingfooternav' => esc_html__( 'Landing Page Footer Menu', 'herringbone' ),
+				'landingheadernav' => esc_html__( 'Landing Page Header', 'herringbone' ),
+				'landingfooternav' => esc_html__( 'Landing Page Footer', 'herringbone' ),
 			)
 		);
 
@@ -238,20 +240,20 @@ add_filter('get_the_archive_title', function ($title) {
 /**
  * Clean default WP bloat from wp_head hook
  */
-remove_action('wp_head', 'rsd_link');
-remove_action('wp_head', 'wlwmanifest_link');
-remove_action('wp_head', 'wp_generator');
-remove_action('wp_head', 'index_rel_link');
-remove_action('wp_head', 'start_post_rel_link', 10, 0);
-remove_action('wp_head', 'parent_post_rel_link', 10, 0);
-remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
-remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+remove_action( 'wp_head', 'rsd_link' );
+remove_action( 'wp_head', 'wlwmanifest_link' );
+remove_action( 'wp_head', 'wp_generator' );
+remove_action( 'wp_head', 'index_rel_link' );
+remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
+remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
+remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
+remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 // rss feeds
 // remove_action( 'wp_head', 'feed_links', 2 );
-// remove_action('wp_head', 'feed_links_extra', 3);
-remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+// remove_action( 'wp_head', 'feed_links_extra', 3 );
+remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
 
 
 /**

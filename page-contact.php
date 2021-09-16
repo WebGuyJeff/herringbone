@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php
+//namespace Herringbone;
+
+get_header();
+?>
 
 
 

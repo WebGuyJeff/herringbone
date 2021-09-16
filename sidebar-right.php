@@ -1,4 +1,6 @@
 <?php
+//namespace Herringbone;
+
 /**
  * Herringbone Theme Template File - Right Sidebar.
  *

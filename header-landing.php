@@ -1,4 +1,10 @@
 <?php
+namespace Herringbone;
+
+
+/* https://permanenttourist.ch/2016/11/base-code-wordpress-theme-using-php-namespaces/ */
+/* https://github.com/markhowellsmead/wp-theme-default/blob/master/functions.php */
+
 /**
  * Herringbone Theme Template - Header Variant for Landing Pages.
  *
@@ -10,12 +16,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" prefix="og: https://ogp.me/ns/website#">
 <head>
-<?php get_template_part( 'template-parts/hb-head', 'Hb-SEO' );?>
+
+
+
+
+<?php
+function print_seo_meta() {
+	$meta = new \Herringbone\SEO_Meta;
+	$meta->print_all();
+}
+print_seo_meta();
+?>
+
+
 <?php wp_head();?>
 </head>
 <body <?php body_class(); ?>>
-
-<?php get_template_part( 'template-parts/hb-devinfo', 'Hb-DevInfo' );?>
 
 <div class="table">  <?php //PAGE LAYOUT GRID ?>
 

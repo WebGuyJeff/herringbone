@@ -1,6 +1,8 @@
 <?php
+//namespace Herringbone\Template_Parts;
+
 /**
- * Herringbone Theme Template File - Front Page.
+ * Herringbone Theme Template File - Modal Contact Form.
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
