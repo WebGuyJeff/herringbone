@@ -1,5 +1,5 @@
 <?php
-//namespace Herringbone;
+
 
 /**
  * Custom template tags for this theme

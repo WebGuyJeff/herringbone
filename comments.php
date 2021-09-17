@@ -1,5 +1,5 @@
 <?php
-//namespace Herringbone;
+
 
 if ( post_password_required() ) {
 	return;

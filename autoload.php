@@ -1,5 +1,5 @@
 <?php
-//namespace Herringbone;
+
 
 // Define the main autoloader
 spl_autoload_register( 'herringbone_autoloader' );

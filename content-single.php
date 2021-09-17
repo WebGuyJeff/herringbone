@@ -1,5 +1,5 @@
 <?php
-//namespace Herringbone;
+
 
 ?>
 <div class="blog-post">

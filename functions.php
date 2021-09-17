@@ -1,5 +1,4 @@
 <?php
-//namespace Herringbone;
 
 /**
  * Herringbone Theme Functions.php config file.
@@ -19,7 +18,7 @@ require_once get_template_directory( __FILE__ ) . '/autoload.php';
 /**
  * Enqueue scripts and styles
  */
-function herringbone_scripts() {
+function Enqueue_Scripts_And_Styles() {
 	wp_enqueue_style( 'style_css', get_template_directory_uri() . '/style.css', array(), filemtime(get_template_directory() . '/style.css'), 'all');
 	wp_enqueue_style( 'hb_css', get_template_directory_uri() . '/css/hb.css', array( 'style_css' ), filemtime(get_template_directory() . '/css/hb.css'), 'all');
 	// If not in admin area
@@ -41,7 +40,7 @@ function herringbone_scripts() {
 		wp_register_script( 'hb_usp_js', get_template_directory_uri() . '/js/hb_usp.js', array (), '0.1', true );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'herringbone_scripts' );
+add_action( 'wp_enqueue_scripts', 'Enqueue_Scripts_And_Styles' );
 
 
 

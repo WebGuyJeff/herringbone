@@ -1,5 +1,5 @@
 <?php
-//namespace Herringbone;
+
 
 get_header();
 wp_enqueue_script('svgWheel_js');

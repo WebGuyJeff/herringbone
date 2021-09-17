@@ -1,5 +1,5 @@
 <?php
-//namespace Herringbone;
+
 
 /**
  * Herringbone Theme Template File - Left Sidebar.

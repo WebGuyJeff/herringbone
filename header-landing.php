@@ -1,6 +1,5 @@
 <?php
-namespace Herringbone;
-
+namespace Jefferson\Herringbone;
 
 /* https://permanenttourist.ch/2016/11/base-code-wordpress-theme-using-php-namespaces/ */
 /* https://github.com/markhowellsmead/wp-theme-default/blob/master/functions.php */
@@ -22,8 +21,8 @@ namespace Herringbone;
 
 <?php
 function print_seo_meta() {
-	$meta = new \Herringbone\SEO_Meta;
-	$meta->print_all();
+//	$meta = new \Herringbone\SEO_Meta;
+//	$meta->print_all();
 }
 print_seo_meta();
 ?>

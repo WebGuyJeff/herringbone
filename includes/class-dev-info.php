@@ -1,5 +1,5 @@
 <?php
-//namespace Herringbone;
+
 
 /**
  * Development info printed in-page as html comment.

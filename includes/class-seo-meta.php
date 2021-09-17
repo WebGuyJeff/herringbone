@@ -1,5 +1,5 @@
 <?php
-namespace Herringbone;
+
 
 /**
  * PHP Class: Herringbone_SEO_Meta

@@ -1,5 +1,5 @@
 <?php
-//namespace Herringbone;
+
 
 /**
  * Herringbone Theme Template - Footer Variant for Landing Pages.
