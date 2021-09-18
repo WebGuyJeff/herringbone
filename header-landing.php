@@ -1,6 +1,6 @@
-<?php
-namespace Jefferson\Herringbone;
+<?php namespace Jefferson\Herringbone;
 
+/* http://justintadlock.com/archives/2018/12/14/php-namespaces-for-wordpress-developers */
 /* https://permanenttourist.ch/2016/11/base-code-wordpress-theme-using-php-namespaces/ */
 /* https://github.com/markhowellsmead/wp-theme-default/blob/master/functions.php */
 
