@@ -1,8 +1,5 @@
-<?php namespace Jefferson\Herringbone;
-
-/* http://justintadlock.com/archives/2018/12/14/php-namespaces-for-wordpress-developers */
-/* https://permanenttourist.ch/2016/11/base-code-wordpress-theme-using-php-namespaces/ */
-/* https://github.com/markhowellsmead/wp-theme-default/blob/master/functions.php */
+<?php
+namespace Jefferson\Herringbone;
 
 /**
  * Herringbone Theme Template - Header Variant for Landing Pages.
@@ -11,25 +8,20 @@
  * @author Jefferson Real <me@jeffersonreal.com>
  * @copyright Copyright (c) 2021, Jefferson Real
  */
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" prefix="og: https://ogp.me/ns/website#">
+
 <head>
-
-
-
-
-<?php
-function print_seo_meta() {
-//	$meta = new \Herringbone\SEO_Meta;
-//	$meta->print_all();
-}
-print_seo_meta();
-?>
-
-
-<?php wp_head();?>
+	<?php
+	$meta = new Seo_Meta;
+	echo $meta->head_meta;
+	wp_head();
+	?>
 </head>
+
 <body <?php body_class(); ?>>
 
 <div class="table">  <?php //PAGE LAYOUT GRID ?>

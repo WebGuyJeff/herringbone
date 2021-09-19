@@ -12,7 +12,18 @@
 /**
  * Load the PHP autoloader from it's own file
  */
-require_once get_template_directory( __FILE__ ) . '/autoload.php';
+require_once(get_template_directory() . '/functions/autoload.php');
+
+/**
+ * Custom template tags for this theme.
+ */
+//require get_template_directory() . '/functions/class-tags.php';
+
+/**
+ * Functions which enhance the theme by hooking into WordPress.
+ */
+//require get_template_directory() . '/functions/class-hooks.php';
+
 
 
 /**
@@ -85,16 +96,6 @@ function herringbone_widgets_init() {
 	);
 }
 add_action( 'widgets_init', 'herringbone_widgets_init' );
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/includes/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/includes/template-functions.php';
 
 
 if ( ! function_exists( 'herringbone_setup' ) ) :
