@@ -38,4 +38,4 @@ if ( post_password_required() ) {
 	<?php comment_form(); ?>
 
 </div>
-<!-- template: comments.php -->
+<script> console.log( 'wp-template: comments.php' );</script>

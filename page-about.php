@@ -145,4 +145,4 @@ wp_enqueue_script('svgWheel_js');
 </div>
 
 <?php get_footer(); ?>
-<!-- template: page-about.php -->
+<script> console.log( 'wp-template: page-about.php' );</script>

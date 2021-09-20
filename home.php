@@ -45,4 +45,4 @@ get_header();
 </div>
 
 <?php get_footer(); ?>
-<!-- template: home.php -->
+<script> console.log( 'wp-template: home.php' );</script>

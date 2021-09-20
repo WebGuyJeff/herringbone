@@ -1,5 +1,4 @@
 <?php
-//namespace Herringbone\Page_Templates;
 
 /**
  * Template Name: Landing Page
@@ -12,8 +11,6 @@
 get_header( 'landing' );
 //enqueue styles and scripts
 wp_enqueue_style( 'hb_landdev_css' );
-wp_enqueue_script( 'hb_modal_js' );
-wp_enqueue_script( 'hb_hideheader_js' );
 ?>
 
 
@@ -66,5 +63,7 @@ This is currently not live.
 
 </main>
 
+<?php get_template_part( 'template-parts/modal', 'contact' ); ?>
 <?php get_footer( 'landing' ); ?>
-<!-- template: landing-page.php -->
+
+<script> console.log( 'wp-template: landing-page.php' );</script>

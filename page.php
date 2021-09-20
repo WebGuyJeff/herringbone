@@ -62,4 +62,4 @@ get_header(); ?>
 
 
 <?php get_footer(); ?>
-<!-- template: page.php -->
+<script> console.log( 'wp-template: page.php' );</script>

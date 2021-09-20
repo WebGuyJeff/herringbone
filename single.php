@@ -38,4 +38,4 @@ get_header();
 </div>
 
 <?php get_footer(); ?>
-<!-- template: single.php -->
+<script> console.log( 'wp-template: single.php' );</script>

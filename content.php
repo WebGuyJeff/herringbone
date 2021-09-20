@@ -46,4 +46,4 @@
 	<?php } ?>
 
 </div><!-- /.blog-post -->
-<!-- template: content.php -->
+<script> console.log( 'wp-template: content.php' );</script>

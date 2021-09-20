@@ -47,4 +47,4 @@ get_header();
 </div>
 
 <?php get_footer(); ?>
-<!-- template: archive.php -->
+<script> console.log( 'wp-template: archive.php' );</script>

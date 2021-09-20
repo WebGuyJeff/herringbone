@@ -55,4 +55,4 @@
 		</footer><!-- .entry-footer -->
 	<?php endif; ?>
 </article><!-- #post-<?php the_ID(); ?> -->
-<!-- template: content-page.php -->
+<script> console.log( 'wp-template: content-page.php' );</script>

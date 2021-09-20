@@ -4,7 +4,16 @@ namespace Jefferson\Herringbone;
 /**
  * Custom template tags for this theme
  *
- * Eventually, some of the functionality here could be replaced by core features.
+ * These methods provide common post html snippets:
+ * 
+ * print_html_posted_on()
+ *  - Prints HTML with meta information for the current post-date/time.
+ * print_html_posted_by()
+ *  - Prints HTML with meta information for the current author.
+ * print_html_entry_footer()
+ *  - Prints HTML with meta information for the categories, tags and comments.
+ * post_thumbnail_wrapper()
+ *  - Displays an optional post thumbnail, and wraps according to context.
  *
  * @package herringbone
  */
@@ -14,7 +23,8 @@ class Tags {
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
 	 */
-	function print_html_posted_on() {
+	public static function print_html_posted_on() {
+
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -34,46 +44,46 @@ class Tags {
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
-		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<span class="posted-on">' . $posted_on . '</span>';
 
 	}
-
 
 
 	/**
 	 * Prints HTML with meta information for the current author.
 	 */
-	function print_html_posted_by() {
+	public static function print_html_posted_by() {
+
 		$byline = sprintf(
 			/* translators: %s: post author. */
 			esc_html_x( 'by %s', 'post author', 'herringbone' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
-		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<span class="byline"> ' . $byline . '</span>';
 
 	}
-
 
 
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
-	function herringbone_entry_footer() {
+	public static function print_html_entry_footer() {
+
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
 			/* translators: used between list items, there is a space after the comma */
 			$categories_list = get_the_category_list( esc_html__( ', ', 'herringbone' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'herringbone' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'herringbone' ) . '</span>', $categories_list );
 			}
 
 			/* translators: used between list items, there is a space after the comma */
 			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'herringbone' ) );
 			if ( $tags_list ) {
 				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'herringbone' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'herringbone' ) . '</span>', $tags_list );
 			}
 		}
 
@@ -115,14 +125,14 @@ class Tags {
 	}
 
 
-
 	/**
 	 * Displays an optional post thumbnail.
 	 *
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
 	 */
-	function herringbone_post_thumbnail() {
+	public static function post_thumbnail_wrapper() {
+		
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
@@ -154,21 +164,6 @@ class Tags {
 			<?php
 		endif; // End is_singular().
 	}
-
-
-
-
-
-	/**
-	 * Shim for sites older than 5.2.
-	 *
-	 * @link https://core.trac.wordpress.org/ticket/12563
-	 */
-	function wp_body_open() {
-		do_action( 'wp_body_open' );
-	}
-
-
 
 
 }//class

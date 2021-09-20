@@ -1,5 +1,4 @@
 <?php
-//namespace Herringbone\Page_Templates;
 
 /**
  * Template Name: Sidebar-Column-Sidebar
@@ -61,4 +60,4 @@ get_header(); ?>
 </div>
 
 <?php get_footer(); ?>
-<!-- template: sidebar-column-sidebar.php -->
+<script> console.log( 'wp-template: sidebar-column-sidebar.php' );</script>

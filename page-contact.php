@@ -33,4 +33,4 @@ get_header();
 </div>
 
 <?php get_footer(); ?>
-<!-- template: page-contact.php -->
+<script> console.log( 'wp-template: page-contact.php' );</script>

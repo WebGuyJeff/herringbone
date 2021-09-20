@@ -45,4 +45,4 @@ get_header();
 </div>
 
 <?php get_footer(); ?>
-<!-- template: page-custom.php -->
+<script> console.log( 'wp-template: page-custom.php' );</script>

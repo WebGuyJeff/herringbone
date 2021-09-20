@@ -2,7 +2,7 @@
 namespace Jefferson\Herringbone;
 
 /**
- * PHP Class: Herringbone_Seo_Meta
+ * PHP Class: Seo_Meta
  * 
  * Note to self: This would be better suited to a function in functions.php or a standalone plugin.
  *
@@ -12,8 +12,6 @@ namespace Jefferson\Herringbone;
  * @author Jefferson Real <me@jeffersonreal.com>
  * @copyright Copyright (c) 2021, Jefferson Real
  */
-
-
 class Seo_Meta {
 
     //public $meta; //array of meta vars

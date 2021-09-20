@@ -1,5 +1,4 @@
 <?php
-//namespace Herringbone\Page_Templates;
 
 /**
  * Template Name: Full Width Page
@@ -56,4 +55,4 @@ get_header(); ?>
 </main>
 
 <?php get_footer(); ?>
-<!-- template: full-width-page.php -->
+<script> console.log( 'wp-template: full-width-page.php' );</script>

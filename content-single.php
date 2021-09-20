@@ -24,4 +24,4 @@
 	<?php the_content(); ?>
 
 </div><!-- /.blog-post -->
-<!-- template: content-single.php -->
+<script> console.log( 'wp-template: content-single.php' );</script>

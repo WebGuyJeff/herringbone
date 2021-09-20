@@ -14,19 +14,11 @@
 require_once(get_template_directory() . '/functions/autoload.php');
 
 
-
 /**
  * WordPress hooks for this theme.
  */
 use Jefferson\Herringbone\Hooks;
 $hooks = new Hooks;
-
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-//require get_template_directory() . '/functions/class-hooks.php';
-
 
 
 /**
@@ -44,7 +36,7 @@ function Enqueue_Scripts_And_Styles() {
 		wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js', array (), '3.6.0', true );
 		wp_enqueue_script('jquery');
 		// Other front end resources
-		wp_enqueue_script( 'thumbnav', get_template_directory_uri() . '/modules/thumbNav/thumbNav.js', array ( 'jquery' ), '1.0', true );
+		wp_enqueue_script( 'hb_nav-mobile', get_template_directory_uri() . '/js/hb_nav-mobile.js', array ( 'jquery' ), '1.0', true );
 		wp_enqueue_script( 'gsap', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js', array ( 'jquery' ), '3.6.1', true );
 		wp_enqueue_script( 'gsap_cssrule', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/CSSRulePlugin.min.js', array ( 'gsap' ), '3.6.1', true );
 		wp_enqueue_script( 'gsap_scrolltrigger', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js', array ( 'gsap' ), '3.6.1', true );
@@ -55,7 +47,6 @@ function Enqueue_Scripts_And_Styles() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'Enqueue_Scripts_And_Styles' );
-
 
 
 // ======================================================= Basic WordPress setup
@@ -180,7 +171,7 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 			'custom-logo',
 			array(
 				'height'	  => 1000,
-				'width'	   => 1000,
+				'width'		  => 1000,
 				'flex-width'  => true,
 				'flex-height' => true,
 			)

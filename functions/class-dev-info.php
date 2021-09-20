@@ -1,5 +1,5 @@
 <?php
-
+namespace Jefferson\Herringbone;
 
 /**
  * Development info printed in-page as html comment.
@@ -10,11 +10,9 @@
  * @author Jefferson Real <me@jeffersonreal.com>
  * @copyright Copyright (c) 2021, Jefferson Real
  */
-
-
 class Dev_Info {
 
-    public function print() {
+    public static function print() {
         echo '<!-- Hb Development Info -->';
         echo '<!--' . 'PostID:' . get_the_ID() . '-->';
         if (is_front_page()) {echo '<!--is_front_page:true-->';}else{echo'<!--is_front_page:false-->';}

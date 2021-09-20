@@ -60,9 +60,10 @@ Font Size		 Line Height
 
 1. BASE
 	1.1 Root defaults and Theme variables
-	1.2 Page Layouts
+	1.2 Layouts
 		1.2.1 Layout - Global Page
-		1.2.2 Layout - Landing Page
+		1.2.2 LAYOUT - .blog-post 
+		1.2.3 new table ....
 	1.3 Content Containers
 		1.3.1 Global Content Container
 		1.3.2 Squares
@@ -197,25 +198,30 @@ body::-webkit-scrollbar-thumb {
 
 
 /* PARENT LAYOUT GRID */
-.table {
+.table,
+.header,
+.footer {
 	display: grid;
 	position: relative;
 	grid-auto-flow: dense;
 	grid-column: 1 / -1;
 	grid-template-columns: [full-l main-l] minmax(0, 1fr) [wide-l dip-l sides-l] auto [sides-r dip-r wide-r] minmax(0, 1fr) [main-r full-r];
-	min-height: 100vh;
 }
 
 /* ADD SIDEBAR (OVER 768px) */
 @media (min-width: 48em) {
-	.table {
+	.table,
+	.header,
+	.footer {
 		grid-template-columns: [full-l] 1fr [wide-l dip-l sides-l] 12em [sides-r dip-r main-l] minmax(18.8em, 48em) [main-r wide-r] 1fr [full-r];
 	}
 }
 
 /* ADD SECOND SIDEBAR (OVER 1120px) */
 @media (min-width: 70em) {
-	.table {
+	.table,
+	.header,
+	.footer {
 		grid-template-columns: [full-l] 1fr [wide-l dip-l] 12em [main-l dip-r] minmax(18.8em, 48em) [main-r sides-l] 12em [sides-r wide-r] 1fr [full-r];
 	}
 }
@@ -224,8 +230,8 @@ body::-webkit-scrollbar-thumb {
 	grid-column: main-l / main-r;
 }
 
-.header,
-.footer {
+.header_inner,
+.footer_inner {
 	grid-column: wide-l / wide-r;
 }
 
@@ -260,12 +266,33 @@ body::-webkit-scrollbar-thumb {
 
 /* GUTTERS */
 .table,
+.header,
+.footer,
 .base,
 .dip,
 .sides,
 .sides-narrow {
 	gap: var(--hb_gutters);
 }
+
+
+/*- - - - - - - - - - - - - - - - - - - - - - - 1.2.2 LAYOUT - .blog-post - - */
+
+
+.blog-post {
+    max-width: 100%;
+}
+
+.blog-post img {
+    object-fit: contain;
+    height: auto;
+    max-width: 100%;
+    border-radius: var(--hb_radius-small);
+}
+
+
+
+
 
 
 /*-------------------------------------------------------- 1.3 CONTAINERS ----*/
@@ -293,8 +320,8 @@ body::-webkit-scrollbar-thumb {
 			border-radius: var(--hb_radius);
 		} }
 			/* invert secondary element colours */
-			.header.sauce,
-			.footer.sauce {
+			.header_inner.sauce,
+			.footer_inner.sauce {
 				--hb_border: solid 0.3em var(--hb_white);
 				--hb_background: var(--hb_lightGrey);
 				border: var(--hb_border);
@@ -992,7 +1019,7 @@ a img.alignright,
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.1 .header - - */
 
 
-.header {
+.header_inner {
 	display: flex;
 	flex-wrap: nowrap;
 	justify-content: space-between;
@@ -1030,7 +1057,7 @@ a img.alignright,
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.2 .footer - - */
 
 
-.footer {
+.footer_inner {
 	display: flex;
 	bottom: 0;
 	flex-shrink: 0;
