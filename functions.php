@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Herringbone Theme Functions.php config file.
  *
@@ -14,10 +13,14 @@
  */
 require_once(get_template_directory() . '/functions/autoload.php');
 
+
+
 /**
- * Custom template tags for this theme.
+ * WordPress hooks for this theme.
  */
-//require get_template_directory() . '/functions/class-tags.php';
+use Jefferson\Herringbone\Hooks;
+$hooks = new Hooks;
+
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
