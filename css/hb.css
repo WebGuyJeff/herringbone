@@ -205,7 +205,7 @@ body::-webkit-scrollbar-thumb {
 	position: relative;
 	grid-auto-flow: dense;
 	grid-column: 1 / -1;
-	grid-template-columns: [full-l main-l] minmax(0, 1fr) [wide-l dip-l sides-l] auto [sides-r dip-r wide-r] minmax(0, 1fr) [main-r full-r];
+	grid-template-columns: [full-l main-l] minmax(0, 1fr) [wide-l dip-l sides-l] minmax(18.8em, 48em) [sides-r dip-r wide-r] minmax(0, 1fr) [main-r full-r];
 }
 
 /* ADD SIDEBAR (OVER 768px) */
