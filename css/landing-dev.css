@@ -11,30 +11,29 @@ o Contact   me@jeffersonreal.com
 ~o CSS INDEX o~
 
 1. PAGE
-	1.0 Root Stuff
-	1.1 .header
-	1.2 .main
-	1.3 .landing_content
-	1.4 .landing_backdrop
+	1.1 PAGE - ROOT STUFF
+	1.2 PAGE - TYPOGRAPHY
 2. SECTIONS
-	2.1 .welcome
-	2.2 .product
-	2.3 .tickle
-	2.4 .usp
-3. ANIMATION
-	3.1 CSS Keyframes
+	2.1 SECTION - WELCOME
+	2.2 SECTION - PRODUCT
+	2.3 SECTION - TICKLE
+	2.4 SECTION - USP
 
 */
 
 
 /*============================================================ 1. PAGE =====*/
-/*----------------------------------------------- 1.0 PAGE - root stuff ----*/
+/*----------------------------------------------- 1.1 PAGE - ROOT STUFF ----*/
 
 
 :root {
 	--hb_triBorder: url("data:image/svg+xml,%3Csvg width='36' height='36' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern patternUnits='userSpaceOnUse' width='12' height='12' id='trings'%3E%3Cpath fill='%23de7c61' d='M 1.4,1.3 1,9.4 9.1,1.4 Z' id='path2' /%3E%3Cpath fill='%23e2e542' d='M 2.5,11 11,2.7 10.5,10.8 Z' id='path4' /%3E%3Crect fill='none' opacity='0' width='12' height='12' x='0' y='0' /%3E%3C/pattern%3E%3C/defs%3E%3Crect style='fill:url(%23trings);' width='36' height='36' x='0' y='0' /%3E%3C/svg%3E") 12 round;
 	--hb_iconBackground: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath fill='%23cff9e9' d='M20 11c-32 15-23 72 8 85 30 14 76-11 72-58S51-5 20 11z'/%3E%3C/svg%3E");
 }
+
+
+/*----------------------------------------------- 1.2 PAGE - TYPOGRAPHY ----*/
+
 
 h1,
 h2,
@@ -53,129 +52,9 @@ h6 {
 }
 
 
-/*-------------------------------------------------- 1.1 PAGE - .header ----*/
+/*========================================================== 2. SECTIONS ==== */
+/*------------------------------------------------- 2.1 SECTION - WELCOME --- */
 
-
-.landing_page .header {
-	position: absolute;
-	top: calc(var(--hb_landingHeaderOffset) - calc( 2 * var(--hb_landingHeaderOffset)));
-	margin: 1em var(--hb_gutters) 1.5em var(--hb_gutters);
-	width: calc(100% - calc( 2 * var(--hb_gutters)));
-	max-width: 72em;
-}
-
-.landing_page button.headerToggle {
-	position: absolute;
-	top: var(--hb_landingHeaderOffset);
-	right: 0.5em;
-	font-size: var(--hb_font-base);
-}
-
-
-/*-------------------------------------------- 1.2 PAGE - .main ----*/
-
-
-.main {
-	grid-column: 1 / -1;
-}
-
-/* SECTION GRID COLUMNS
-
-!Horrible to explain but actually quite simple
-
-The centre column aims to have a width matching vh for a 1:1 box.
-The secondary columns stretch to a 3:2 box.
-The tertiary columns stretch to a 16:9 box.
-
-All column mins are based on the ultrawide aspect ratio being the most
-extreme aspect ratio in common use. Any aspect ratio wider than this will be
-created through browser resizing or specialist monitor configs and the user
-will likely be expecting to scroll the content.
-
-3440/1440 = 2.39 (ultrawide aspect ratio)
-100/2.389 = 41.86
-
-41.86vw will be the smallest viewport height with a fullscreen browser (ex UI)
-on an ultrawide monitor. The centre column should be no narrower than this.
-
-Min column widths when they are in full view - aka the viewport has an aspect
-ratio larger than that of the columns aspect ratio:
-
-41.86vw = main 1:1 column
-10.47vw = 3:2 columns
-5.81vw   = 16:9 columns
-
-When the column outer edges meet the viewport edge, the column reponds by only
-being as wide as the space available to prevent overflow.
-
-*/
-
-.main > section {
-	gap: 0;
-	--oneone: clamp(41.86vmax, 100vmin, 100vmin); /* Creates a square centre section */
-	--threetwo: clamp(clamp(0px, calc(50vw - 50vh), 10.47vmax), calc(50vw - 50vh), 25vmin); /* These columns create a 3:2 view */
-	--sixteennine: clamp(clamp(0px, calc(50vw - 75vh), 5.81vmax), calc(50vw - 75vh), 13.89vmin); /* These columns create a 16:9 view */
-	display: grid;
-	position: relative;
-	grid-column: 1 / -1;
-	grid-template-columns: [full-l] 1fr [sixteennine-l threetwo-l oneone-l] calc(100% - 2 * var(--hb_gutters)) [oneone-r threetwo-r sixteennine-r] 1fr [full-r];
-	justify-content: center;
-	width: 100%;
-	text-align: center;
-}
-
-@media (min-width: 100vh) {
-	.main > section {
-		grid-template-columns: [full-l] 1fr [sixteennine-l threetwo-l] var(--threetwo) [oneone-l] var(--oneone) [oneone-r] var(--threetwo) [threetwo-r sixteennine-r] 1fr [full-r];
-	}
-}
-
-@media (min-width: 150vh) {
-	.main > section {
-		grid-template-columns: [full-l] 1fr [sixteennine-l] var(--sixteennine) [threetwo-l] var(--threetwo) [oneone-l] var(--oneone) [oneone-r] var(--threetwo) [threetwo-r] var(--sixteennine) [sixteennine-r] 1fr [full-r];
-	}
-}
-
-@media (orientation : portrait) {
-	.main > section {
-		grid-template-columns: [full-l] 1fr [sixteennine-l threetwo-l oneone-l] calc(100% - 2 * var(--hb_gutters)) [oneone-r threetwo-r sixteennine-r] 1fr [full-r];
-	}
-}
-
-
-
-/*----------------------------------------- 1.3 PAGE - .landing_content ----*/
-
-
-.landing_content {
-	position: relative;
-	grid-column: var(--col);
-	grid-row: var(--row);
-	z-index: 0;
-}
-
-
-/*----------------------------------------- 1.4 PAGE - .landing_backdrop ----*/
-
-
-.landing_backdrop {
-	position: absolute;
-	grid-column: 1 / -1;
-	grid-row: 1 / -1;
-	z-index: -1;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-}
-
-.landing_page section > header {
-	z-index: 1;
-	width: 100%;
-}
-
-
-/*========================================================== 2. SECTIONS =====*/
-/*- - - - - - - - - - - - - - - - - - - - - - - - - 2.1 SECTIONS - .welcome - */
 
 .welcome {
 	min-height: 100vh;
@@ -184,148 +63,9 @@ being as wide as the space available to prevent overflow.
 		display: flex;
 		flex-flow: row nowrap;
 	}
-		.chalkboard {
-			position: relative;
-			z-index: 1;
-			filter: drop-shadow(3px 8px 8px #0004);
-			margin-top: 160px;
-			border: solid 20px;
-			border-radius: 3px;
-			border-image: var(--hb_triBorder);
-			background: #fff;
-			padding: 0 5% 1em 5%;
-			width: clamp(41.86vmax, 100vmin, 100vmin);
-			height: fit-content;
-		}
-			.chalkboard_title {
-				font-size: var(--hb_font-xxl);
-				font-weight: 400;
-				font-family: 'wellfleet';
-				letter-spacing: 0.75px;
-			}
-				.chalkboard_title-hype {
-					color: var(--hb_orange);
-					font-weight: 900;
-					white-space: nowrap;
-					font-family: 'jokerman';
-					font-size: var(--hb_font-xxxl);
-				}
-				@media (max-width: 500px) {
-					.chalkboard_title {
-						font-size: clamp(1rem, 6vmin, 2.063rem);
-						line-height: clamp(2.5rem, 10vmin, 6rem);
-					}
-					.chalkboard_title-hype {
-						font-size: clamp(1.2rem, 8vmin, 2.625rem);
-					}
-				}
-					.chalkboard_list {
-						display: flex;
-						flex-flow: row wrap;
-					}
-						.chalkboard_list > li {
-							flex: 1 1 30%;
-							padding: 1%;
-							font-family: 'wellfleet';
-							letter-spacing: -0.25px;
-							white-space: nowrap;
-							display: flex;
-							justify-content: center;
-							align-items: center;
-							flex-flow: column nowrap;
-							background-image: var(--hb_iconBackground);
-							background-size: contain;
-							background-repeat: no-repeat;
-							background-position: center;
-						}
-							.chalkboard_icon {
-								height: 22px;
-								width: 22px;
-								margin-bottom: 2px;
-							}
-								.chalkboard_cta {
-									margin: 0.5em 0 0 0;
-									color: var(--hb_green);
-									font-size: var(--hb_font-xl);
-									font-weight: 900;
-									font-family: 'wellfleet';
-									letter-spacing: 0.75px;
-								}
-									.chalkboard_arrow {
-										position: absolute;
-										bottom: 0;
-										z-index: -1;
-										margin-right: 8vw;
-										margin-left: auto;
-										padding-bottom: 2.5em;
-										width: 20%;
-										height: auto;
-									}
-									.svg_grabhand-left,
-									.svg_grabhand-right {
-										position: absolute;
-										top: 0;
-										z-index: 1;
-										filter: drop-shadow(1px 2px 1px #0008);
-										margin-top: calc(-32px - calc( 0.45 * clamp(0px,calc(3vw - 3vh),12px)));
-										margin-right: 2em;
-										margin-left: 2em;
-										width: calc(80px + clamp(0em,calc(3vw - 3vh),22px));
-										max-width: 25%;
-									}
-										.svg_grabhand-left {
-										left: 0;
-										}
-										.svg_grabhand-right {
-											right:0;
-										}
-											@media (min-width: 390px) {
-												.svg_grabhand-left {
-													right: 220px;
-													left: unset;
-												}
-											}
-											@media (min-width: 100vh) {
-												.svg_grabhand-left {
-													right: calc(220px - calc(100vw - 100vh) /2);
-												}
-												.svg_grabhand-right {
-													display: none;
-												}
-											}
-											@media (min-width: 150vh) {
-												.svg_grabhand-left {
-													right:0;
-												}
-											}
 
-.svg_me {
-	position: absolute;
-	filter: drop-shadow(1px 2px 1px #0008);
-	width: 100%;
-	height: 100%;
-}
 
-.welcome > .landing_backdrop {
-	background: radial-gradient(at 7.5% 7.5%, #fffc 0%, #fff6 30%), linear-gradient(#00b8ff 10%, #fff 100%);
-}
-	.clouds {
-		width: 100%;
-		height: 100%;
-	}
-		.sun {
-			position: absolute;
-			top: 0;
-			left: 0;
-			margin-top: 15px;
-			margin-left: 2%;
-			width: 20vh;
-			max-width: 25%;
-			height: auto;
-			z-index: -1;
-		}
-
-/*- - - - - - - - - - - - - - - - - - - - - - - - 2.2 SECTIONS - .product - - */
+/*------------------------------------------------- 2.2 SECTION - PRODUCT --- */
 
 
 .product > .landing_backdrop {
@@ -350,146 +90,19 @@ being as wide as the space available to prevent overflow.
 	padding: 10%;
 	font-size: 80%;
 }
-
-@media (min-width: 48em) {
-	.graphicContainer {
-		font-size: 60%;
-	}
-}
-
-@media (min-width: 70em) {
-	.graphicContainer {
-		font-size: 80%;
-	}
-}
-
-.screen {
-	filter: drop-shadow(0.125em 0.250em 0.375em black);
-	animation: squish 6s ease-in-out alternate infinite;
-	border: solid 0.5em #333;
-	border-radius: 1.5em;
-	background: #333;
-	width: 100%;
-	height: 100%;
-}
-	.screen_demo {
-		display: flex;
-		flex-flow: column nowrap;
-		border-radius: 1em;
-		background: #fff;
-		padding: .25em;
-		width: 100%;
-		height: 100%;
-	}
-		.screen_row {
-			display: flex;
-			flex: 1 1 auto;
-			flex-flow: row wrap;
+	@media (min-width: 48em) {
+		.graphicContainer {
+			font-size: 60%;
 		}
-			.screen_column {
-				flex: 1 1 auto;
-				margin: .25em;
-				border-radius: .75em;
-			}
-				h4.screen_title {
-					position: relative;
-					margin: 0 auto;
-					width: 100%;
-					height: 100%;
-					color: var(--hb_white);
-					font-size: 2em;
-					letter-spacing: -0.04em;
-				}
-					h4.screen_title > span {
-						display: flex;
-						position: absolute;
-						align-items: center;
-						justify-content: center;
-						opacity: 0;
-						width: 100%;
-						height: 0;
-						overflow: hidden;
-					}
-						h4.screen_title > span:nth-of-type(1) {
-							animation: titleSwitch-mobile 6s ease-in-out alternate infinite;
-						}
-						h4.screen_title > span:nth-of-type(2) {
-							animation: titleSwitch-tablet 6s ease-in-out alternate infinite;
-						}
-						h4.screen_title > span:nth-of-type(3) {
-							animation: titleSwitch-desktop 6s ease-in-out alternate infinite;
-						}
+	}
+	@media (min-width: 70em) {
+		.graphicContainer {
+			font-size: 80%;
+		}
+	}
 
 
-.screen_row.a > .screen_column {
-	animation: screen_row-a 6s ease-in-out alternate infinite;
-	background: var(--hb_blue);
-}
-
-.screen_row.b > .screen_column {
-	background: var(--hb_red);
-}
-
-.screen_row.c > .screen_column {
-	animation: screen_row-c 6s ease-in-out alternate infinite;
-	background: var(--hb_orange);
-}
-
-.screen_row.d > .screen_column {
-	animation: screen_row-d 6s ease-in-out alternate infinite;
-	background: var(--hb_green);
-}
-
-
-@keyframes screen_row-a {
-	0%	{ width: calc( 40% - .5em  ); } /* minus 1.5vmin to account for the padding and margin 2 x .75vmin */
-	75.3% { width: calc( 40% - .5em  ); }
-	75.4% { width: calc( 100% - .5em ); }
-	100%  { width: calc( 100% - .5em ); }
-}
-
-@keyframes screen_row-c {
-	0%	 { width: calc(  33% - .5em ); }
-	28.7%  { width: calc(  33% - .5em ); } /* Sandwich together the keyframes to create a stepped change in	*/
-	28.8%  { width: calc(  50% - .5em ); } /* the calculated widths, otherwise the threshold is unpredictable. */
-	75.3%  { width: calc(  50% - .5em ); }
-	75.4%  { width: calc( 100% - .5em ); }
-	100%   { width: calc( 100% - .5em ); }
-}
-
-@keyframes screen_row-d {
-	0%	{ width: calc( 25% - .5em ); }
-	51.4% { width: calc( 25% - .5em ); }
-	51.5% { width: calc( 50% - .5em ); }
-	100%  { width: calc( 50% - .5em ); }
-}
-
-@keyframes squish {
-	0%   { width: 100%; height: 70%; }
-	100% { width: 50%; height: 100%; }
-}
-
-@keyframes titleSwitch-desktop {
-	0%  { opacity: 1; height: 100%; }
-	25% { opacity: 1; height: 100%; }
-	30% { opacity: 0; height: 0;	}
-}
-
-@keyframes titleSwitch-tablet {
-	25% { opacity: 0; height: 0;	}
-	30% { opacity: 1; height: 100%; }
-	75% { opacity: 1; height: 100%; }
-	80% { opacity: 0; height: 0;	}
-}
-
-@keyframes titleSwitch-mobile {
-	75%  { opacity: 0; height: 0;	}
-	80%  { opacity: 1; height: 100%; }
-	100% { opacity: 1; height: 100%; }
-}
-
-
-/*- - - - - - - - - - - - - - - - - - - - - - - -  2.3 SECTIONS - .tickle - - */
+/*-------------------------------------------------  2.3 SECTION - TICKLE --- */
 
 
 .tickle > .landing_backdrop {
@@ -507,7 +120,7 @@ being as wide as the space available to prevent overflow.
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.4 SECTIONS - .usp - - */
+/*----------------------------------------------------- 2.4 SECTION - USP --- */
 
 
 .usp > .landing_backdrop {
@@ -711,15 +324,3 @@ being as wide as the space available to prevent overflow.
 		max-height: 90%;
 	}
 }/* media min-width: 70em */
-
-
-/*========================================================= 3. Animation =====*/
-/*----------------------------------------------------- 3.1 CSS Keyframes ----*/
-
-@keyframes floaty {
-	0%   { transform: translatey(0px)	rotatey(-20deg); filter: brightness(1.4) drop-shadow(1px 3px 2px #0009); }
-	25%  { transform: translatey(10px) rotatey(-10deg);  }
-	50%  { transform: translatey(0px)  rotatey(0)	 ;  }
-	75%  { transform: translatey(10px) rotatey(10deg) ;  }
-	100% { transform: translatey(0px)  rotatey(20deg) ; filter: brightness(0.6) drop-shadow(1px 3px 2px #0009); }
-}

@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Herringbone Theme Template - Footer Variant for Landing Pages.
  *
@@ -9,8 +8,10 @@
  * @copyright Copyright (c) 2021, Jefferson Real
  */
 ?>
+
 <footer class="footer">
 	<div class="footer_inner sauce">
+
 		<div class="footerNav">
 
 			<?php wp_nav_menu(
@@ -38,10 +39,9 @@
 
 			<?php echo "<p class=\"footer_label\">&copy; " . date("Y") . " Hello, my name is Jeff</p>";?>
 		</div>
+
 	</div>
 </footer>
-
-</div> <?php //PAGE LAYOUT GRID END ?>
 
 <?php get_template_part( 'template-parts/nav', 'mobile' );?>
 

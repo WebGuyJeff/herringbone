@@ -1,50 +1,71 @@
 <?php
 
+/**
+ * Herringbone Theme Template - Archive.php
+ * 
+ * This template is the gateway to blog post history and should be able to handle
+ * the following:
+ * 
+ * - Display archive title (tag, category, date-based, or author archives).
+ * - Display a list of posts in excerpt or full-length form. Choose one or the
+ *   other as appropriate.
+ * - Include wp_link_pages() to support navigation links within posts.
+ *
+ * @link https://codex.wordpress.org/Creating_an_Archive_Index#The_Archives_Page
+ * 
+ * @package herringbone
+ * @author Jefferson Real <me@jeffersonreal.com>
+ * @copyright Copyright (c) 2021, Jefferson Real
+ */
 
 get_header();
 ?>
 
+<main class="table">
 
-<main class="base"> <?php //MAIN CONTENT COLUMN ?>
+	<div class="base"> <?php //MAIN CONTENT COLUMN ?>
 
-	<section class="sauce">
-		<div class="cheese">
+		<section class="sauce">
+			<div class="cheese">
 
-			<h1 id="title" class="cheese_h1 cheese_title">
-			  Archive.php
-			</h1>
-			
-		</div>
-	</section>
+				<h1 id="title" class="cheese_h1 cheese_title">
+				Archive.php
+				</h1>
+				
+			</div>
+		</section>
 
-	<section class="sauce">
-		<div class="cheese">
+		<section class="sauce">
+			<div class="cheese">
 
-			<?php
-				if ( have_posts() ) :
-				while ( have_posts() ) : the_post();
-					get_template_part( 'content', get_post_format() );
-				endwhile;
-			?>
-			<nav>
-				<ul class="pager">
-					<li><?php next_posts_link( 'Previous' ); ?></li>
-					<li><?php previous_posts_link( 'Next' ); ?></li>
-				</ul>
-			</nav>
-			<?php
-				endif;
-			?>
+				<?php
+					if ( have_posts() ) :
+					while ( have_posts() ) : the_post();
+						get_template_part( 'template-parts/content', get_post_format() );
+					endwhile;
+				?>
+				<nav>
+					<ul class="pager">
+						<li><?php next_posts_link( 'Previous' ); ?></li>
+						<li><?php previous_posts_link( 'Next' ); ?></li>
+					</ul>
+				</nav>
+				<?php
+					endif;
+				?>
 
-		</div>
-	</section>
+			</div>
+		</section>
 
-</main> <?php //MAIN CONTENT COLUMN END ?>
+	</div> <?php //MAIN CONTENT COLUMN END ?>
 
-<div class="sides-narrow">
-	<?php get_sidebar( 'left' ); ?>
-	<?php get_sidebar( 'right' ); ?>
-</div>
+
+	<div class="sides-narrow">
+		<?php get_sidebar( 'left' ); ?>
+		<?php get_sidebar( 'right' ); ?>
+	</div>
+
+</main>
 
 <?php get_footer(); ?>
 <script> console.log( 'wp-template: archive.php' );</script>

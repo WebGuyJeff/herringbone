@@ -9,10 +9,9 @@
  * @copyright Copyright (c) 2021, Jefferson Real
  */
 
-gsap.registerPlugin(CSSRulePlugin);
+gsap.registerPlugin( CSSRulePlugin );
 
 var hb_header = (function() {
-	let debug = true; //Output in console
 	let dims = {};
 
 	//Get the elements being animated

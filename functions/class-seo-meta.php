@@ -158,8 +158,7 @@ class Seo_Meta {
         if ( is_archive() ) { //Also matches categories (don't set vars twice)
             $hb_archivetitle	= wp_strip_all_tags( post_type_archive_title( '', false ) );
             $hb_thumbnail       = esc_url( get_the_post_thumbnail_url( $hb_postid ) );
-        }
-        if ( is_singular() ) {
+        } else {
             $hb_postexcerpt		= preg_split('/[.?!]/',  wp_strip_all_tags( $hb_postcontent, true ) )[0] . '.';
             $hb_postauthor      = wp_strip_all_tags( get_the_author() );
             $hb_thumbnail       = esc_url( get_the_post_thumbnail_url( $hb_postid ) );

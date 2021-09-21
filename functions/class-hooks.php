@@ -32,7 +32,9 @@ class Hooks {
 		}
 
 		// Page type
-		if ( is_home() ) { //Posts Page
+		if ( is_page_template( 'page-templates/landing-page.php' ) ) {
+			$classes[] = 'hb__pag-landing';
+		} elseif ( is_home() ) { //Posts Page
 			$classes[] = 'hb__pag-posts';
 		} elseif ( is_category() ) {
 			$classes[] = 'hb__pag-category';

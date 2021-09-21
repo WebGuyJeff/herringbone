@@ -8,21 +8,22 @@
 <!-- SEO Meta End -->
 </head>
 <body class="body">
-<header class="header">
-</header>
-<main class="main">
-  <div class="flexbox flexbox-half">
-	<div class="content">
+  <header class="header">
+  </header>
+  <main class="main">
+      <div class="flexbox flexbox-half">
+      <div class="content">
 
-	  <?php include  $_SERVER['DOCUMENT_ROOT'] . "/modules/formUpload/formUpload.html";?>
-	  <script src="/modules/formUpload/formUpload.js"></script>
+          <?php include  $_SERVER['DOCUMENT_ROOT'] . "/modules/formUpload/formUpload.html";?>
+          <script src="/modules/formUpload/formUpload.js"></script>
 
-	</div>
-  </div>
-</main>
-<footer class="footer">
-  <?php include $_SERVER['DOCUMENT_ROOT'] . "/modules/footer/footer.html";?>
-</footer>
+      </div>
+      </div>
+  </main>
+
+  <footer class="footer">
+    <?php include $_SERVER['DOCUMENT_ROOT'] . "/modules/footer/footer.html";?>
+  </footer>
 </body>
   <?php include $_SERVER['DOCUMENT_ROOT'] . "/modules/herringbone/herringbone.html";?>
   <script src="/modules/herringbone/herringbone.js"></script>

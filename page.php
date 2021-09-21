@@ -1,8 +1,15 @@
 <?php
 
-
 /**
- * Template Name: Page
+ * Herringbone Theme Template - Page.php
+ * 
+ * This template is used for static pages and should be able to handle the following:
+ * 
+ * - Display page title and page content.
+ * - Display comment list and comment form (unless comments are off).
+ * - Include wp_link_pages() to support navigation links within a page.
+ * - Metadata such as tags, categories, date and author should not be displayed.
+ * - Display an "Edit" link for logged-in users with edit permissions.
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
@@ -12,8 +19,9 @@
 get_header(); ?>
 
 
-	<main class="base">
+<main class="table">
 
+	<div class="base">
 
 		<?php
 		if ( have_posts() ) :
@@ -53,12 +61,14 @@ get_header(); ?>
 		endif;
 		?>
 
-	</main>
+	</div>
 
-	
 	<div class="sides-narrow">
+		<?php get_sidebar( 'left' ); ?>
 		<?php get_sidebar( 'right' ); ?>
 	</div>
+
+</main>
 
 
 <?php get_footer(); ?>

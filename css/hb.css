@@ -58,35 +58,45 @@ Font Size		 Line Height
 
   !! Landing Page CSS in separate sheets
 
-1. BASE
-	1.1 Root defaults and Theme variables
-	1.2 Layouts
-		1.2.1 Layout - Global Page
-		1.2.2 LAYOUT - .blog-post 
-		1.2.3 new table ....
-	1.3 Content Containers
-		1.3.1 Global Content Container
-		1.3.2 Squares
-		1.3.3 Vanilla
-	1.4 Typography
-	1.5 Widgets
-	1.6 Gutenburg Classes
-2. ELEMENTS
-	2.1 Imagery
-	2.2 Form
-	2.3 Button
-3. BLOCKS
-	3.1 Common
-		3.1.1 .header
-		3.1.2 .footer
-		3.1.3 .siteTitle
-		3.1.4 .nav
-	3.2 Mobile
-		3.2.1 .thumbNav
-4. Animation
-	4.1 CSS Keyframes
-		4.1.1 pulse
-	4.2 Containers
+1. [BASE]
+	1.1 DEFAULTS AND THEME VARIABLES
+	1.2 BROWSER SCROLLBAR
+	1.3 FORM PLACEHOLDER
+	1.4 LAYOUT ELEMENTS
+		1.4.1 LAYOUT - BASE SETUP
+		1.4.2 LAYOUT - GLOBAL GRID
+		1.4.3 LAYOUT - BLOG POST 
+		1.4.4 LAYOUT - ARTICLE
+	1.5 CONTAINERS
+		1.5.1 CONTAINERS - GLOBAL CONTENT CONTAINER (SAUCE)
+		1.5.2 CONTAINERS - SQUARES
+		1.5.3 CONTAINERS - VANILLA
+	1.6 TYPOGRAPHY
+	1.7 WIDGETS
+	1.8 WORDPRESS CORE CLASSES
+
+2. [ELEMENTS]
+	2.1 IMAGES
+	2.2 FORMS
+	2.3 BUTTONS
+	2.3.1 BASE BUTTON
+	2.3.2 CTA BUTTON
+	2.3.3 WIDGET BUTTON
+	2.3.4 MODAL CLOSE BUTTON
+	2.3.5 HEADER TOGGLE
+3. [BLOCKS]
+	3.1 COMMON
+		3.1.1 HEADER
+		3.1.2 FOOTER
+		3.1.3 SITE TITLE
+		3.1.4 NAV
+	3.2 MOBILE
+		3.2.1 THUMBNAV
+
+4. [ANIMATION]
+	4.1 CSS KEYFRAMES
+		4.1.1 PULSE
+	4.2 CONTAINERS
 		4.2.1 .animation_scrollSpace
 		4.2.2 .animation_wrap
 		4.2.3 .animation_title
@@ -95,8 +105,7 @@ Font Size		 Line Height
 
 
 /*=============================================================== 1. BASE ====*/
-
-/*--------------------------------- 1.1 ROOT DEFAULTS AND THEME VARIABLES ----*/
+/*-------------------------------------- 1.1 DEFAULTS AND THEME VARIABLES ----*/
 
 
 :root {
@@ -152,57 +161,70 @@ Font Size		 Line Height
 
 	/* FLUID ROOT UNITS (14px @ 768 - 18px @ 1920) */
 	font-size: clamp(0.875rem, calc(0.875rem + ((1vw - 0.48rem) * 0.3534)), 1.125rem);
-	/* SAFARI FIX */
-	min-height: 0vw;
 
-	/* OLD */
-	/* font-size: clamp(1.0625rem, calc(1.0625rem + ((1vw - 0.48rem) * 0.6944)), 1.5625rem); */
-
-} /* ------ ROOT END ------ */
-
-body {
-	margin: 0;
-}
-
-body::-webkit-scrollbar {
-	width: 0.5em;
-}
-
-body::-webkit-scrollbar-track {
-	background: #262422;
-}
-
-body::-webkit-scrollbar-thumb {
-	border-radius: 0.25em;
-	background-color: #8d8d8d;
-}
-
-/* FORM PLACEHOLDER COLOUR */
-::placeholder {
-  opacity: 1; /* Chrome, Firefox, Opera, Safari 10.1+ */ /* Firefox */
-  color: var(--hb_grey);
-}
-:-ms-input-placeholder {
-  color: var(--hb_grey) /* Internet Explorer 10-11 */
-}
-::-ms-input-placeholder {
-  color: var(--hb_grey); /* Microsoft Edge */
-}
+} /* ROOT END */
 
 /* All elements include borders and margin in their size */
 * { box-sizing: border-box; }
 
 
-/*------------------------------------------------------ 1.2 PAGE LAYOUTS ----*/
-/*- - - - - - - - - - - - - - - - - - - - - -  1.2.1 LAYOUT - GLOBAL PAGE - - */
+/*------------------------------------------------- 1.2 BROWSER SCROLLBAR ----*/
 
 
-/* PARENT LAYOUT GRID */
+/* BROWSER SCROLLBAR */
+body::-webkit-scrollbar {
+	width: 0.5em;
+}
+	body::-webkit-scrollbar-track {
+		background: #262422;
+	}
+	body::-webkit-scrollbar-thumb {
+		border-radius: 0.25em;
+		background-color: #8d8d8d;
+	}
+
+
+/*-------------------------------------------------- 1.3 FORM PLACEHOLDER ----*/
+
+
+::placeholder {
+  opacity: 1; /* Chrome, Firefox, Opera, Safari 10.1+ */ /* Firefox */
+  color: var(--hb_grey);
+}
+	:-ms-input-placeholder {
+	color: var(--hb_grey) /* Internet Explorer 10-11 */
+	}
+	::-ms-input-placeholder {
+	color: var(--hb_grey); /* Microsoft Edge */
+	}
+
+
+/*--------------------------------------------------- 1.4 LAYOUT ELEMENTS ----*/
+/*- - - - - - - - - - - - - - - - - - - - - - - 1.4.1 LAYOUT - BASE SETUP ----*/
+
+
+html, body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.footer {
+	margin-top: auto;
+}
+
+
+/*- - - - - - - - - - - - - - - - - - - - - -  1.4.2 LAYOUT - GLOBAL GRID - - */
+
+
 .table,
 .header,
 .footer {
 	display: grid;
-	position: relative;
 	grid-auto-flow: dense;
 	grid-column: 1 / -1;
 	grid-template-columns: [full-l main-l] minmax(0, 1fr) [wide-l dip-l sides-l] minmax(18.8em, 48em) [sides-r dip-r wide-r] minmax(0, 1fr) [main-r full-r];
@@ -242,7 +264,6 @@ body::-webkit-scrollbar-thumb {
 .dip,
 .sides-narrow {
 	grid-column: dip-l / dip-r;
-	grid-row: 2 / 3;
 }
 
 .sides-narrow {
@@ -276,7 +297,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - 1.2.2 LAYOUT - .blog-post - - */
+/*- - - - - - - - - - - - - - - - - - - - - - -  1.4.3 LAYOUT - BLOG POST - - */
 
 
 .blog-post {
@@ -291,12 +312,19 @@ body::-webkit-scrollbar-thumb {
 }
 
 
+/*- - - - - - - - - - - - - - - - - - - - - - - -  1.4.4 LAYOUT - ARTICLE - - */
 
 
+main article img {
+    object-fit: contain;
+    height: auto;
+    max-width: 100%;
+    border-radius: var(--hb_radius-small);
+}
 
 
-/*-------------------------------------------------------- 1.3 CONTAINERS ----*/
-/*- - - - - - - - - - - - - - 1.3.1 CONTAINERS - GLOBAL CONTENT CONTAINER - - */
+/*-------------------------------------------------------- 1.5 CONTAINERS ----*/
+/*- - - - - - - - - - - - - - 1.5.1 CONTAINERS - GLOBAL CONTENT CONTAINER - - */
 
 
 .sauce {
@@ -329,7 +357,7 @@ body::-webkit-scrollbar-thumb {
 			}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - -  1.3.2 CONTAINERS - SQUARES - - */
+/*- - - - - - - - - - - - - - - - - - - - - -  1.5.2 CONTAINERS - SQUARES - - */
 
 
 .squares {
@@ -371,7 +399,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - -  1.3.3 CONTAINERS - VANILLA - - */
+/*- - - - - - - - - - - - - - - - - - - - - -  1.5.3 CONTAINERS - VANILLA - - */
 
 
 .row {
@@ -409,18 +437,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-/*-------------------------------------------------------- 1.4 Typography ----*/
+/*-------------------------------------------------------- 1.6 TYPOGRAPHY ----*/
+
 
 /* All units are rem so font is always locked to root font size */
-
-/* * * * * * * * * * *  font @imports in style.css
-
-Family	Font Name		 CSS variable
-Sans	| Open Sans	   | hb_font-secondary
-Cursive | Berkshire Swash | hb_font-fancy
-Impact  | Inter		   | hb_font-primary
-
-* * * * * * * * * * * * * * * * * * * * * * * * */
 
 .cheese {
 	color: var(--hb_black);
@@ -616,7 +636,7 @@ strong {
 }
 
 
-/*----------------------------------------------------------- 1.5 WIDGETS ----*/
+/*----------------------------------------------------------- 1.7 WIDGETS ----*/
 
 
 .widget {
@@ -671,13 +691,15 @@ strong {
 }
 
 
-/*-------------------------------------------- 1.6 WORDPRESS CORE CLASSES ----*/
+/*-------------------------------------------- 1.8 WORDPRESS CORE CLASSES ----*/
 
 /* Comment out original values for reference */
 
+/* 
 .alignnone {
-	/* margin: 5px 20px 20px 0; */
+	margin: 5px 20px 20px 0;
 }
+*/
 
 .aligncenter,
 div.aligncenter {
@@ -700,9 +722,11 @@ a img.alignright {
 	/* margin: 5px 0 20px 20px; */
 }
 
+/*
 a img.alignnone {
-	/* margin: 5px 20px 20px 0; */
+	margin: 5px 20px 20px 0;
 }
+*/
 
 a img.alignleft {
 	float: left;
@@ -725,17 +749,19 @@ a img.aligncenter {
 	text-align: center;
 }
 
+/*
 .wp-caption.alignnone {
-	/* margin: 5px 20px 20px 0; */
+	margin: 5px 20px 20px 0;
 }
 
 .wp-caption.alignleft {
-	/* margin: 5px 20px 20px 0; */
+	margin: 5px 20px 20px 0;
 }
 
 .wp-caption.alignright {
-	/* margin: 5px 0 20px 20px; */
+	margin: 5px 0 20px 20px;
 }
+*/
 
 /* Herrinbone Edits START */
 
@@ -812,8 +838,9 @@ a img.alignright,
 	/* Above WP toolbar. */
 }
 
+
 /*=========================================================== 2. ELEMENTS ====*/
-/*----------------------------------------------------------- 2.1 Imagery ----*/
+/*------------------------------------------------------------ 2.1 IMAGES ----*/
 
 
 .img {
@@ -824,7 +851,7 @@ a img.alignright,
 }
 
 
-/*-------------------------------------------------------------- 2.2 Form ----*/
+/*------------------------------------------------------------- 2.2 FORMS ----*/
 
 
 .form {
@@ -845,7 +872,8 @@ a img.alignright,
 	}
 
 
-/*------------------------------------------------------------ 2.3 Button ----*/
+/*----------------------------------------------------------- 2.3 BUTTONS ----*/
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - 2.3.1 BASE BUTTON - - */
 
 
 .button {
@@ -896,6 +924,10 @@ a img.alignright,
 				text-align: center;
 			}
 
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - -  2.3.2 CTA BUTTON - - */
+
+
 	.button-cta > span {
 		background: var(--hb_green);
 	}
@@ -915,9 +947,17 @@ a img.alignright,
 				color: var(--hb_white);
 			}
 
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.3.3 WIDGET BUTTON - - */
+
+
 .widget .button {
 	font-size: var(--hb_font-base);
 }
+
+
+/*- - - - - - - - - - - - - - - - - - - - - - -  2.3.4 MODAL CLOSE BUTTON - - */
+
 
 .modal_close {
 	position: absolute;
@@ -943,9 +983,11 @@ a img.alignright,
 }
 
 
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.3.5 HEADER TOGGLE - - */
+
 
 .headerToggle {
-	display: none;
+	display: flex;
 	position: absolute;
 	top: var(--hb_landingHeaderOffset);
 	right: 0.5em;
@@ -955,9 +997,6 @@ a img.alignright,
 	width: 4em;
 	height: 4em;
 	font-size: var(--hb_font-base);
-}
-.landing_page .headerToggle {
-	display: flex;
 }
 	.headerToggle:hover {
 		cursor: pointer;
@@ -1015,8 +1054,8 @@ a img.alignright,
 
 
 /*============================================================= 3. BLOCKS ====*/
-/*------------------------------------------------------------ 3.1 Common ----*/
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.1 .header - - */
+/*------------------------------------------------------------ 3.1 COMMON ----*/
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.1 HEADER - - */
 
 
 .header_inner {
@@ -1026,6 +1065,7 @@ a img.alignright,
 	margin: 1em 0 1.5em 0;
 	width: auto;
 	height: 4.6em;
+	position: relative;
 }
 	.header_content {
 		display: flex;
@@ -1054,7 +1094,7 @@ a img.alignright,
 		}}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.2 .footer - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.2 FOOTER - - */
 
 
 .footer_inner {
@@ -1092,7 +1132,7 @@ a img.alignright,
 		}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.3 .siteTitle - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.3 SITE TITLE - - */
 
 
 .siteTitle {
@@ -1127,7 +1167,7 @@ a img.alignright,
 		}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.4 .nav - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.4 NAV - - */
 
 
 .headerNav {
@@ -1206,7 +1246,7 @@ a img.alignright,
 			}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.5 .modal - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.5 MODAL - - */
 
 
 .modal {
@@ -1250,7 +1290,8 @@ a img.alignright,
 	}
 
 
-/*----------------------------------------------------- 3.2 Mobile >= 0em ----*/
+/*----------------------------------------------------- 3.2 MOBILE >= 0em ----*/
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.2.1 THUMBNAV - - */
 
 
 .thumbNav {
@@ -1355,9 +1396,8 @@ a img.alignright,
 		}
 
 
-
-/*========================================================= 4. Animation =====*/
-/*----------------------------------------------------- 4.1 CSS Keyframes ----*/
+/*========================================================= 4. ANIMATION =====*/
+/*----------------------------------------------------- 4.1 CSS KEYFRAMES ----*/
 
 
 @keyframes pulse {
@@ -1449,7 +1489,8 @@ overflow hidden
 
 */
 
-/*-------------------------------------------------------- 4.2 Containers ----*/
+
+/*-------------------------------------------------------- 4.2 CONTAINERS ----*/
 
 
 .animation_scrollSpace {

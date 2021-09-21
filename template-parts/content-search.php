@@ -1,5 +1,5 @@
 <?php
-//namespace Herringbone\Template_Parts;
+namespace Jefferson\Herringbone;
 
 /**
  * Template part for displaying results in search pages
@@ -11,28 +11,30 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+<section class="sauce">
+	<article class="cheese" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<header class="entry-header">
+			<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php
-			herringbone_posted_on();
-			herringbone_posted_by();
-			?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+			<?php if ( 'post' === get_post_type() ) : ?>
+			<div class="entry-meta">
+				<?php
+				Tags::print_html_posted_on();
+				Tags::print_html_posted_by();
+				?>
+			</div><!-- .entry-meta -->
+			<?php endif; ?>
+		</header><!-- .entry-header -->
 
-	<?php herringbone_post_thumbnail(); ?>
+		<?php Tags::print_html_post_thumbnail_wrapper(); ?>
 
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
+		<div class="entry-summary">
+			<?php the_excerpt(); ?>
+		</div><!-- .entry-summary -->
 
-	<footer class="entry-footer">
-		<?php herringbone_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-<?php the_ID(); ?> -->
+		<footer class="entry-footer">
+			<?php Tags::print_html_entry_footer(); ?>
+		</footer><!-- .entry-footer -->
+	</article><!-- #post-<?php the_ID(); ?> -->
+</section>
 <script> console.log( 'wp-template: content-search.php' );</script>

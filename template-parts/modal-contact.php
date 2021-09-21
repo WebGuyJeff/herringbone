@@ -1,5 +1,4 @@
 <?php
-//namespace Herringbone\Template_Parts;
 
 /**
  * Herringbone Theme Template File - Modal Contact Form.
