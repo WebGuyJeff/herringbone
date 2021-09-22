@@ -14,7 +14,7 @@ wp_enqueue_style( 'hb_landing_css' );
 wp_enqueue_style( 'hb_landingdev_css' );
 ?>
 
-<main class="main mex">
+<main class="main">
 
 	<section class="welcome">
 		<?php get_template_part( 'template-parts/landing/dev/welcome' ); ?>

@@ -21,7 +21,7 @@
 get_header();
 ?>
 
-<main class="table">
+<main class="main">
 
 	<div class="base"> <?php //MAIN CONTENT COLUMN ?>
 

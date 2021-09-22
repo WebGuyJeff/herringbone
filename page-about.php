@@ -4,7 +4,7 @@ get_header();
 wp_enqueue_script('svgWheel_js');
 ?>
 
-<main class="table">
+<main class="main">
 
 	<div class="base"> <?php //MAIN CONTENT COLUMN ?>
 

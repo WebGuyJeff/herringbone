@@ -61,39 +61,32 @@ o Contact   me@jeffersonreal.com
 
 /*-------------------------------------- 1.3 PAGE - SECTION GRID LAYOUT ----*/
 
+/*
+ * SECTION GRID COLUMNS
+ *
+ *	centre column == 1:1 box.
+ *	secondary columns == 3:2 box.
+ *	tertiary columns == 16:9 box.
+ *
+ * Column min-widths are based on a percentage of the viewport height:
+ * 
+ * The ultrawide aspect ratio is the most extreme aspect ratio in common use.
+ * Any aspect ratio wider than this will be created through browser resizing
+ * or specialist monitor configs and the user will likely be expecting to 
+ * scroll the content.
+ * 
+ * 3440/1440 = 2.39 (ultrawide aspect ratio)
+ * 100/2.389 = 41.86 (height should be no less than 41.86% of width)
+ * 
+ * 41.86vw will be the smallest viewport height with a fullscreen browser (ex UI)
+ * on an ultrawide monitor. The centre column should be no narrower than this.
+ * 
+ * When the column outer edges meet the viewport edge, the column reponds by only
+ * being as wide as the viewable space to prevent overflow.
+ * 
+ */
 
-/* SECTION GRID COLUMNS
-
-!Horrible to explain but actually quite simple
-
-The centre column aims to have a width matching vh for a 1:1 box.
-The secondary columns stretch to a 3:2 box.
-The tertiary columns stretch to a 16:9 box.
-
-All column mins are based on the ultrawide aspect ratio being the most
-extreme aspect ratio in common use. Any aspect ratio wider than this will be
-created through browser resizing or specialist monitor configs and the user
-will likely be expecting to scroll the content.
-
-3440/1440 = 2.39 (ultrawide aspect ratio)
-100/2.389 = 41.86
-
-41.86vw will be the smallest viewport height with a fullscreen browser (ex UI)
-on an ultrawide monitor. The centre column should be no narrower than this.
-
-Min column widths when they are in full view - aka the viewport has an aspect
-ratio larger than that of the columns aspect ratio:
-
-41.86vw = main 1:1 column
-10.47vw = 3:2 columns
-5.81vw   = 16:9 columns
-
-When the column outer edges meet the viewport edge, the column reponds by only
-being as wide as the space available to prevent overflow.
-
-*/
-
-.main > section {
+.hb__pag-landing section {
 	gap: 0;
 	--oneone: clamp(41.86vmax, 100vmin, 100vmin); /* Creates a square centre section */
 	--threetwo: clamp(clamp(0px, calc(50vw - 50vh), 10.47vmax), calc(50vw - 50vh), 25vmin); /* These columns create a 3:2 view */
@@ -122,17 +115,17 @@ being as wide as the space available to prevent overflow.
 		overflow: hidden;
 	}
 	@media (min-width: 100vh) {
-		.main > section {
+		.hb__pag-landing section {
 			grid-template-columns: [full-l] 1fr [sixteennine-l threetwo-l] var(--threetwo) [oneone-l] var(--oneone) [oneone-r] var(--threetwo) [threetwo-r sixteennine-r] 1fr [full-r];
 		}
 	}
 	@media (min-width: 150vh) {
-		.main > section {
+		.hb__pag-landing section {
 			grid-template-columns: [full-l] 1fr [sixteennine-l] var(--sixteennine) [threetwo-l] var(--threetwo) [oneone-l] var(--oneone) [oneone-r] var(--threetwo) [threetwo-r] var(--sixteennine) [sixteennine-r] 1fr [full-r];
 		}
 	}
 	@media (orientation : portrait) {
-		.main > section {
+		.hb__pag-landing section {
 			grid-template-columns: [full-l] 1fr [sixteennine-l threetwo-l oneone-l] calc(100% - 2 * var(--hb_gutters)) [oneone-r threetwo-r sixteennine-r] 1fr [full-r];
 		}
 	}

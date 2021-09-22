@@ -221,18 +221,17 @@ body {
 /*- - - - - - - - - - - - - - - - - - - - - -  1.4.2 LAYOUT - GLOBAL GRID - - */
 
 
-.table,
+.main,
 .header,
 .footer {
 	display: grid;
 	grid-auto-flow: dense;
-	grid-column: 1 / -1;
 	grid-template-columns: [full-l main-l] minmax(0, 1fr) [wide-l dip-l sides-l] minmax(18.8em, 48em) [sides-r dip-r wide-r] minmax(0, 1fr) [main-r full-r];
 }
 
 /* ADD SIDEBAR (OVER 768px) */
 @media (min-width: 48em) {
-	.table,
+	.main,
 	.header,
 	.footer {
 		grid-template-columns: [full-l] 1fr [wide-l dip-l sides-l] 12em [sides-r dip-r main-l] minmax(18.8em, 48em) [main-r wide-r] 1fr [full-r];
@@ -241,7 +240,7 @@ body {
 
 /* ADD SECOND SIDEBAR (OVER 1120px) */
 @media (min-width: 70em) {
-	.table,
+	.main,
 	.header,
 	.footer {
 		grid-template-columns: [full-l] 1fr [wide-l dip-l] 12em [main-l dip-r] minmax(18.8em, 48em) [main-r sides-l] 12em [sides-r wide-r] 1fr [full-r];
@@ -277,7 +276,7 @@ body {
 	}
 }
 
-/* NESTED FLEX COLUMNS */
+/* NESTED SIDEBAR COLUMNS */
 .base,
 .dip,
 .sides {
@@ -286,7 +285,7 @@ body {
 }
 
 /* GUTTERS */
-.table,
+.main,
 .header,
 .footer,
 .base,
@@ -1058,78 +1057,84 @@ a img.alignright,
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.1 HEADER - - */
 
 
-.header_inner {
-	display: flex;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-	margin: 1em 0 1.5em 0;
-	width: auto;
-	height: 4.6em;
-	position: relative;
+.header {
+	z-index: 10;
 }
-	.header_content {
+	.header_inner {
 		display: flex;
-		flex: 1 1 20%;
 		flex-wrap: nowrap;
-		align-items: center;
-		justify-content: flex-start;
-		height: 4em;
-		white-space: nowrap;
+		justify-content: space-between;
+		margin: 1em 0 1.5em 0;
+		width: auto;
+		height: 4.6em;
+		position: relative;
 	}
-		.header_content-left   {
-			flex: 1 1 80%;
-			justify-content: flex-start;
-		}
-		.header_content-right  {
+		.header_content {
+			display: flex;
 			flex: 1 1 20%;
-			justify-content: flex-end;
+			flex-wrap: nowrap;
+			align-items: center;
+			justify-content: flex-start;
+			height: 4em;
+			white-space: nowrap;
 		}
-		.header_content-hidden {
-			display: none;
-		}
-		@media (min-width: 48em) {
+			.header_content-left   {
+				flex: 1 1 80%;
+				justify-content: flex-start;
+			}
+			.header_content-right  {
+				flex: 1 1 20%;
+				justify-content: flex-end;
+			}
 			.header_content-hidden {
-			/*display: flex;*/
-			display: none;
-		}}
+				display: none;
+			}
+			@media (min-width: 48em) {
+				.header_content-hidden {
+				/*display: flex;*/
+				display: none;
+			}}
 
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.2 FOOTER - - */
 
 
-.footer_inner {
-	display: flex;
-	bottom: 0;
-	flex-shrink: 0;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin: 1.5em 0 1em 0;
-	padding: 1em;
-	width: auto;
-	color: var(--hb_black);
+.footer {
+	z-index: 10;
 }
-	.footer_copyright {
+	.footer_inner {
 		display: flex;
-		flex-direction: row;
+		bottom: 0;
+		flex-shrink: 0;
 		flex-wrap: wrap;
-		justify-content: space-around;
-		margin: 3em 0 0 0;
-		width: 100%;
-		font-size: var(--hb_font-s);
+		justify-content: center;
+		margin: 1.5em 0 1em 0;
+		padding: 1em;
+		width: auto;
+		color: var(--hb_black);
 	}
-	@media (min-width: 48em) { .footer_copyright {
-		justify-content: space-between;
-	}}
-		.footer_label {
-			margin: 0;
+		.footer_copyright {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			margin: 3em 0 0 0;
+			width: 100%;
+			font-size: var(--hb_font-s);
 		}
-		.footer a {
-			color: inherit;
-			text-decoration: none;
-		}
-		.footer li {
-			list-style: none;
-		}
+		@media (min-width: 48em) { .footer_copyright {
+			justify-content: space-between;
+		}}
+			.footer_label {
+				margin: 0;
+			}
+			.footer a {
+				color: inherit;
+				text-decoration: none;
+			}
+			.footer li {
+				list-style: none;
+			}
 
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.3 SITE TITLE - - */
