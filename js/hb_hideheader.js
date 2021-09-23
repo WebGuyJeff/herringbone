@@ -15,6 +15,7 @@ var hb_header = (function() {
 
 	//Get the elements being animated
 	let header = document.querySelector( '.header' );
+	let backdrop = document.querySelector( 'body > main > section:first-child > .landing_backdrop' );
 
 	//This function calculates the new position values for the animation
 	function getHeaderHeight() {
@@ -31,7 +32,7 @@ var hb_header = (function() {
 
 	let isAnimating = false;
 	let isToggled = false;
-	let newMargTop;
+	let newHeaderMargTop;
 	let btnOffset;
 	let heightEm;
 
@@ -45,16 +46,18 @@ var hb_header = (function() {
 				if ( isToggled ) {
 					isToggled = false;
 					bodyClassToggle();
-					heightEm       = getHeaderHeight();
-					newMargTop     = -Math.abs(heightEm) + 'em';
-					btnOffset      = '0em';
+					heightEm		  = getHeaderHeight();
+					newHeaderMargTop  = -Math.abs(heightEm) + 'em';
+					newSectionMargTop = '0em';
+					btnOffset		  = '0em';
 					animate();
 				} else {
 					isToggled = true;
 					bodyClassToggle();
-					heightEm       = getHeaderHeight();
-					newMargTop     = '0em';
-					btnOffset      = -Math.abs( heightEm ) + 'em';
+					heightEm	      = getHeaderHeight();
+					newHeaderMargTop  = '0em';
+					newSectionMargTop = -Math.abs(heightEm) + 'em';
+					btnOffset		  = -Math.abs( heightEm ) + 'em';
 					animate();
 				}
 			}
@@ -67,13 +70,14 @@ var hb_header = (function() {
 		let headerHide = gsap.timeline( {
 			defaults: {
 				duration:1,
-				ease:"elastic.out(1,0.8)"
+				ease:"elastic.out( 1,0.8 )"
 			},
 			force3D:true,
 			onComplete:isAnimatingToggleFalse,
 		});
-			headerHide.to(".header", { marginTop:newMargTop }, 0)
-					  .to(".headerToggle", { y:btnOffset }, 0)
+			headerHide.to( ".header", { marginTop:newHeaderMargTop }, 0 )
+					  .to( ".headerToggle", { y:btnOffset }, 0 )
+					  .to( backdrop, { marginTop:newSectionMargTop }, 0 )
 	}
 
 	// Do nothing if animation is already in progress
@@ -83,11 +87,11 @@ var hb_header = (function() {
 
 	// Add a classname to the body element when header is active
 	function bodyClassToggle() {
-		let body = document.querySelector('body');
+		let body = document.querySelector( 'body' );
 		if ( isToggled ) {
-			body.classList.add("header_active");
+			body.classList.add( "header_active" );
 		} else {
-			body.classList.remove("header_active");
+			body.classList.remove( "header_active" );
 		}
 	}
 

@@ -10,7 +10,7 @@
 ?>
 
 <footer class="footer">
-	<div class="footer_inner sauce">
+	<div class="footer_inner">
 
 		<div class="footerNav">
 

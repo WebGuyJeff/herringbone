@@ -80,10 +80,12 @@ Font Size		 Line Height
 	2.2 FORMS
 	2.3 BUTTONS
 	2.3.1 BASE BUTTON
-	2.3.2 CTA BUTTON
-	2.3.3 WIDGET BUTTON
-	2.3.4 MODAL CLOSE BUTTON
-	2.3.5 HEADER TOGGLE
+	2.3.2 BUTTONS - FLAPPY
+	2.3.3 BUTTONS - SPINNY
+	2.3.4 BUTTONS - CTA SPINNY
+	2.3.5 WIDGET BUTTON
+	2.3.6 MODAL CLOSE BUTTON
+	2.3.7 HEADER TOGGLE
 3. [BLOCKS]
 	3.1 COMMON
 		3.1.1 HEADER
@@ -880,8 +882,67 @@ a img.alignright,
 	flex: 1;
 	align-items: center;
 	justify-content: center;
-	margin: 1em auto;
+	margin: 0;
 	border: none;
+}
+	button > *:first-child {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+		.button:hover {
+			cursor: pointer;
+		}
+
+
+/*- - - - - - - - - - - - - - - - - - - - - - - -  2.3.2 BUTTONS - FLAPPY - - */
+
+
+.button.flappy {
+	border-radius: 0 0 2em 2em;
+	min-width: 6.5em;
+	max-width: 10em;
+	height: 2.0em;
+	text-decoration: none;	
+}
+	.button.flappy > *:first-child {
+		transition: 0.2s;
+		border-radius: 0 0 1.4em 1.4em;
+		background: linear-gradient(#0000, #0000);
+		padding: 0 1em;
+		width: 100%;
+		height: 1.5em;
+		color: var(--hb_black);
+		font-family: var(--hb_font-primary);
+		font-size: var(--hb_font-l);
+		font-weight: 800;
+		letter-spacing: -0.04em;
+		user-select: none;
+		text-align: center;
+		text-decoration: none;
+	}
+		.button.flappy:hover > *:first-child {
+			transform: scale(1, 0.8) translatey(-14%);
+			box-shadow: 0 0.7em 0.15em -0.05em #000a,
+						0 0.4em 0.1em 0 #000a,
+					inset 0 -0.3em 0.1em -0.1em #fff;
+			background: linear-gradient( #0000, #fff 90%);
+			color: #555;
+		}
+		.button.flappy:active > *:first-child {
+			transform: scale(1, 1);
+			box-shadow: 0 0 0 0 #0000,
+						0 0 0 0 #0000,
+					inset 0 0 0 0 #0000;
+			background: linear-gradient(#0000, #0000);
+			color: var(--hb_black);
+		}
+
+
+/*- - - - - - - - - - - - - - - - - - - - - - - -  2.3.3 BUTTONS - SPINNY - - */
+
+
+.button.spinny {
 	border-radius: 2em;
 	background: #000;
 	padding: 0;
@@ -891,63 +952,55 @@ a img.alignright,
 	font-size: var(--hb_font-l);
 	text-decoration: none;
 }
-	.button:hover {
-		cursor: pointer;
+	.button.spinny > *:first-child {
+		transition: 0.2s;
+		border-radius: 2em;
+		background: var(--hb_lightGrey);
+		width: 100%;
+		height: 2.5em;
+		color: var(--hb_white);
+		font-family: var(--hb_font-primary);
+		font-weight: 800;
+		letter-spacing: -0.04em;
+		user-select: none;
+		text-align: center;
 	}
-		.button:hover span {
+		.button.spinny:hover > *:first-child {
 			transform: rotatex(45deg);
 			box-shadow: 0 0.9em 0.2em 0em #0009,
-				  inset 0 0.4em 0.1em 0em #0009;
+					inset 0 0.4em 0.1em 0em #0009;
 			background: var(--hb_white);
 		}
-		.button:active span {
-			transform: rotatex(315deg);
-			box-shadow: inset 0 0.5em 0.3em 0em #0000,
-						inset 0 -0.4em 0.5em 0em #000c;
-			background: #bbb;
-		}
-			.button > span {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				transition: 0.2s;
-				border-radius: 2em;
-				background: var(--hb_lightGrey);
-				width: 100%;
-				height: 2.5em;
-				color: var(--hb_white);
-				font-family: var(--hb_font-primary);
-				font-weight: 800;
-				letter-spacing: -0.04em;
-				user-select: none;
-				text-align: center;
-			}
 
-
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - -  2.3.2 CTA BUTTON - - */
-
-
-	.button-cta > span {
-		background: var(--hb_green);
+	.button.spinny:active > *:first-child {
+		transform: rotatex(315deg);
+		box-shadow: inset 0 0.5em 0.3em 0em #0000,
+					inset 0 -0.4em 0.5em 0em #000c;
+		background: #bbb;
 	}
-		.button-cta:hover span {
+
+
+/*- - - - - - - - - - - - - - - - - - - - - -  2.3.4 BUTTONS - CTA SPINNY - - */
+
+
+	.button-cta.spinny > *:first-child {
+		background: var(--hb_green);
+		color: var(--hb_white);
+	}
+		.button-cta.spinny:hover > *:first-child {
 			box-shadow: 0 0.9em 0.2em 0em #0009,
-				  inset 0 0.4em 0.1em 0em #0009;
+				inset 0 0.4em 0.1em 0em #0009;
 			background: var(--hb_lightGreen);
 		}
-		.button-cta:active span {
+		.button-cta.spinny:active > *:first-child {
 			transform: rotatex(315deg);
 			box-shadow: inset 0 0.5em 0.3em 0em #0000,
 						inset 0 -0.4em 0.5em 0em #000c;
 			background: var(--hb_darkGreen);
 		}
-			.button_label-cta {
-				background: var(--hb_green);
-				color: var(--hb_white);
-			}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.3.3 WIDGET BUTTON - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.3.5 WIDGET BUTTON - - */
 
 
 .widget .button {
@@ -955,7 +1008,7 @@ a img.alignright,
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - -  2.3.4 MODAL CLOSE BUTTON - - */
+/*- - - - - - - - - - - - - - - - - - - - - - -  2.3.6 MODAL CLOSE BUTTON - - */
 
 
 .modal_close {
@@ -982,7 +1035,7 @@ a img.alignright,
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.3.5 HEADER TOGGLE - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.3.7 HEADER TOGGLE - - */
 
 
 .headerToggle {
@@ -996,6 +1049,7 @@ a img.alignright,
 	width: 4em;
 	height: 4em;
 	font-size: var(--hb_font-base);
+	margin: 1.3em;
 }
 	.headerToggle:hover {
 		cursor: pointer;
@@ -1059,6 +1113,7 @@ a img.alignright,
 
 .header {
 	z-index: 10;
+	position: relative;
 }
 	.header_inner {
 		display: flex;
@@ -1067,7 +1122,6 @@ a img.alignright,
 		margin: 1em 0 1.5em 0;
 		width: auto;
 		height: 4.6em;
-		position: relative;
 	}
 		.header_content {
 			display: flex;
@@ -1079,21 +1133,27 @@ a img.alignright,
 			white-space: nowrap;
 		}
 			.header_content-left   {
-				flex: 1 1 80%;
+				flex: 1 1 100%;
 				justify-content: flex-start;
 			}
+			.header_content-middle {
+				display: none;
+			}
 			.header_content-right  {
-				flex: 1 1 20%;
+				display: none;
 				justify-content: flex-end;
 			}
-			.header_content-hidden {
-				display: none;
+			@media (min-width: 32em) {
+				.header_content-left   {
+					flex: 1 1 50%;
+					justify-content: flex-start;
+				}
+				.header_content-middle {
+					display: flex;
+					flex: 1 1 50%;
+					justify-content: flex-end;
+				}
 			}
-			@media (min-width: 48em) {
-				.header_content-hidden {
-				/*display: flex;*/
-				display: none;
-			}}
 
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.2 FOOTER - - */
@@ -1194,60 +1254,22 @@ a img.alignright,
 	justify-content: center;
 	width: 100%;
 }
-	.nav_link,
+
+
 	.nav > li {
 		display: flex;
 		flex: 1;
 		align-items: center;
 		justify-content: center;
 		margin: 0;
-		border-radius: 0 0 2em 2em;
-		min-width: 6.5em;
-		max-width: 10em;
-		height: 2.0em;
-		text-decoration: none;
 	}
-		.nav_label,
 		.nav > li > a {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			transition: 0.2s;
-			border-radius: 0 0 1.4em 1.4em;
-			background: linear-gradient(#0000, #0000);
-			padding: 0 1em;
-			width: 100%;
-			height: 1.5em;
-			color: var(--hb_black);
-			font-family: var(--hb_font-primary);
-			font-size: var(--hb_font-l);
-			font-weight: 800;
-			letter-spacing: -0.04em;
-			user-select: none;
-			text-align: center;
-			text-decoration: none;
 		}
-			.nav_link-hover:hover,
 			.nav > li:hover {
 				cursor: pointer;
-			}
-			.nav_link-hover:hover .nav_label,
-			.nav > li:hover > a {
-				transform: scale(1, 0.8) translatey(-14%);
-				box-shadow: 0 0.7em 0.15em -0.05em #000a,
-							0 0.4em 0.1em 0 #000a,
-					  inset 0 -0.3em 0.1em -0.1em #fff;
-				background: linear-gradient( #0000, #fff 90%);
-				color: #555;
-			}
-			.nav_link-active:active .nav_label,
-			.nav > li:active > a {
-				transform: scale(1, 1);
-				box-shadow: 0 0 0 0 #0000,
-							0 0 0 0 #0000,
-					  inset 0 0 0 0 #0000;
-				background: linear-gradient(#0000, #0000);
-				color: var(--hb_black);
 			}
 
 
@@ -1263,7 +1285,6 @@ a img.alignright,
 		position: relative;
 		flex-flow: column;
 		z-index: 10;
-		width: 100%;
 		min-width: 32em;
 		max-height: 100vh;
 	}
