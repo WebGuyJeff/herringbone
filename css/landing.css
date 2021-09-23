@@ -34,21 +34,12 @@ o Contact   me@jeffersonreal.com
 	--hb_iconBackground: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath fill='%23cff9e9' d='M20 11c-32 15-23 72 8 85 30 14 76-11 72-58S51-5 20 11z'/%3E%3C/svg%3E");
 }
 
-/* main element should cover entire width */
-.main {
-	grid-column: 1 / -1;
-}
-
 
 /*--------------------------------------------------- 1.2 PAGE - HEADER ----*/
 
 
 .hb__pag-landing .header {
-	position: absolute;
-	top: calc(var(--hb_landingHeaderOffset) - calc( 2 * var(--hb_landingHeaderOffset)));
-	margin: 1em var(--hb_gutters) 1.5em var(--hb_gutters);
-	width: calc(100% - calc( 2 * var(--hb_gutters)));
-	max-width: 72em;
+	margin-top: calc(var(--hb_landingHeaderOffset) - calc( 2 * var(--hb_landingHeaderOffset)));
 }
 
 .hb__pag-landing button.headerToggle {
