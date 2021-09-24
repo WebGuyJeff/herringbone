@@ -16,10 +16,10 @@
 
 			<?php wp_nav_menu(
 				array(
-					'theme_location'  => 'landingfooternav',
+					'theme_location'  => 'landingFooterNav',
 					'items_wrap'	  => '%3$s',
 					'menu_class'	  => 'nav',
-					'container'	   => 'div',
+					'container'	   => 'div', //Only one nav elem per page for good accessibililty
 					'container_class' => 'nav',
 				)
 			); ?>

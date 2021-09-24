@@ -131,6 +131,17 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 
 		/*
 		 * Register WordPress wp_nav_menu() locations
+		 * 
+		 * This option exists in the wp_nav_menu function:
+		 * 
+		 * "'fallback_cb'
+		 * (callable|false) If the menu doesn't exist, a callback function will fire.
+		 * Default is 'wp_page_menu'. Set to false for no fallback."
+		 * 
+		 * This means where the user hasn't set a menu in the theme settings, for instance,
+		 * straight after theme install, WP will display a meaninglesss pages menu which
+		 * makes the theme look broken. TODO: A FALLBACK MUST BE PUT IN PLACE
+		 * 
 		 */
 		register_nav_menus(
 			array(
@@ -142,6 +153,20 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 				'landingfooternav' => esc_html__( 'Landing Page Footer', 'herringbone' ),
 			)
 		);
+
+		/*
+		 * Add custom classes to WP menu items
+		 */
+		function herringbone_nav_class($classes, $item){
+			//Add .button to all menu items
+			$classes[] = 'button';
+			//Add .active to active menu items
+			if( in_array('current-menu-item', $classes) ){
+					$classes[] = 'active ';
+			}
+			return $classes;
+		}
+		add_filter('nav_menu_css_class' , 'herringbone_nav_class' , 10 , 2);
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments

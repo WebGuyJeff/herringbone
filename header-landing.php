@@ -56,11 +56,12 @@ namespace Jefferson\Herringbone;
 
 					<?php wp_nav_menu(
 						array(
-							'theme_location'	=> 'landingheadernav',
+							'theme_location'	=> 'landingHeaderNav',
 							'items_wrap'		=> '%3$s',
-							'menu_class'		=> 'nav',
+							'menu_class'		=> 'headerNav',
 							'container'			=> 'nav',
 							'container_class'	=> 'nav',
+							'walker'         	=> new Menu_Walker,
 						)
 					); ?>
 
