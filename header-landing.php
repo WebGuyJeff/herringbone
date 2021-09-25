@@ -63,7 +63,7 @@ namespace Jefferson\Herringbone;
 							'container'			=> 'nav',
 							'container_class'	=> 'nav',
 							'walker'         	=> new Menu_Walker,
-							'fallback_cb'		=> Menu_Walker::fallback,
+							//'fallback_cb'		=> Menu_Walker::fallback,
 						)
 					); ?>
 
