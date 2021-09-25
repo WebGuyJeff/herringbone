@@ -1,6 +1,7 @@
 <?php
 namespace Jefferson\Herringbone;
 
+
 /**
  * Herringbone Theme Template - Header Variant for Landing Pages.
  *
@@ -62,6 +63,7 @@ namespace Jefferson\Herringbone;
 							'container'			=> 'nav',
 							'container_class'	=> 'nav',
 							'walker'         	=> new Menu_Walker,
+							'fallback_cb'		=> Menu_Walker::fallback,
 						)
 					); ?>
 
