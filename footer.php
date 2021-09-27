@@ -16,7 +16,7 @@
 
 			<?php wp_nav_menu(
 				array(
-					'theme_location'  => 'footernav',
+					'theme_location'  => 'footer_nav',
 					'items_wrap'	  => '%3$s',
 					'menu_class'	  => 'nav',
 					'container'	   => 'div',
@@ -30,7 +30,7 @@
 
 			<?php wp_nav_menu(
 				array(
-					'theme_location'  => 'legallink',
+					'theme_location'  => 'legal_link',
 					'items_wrap'	  => '%3$s',
 					'menu_class'	  => 'footer_label',
 					'container'	   => false,

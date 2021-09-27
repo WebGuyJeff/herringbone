@@ -145,12 +145,12 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 		 */
 		register_nav_menus(
 			array(
-				'thumbnav' => esc_html__( 'ThumbNav Mobile Navigation', 'herringbone' ),
-				'headernav' => esc_html__( 'Header Desktop Navigation', 'herringbone' ),
-				'footernav' => esc_html__( 'Footer Global Navigation', 'herringbone' ),
-				'legallink' => esc_html__( 'Footer Legal Link', 'herringbone' ),
-				'landingheadernav' => esc_html__( 'Landing Page Header', 'herringbone' ),
-				'landingfooternav' => esc_html__( 'Landing Page Footer', 'herringbone' ),
+				'mobile_nav' => esc_html__( 'ThumbNav Mobile Navigation', 'herringbone' ),
+				'header_nav' => esc_html__( 'Header Global Navigation', 'herringbone' ),
+				'footer_nav' => esc_html__( 'Footer Global Navigation', 'herringbone' ),
+				'legal_link' => esc_html__( 'Footer Legal Link', 'herringbone' ),
+				'landing_header_nav' => esc_html__( 'Landing Page Header', 'herringbone' ),
+				'landing_footer_nav' => esc_html__( 'Landing Page Footer', 'herringbone' ),
 			)
 		);
 

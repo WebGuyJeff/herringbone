@@ -1,7 +1,20 @@
 <?php
 namespace Jefferson\Herringbone;
-use Walker_Nav_Menu; 
 
+/**
+ * Herringbone Custom Menu_Walker Class.
+ * 
+ * As it stands, this is just a copy/paste of the soil walker bundled with the
+ * compare_base_url function from the soil project. All credit is due there: 
+ * 
+ * @link https://github.com/roots/soil/tree/0191aec223f3fd030be09014e0bfa599d59a22c2
+ *
+ * @package herringbone
+ * @author Jefferson Real <me@jeffersonreal.com>
+ * @copyright Copyright (c) 2021, Jefferson Real
+ */
+
+use Walker_Nav_Menu; 
 use function get_post_type;
 use function get_post_types;
 use function get_post_type_archive_link;
@@ -9,11 +22,8 @@ use function is_search;
 use function sanitize_title;
 use function add_filter;
 use function remove_filter;
-
 $classOutput = new Walker_Nav_Menu;
 
-
-// https://github.com/roots/soil/tree/0191aec223f3fd030be09014e0bfa599d59a22c2
 
 /**
  * Herringbone Menu Walker
@@ -38,8 +48,7 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     protected $archive;
 
-    public function __construct()
-    {
+    public function __construct() {
         $cpt              = get_post_type();
 
         $this->is_cpt     = in_array($cpt, get_post_types(array('_builtin' => false)));
@@ -52,8 +61,7 @@ class Menu_Walker extends Walker_Nav_Menu {
         return preg_match('/(current[-_])|active/', $classes);
     }
 
-    public function displayElement($element, &$children_elements, $max_depth, $depth, $args, &$output)
-    {
+    public function displayElement($element, &$children_elements, $max_depth, $depth, $args, &$output) {
         $element->is_subitem = ((!empty($children_elements[$element->ID]) && (($depth + 1) < $max_depth || ($max_depth === 0))));
 
         if ($element->is_subitem) {
@@ -73,8 +81,7 @@ class Menu_Walker extends Walker_Nav_Menu {
         parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
     }
 
-    public function cssClasses($classes, $item)
-    {
+    public function cssClasses($classes, $item) {
         $slug = sanitize_title($item->title);
 
         // Fix core `active` behavior for custom post types
@@ -109,8 +116,7 @@ class Menu_Walker extends Walker_Nav_Menu {
         return array_filter($classes);
     }
 
-    public function walk($elements, $max_depth, ...$args)
-    {
+    public function walk($elements, $max_depth, ...$args) {
         // Add filters
         add_filter('nav_menu_css_class', array($this, 'cssClasses'), 10, 2);
         add_filter('nav_menu_item_id', '__return_null');
@@ -127,18 +133,45 @@ class Menu_Walker extends Walker_Nav_Menu {
     }
 
     /**
-     * Everything below this line is passthrus for WordPress.
+     * fallback_callback.
+     * 
+     * This function can be set as a callback in wp_nav_menu to display a fallback message
+     * before the user sets a menu in that location.
+     */
+    public static function fallback_callback( $args ) {
+
+        if ( ! current_user_can( 'manage_options' ) ) {
+            return;
+        }
+
+        extract( $args );
+
+        $link = '<li class="button"><a href="' .admin_url( 'nav-menus.php', 'https' ) . '"> Edit Menus </a></li>';
+
+        $output = sprintf( $link );
+        if ( ! empty ( $container ) ) {
+            $output  = "<$container class='$container_class' id='$container_id'>$output</$container>";
+        }
+
+        echo $output;
+        return $output;
+    }
+
+    /**
+     * Pass-throughs for WordPress.
      * phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
      */
-    public function display_element($element, &$children_elements, $max_depth, $depth, $args, &$output)
-    {
+    public function display_element($element, &$children_elements, $max_depth, $depth, $args, &$output) {
         return $this->displayElement($element, $children_elements, $max_depth, $depth, $args, $output);
     }
 
 
-
-    public function compare_base_url($base_url, $input_url, $strict_scheme = true)
-    {
+    /**
+     * Compare Base url from the soil project.
+     * 
+     * This function is used as a helper above.
+     */
+    public function compare_base_url($base_url, $input_url, $strict_scheme = true) {
         $base_url = trailingslashit($base_url);
         $input_url = trailingslashit($input_url);
     

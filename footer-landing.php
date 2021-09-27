@@ -1,4 +1,5 @@
 <?php
+namespace Jefferson\Herringbone;
 
 /**
  * Herringbone Theme Template - Footer Variant for Landing Pages.
@@ -16,11 +17,14 @@
 
 			<?php wp_nav_menu(
 				array(
-					'theme_location'  => 'landingFooterNav',
-					'items_wrap'	  => '%3$s',
-					'menu_class'	  => 'nav',
-					'container'	   => 'div', //Only one nav elem per page for good accessibililty
-					'container_class' => 'nav',
+					'theme_location'	=> 'landing_footer_nav',
+					'items_wrap'		=> '%3$s',
+					'menu_class'		=> 'nav',
+					'container'	   		=> 'div', //Only one nav elem per page for good accessibililty
+					'container_class' 	=> 'nav',
+					'walker'         	=> new Menu_Walker,
+					'fallback_cb'		=> Menu_Walker::fallback_callback( $args ),
+					'echo'           	=> TRUE,
 				)
 			); ?>
 
@@ -30,10 +34,13 @@
 
 			<?php wp_nav_menu(
 				array(
-					'theme_location'  => 'legallink',
-					'items_wrap'	  => '%3$s',
-					'menu_class'	  => 'footer_label',
-					'container'	   => false,
+					'theme_location'	=> 'legal_link',
+					'items_wrap'	  	=> '%3$s',
+					'menu_class'	  	=> 'footer_label',
+					'container'	   		=> false, //Only one nav elem per page for good accessibililty
+					'walker'         	=> new Menu_Walker,
+					'fallback_cb'		=> Menu_Walker::fallback_callback( $args ),
+					'echo'           	=> TRUE,
 				)
 			); ?>
 
