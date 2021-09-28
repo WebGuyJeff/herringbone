@@ -13,37 +13,36 @@ namespace Jefferson\Herringbone;
 <footer class="footer">
 	<div class="footer_inner">
 
-		<div class="footerNav">
+		<?php
 
-			<?php wp_nav_menu(
-				array(
-					'theme_location'	=> 'landing_footer_nav',
-					'items_wrap'		=> '%3$s',
-					'menu_class'		=> 'nav',
-					'container'	   		=> 'div', //Only one nav el per page for accessibililty
-					'container_class' 	=> 'nav',
-					'walker'         	=> new Menu_Walker,
-					'fallback_cb'		=> Menu_Walker::fallback_callback( $args ),
-					'echo'           	=> TRUE,
-				)
-			); ?>
-
-		</div>
+		wp_nav_menu(
+			$args = array(
+				'theme_location'	=> 'landing-footer-menu',
+				'items_wrap'		=> '%3$s',
+				'menu_class'		=> 'nav',
+				'container'	   		=> 'div',
+				'container_class' 	=> 'footerNav',
+				'echo'           	=> true,
+				'walker'         	=> new Menu_Walker,
+				'fallback_cb'		=> Menu_Walker::fallback_callback( $args ),
+			)
+		);
+		?>
 
 		<div class="footer_copyright">
 
-			<?php wp_nav_menu(
-				array(
-					'theme_location'	=> 'legal_link',
+			<?php 
+			wp_nav_menu(
+				$args = array(
+					'theme_location'	=> 'footer-legal-link',
 					'items_wrap'	  	=> '%3$s',
 					'menu_class'	  	=> 'footer_label',
-					'container'	   		=> false, //Only one nav el per page for accessibililty
+					'container'	   		=> false,
+					'echo'           	=> true,
 					'walker'         	=> new Menu_Walker,
 					'fallback_cb'		=> Menu_Walker::fallback_callback( $args ),
-					'echo'           	=> TRUE,
 				)
 			);
-			
 			?>
 
 			<?php echo "<p class=\"footer_label\">&copy; " . date("Y") . " Hello, my name is Jeff</p>";?>

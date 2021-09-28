@@ -16,7 +16,7 @@
 
 			<?php wp_nav_menu(
 				array(
-					'theme_location'  => 'footer_nav',
+					'theme_location'  => 'global-footer-menu',
 					'items_wrap'	  => '%3$s',
 					'menu_class'	  => 'nav',
 					'container'	   => 'div',

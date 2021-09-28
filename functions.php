@@ -37,7 +37,7 @@ function Enqueue_Scripts_And_Styles() {
 		wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js', array (), '3.6.0', true );
 		wp_enqueue_script('jquery');
 		// Other front end resources
-		wp_enqueue_script( 'hb_nav-mobile', get_template_directory_uri() . '/js/hb_nav-mobile.js', array ( 'jquery' ), '1.0', true );
+		wp_enqueue_script( 'hb_mobile-popup-menu', get_template_directory_uri() . '/js/hb_mobile-popup-menu.js', array ( 'jquery' ), '1.0', true );
 		wp_enqueue_script( 'gsap', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js', array ( 'jquery' ), '3.6.1', true );
 		wp_enqueue_script( 'gsap_cssrule', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/CSSRulePlugin.min.js', array ( 'gsap' ), '3.6.1', true );
 		wp_enqueue_script( 'gsap_scrolltrigger', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js', array ( 'gsap' ), '3.6.1', true );
@@ -129,6 +129,7 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 		//add_image_size( 'full-width-banner', 1920, 480, TRUE );
 		//add_image_size( 'page-featured', 615, 615, TRUE );
 
+
 		/*
 		 * Register WordPress wp_nav_menu() locations
 		 * 
@@ -143,30 +144,19 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 		 * makes the theme look broken. TODO: A FALLBACK MUST BE PUT IN PLACE
 		 * 
 		 */
+
+
 		register_nav_menus(
 			array(
-				'mobile_nav' => esc_html__( 'ThumbNav Mobile Navigation', 'herringbone' ),
-				'header_nav' => esc_html__( 'Header Global Navigation', 'herringbone' ),
-				'footer_nav' => esc_html__( 'Footer Global Navigation', 'herringbone' ),
-				'legal_link' => esc_html__( 'Footer Legal Link', 'herringbone' ),
-				'landing_header_nav' => esc_html__( 'Landing Page Header', 'herringbone' ),
-				'landing_footer_nav' => esc_html__( 'Landing Page Footer', 'herringbone' ),
+				'mobile-popup-menu' 	=> esc_html__( 'Mobile Popup Menu', 'herringbone' ),
+				'global-header-menu' 	=> esc_html__( 'Global Header Menu', 'herringbone' ),
+				'global-footer-menu' 	=> esc_html__( 'Global Footer Menu', 'herringbone' ),
+				'footer-legal-link' 	=> esc_html__( 'Footer Legal Link', 'herringbone' ),
+				'landing-header-menu' 	=> esc_html__( 'Landing Page Header Menu', 'herringbone' ),
+				'landing-footer-menu'	=> esc_html__( 'Landing Page Footer Menu', 'herringbone' ),
 			)
 		);
 
-		/*
-		 * Add custom classes to WP menu items
-		 */
-		function herringbone_nav_class($classes, $item){
-			//Add .button to all menu items
-			$classes[] = 'button';
-			//Add .active to active menu items
-			if( in_array('current-menu-item', $classes) ){
-					$classes[] = 'active ';
-			}
-			return $classes;
-		}
-		add_filter('nav_menu_css_class' , 'herringbone_nav_class' , 10 , 2);
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -184,6 +174,7 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 				'script',
 			)
 		);
+
 
 		/**
 		 * Add theme support for selective refresh for widgets.

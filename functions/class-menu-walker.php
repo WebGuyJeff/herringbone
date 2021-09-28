@@ -34,9 +34,6 @@ $classOutput = new Walker_Nav_Menu;
  */
 class Menu_Walker extends Walker_Nav_Menu {
 
-
-
-
     /**
      * Is current post a custom post type?
      *
@@ -54,27 +51,27 @@ class Menu_Walker extends Walker_Nav_Menu {
     public function __construct() {
         $cpt              = get_post_type();
 
-        $this->is_cpt     = in_array($cpt, get_post_types(array('_builtin' => false)));
-        $this->archive    = get_post_type_archive_link($cpt);
+        $this->is_cpt     = in_array( $cpt, get_post_types( array( '_builtin' => false ) ) );
+        $this->archive    = get_post_type_archive_link( $cpt );
         $this->is_search  = is_search();
     }
 
-    public function checkCurrent($classes) {
-        return preg_match('/(current[-_])|active/', $classes);
+    public function checkCurrent( $classes ) {
+        return preg_match( '/(current[-_])|active/', $classes );
     }
 
-    public function displayElement($element, &$children_elements, $max_depth, $depth, $args, &$output) {
-        $element->is_subitem = ((!empty($children_elements[$element->ID]) && (($depth + 1) < $max_depth || ($max_depth === 0))));
+    public function displayElement( $element, &$children_elements, $max_depth, $depth, $args, &$output ) {
+        $element->is_subitem = ( ( !empty($children_elements[$element->ID] ) && ( ( $depth + 1 ) < $max_depth || ( $max_depth === 0 ) ) ) );
 
-        if ($element->is_subitem) {
-            foreach ($children_elements[$element->ID] as $child) {
-                if ($child->current_item_parent || $this->compare_base_url($this->archive, $child->url)) {
+        if ( $element->is_subitem ) {
+            foreach ( $children_elements[$element->ID] as $child ) {
+                if ( $child->current_item_parent || $this->compare_base_url( $this->archive, $child->url ) ) {
                     $element->classes[] = 'active';
                 }
             }
         }
 
-        $element->is_active = (!empty($element->url) && strpos($this->archive, $element->url));
+        $element->is_active = ( !empty( $element->url ) && strpos( $this->archive, $element->url ) );
 
         if ($element->is_active && !$this->is_search) {
             $element->classes[] = 'active';
@@ -83,39 +80,36 @@ class Menu_Walker extends Walker_Nav_Menu {
         parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
     }
 
-    public function cssClasses($classes, $item) {
-        $slug = sanitize_title($item->title);
+    public function cssClasses( $classes, $item ) {
+        $slug = sanitize_title( $item->title );
 
         // Fix core `active` behavior for custom post types
-        if ($this->is_cpt) {
+        if ( $this->is_cpt ) {
             $classes = str_replace('current_page_parent', '', $classes);
 
-            if ($this->archive && !$this->is_search) {
-                if ($this->compare_base_url($this->archive, $item->url)) {
+            if ( $this->archive && !$this->is_search ) {
+                if ( $this->compare_base_url( $this->archive, $item->url ) ) {
                     $classes[] = 'active';
                 }
             }
         }
 
         // Remove most core classes
-        $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes);
-        $classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $classes);
+        $classes = preg_replace( '/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes );
+        $classes = preg_replace( '/^((menu|page)[-_\w+]+)+/', '', $classes );
 
-        // Re-add core `menu-item` class
-        $classes[] = 'menu-item';
+        // Add `menu_item` class. NOTE: with '_' not '-'.
+        $classes[] = 'menu_item';
 
-        // Re-add core `menu-item-has-children` class on parent elements
+        // Add `menu_dropdown` class on parent elements
         if ($item->is_subitem) {
-            $classes[] = 'menu-item-has-children';
+            $classes[] = 'menu_dropdown';
         }
 
-        // Add `menu-<slug>` class
-        $classes[] = 'menu-' . $slug;
+        $classes = array_unique( $classes );
+        $classes = array_map( 'trim', $classes );
 
-        $classes = array_unique($classes);
-        $classes = array_map('trim', $classes);
-
-        return array_filter($classes);
+        return array_filter( $classes );
     }
 
     public function walk($elements, $max_depth, ...$args) {
@@ -142,27 +136,37 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     public static function fallback_callback( $args ) {
 
-
         if ( ! current_user_can( 'manage_options' ) ) {
             return;
         }
 
-var_dump($args);
-
         extract( $args );
 
-        $link = '<li class="button"><a href="' .admin_url( 'nav-menus.php', 'https' ) . '"> Edit Menus </a></li>';
+echo '***name***' . $theme_location;
+echo '***echo***' . $echo;
+
+        $link = '<li class="button"><a href="' .admin_url( 'nav-menus.php', 'https' ) . '">Edit Menus</a></li>';
+
+        $container_string       = isset( $container )       ? $container                    : '';
+        $container_class_string = isset( $container_class ) ? 'class=' . $container_class   : '';
+        $container_id_string    = isset( $container_id )    ? 'id=' . $container_id         : '';
 
         $output = sprintf( $link );
-        if ( ! empty ( $container ) ) {
-            $output  = "<$container class='$container_class' id='$container_id'>$output</$container>";
+        if ( ! empty ( $container_string ) ) {
+            $output  = "<$container_string $container_class_string $container_id_string>$output</$container_string>";
         }
 
-        if ( TRUE === $echo ) {
-            echo $output;
+        if ( isset( $echo ) ) {
+            if ( $echo ) {
+                echo $output;
+            } else {
+                return $output;
+            }
+        } else {
+            return $output;
         }
-        return $output;
     }
+
 
     /**
      * Pass-throughs for WordPress.
@@ -216,6 +220,139 @@ var_dump($args);
     
         return true;
     }
+
+
+    /**
+     * Unregeister unused nav menu locations.
+     * 
+     * Unregister all unused nav menu locations that were registered by a theme and not currently
+     * in use. Any menu locations which are actively being registered e.g. in functions.php will remain
+     * so. Output displayed on front end.
+     */
+    public static function unregister_unused_nav_menu_locations( $dry_run = true ) {
+
+        echo '<div style="position:fixed;top:0;left:0;max-width:100vw;max-height:100vh;overflow:auto;white-space:pre;background:#fff;color:#000;">';
+
+        $menus = get_registered_nav_menus();
+        $locations = get_nav_menu_locations();
+        $orphaned_locations = [];
+        $current_locations = [];
+
+        foreach ( $locations as $loc_key => $loc_value ) {
+
+            $match = false;
+
+            foreach ( $menus as $men_key => $men_value ) {
+
+                if ( $men_key == $loc_key ) {
+                    $match = true;
+                }
+            }
+
+            if ( $match === false ) {
+                $orphaned_locations[$loc_key] = $loc_value;
+            } else {
+                $current_locations[$loc_key] = $loc_value;
+            }
+
+        }
+
+        //Start the Output
+        echo '<pre>';
+
+        // dry_run === true: output a list of locations that COULD be deleted
+        if ( $dry_run ) {
+
+            echo '$orphaned_locations: <br><br>';
+            var_dump( $orphaned_locations );
+
+            echo '<br>$current_locations: <br><br>';
+            var_dump( $current_locations );
+
+        // dry_run === false: attempt delete and output results
+        } else {
+
+            echo 'Old Menu Locations <br><br>';
+            var_dump( get_nav_menu_locations() );
+
+            $has_updated = set_theme_mod( 'nav_menu_locations', $current_locations );
+
+            if ( $has_updated ) {
+                echo '<br>SUCCESS: Menu locations updated.<br>';
+                echo '<br>Deleted Locations: <br><br>';
+                var_dump( $orphaned_locations );
+            } else {
+                echo '<br>ERROR: set_theme_mod failed to update value.<br>';
+                echo 'Note: This has given false negs before - check with Jefferson\Herringbone\Menu_Walker::display_all_registered_nav_menu_objects().';
+            }
+        }
+        echo '</pre></div>';
+    }
+
+
+    /**
+     * Display registered nav menus.
+     * 
+     * Display all registered nav menus. Normally used in debugging or cleanup.
+     * Output displayed on front end.
+     */
+    public static function display_all_registered_nav_menu_objects() {
+
+        echo '<div style="position:fixed;top:0;left:0;max-width:100vw;max-height:100vh;overflow:auto;white-space:pre;background:#fff;color:#000;">';
+
+
+        echo 'get_nav_menu_locations():<br>';
+        var_dump( get_nav_menu_locations() );
+
+        echo 'get_registered_nav_menus():<br>';
+        var_dump( get_registered_nav_menus() );
+
+
+        $menus = get_nav_menu_locations();
+
+        foreach ( $menus as $key => $value ) {
+
+            $menuobject = wp_get_nav_menu_object( $value );
+
+            if ( is_object( $menuobject ) ) {
+
+                $id = $menuobject->term_id;
+                echo '<pre>***OBJECT:MENU-ID-' . $id . '***<br>';
+
+                foreach ( $menuobject as $sub_key => $sub_value ) {
+                    if ( is_array( $sub_key ) ) {
+                        var_dump( $menuobject->$sub_key );
+                    } else {
+                        echo $sub_key . ' => ' . $sub_value . '<br>';
+                    }
+                }
+
+            } elseif ( is_array( $menuobject ) ) {
+
+                $id = $menuobject["term_id"];
+                echo '<pre>***ARRAY:MENU-ID-' . $id . '***<br>';
+
+                foreach ( $menuobject as $sub_key => $sub_value ) {
+                    if ( is_array( $sub_key ) ) {
+                        var_dump( $menuobject->$sub_key );
+                    } else {
+                        echo $sub_key . ' => ' . $sub_value . '<br>';
+                    }
+                }
+
+            } else {
+                echo '<pre>***STRING: MENU***<br>';
+                echo $menuobject;
+            }
+
+            echo '</pre>';
+        }
+        echo '</div>';
+
+    }
+
+
+
 
 
 }//class end

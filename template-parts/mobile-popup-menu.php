@@ -10,6 +10,19 @@
 
 $theme_root = get_template_directory_uri();
 
+
+wp_nav_menu(
+			$args = array(
+				'theme_location'	=> 'mobile-popup-menu',
+				'items_wrap'		=> '%3$s',
+				'menu_class'		=> 'nav',
+				'container'	   		=> 'nav',
+				'container_class' 	=> 'mobileNav',
+				'echo'           	=> true,
+				'walker'         	=> new Menu_Walker,
+				'fallback_cb'		=> Menu_Walker::fallback_callback( $args ),
+			)
+		);
 ?>
 
 <nav class="thumbNav thumbNav-jshide">
