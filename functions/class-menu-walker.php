@@ -34,6 +34,9 @@ $classOutput = new Walker_Nav_Menu;
  */
 class Menu_Walker extends Walker_Nav_Menu {
 
+
+
+
     /**
      * Is current post a custom post type?
      *
@@ -56,8 +59,7 @@ class Menu_Walker extends Walker_Nav_Menu {
         $this->is_search  = is_search();
     }
 
-    public function checkCurrent($classes)
-    {
+    public function checkCurrent($classes) {
         return preg_match('/(current[-_])|active/', $classes);
     }
 
@@ -140,9 +142,12 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     public static function fallback_callback( $args ) {
 
+
         if ( ! current_user_can( 'manage_options' ) ) {
             return;
         }
+
+var_dump($args);
 
         extract( $args );
 
@@ -153,7 +158,9 @@ class Menu_Walker extends Walker_Nav_Menu {
             $output  = "<$container class='$container_class' id='$container_id'>$output</$container>";
         }
 
-        echo $output;
+        if ( TRUE === $echo ) {
+            echo $output;
+        }
         return $output;
     }
 
