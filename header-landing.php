@@ -65,9 +65,12 @@ namespace Jefferson\Herringbone;
 						'container_aria_label' 	=> 'Main Menu',
 						'echo'           		=> true,
 						'walker'         		=> new Menu_Walker,
-						'fallback_cb'			=> Menu_Walker::fallback_callback( $args ),
+						'fallback_cb'			=> Menu_Walker::fallback_callback( $args, $theme_location ),
 					)
 				);
+
+				Helpers::output_on_front_end( $args );
+
 				?>
 
 			</div>
