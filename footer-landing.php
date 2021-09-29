@@ -14,38 +14,34 @@ namespace Jefferson\Herringbone;
 	<div class="footer_inner">
 
 		<?php
-
-		wp_nav_menu(
-			$args = array(
-				'theme_location'	=> 'landing-footer-menu',
+		wp_nav_menu( array(
+				'theme_location'	=> 'landing-page-secondary-menu',
 				'items_wrap'		=> '%3$s',
 				'menu_class'		=> 'nav',
 				'container'	   		=> 'div',
 				'container_class' 	=> 'footerNav',
 				'echo'           	=> true,
 				'walker'         	=> new Menu_Walker,
-				'fallback_cb'		=> Menu_Walker::fallback_callback( $args ),
-			)
-		);
+				'fallback_cb'		=> [ new Menu_Walker(), 'fallback' ],
+		) ); 
 		?>
 
 		<div class="footer_copyright">
 
 			<?php 
-			wp_nav_menu(
-				$args = array(
-					'theme_location'	=> 'footer-legal-link',
+			wp_nav_menu( array(
+					'theme_location'	=> 'global-legal-links',
 					'items_wrap'	  	=> '%3$s',
 					'menu_class'	  	=> 'footer_label',
 					'container'	   		=> false,
 					'echo'           	=> true,
 					'walker'         	=> new Menu_Walker,
-					'fallback_cb'		=> Menu_Walker::fallback_callback( $args ),
-				)
-			);
+					'fallback_cb'		=> [ new Menu_Walker(), 'fallback' ],
+			) );
 			?>
 
 			<?php echo "<p class=\"footer_label\">&copy; " . date("Y") . " Hello, my name is Jeff</p>";?>
+
 		</div>
 
 	</div>

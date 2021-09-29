@@ -22,7 +22,7 @@ use function is_search;
 use function sanitize_title;
 use function add_filter;
 use function remove_filter;
-$classOutput = new Walker_Nav_Menu;
+
 
 
 /**
@@ -78,6 +78,15 @@ class Menu_Walker extends Walker_Nav_Menu {
         }
 
         parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
+
+    }
+
+    /**
+     * Pass-throughs for WordPress.
+     * phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+     */
+    public function display_element($element, &$children_elements, $max_depth, $depth, $args, &$output) {
+        return $this->displayElement($element, $children_elements, $max_depth, $depth, $args, $output);
     }
 
     public function cssClasses( $classes, $item ) {
@@ -129,12 +138,14 @@ class Menu_Walker extends Walker_Nav_Menu {
     }
 
     /**
-     * fallback_callback.
+     * fallback method.
      * 
-     * This function can be set as a callback in wp_nav_menu to display a fallback message
+     * This method can be set as a callback in wp_nav_menu to display a fallback message
      * before the user sets a menu in that location.
      */
-    public static function fallback_callback( $args ) {
+    public static function fallback( ...$args ) {
+
+Helpers::output_on_front_end( $args );
 
         if ( ! current_user_can( 'manage_options' ) ) {
             return;
@@ -142,18 +153,15 @@ class Menu_Walker extends Walker_Nav_Menu {
 
         extract( $args );
 
-echo '***name***' . $theme_location;
-echo '***echo***' . $echo;
-
         $link = '<li class="button"><a href="' .admin_url( 'nav-menus.php', 'https' ) . '">Edit Menus</a></li>';
 
-        $container_string       = isset( $container )       ? $container                    : '';
-        $container_class_string = isset( $container_class ) ? 'class=' . $container_class   : '';
-        $container_id_string    = isset( $container_id )    ? 'id=' . $container_id         : '';
+        $element    = isset( $container )       ? $container                    : '';
+        $class      = isset( $container_class ) ? 'class=' . $container_class   : '';
+        $id         = isset( $container_id )    ? 'id=' . $container_id         : '';
 
         $output = sprintf( $link );
-        if ( ! empty ( $container_string ) ) {
-            $output  = "<$container_string $container_class_string $container_id_string>$output</$container_string>";
+        if ( ! empty ( $element ) ) {
+            $output  = "<$element $class $id>$output</$element>";
         }
 
         if ( isset( $echo ) ) {
@@ -163,22 +171,13 @@ echo '***echo***' . $echo;
                 return $output;
             }
         } else {
-            return $output;
+            echo $output;
         }
     }
 
 
     /**
-     * Pass-throughs for WordPress.
-     * phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
-     */
-    public function display_element($element, &$children_elements, $max_depth, $depth, $args, &$output) {
-        return $this->displayElement($element, $children_elements, $max_depth, $depth, $args, $output);
-    }
-
-
-    /**
-     * Compare Base url from the soil project.
+     * Compare Base url (from the soil project)
      * 
      * This function is used as a helper above.
      */
@@ -220,139 +219,6 @@ echo '***echo***' . $echo;
     
         return true;
     }
-
-
-    /**
-     * Unregeister unused nav menu locations.
-     * 
-     * Unregister all unused nav menu locations that were registered by a theme and not currently
-     * in use. Any menu locations which are actively being registered e.g. in functions.php will remain
-     * so. Output displayed on front end.
-     */
-    public static function unregister_unused_nav_menu_locations( $dry_run = true ) {
-
-        echo '<div style="position:fixed;top:0;left:0;max-width:100vw;max-height:100vh;overflow:auto;white-space:pre;background:#fff;color:#000;">';
-
-        $menus = get_registered_nav_menus();
-        $locations = get_nav_menu_locations();
-        $orphaned_locations = [];
-        $current_locations = [];
-
-        foreach ( $locations as $loc_key => $loc_value ) {
-
-            $match = false;
-
-            foreach ( $menus as $men_key => $men_value ) {
-
-                if ( $men_key == $loc_key ) {
-                    $match = true;
-                }
-            }
-
-            if ( $match === false ) {
-                $orphaned_locations[$loc_key] = $loc_value;
-            } else {
-                $current_locations[$loc_key] = $loc_value;
-            }
-
-        }
-
-        //Start the Output
-        echo '<pre>';
-
-        // dry_run === true: output a list of locations that COULD be deleted
-        if ( $dry_run ) {
-
-            echo '$orphaned_locations: <br><br>';
-            var_dump( $orphaned_locations );
-
-            echo '<br>$current_locations: <br><br>';
-            var_dump( $current_locations );
-
-        // dry_run === false: attempt delete and output results
-        } else {
-
-            echo 'Old Menu Locations <br><br>';
-            var_dump( get_nav_menu_locations() );
-
-            $has_updated = set_theme_mod( 'nav_menu_locations', $current_locations );
-
-            if ( $has_updated ) {
-                echo '<br>SUCCESS: Menu locations updated.<br>';
-                echo '<br>Deleted Locations: <br><br>';
-                var_dump( $orphaned_locations );
-            } else {
-                echo '<br>ERROR: set_theme_mod failed to update value.<br>';
-                echo 'Note: This has given false negs before - check with Jefferson\Herringbone\Menu_Walker::display_all_registered_nav_menu_objects().';
-            }
-        }
-        echo '</pre></div>';
-    }
-
-
-    /**
-     * Display registered nav menus.
-     * 
-     * Display all registered nav menus. Normally used in debugging or cleanup.
-     * Output displayed on front end.
-     */
-    public static function display_all_registered_nav_menu_objects() {
-
-        echo '<div style="position:fixed;top:0;left:0;max-width:100vw;max-height:100vh;overflow:auto;white-space:pre;background:#fff;color:#000;">';
-
-
-        echo 'get_nav_menu_locations():<br>';
-        var_dump( get_nav_menu_locations() );
-
-        echo 'get_registered_nav_menus():<br>';
-        var_dump( get_registered_nav_menus() );
-
-
-        $menus = get_nav_menu_locations();
-
-        foreach ( $menus as $key => $value ) {
-
-            $menuobject = wp_get_nav_menu_object( $value );
-
-            if ( is_object( $menuobject ) ) {
-
-                $id = $menuobject->term_id;
-                echo '<pre>***OBJECT:MENU-ID-' . $id . '***<br>';
-
-                foreach ( $menuobject as $sub_key => $sub_value ) {
-                    if ( is_array( $sub_key ) ) {
-                        var_dump( $menuobject->$sub_key );
-                    } else {
-                        echo $sub_key . ' => ' . $sub_value . '<br>';
-                    }
-                }
-
-            } elseif ( is_array( $menuobject ) ) {
-
-                $id = $menuobject["term_id"];
-                echo '<pre>***ARRAY:MENU-ID-' . $id . '***<br>';
-
-                foreach ( $menuobject as $sub_key => $sub_value ) {
-                    if ( is_array( $sub_key ) ) {
-                        var_dump( $menuobject->$sub_key );
-                    } else {
-                        echo $sub_key . ' => ' . $sub_value . '<br>';
-                    }
-                }
-
-            } else {
-                echo '<pre>***STRING: MENU***<br>';
-                echo $menuobject;
-            }
-
-            echo '</pre>';
-        }
-        echo '</div>';
-
-    }
-
-
-
 
 
 }//class end

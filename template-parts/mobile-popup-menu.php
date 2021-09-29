@@ -1,4 +1,5 @@
 <?php
+namespace Jefferson\Herringbone;
 
 /**
  * Template part for the mobile navigation menu
@@ -20,7 +21,7 @@ wp_nav_menu(
 				'container_class' 	=> 'mobileNav',
 				'echo'           	=> true,
 				'walker'         	=> new Menu_Walker,
-				'fallback_cb'		=> Menu_Walker::fallback_callback( $args ),
+				'fallback_cb'		=> [ new Menu_Walker(), 'fallback' ],
 			)
 		);
 ?>

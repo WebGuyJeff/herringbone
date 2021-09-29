@@ -55,21 +55,17 @@ namespace Jefferson\Herringbone;
 
 				<?php
 
-				wp_nav_menu(
-					$args = array(
-						'theme_location'		=> 'landing-header-menu',
-						'items_wrap'			=> '%3$s',
-						'menu_class'			=> 'headerNav',
-						'container'				=> 'nav',
-						'container_class'		=> 'nav',
-						'container_aria_label' 	=> 'Main Menu',
-						'echo'           		=> true,
-						'walker'         		=> new Menu_Walker,
-						'fallback_cb'			=> Menu_Walker::fallback_callback( $args, $theme_location ),
-					)
-				);
-
-				Helpers::output_on_front_end( $args );
+				wp_nav_menu( $args = array(
+					'theme_location'		=> 'landing-page-primary-menu',
+					'items_wrap'			=> '%3$s',
+					'menu_class'			=> 'headerNav',
+					'container'				=> 'nav',
+					'container_class'		=> 'nav',
+					'container_aria_label' 	=> 'Main Menu',
+					'echo'           		=> true,
+					'walker'         		=> new Menu_Walker,
+					'fallback_cb'			=> [ new Menu_Walker(), 'fallback' ],
+				) );
 
 				?>
 

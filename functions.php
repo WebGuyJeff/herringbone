@@ -24,7 +24,7 @@ $hooks = new Hooks;
 /**
  * Enqueue scripts and styles
  */
-function Enqueue_Scripts_And_Styles() {
+function enqueue_scripts_and_styles() {
 	wp_enqueue_style( 'style_css', get_template_directory_uri() . '/style.css', array(), filemtime(get_template_directory() . '/style.css'), 'all');
 	wp_enqueue_style( 'hb_css', get_template_directory_uri() . '/css/hb.css', array( 'style_css' ), filemtime(get_template_directory() . '/css/hb.css'), 'all');
 	// If not in admin area
@@ -45,9 +45,11 @@ function Enqueue_Scripts_And_Styles() {
 		wp_register_script( 'hb_modal_js', get_template_directory_uri() . '/js/hb_modal.js', array (), '0.1', true );
 		wp_register_script( 'hb_hideheader_js', get_template_directory_uri() . '/js/hb_hideheader.js', array ( 'gsap_cssrule' ), '0.1', true );
 		wp_register_script( 'hb_usp_js', get_template_directory_uri() . '/js/hb_usp.js', array (), '0.1', true );
+
+		//wp_enqueue_style( 'jetbrains', 'https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap', array(), time() , 'all');
 	}
 }
-add_action( 'wp_enqueue_scripts', 'Enqueue_Scripts_And_Styles' );
+add_action( 'wp_enqueue_scripts', 'enqueue_scripts_and_styles' );
 
 
 // ======================================================= Basic WordPress setup
@@ -148,12 +150,12 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 
 		register_nav_menus(
 			array(
-				'mobile-popup-menu' 	=> esc_html__( 'Mobile Popup Menu', 'herringbone' ),
-				'global-header-menu' 	=> esc_html__( 'Global Header Menu', 'herringbone' ),
-				'global-footer-menu' 	=> esc_html__( 'Global Footer Menu', 'herringbone' ),
-				'footer-legal-link' 	=> esc_html__( 'Footer Legal Link', 'herringbone' ),
-				'landing-header-menu' 	=> esc_html__( 'Landing Page Header Menu', 'herringbone' ),
-				'landing-footer-menu'	=> esc_html__( 'Landing Page Footer Menu', 'herringbone' ),
+				'mobile-popup-menu' 			=> esc_html__( 'Mobile Popup Menu', 'herringbone' ),
+				'global-primary-menu' 			=> esc_html__( 'Global Header Menu', 'herringbone' ),
+				'global-secondary-menu' 		=> esc_html__( 'Global Footer Menu', 'herringbone' ),
+				'global-legal-links' 			=> esc_html__( 'Global Legal Links', 'herringbone' ),
+				'landing-page-primary-menu' 	=> esc_html__( 'Landing Page Header Menu', 'herringbone' ),
+				'landing-page-secondary-menu'	=> esc_html__( 'Landing Page Footer Menu', 'herringbone' ),
 			)
 		);
 
