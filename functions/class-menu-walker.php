@@ -143,17 +143,17 @@ class Menu_Walker extends Walker_Nav_Menu {
      * This method can be set as a callback in wp_nav_menu to display a fallback message
      * before the user sets a menu in that location.
      */
-    public static function fallback( ...$args ) {
+    public static function fallback() {
 
-Helpers::output_on_front_end( $args );
-
+echo 'hello';
+ /*
         if ( ! current_user_can( 'manage_options' ) ) {
             return;
         }
 
         extract( $args );
 
-        $link = '<li class="button"><a href="' .admin_url( 'nav-menus.php', 'https' ) . '">Edit Menus</a></li>';
+       $link = '<li class="button"><a href="' .admin_url( 'nav-menus.php', 'https' ) . '">Edit Menus</a></li>';
 
         $element    = isset( $container )       ? $container                    : '';
         $class      = isset( $container_class ) ? 'class=' . $container_class   : '';
@@ -173,7 +173,7 @@ Helpers::output_on_front_end( $args );
         } else {
             echo $output;
         }
-    }
+*/    }
 
 
     /**

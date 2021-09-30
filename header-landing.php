@@ -55,7 +55,9 @@ namespace Jefferson\Herringbone;
 
 				<?php
 
-				wp_nav_menu( $args = array(
+Helpers::output_on_front_end( is_callable( Menu_Walker::fallback() ) );
+
+				wp_nav_menu( array(
 					'theme_location'		=> 'landing-page-primary-menu',
 					'items_wrap'			=> '%3$s',
 					'menu_class'			=> 'headerNav',
