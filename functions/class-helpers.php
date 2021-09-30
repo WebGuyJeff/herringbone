@@ -53,7 +53,7 @@ class Helpers {
 
 
     /**
-     * Public method: output_on_front_end()
+     * Public method: output_on_front_end(  )
      * 
      * Print anything to the front end. Useful for quickly outputting variables or function
      * results when debugging/experimenting 🧪
@@ -65,16 +65,18 @@ class Helpers {
 
         echo '<div style="font:1rem\'JetBrains Mono\',monospace;position:fixed;top:0;left:0;width:480px;max-width:100vw;max-height:calc(100vh - 16px);border:2px solid;resize:both;overflow:auto;white-space:pre;background:#fff;color:#000;filter: drop-shadow(2px 4px 6px #3339);">';
         echo '<pre style="font:inherit;">';
-        echo '<b style="background:#333;color:#fff;"># Your output is served  👨‍🍳</b><br><br>';
-        echo '<br><span>========= output =========//</span><br><br>';
+        echo '<b style="background:#333;color:#fff;"># Your output is served  👨‍🍳</b>';
+        echo '<br><br><br>';
 
         foreach ( $stuff_to_output as $key => $value ) {
             var_dump( $value );
         }
 
+        /* backtrace useful for some debugging
         echo '<br><span>==== debug_backtrace =====//</span><br><br>';
         var_dump(debug_backtrace());
         echo '<br></pre></div>';
+        */
     }
 
 
@@ -85,7 +87,7 @@ class Helpers {
      * in use. Any menu locations which are actively being registered e.g. in functions.php will remain
      * so. Output displayed on front end. Warning: this function is destructive.
      */
-    public static function unregister_unused_nav_menu_locations( $dry_run = true ) {
+    public static function unregister_unused_nav_menu_locations( $update_db = false ) {
 
         echo '<div style="position:fixed;top:0;left:0;max-width:100vw;max-height:100vh;overflow:auto;white-space:pre;background:#fff;color:#000;">';
 
@@ -120,19 +122,8 @@ class Helpers {
         //Start the Output
         echo '<pre>';
 
-        // if dry_run is true: output a list of orphaned locations but take no action...
-        if ( $dry_run ) {
-
-            echo 'DRY RUN - NO ACTION TAKEN<br><br>';
-
-            echo '$orphaned_locations: <br><br>';
-            var_dump( $orphaned_locations );
-
-            echo '<br>$current_locations: <br><br>';
-            var_dump( $current_locations );
-
-        // ...else, attempt deletion of orphans and output results.
-        } else {
+        // if update_db is true, attempt deletion of orphans and output results...
+        if ( $update_db ) {
 
             echo 'Old Menu Locations <br><br>';
             var_dump( get_nav_menu_locations() );
@@ -150,6 +141,18 @@ class Helpers {
                 echo '<br>ERROR: set_theme_mod failed to update value.<br>';
                 echo '<br>Perhaps there were no orphaned menus?<br>';
             }
+
+        // ...else, output a list of orphaned locations but take no action.
+        } else {
+
+            echo 'DRY RUN - NO ACTION TAKEN<br><br>';
+
+            echo '$orphaned_locations: <br><br>';
+            var_dump( $orphaned_locations );
+
+            echo '<br>$current_locations: <br><br>';
+            var_dump( $current_locations );
+
         }
         echo '</pre></div>';
     }

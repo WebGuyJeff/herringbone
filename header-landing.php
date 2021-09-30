@@ -54,9 +54,6 @@ namespace Jefferson\Herringbone;
 			<div class="header_content header_content-middle">
 
 				<?php
-
-Helpers::output_on_front_end( is_callable( Menu_Walker::fallback() ) );
-
 				wp_nav_menu( array(
 					'theme_location'		=> 'landing-page-primary-menu',
 					'items_wrap'			=> '%3$s',
@@ -66,9 +63,8 @@ Helpers::output_on_front_end( is_callable( Menu_Walker::fallback() ) );
 					'container_aria_label' 	=> 'Main Menu',
 					'echo'           		=> true,
 					'walker'         		=> new Menu_Walker,
-					'fallback_cb'			=> [ new Menu_Walker(), 'fallback' ],
+					'fallback_cb'			=> [ new Menu_Walker, 'fallback' ],
 				) );
-
 				?>
 
 			</div>

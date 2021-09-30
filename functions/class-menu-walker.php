@@ -143,25 +143,28 @@ class Menu_Walker extends Walker_Nav_Menu {
      * This method can be set as a callback in wp_nav_menu to display a fallback message
      * before the user sets a menu in that location.
      */
-    public static function fallback() {
+    public static function fallback( array $args ) {
 
-echo 'hello';
- /*
         if ( ! current_user_can( 'manage_options' ) ) {
             return;
         }
 
-        extract( $args );
+        if ( isset( $args ) ) {
+            extract( $args );
+        } 
 
-       $link = '<li class="button"><a href="' .admin_url( 'nav-menus.php', 'https' ) . '">Edit Menus</a></li>';
+        $link = '<li class="button"><a href="' .admin_url( 'customize.php', 'https' ) . '">Edit Menus</a></li>';
 
-        $element    = isset( $container )       ? $container                    : '';
-        $class      = isset( $container_class ) ? 'class=' . $container_class   : '';
-        $id         = isset( $container_id )    ? 'id=' . $container_id         : '';
-
+        $element    = !empty( $container )               ? $container                                    : '';
+        $wrap_class = !empty( $container_class )         ? 'class="' . $container_class . '"'            : '';
+        $wrap_id    = !empty( $container_id )            ? 'id="' . $container_id . '"'                  : '';
+        $aria       = !empty( $container_aria_label )    ? 'aria-label="' . $container_aria_label . '"'  : '';
+        $menu_class = !empty( $menu_class )              ? 'class="' . $menu_class . '"'                 : '';
+        $menu_id    = !empty( $menu_id )                 ? 'id="' . $menu_id . '"'                       : '';
+        
         $output = sprintf( $link );
         if ( ! empty ( $element ) ) {
-            $output  = "<$element $class $id>$output</$element>";
+            $output  = "<$element $wrap_class $wrap_id $aria><ul $menu_class $menu_id>$output</ul></$element>";
         }
 
         if ( isset( $echo ) ) {
@@ -173,7 +176,7 @@ echo 'hello';
         } else {
             echo $output;
         }
-*/    }
+    }
 
 
     /**
