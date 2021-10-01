@@ -54,6 +54,7 @@ namespace Jefferson\Herringbone;
 			<div class="header_content header_content-middle">
 
 				<?php
+
 				wp_nav_menu( array(
 					'theme_location'		=> 'landing-page-primary-menu',
 					'items_wrap'			=> '%3$s',
