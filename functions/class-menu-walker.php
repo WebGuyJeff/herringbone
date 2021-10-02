@@ -70,9 +70,8 @@ class Menu_Walker extends Walker_Nav_Menu {
             'active_item' => '_item-current',
             'parent_of_active_item' => '_item-parent-current',
             'ancestor_of_active_item' => '_item-ancestor-current',
-            'sub_menu' => '_subList',
-            'sub_menu_item' => '_subItem',
-            'sub_link' => '_subLink',
+            'sub_menu' => '_dropdown',
+            'sub_menu_toggle' => 'dropdown_toggle',
         );
     }
 
@@ -122,14 +121,16 @@ class Menu_Walker extends Walker_Nav_Menu {
 
         $t      = "\t";
         $n      = "\n";
+        $depth  = $depth + 1;
         $indent = str_repeat( $t, $depth );
         $prefix = $args->menu_class;
         $suffix = $this->item_css_class_suffixes;
         $class  = $prefix . $suffix[ 'sub_menu' ];
+        $icon   = file_get_contents( get_theme_file_path( "imagery/icons_nav/button-dropdown.svg" ) );
 
-        // Add a ul wrapper to sub nav and a button to toggle the sub navigation items
-
-        $output .= $n . $indent . '<div class="dropdown">' . $n . $indent . '<button class="dropdown_toggle">Open</button>' . $n . $indent . '<ul class="' . $class . '">' . $n;
+        $output  = $n . $indent . '<div class="dropdown">';
+        $output .= $n . $indent . '<button class="dropdown_toggle">Open' . $icon . '</button>';
+        $output .= $n . $indent . '<div class="dropdown_contents">' . $n;
     }
 
 
@@ -245,7 +246,7 @@ class Menu_Walker extends Walker_Nav_Menu {
         $n       = "\n";
         $indent  = str_repeat( $t, $depth );
 
-        $output .= "$indent</ul></div>{$n}";
+        $output .= "$indent</div></div>{$n}";
     }
 
 
