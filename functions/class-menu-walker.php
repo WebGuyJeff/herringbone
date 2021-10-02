@@ -48,8 +48,6 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     protected $archive;
 
-
-
     /**
      * __construct
      *
@@ -61,18 +59,26 @@ class Menu_Walker extends Walker_Nav_Menu {
         $this->archive_url      = get_post_type_archive_link( $custom_post_type );
         $this->is_search        = is_search();
 
-        // Define menu item names
-        $this->item_css_class_suffixes = array(
-            'list' => '_list',
+        $this->t = "\t";
+        $this->n = "\n";
+
+        $this->css_item_element_classes = array(
             'item' => '_item',
-            'link' => '_link',
-            'parent_item' => '_item-parent',
-            'active_item' => '_item-current',
-            'parent_of_active_item' => '_item-parent-current',
-            'ancestor_of_active_item' => '_item-ancestor-current',
-            'sub_menu' => '_dropdown',
-            'sub_menu_toggle' => 'dropdown_toggle',
+            'parent' => '_parent',
         );
+
+        // Dropdown css classes.
+        $this->css_dropdown_block_element_classes = array(
+            'dropdown' => 'dropdown',
+            'toggle' => '_toggle',
+            'list' => '_content',
+        );
+
+        $this->css_modifier_classes = array(
+            'active' => '-active',
+            'has_active' => '-hasActiveChild',
+        );
+
     }
 
 
@@ -80,27 +86,38 @@ class Menu_Walker extends Walker_Nav_Menu {
     /**
      * display_element
      * 
-     * Check if menu elements are sub-items or match the active url and apply classes accordingly.
-     * Then pass all args back up to parent class.
+     * Check if menu elements are parents, have active children or are active themselves and
+     * attach the results to the element object.
+     * 
+     * @var bool: $element->hb__is_parent
+     * @var bool: $element->hb__has_active_child
+     * @var bool: $element->hb__active
      */
-    public function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
+    public function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 
-        $element->is_subitem = ( ( !empty($children_elements[$element->ID] )
-                                    && ( ( $depth + 1 ) < $max_depth
-                                    || ( $max_depth === 0 ) ) ) );
+        // If the element ID is a parent key in the array of children...
+        if ( array_key_exists( $element->ID, $children_elements ) ) {
 
-        if ( $element->is_subitem ) {
+            // ...it's a parent.
+            $element->hb__is_parent = true;
+
+            // For all the children of this element...
             foreach ( $children_elements[$element->ID] as $child ) {
-                if ( $child->current_item_parent || $this->compare_base_url( $this->archive_url, $child->url ) ) {
-                    $element->classes[] = 'active';
+
+                // ...if one is current...
+                if ( $child->current ) {
+
+                    // ...this parent has an active child.
+                    $element->hb__has_active_child = true;
                 }
             }
         }
 
-        $element->is_active = ( !empty( $element->url ) && strpos( $this->archive_url, $element->url ) );
-
-        if ($element->is_active && !$this->is_search) {
-            $element->classes[] = 'active';
+        if ($element->current && !$this->is_search) {
+            // this element is active and not on a search page
+            $element->hb__active = true;
+        } else {
+            $element->hb__active = false;
         }
 
         parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
@@ -119,18 +136,19 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     public function start_lvl( &$output, $depth = 0, $args = null ) {
 
-        $t      = "\t";
-        $n      = "\n";
-        $depth  = $depth + 1;
-        $indent = str_repeat( $t, $depth );
-        $prefix = $args->menu_class;
-        $suffix = $this->item_css_class_suffixes;
-        $class  = $prefix . $suffix[ 'sub_menu' ];
-        $icon   = file_get_contents( get_theme_file_path( "imagery/icons_nav/button-dropdown.svg" ) );
+        $t          = $this->t;
+        $n          = $this->n;
+        $indent     = str_repeat( $t, $depth );
+        $icon       = file_get_contents( get_theme_file_path( "imagery/icons_nav/button-dropdown.svg" ) );
 
-        $output  = $n . $indent . '<div class="dropdown">';
-        $output .= $n . $indent . '<button class="dropdown_toggle">Open' . $icon . '</button>';
-        $output .= $n . $indent . '<div class="dropdown_contents">' . $n;
+        if ( $depth > 0 ) {
+            $output  = $n . $indent . '<div class="dropdown">';
+            $output .= $n . $indent . '<button class="dropdown_toggle">Open' . $icon . '</button>';
+            $output .= $n . $indent . '<div class="dropdown_contents">' . $n;
+        } else {
+            $output  = '';
+        }
+
     }
 
 
@@ -149,16 +167,18 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 
-        $GLOBALS[ 'wp_the_query' ];
+        //$GLOBALS[ 'wp_the_query' ];
 
-        $indent = ( $depth > 0 ? str_repeat("    ", $depth ) : '' ); // code indent
-        $prefix = $args->menu_class;
-        $suffix = $this->item_css_class_suffixes;
+        $t              = $this->t;
+        $n              = $this->n;
+        $indent         = ( $depth > 0 ? str_repeat("    ", $depth ) : '' ); // code indent
+        $css_block      = $args->menu_class;
+        $css_element    = $this->css_item_element_classes;
+        $css_modifier   = $this->css_modifier_classes;
 
         if( !empty( $item->classes )
             && is_array( $item->classes )
             && in_array( 'menu-item-has-children', $item->classes ) ){
-
             // This guy has children
             $args->has_children = true;
         } else {
@@ -166,50 +186,47 @@ class Menu_Walker extends Walker_Nav_Menu {
         }
 
         // Item classes
-        $item_classes = array(
-            'item_class' => $depth == 0 ? $prefix . $suffix[ 'item' ] : '',
-            'parent_class' => $args->has_children ? $parent_class = $prefix . $suffix[ 'parent_item' ] : '',
-            'active_page_class' => in_array("current-menu-item", $item->classes) ? $prefix . $suffix[ 'active_item' ] : '',
-            'active_parent_class' => in_array("current-menu-parent", $item->classes) ? $prefix . $suffix[ 'parent_of_active_item' ] : '',
-            'active_ancestor_class' => in_array("current-menu-ancestor", $item->classes) ? $prefix . $suffix['ancestor_of_active_item'] : '',
-            'depth_class' => $depth >= 1 ? $prefix . $suffix[ 'sub_menu_item' ] . ' ' . $prefix . $suffix[ 'sub_menu_item' ] . '-' . $depth : '',
-            'user_class' => $item->classes[0] !== '' ? $prefix . '_item--' . $item->classes[0] : ''
+        $bem_classes = array(
+            'item'          => $css_block . $css_element[ 'item' ],
+            'item-active'   => $css_block . $css_element[ 'item' ] . $css_modifier[ 'active' ],
+            'parent'        => $css_block . $css_element[ 'parent' ],
+            'parent-active' => $css_block . $css_element[ 'parent' ] . $css_modifier[ 'has_active' ],
         );
 
-        // convert array to string excluding any empty values
-        $class_string = implode("  ", array_filter($item_classes));
+        // Build item class string
+        $class_string  = $bem_classes[ 'item' ];
+        $class_string .= ( $item->hb__active )           ? ' ' . $bem_classes[ 'item-active' ]     : '';
+        $class_string .= ( $item->hb__is_parent )        ? ' ' . $bem_classes[ 'parent' ]          : '';
+        $class_string .= ( $item->hb__has_active_child ) ? ' ' . $bem_classes[ 'parent-active' ]   : '';
 
         // Item aria attributes
-        $aria_attributes = 'aria-label="' . apply_filters('the_title', $item->title, $item->ID) . '"';
+        $aria_attributes = 'aria-label="' . apply_filters( 'the_title', $item->title, $item->ID ) . '"';
 
         if ( $args->has_children ) {
             $aria_attributes .= ' aria-pressed="false" aria-expanded="false" aria-haspopup="menu"';
         }
 
-        // Add the classes to the wrapping <li>
-        $output .= $indent . '<li class="' . $class_string . '" ' . $aria_attributes . '>';
+        // anchor attributes
+        $anchor_attribute_values  = [
+            "href="     => !empty( $item->url )        ? esc_attr($item->url)        : '',
+            "title="    => !empty( $item->attr_title ) ? esc_attr($item->attr_title) : '',
+            "target="   => !empty( $item->target )     ? esc_attr($item->target)     : '',
+            "rel="      => !empty( $item->xfn )        ? esc_attr($item->xfn)        : '',
+        ];
 
-        // Link classes
-        $link_classes = array(
-            'item_link' => $depth == 0 ? $prefix . $suffix['link'] : '',
-            'depth_class' => $depth >= 1 ? $prefix . $suffix['sub_link'] . '  ' . $prefix . $suffix['sub_link'] . '--' . $depth : '',
-        );
+        // build $anchor_attributes without empty values
+        foreach ( $anchor_attribute_values as $att => $value ) {
+            if ( $value !== '' ) {
+                $anchor_attributes[ $att ] = '"' . $value . '"';
+            }
+        }
 
-        $link_class_string = implode("  ", array_filter($link_classes));
-        $link_class_output = 'class="' . $link_class_string . '"';
+        // Convert $anchor_attributes to $attribute_string
+        $attribute_string = implode(" ", $anchor_attributes );
 
-        // link attributes
-        $attributes = !empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
-        $attributes .= !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
-        $attributes .= !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
-        $attributes .= !empty($item->url) ? ' href="' . esc_attr($item->url) . '"' : '';
-
-        // Create link markup
-        $item_output = '<a' . $attributes . ' ' . $link_class_output . '>';
+        // Build link markup
+        $item_output = "<a class=\"{$class_string}\" {$attribute_string} {$aria_attributes}>";
         $item_output .= apply_filters('the_title', $item->title, $item->ID);
-        $item_output .= '</a>';
-
-        // Filter <li>
 
         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
     }
@@ -217,7 +234,7 @@ class Menu_Walker extends Walker_Nav_Menu {
 
 
     /**
-     * Ends the menu option element output, if needed.
+     * Ends the item element output.
      *
      * @param string   $output Used to append additional content (passed by reference).
      * @param WP_Post  $item   Page data object. Not used.
@@ -225,16 +242,18 @@ class Menu_Walker extends Walker_Nav_Menu {
      * @param stdClass $args   An object of wp_nav_menu() arguments.
      */
     public function end_el( &$output, $item, $depth = 0, $args = null ) {
-        
-        $n       = "\n";
 
-        $output .= "</li>{$n}";
+        $t = $this->t;
+        $n = $this->n;
+        $indent  = str_repeat( $t, $depth );
+
+        $output .= "</a>{$n}";
     }
 
 
 
     /**
-     * Ends the list of after the elements are added.
+     * Ends the menu level.
      *
      * @param string   $output Used to append additional content (passed by reference).
      * @param int      $depth  Depth of menu item. Used for padding.
@@ -242,11 +261,12 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     public function end_lvl( &$output, $depth = 0, $args = null ) {
 
-        $t       = "\t";
-        $n       = "\n";
+        $t = $this->t;
+        $n = $this->n;
         $indent  = str_repeat( $t, $depth );
 
-        $output .= "$indent</div></div>{$n}";
+        $output .= "$indent</div>{$n}"; //dropdown contents
+        $output .= "</div>{$n}";        //dropdown
     }
 
 
@@ -372,7 +392,7 @@ class Menu_Walker extends Walker_Nav_Menu {
         $classes[] = 'menu_item';
 
         // Add 'menu_dropdown' if the item has sub-items
-        if ($item->is_subitem) {
+        if ($item->hb__is_subitem) {
             $classes[] = 'menu_dropdown';
         }
 
