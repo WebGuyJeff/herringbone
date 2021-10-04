@@ -19,7 +19,8 @@ namespace Jefferson\Herringbone;
  */
 
  //WordPress Dependencies
-use Walker_Nav_Menu; 
+use Walker_Nav_Menu;
+use Walker; 
 use function get_post_type;
 use function get_post_types;
 use function get_post_type_archive_link;
@@ -35,18 +36,18 @@ class Menu_Walker extends Walker_Nav_Menu {
 
 
     /**
-     * Is current post a custom post type?
+     * Database fields to use.
      *
-     * @var bool
+     * @var array
+     *
+     * @see Walker::$db_fields
      */
-    protected $is_custom_post;
+    public $db_fields = array(
+        'parent' => 'menu_item_parent',
+        'id'     => 'db_id',
+    );
 
-    /**
-     * Archive page for current URL.
-     *
-     * @var string
-     */
-    protected $archive;
+
 
     /**
      * __construct
@@ -54,9 +55,6 @@ class Menu_Walker extends Walker_Nav_Menu {
      * Init the class variables.
      */
     public function __construct() {
-        $custom_post_type       = get_post_type();
-        $this->is_custom_post   = in_array( $custom_post_type, get_post_types( array( '_builtin' => false ) ) );
-        $this->archive_url      = get_post_type_archive_link( $custom_post_type );
         $this->is_search        = is_search();
 
         $this->t = "\t";
@@ -125,16 +123,12 @@ class Menu_Walker extends Walker_Nav_Menu {
             $element->hb__active = false;
         }
 
-        // old call to parent method
-        //parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
+// WP default method wraps the child list in the parent <li> calling class methods
+// in this order: start_el, start_lvl, end_lvl, end_el.
 
 
-/////////////// WP Method contents...
-//// see https://code.tutsplus.com/tutorials/understanding-the-walker-class--wp-25401
+    $this->start_el( $output, $element, $depth, ...array_values( $args ) );
 
-
-        $this->start_el( $output, $element, $depth, ...array_values( $args ) );
-    
         // Descend only when the depth is right and there are children for this element.
         if ( ( 0 == $max_depth || $max_depth > $depth + 1 ) && $element->hb__is_parent ) {
     
@@ -149,21 +143,14 @@ class Menu_Walker extends Walker_Nav_Menu {
             }
             unset( $children_elements[ $id ] );
         }
-    
+ 
         if ( isset( $newlevel ) && $newlevel ) {
             // End the child delimiter.
             $this->end_lvl( $output, $depth, ...array_values( $args ) );
         }
-    
+
         // End this element.
         $this->end_el( $output, $element, $depth, ...array_values( $args ) );
-
-
-echo "\n" . 'display_elementDUMP';
-var_dump($output);
-echo "\n" . 'display_elementENDDUMP';
-
-
 
     }
 
@@ -185,15 +172,9 @@ echo "\n" . 'display_elementENDDUMP';
         $indent     = str_repeat( $t, $depth );
         $icon       = file_get_contents( get_theme_file_path( "imagery/icons_nav/button-dropdown.svg" ) );
 
-        $output  = "{$n}{$indent}<div class=\"dropdown\">";
+        $output .= "{$n}{$indent}<div class=\"dropdown\">";
         $output .= "{$n}{$indent}<button class=\"dropdown_toggle\">Open{$icon}</button>";
         $output .= "{$n}{$indent}<div class=\"dropdown_contents\">";
-
-/*
-echo "\n" . 'start_lvlDUMP';
-var_dump($output);
-echo "\n" . 'start_lvlENDDUMP';
-*/
 
     }
 
@@ -211,12 +192,6 @@ echo "\n" . 'start_lvlENDDUMP';
      * @param int      $id     Current item ID.
      */
     function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-
-
-echo "\n" . 'start_elDUMP';
-var_dump($output);
-echo "\n" . 'start_elENDDUMP';
-
 
         $t              = $this->t;
         $n              = $this->n;
