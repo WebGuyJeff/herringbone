@@ -10,10 +10,10 @@ namespace Jefferson\Herringbone;
  * 
  * Walker::display_element - Fires the methods below based on menu tree array.
  * 
- * Walker_Nav_Menu::start_lvl - Starts the list before the elements are added.
- * Walker_Nav_Menu::start_el - Starts the element output.
- * Walker_Nav_Menu::end_el - Ends the element output, if needed.
- * Walker_Nav_Menu::end_lvl - Ends the list after the elements are added.
+ * Walker_Nav_Menu::start_lvl - Open tags for a new dropdown component for a menu branch.
+ * Walker_Nav_Menu::start_el - Build a complete anchor elem using $item vars.
+ * Walker_Nav_Menu::end_el - Open tags for a new dropdown_contents div for child menu items.
+ * Walker_Nav_Menu::end_lvl - Close tags for a dropdown component and menu branch.
  * 
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
@@ -41,9 +41,10 @@ class Menu_Walker extends Walker_Nav_Menu {
      * Init the class variables.
      */
     public function __construct() {
-        $this->is_search        = is_search();
-        $this->t = "\t";
-        $this->n = "\n";
+        $this->is_search = is_search();
+        $this->t_offset  = 2;
+        $this->t         = "\t";
+        $this->n         = "\n";
     }
 
 
@@ -147,10 +148,12 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     public function start_lvl( &$output, $depth = 0, $args = null, $item ) {
 
-        $t          = $this->t;
-        $n          = $this->n;
-        $indent     = str_repeat( $t, $depth );
-        $icon       = file_get_contents( get_theme_file_path( "imagery/icons_nav/button-dropdown.svg" ) );
+        $t            = $this->t;
+        $n            = $this->n;
+        $indent       = str_repeat( $t, $this->t_offset + $depth );
+        $indent_plus1 = $indent . $t;
+        $indent_plus2 = $indent . $indent . $t;
+        $icon         = file_get_contents( get_theme_file_path( "imagery/icons_nav/button-dropdown.svg" ) );
 
         // Passed from display_element:
         $is_parent  = $item->hb__is_parent;
@@ -159,14 +162,17 @@ class Menu_Walker extends Walker_Nav_Menu {
         $aria_attributes = ( $is_parent ) ? 'aria-pressed="false" aria-expanded="false" aria-haspopup="menu"' : '';
 
         $output .= "{$n}{$indent}<div class=\"dropdown\">";
-        $output .= "{$n}{$indent}<button class=\"dropdown_toggle\" {$aria_attributes}>Open{$icon}</button>";
+        $output .= "{$n}{$indent_plus1}<button class=\"dropdown_toggle\" {$aria_attributes}>";
+        $output .= "{$n}{$indent_plus2}Open";
+        $output .= "{$n}{$indent_plus2}{$icon}";
+        $output .= "{$n}{$indent_plus1}</button>";
     }
 
 
     /**
      * start_el
      * 
-     * Build a menu item anchor and output with all attributes.
+     * Build an anchor element using $item vars and append to output.
      * 
      * @param string   $output Used to append additional content (passed by reference).
      * @param WP_Post  $item   Menu item data object.
@@ -178,8 +184,9 @@ class Menu_Walker extends Walker_Nav_Menu {
 
         $t              = $this->t;
         $n              = $this->n;
-        $indent         = str_repeat( $t, $depth ); // code indent
-        $indentMore     = $indent . $t;
+        $indent         = str_repeat( $t, $this->t_offset + $depth );
+        $indent_plus1   = $indent . $t;
+        $indent_plus2   = $indent . $indent . $t;
         $css_block      = $args->menu_class;
         $css_element    = '_item';
         $css_modifier   = array(
@@ -210,9 +217,9 @@ class Menu_Walker extends Walker_Nav_Menu {
         $anchor_attributes .= !empty( $item->xfn )        ? ' rel="' . esc_attr( $item->xfn ) . '"'           : '';
 
         // Build markup
-        $item_output  = "{$n}{$indent}<a {$class_string} {$anchor_attributes} {$aria_attributes}>";
-        $item_output .= "{$n}{$indentMore}{$item->title}";
-        $item_output .= "{$n}{$indent}</a>";
+        $item_output  = "{$n}{$indent_plus1}<a {$class_string} {$anchor_attributes} {$aria_attributes}>";
+        $item_output .= "{$n}{$indent_plus2}{$item->title}";
+        $item_output .= "{$n}{$indent_plus1}</a>";
 
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
     }
@@ -221,7 +228,7 @@ class Menu_Walker extends Walker_Nav_Menu {
     /**
      * end_el
      * 
-     * Open a new dropdown_contents div ready for children menu items.
+     * Open a new dropdown_contents div ready for child menu items.
      *
      * @param string   $output Used to append additional content (passed by reference).
      * @param WP_Post  $item   Page data object. Not used.
@@ -229,11 +236,13 @@ class Menu_Walker extends Walker_Nav_Menu {
      * @param stdClass $args   An object of wp_nav_menu() arguments.
      */
     public function end_el( &$output, $item, $depth = 0, $args = null ) { 
-        $t          = $this->t;
-        $n          = $this->n;
-        $indent     = str_repeat( $t, $depth );
+        $t            = $this->t;
+        $n            = $this->n;
+        $indent       = str_repeat( $t, $this->t_offset + $depth );
+        $indent_plus1 = $indent . $t;
+        $indent_plus2 = $indent . $indent . $t;
 
-        $output .= "{$n}{$indent}<div class=\"dropdown_contents\">";
+        $output .= "{$n}{$indent_plus1}<div class=\"dropdown_contents\">";
     }
 
 
@@ -248,12 +257,14 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     public function end_lvl( &$output, $depth = 0, $args = null ) {
 
-        $t = $this->t;
-        $n = $this->n;
-        $indent  = str_repeat( $t, $depth );
+        $t            = $this->t;
+        $n            = $this->n;
+        $indent       = str_repeat( $t, $this->t_offset + $depth );
+        $indent_plus1 = $indent . $t;
+        $indent_plus2 = $indent . $indent . $t;
 
-        $output .= "{$n}{$indent}</div>"; //dropdown contents
-        $output .= "{$n}</div>";          //dropdown
+        $output .= "{$n}{$indent_plus1}</div>"; //dropdown contents
+        $output .= "{$n}{$indent}</div>";          //dropdown
     }
 
 
