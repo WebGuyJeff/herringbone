@@ -14,29 +14,24 @@ namespace Jefferson\Herringbone;
 	<div class="footer_inner">
 
 		<?php
-		wp_nav_menu( array(
-				'theme_location'	=> 'landing-page-secondary-menu',
-				'items_wrap'		=> '%3$s',
-				'menu_class'		=> 'nav',
-				'container'	   		=> 'div',
-				'container_class' 	=> 'footerNav',
-				'echo'           	=> true,
-				'walker'         	=> new Menu_Walker,
-				'fallback_cb'		=> [ new Menu_Walker(), 'fallback' ],
-		) ); 
+		Menu_Walker::output_theme_location( array(
+			'theme_location'	=> 'landing-page-secondary-menu',
+			'menu_class'		=> 'footerNav',
+			'nav_or_div'		=> 'div',
+			'nav_aria_label'	=> '',
+			'html_tab_indents'  => 3,
+		) );
 		?>
 
 		<div class="footer_copyright">
 
-			<?php 
-			wp_nav_menu( array(
-					'theme_location'	=> 'global-legal-links',
-					'items_wrap'	  	=> '%3$s',
-					'menu_class'	  	=> 'footer_label',
-					'container'	   		=> false,
-					'echo'           	=> true,
-					'walker'         	=> new Menu_Walker,
-					'fallback_cb'		=> [ new Menu_Walker(), 'fallback' ],
+			<?php
+			Menu_Walker::output_theme_location( array(
+				'theme_location'	=> 'global-legal-links',
+				'menu_class'		=> 'footer_label',
+				'nav_or_div'		=> false,
+				'nav_aria_label'	=> '',
+				'html_tab_indents'  => 3,
 			) );
 			?>
 
