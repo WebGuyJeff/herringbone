@@ -165,15 +165,15 @@ class Menu_Walker extends Walker_Nav_Menu {
         // If item has children and args allow further depth.
         if ( ( 0 == $max_depth || $max_depth > $depth + 1 ) && $item->hb__is_parent ) {
 
-            // Open a new menu dropdown component with toggle button.
-            $this->item = $item; //pass item array
+            // Open a new menu dropdown component.
             $this->start_lvl( $output, $depth, $args );
 
             // Output this parent item adjacent to dropdown toggle button.
             $this->t_nest_step = $this->t_nest_step + 1;
             $this->start_el( $output, $item, $depth, ...array_values( $args ) );
 
-            // Output dropdown contents element.
+            // Output dropdown contents element with toggle button.
+            $this->item = $item; //store item vars class-wide
             $this->end_el( $output, $item, $depth, ...array_values( $args ) );
 
             // For each child of this item.
@@ -262,23 +262,7 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     public function start_lvl( &$output, $depth = 0, $args = null ) {
 
-        $item         = $this->item;
-        $icon         = file_get_contents( get_theme_file_path( "imagery/icons_nav/button-dropdown.svg" ) );
-
-        // Passed from display_element:
-        $is_parent  = $item->hb__is_parent;
-        $title      = $item->title;
-        $id         = $item->ID;
-
-        // Item aria attributes
-        $aria_attributes = ( $is_parent ) ? 'aria-pressed="false" aria-expanded="false" aria-haspopup="menu"' : '';
-
         $output .= "{$this->n}{$this->i(0)}<div class=\"dropdown\">";
-        $output .= "{$this->n}{$this->i(1)}<label id=\"dropdown_toggle-{$item->ID}\" class=\"dropdown_toggle\" {$aria_attributes}>";
-        $output .= "{$this->n}{$this->i(2)}{$title}";
-        $output .= "{$this->n}{$this->i(2)}<input for=\"dropdown_toggle-{$item->ID}\" class=\"dropdown_state\" type=\"checkbox\" role=\"checkbox\" aria-checked=\"false\">";
-        $output .= "{$this->n}{$this->i(2)}{$icon}";
-        $output .= "{$this->n}{$this->i(1)}</label>";
     }
 
 
@@ -294,6 +278,21 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     public function end_el( &$output, $item, $depth = 0, $args = null ) { 
 
+        $item         = $this->item;
+        $icon         = file_get_contents( get_theme_file_path( "imagery/icons_nav/button-dropdown.svg" ) );
+
+        // Passed from display_element:
+        $is_parent  = $item->hb__is_parent;
+        $title      = $item->title;
+        $id         = $item->ID;
+
+        // Button aria attributes
+        $aria_attributes = ( $is_parent ) ? 'aria-pressed="false" aria-expanded="false" aria-haspopup="menu"' : '';
+
+        $output .= "{$this->n}{$this->i(0)}<button class=\"dropdown_toggle\" id=\"dropdown_toggle-{$id}\" {$aria_attributes}>";
+        $output .= "{$this->n}{$this->i(1)}<span class=\"screenReaderText\">{$title}</span>";
+        $output .= "{$this->n}{$this->i(1)}{$icon}";
+        $output .= "{$this->n}{$this->i(0)}</button>";
         $output .= "{$this->n}{$this->i(0)}<div class=\"dropdown_contents\">";
     }
 

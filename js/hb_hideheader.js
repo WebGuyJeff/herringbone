@@ -62,7 +62,6 @@ var hb_header = (function() {
 				}
 			}
 		},
-
 	};
 
 	// Move the elements! - GSAP v3 CSSRule Plugin

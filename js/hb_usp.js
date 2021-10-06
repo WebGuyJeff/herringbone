@@ -9,7 +9,7 @@
  */
 
 
-function toggleCheckboxes(chkBx){
+function toggleCheckboxes(chkBx) {
 	// toggle all checkboxes to false
 	let cbArray = document.getElementsByClassName(chkBx);
 	for(var i = 0; i < cbArray.length; i++){

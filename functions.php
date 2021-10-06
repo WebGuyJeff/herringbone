@@ -38,6 +38,7 @@ function enqueue_scripts_and_styles() {
 		wp_enqueue_script('jquery');
 		// Other front end resources
 		wp_enqueue_script( 'hb_mobile-popup-menu', get_template_directory_uri() . '/js/hb_mobile-popup-menu.js', array ( 'jquery' ), '1.0', true );
+		wp_enqueue_script( 'hb_dropdownToggle', get_template_directory_uri() . '/js/hb_dropdown-menu.js', array (), '1.0', true );
 		wp_enqueue_script( 'gsap', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js', array ( 'jquery' ), '3.6.1', true );
 		wp_enqueue_script( 'gsap_cssrule', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/CSSRulePlugin.min.js', array ( 'gsap' ), '3.6.1', true );
 		wp_enqueue_script( 'gsap_scrolltrigger', '//cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js', array ( 'gsap' ), '3.6.1', true );
