@@ -267,15 +267,18 @@ class Menu_Walker extends Walker_Nav_Menu {
 
         // Passed from display_element:
         $is_parent  = $item->hb__is_parent;
+        $title      = $item->title;
+        $id         = $item->ID;
 
         // Item aria attributes
         $aria_attributes = ( $is_parent ) ? 'aria-pressed="false" aria-expanded="false" aria-haspopup="menu"' : '';
 
         $output .= "{$this->n}{$this->i(0)}<div class=\"dropdown\">";
-        $output .= "{$this->n}{$this->i(1)}<button class=\"dropdown_toggle\" {$aria_attributes}>";
-        $output .= "{$this->n}{$this->i(2)}Open";
+        $output .= "{$this->n}{$this->i(1)}<label id=\"dropdown_toggle-{$item->ID}\" class=\"dropdown_toggle\" {$aria_attributes}>";
+        $output .= "{$this->n}{$this->i(2)}{$title}";
+        $output .= "{$this->n}{$this->i(2)}<input for=\"dropdown_toggle-{$item->ID}\" class=\"dropdown_state\" type=\"checkbox\" role=\"checkbox\" aria-checked=\"false\">";
         $output .= "{$this->n}{$this->i(2)}{$icon}";
-        $output .= "{$this->n}{$this->i(1)}</button>";
+        $output .= "{$this->n}{$this->i(1)}</label>";
     }
 
 

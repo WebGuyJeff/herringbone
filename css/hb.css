@@ -79,19 +79,21 @@ Font Size		 Line Height
 	2.1 IMAGES
 	2.2 FORMS
 	2.3 BUTTONS
-	2.3.1 BASE BUTTON
-	2.3.2 BUTTONS - FLAPPY
-	2.3.3 BUTTONS - SPINNY
-	2.3.4 BUTTONS - CTA SPINNY
-	2.3.5 WIDGET BUTTON
-	2.3.6 MODAL CLOSE BUTTON
-	2.3.7 HEADER TOGGLE
+		2.3.1 BASE BUTTON
+		2.3.2 BUTTONS - FLAPPY
+		2.3.3 BUTTONS - SPINNY
+		2.3.4 BUTTONS - CTA SPINNY
+		2.3.5 WIDGET BUTTON
+		2.3.6 MODAL CLOSE BUTTON
+		2.3.7 HEADER TOGGLE
 3. [BLOCKS]
 	3.1 COMMON
 		3.1.1 HEADER
 		3.1.2 FOOTER
 		3.1.3 SITE TITLE
 		3.1.4 NAV
+		3.1.5 MODAL
+		3.1.6 DROPDOWN
 	3.2 MOBILE
 		3.2.1 THUMBNAV
 
@@ -1237,10 +1239,14 @@ a img.alignright,
 }
 
 .footerNav {
-	flex-wrap: wrap;
-	align-items: center;
-	margin: 1em 0 3em 0;
-	padding: 0;
+    display: flex;
+    align-items: center;
+    margin: 1em 0 3em 0;
+    padding: 0;
+    gap: 0.6em;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 100%;
 }
 
 .nav {
@@ -1308,6 +1314,168 @@ a img.alignright,
 			height: 100vh;
 		}
 	}
+
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.6 DROPDOWN - - */
+
+
+	*, ::after, ::before {
+		box-sizing: border-box;
+	}
+	
+	:focus-visible {
+		outline: -webkit-focus-ring-color auto 1px;
+	}
+	
+	button,
+	select {
+		text-transform: none;
+	}
+	button,
+	input {
+		overflow: visible;
+	}
+	button,
+	input,
+	optgroup,
+	select,
+	textarea {
+		margin: 0;
+		font-family: inherit;
+		font-size: inherit;
+		line-height: inherit;
+	}
+	
+	a {
+		color: #007bff;
+		text-decoration: none;
+		background-color: transparent;
+		-webkit-text-decoration-skip: objects;
+	}
+	
+		a:-webkit-any-link {
+			color: -webkit-link;
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		a:-webkit-any-link:focus-visible {
+			outline-offset: 1px;
+		}
+		a:hover {
+			color: #0056b3;
+			text-decoration: underline;
+		}
+	
+	
+	.dropdown_toggle:focus,
+	.dropdown_toggle:hover {
+		text-decoration: none;
+	}
+	.dropdown_toggle:focus {
+		outline: 0;
+		box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+	}
+	.dropdown_toggle:not(:disabled) {
+		cursor: pointer;
+	}
+	
+	
+	.dropdown {
+		position: relative;
+	}
+	
+	.dropdown_toggle {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 6px;
+		font-weight: 400;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: middle;
+		user-select: none;
+		color: #fff;
+		background-color: #6c757d;
+		border: 1px solid #6c757d;
+		padding: .375rem .75rem;
+		font-size: 1rem;
+		line-height: 1.5;
+		border-radius: .25rem;
+		transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	}
+		.dropdown_toggle:hover {
+			color: #fff;
+			background-color: #5a6268;
+			border-color: #545b62;
+		}
+		.dropdown_toggle:focus {
+			box-shadow: 0 0 0 0.2rem rgb(108 117 125 / 50%);
+		}
+	
+	.dropdown_toggle svg {
+		height: 1.3em;
+		max-width: 100%;
+	}
+	
+	.dropdown_state {
+		position: absolute;
+		opacity: 0;
+	}
+	
+	.dropdown_state:checked ~ .dropdown_contents {
+		display: flex;
+		flex-flow: column nowrap;
+		position: absolute;
+		transform: translate3d(0px, 38px, 0px);
+		top: 0px;
+		left: 0px;
+		will-change: transform;
+	}
+	.dropdown_contents {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 1000;
+		display: none;
+		float: left;
+		min-width: 10rem;
+		padding: .5rem 0;
+		margin: .125rem 0 0;
+		font-size: 1rem;
+		color: #212529;
+		text-align: left;
+		list-style: none;
+		background-color: #fff;
+		background-clip: padding-box;
+		border: 1px solid rgba(0,0,0,.15);
+		border-radius: .25rem;
+	}
+	
+	
+	.menu_item {
+		display: block;
+		width: 100%;
+		padding: .25rem 1.5rem;
+		clear: both;
+		font-weight: 400;
+		color: #212529;
+		text-align: inherit;
+		white-space: nowrap;
+		background-color: transparent;
+		border: 0;
+	}
+		.menu_item:focus,
+		.menu_item:hover {
+			color: #16181b;
+			text-decoration: none;
+			background-color: #f8f9fa;
+		}
+		.menu_item-active {
+			color: #fff;
+			text-decoration: none;
+			background-color: #007bff;
+		}
+	
 
 
 /*----------------------------------------------------- 3.2 MOBILE >= 0em ----*/
