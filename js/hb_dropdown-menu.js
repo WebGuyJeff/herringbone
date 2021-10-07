@@ -21,13 +21,14 @@ var hb_dropdownToggle = (function() {
      */
     function initDropdownButtons() {
 
-        let buttons = document.getElementsByClassName('dropdown_toggle');
+        let buttons = document.getElementsByClassName( 'dropdown_toggle' );
 
         [ ...buttons ].forEach( button => {
-            button.addEventListener('click', function() {
-                hb_dropdownToggle.toggle( button.id );
+            button.addEventListener( 'click', buttonClicked = function(){
+                hb_dropdownToggle.toggle( this.id );
             });
         });
+
     }
 
 
@@ -71,9 +72,20 @@ var hb_dropdownToggle = (function() {
                 menu = button.parentElement;
                 menu.scrollIntoView();
 
-                document.addEventListener( 'click', function() {
-                    hb_dropdownToggle.clickOff( id );
-                });
+                /**
+                 * Preserves the variable values for event listeners.
+                 */
+                function scopePreserver( id ) {
+                    //Vars will be forgotten in this scope
+                    return function pageClick() {
+                        //Vars will be remembered in this scope
+                        hb_dropdownToggle.clickOff( id, event );
+                    };
+                }
+
+                document.addEventListener( 'click', scopePreserver( id ) );
+
+                console.log('addEventListener ' + id);
 
             // Else, make it inactive
             } else {
@@ -94,7 +106,9 @@ var hb_dropdownToggle = (function() {
         /**
          * Check if the click event was outside of the menu element.
          */
-        clickOff: function( id ) {
+        clickOff: function( id, event ) {
+
+            console.log('clickOff ' + id);
 
             let button = document.getElementById( id );
             let menu = button.parentElement;
@@ -102,11 +116,7 @@ var hb_dropdownToggle = (function() {
             if ( menu !== !event.target && !menu.contains( event.target ) ) {
                 hb_dropdownToggle.close( button );
 
-                console.log('clickOff ' + id);
-
-                document.removeEventListener( 'click', function() {
-                    hb_dropdownToggle.clickOff( id );
-                });
+                document.removeEventListener( 'click', pageClick() );
             }
         }
 
