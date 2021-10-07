@@ -61,31 +61,35 @@ Font Size		 Line Height
 1. [BASE]
 	1.1 DEFAULTS AND THEME VARIABLES
 	1.2 BROWSER SCROLLBAR
-	1.3 FORM PLACEHOLDER
-	1.4 LAYOUT ELEMENTS
-		1.4.1 LAYOUT - BASE SETUP
-		1.4.2 LAYOUT - GLOBAL GRID
-		1.4.3 LAYOUT - BLOG POST 
-		1.4.4 LAYOUT - ARTICLE
-	1.5 CONTAINERS
-		1.5.1 CONTAINERS - GLOBAL CONTENT CONTAINER (SAUCE)
-		1.5.2 CONTAINERS - SQUARES
-		1.5.3 CONTAINERS - VANILLA
-	1.6 TYPOGRAPHY
-	1.7 WIDGETS
-	1.8 WORDPRESS CORE CLASSES
+	1.3 ELEMENT BASE
+		1.3.1 DOCUMENT SETUP
+		1.3.2 ELEMENT RESETS
+		1.3.3 INPUT PLACEHOLDER
+	1.4 TYPOGRAPHY
+	1.5 WIDGETS
+	1.6 WORDPRESS CORE CLASSES
+	1.7 ACCESSIBILITY
 
 2. [ELEMENTS]
-	2.1 IMAGES
-	2.2 FORMS
-	2.3 BUTTONS
-		2.3.1 BASE BUTTON
-		2.3.2 BUTTONS - FLAPPY
-		2.3.3 BUTTONS - SPINNY
-		2.3.4 BUTTONS - CTA SPINNY
-		2.3.5 WIDGET BUTTON
-		2.3.6 MODAL CLOSE BUTTON
-		2.3.7 HEADER TOGGLE
+	2.1 LAYOUT
+		2.1.1 LAYOUT - GLOBAL GRID
+		2.1.2 LAYOUT - BLOG POST 
+		2.1.3 LAYOUT - ARTICLE
+	2.2 CONTAINERS
+		2.2.1 CONTAINERS - GLOBAL CONTENT CONTAINER (SAUCE)
+		2.2.2 CONTAINERS - SQUARES
+		2.2.3 CONTAINERS - VANILLA
+	2.3 IMAGES
+	2.4 FORMS
+	2.5 BUTTONS
+		2.5.1 BASE BUTTON
+		2.5.2 BUTTONS - FLAPPY
+		2.5.3 BUTTONS - SPINNY
+		2.5.4 BUTTONS - CTA SPINNY
+		2.5.5 WIDGET BUTTON
+		2.5.6 MODAL CLOSE BUTTON
+		2.5.7 HEADER TOGGLE
+
 3. [BLOCKS]
 	3.1 COMMON
 		3.1.1 HEADER
@@ -168,9 +172,6 @@ Font Size		 Line Height
 
 } /* ROOT END */
 
-/* All elements include borders and margin in their size */
-* { box-sizing: border-box; }
-
 
 /*------------------------------------------------- 1.2 BROWSER SCROLLBAR ----*/
 
@@ -188,23 +189,8 @@ body::-webkit-scrollbar {
 	}
 
 
-/*-------------------------------------------------- 1.3 FORM PLACEHOLDER ----*/
-
-
-::placeholder {
-  opacity: 1; /* Chrome, Firefox, Opera, Safari 10.1+ */ /* Firefox */
-  color: var(--hb_grey);
-}
-	:-ms-input-placeholder {
-	color: var(--hb_grey) /* Internet Explorer 10-11 */
-	}
-	::-ms-input-placeholder {
-	color: var(--hb_grey); /* Microsoft Edge */
-	}
-
-
-/*--------------------------------------------------- 1.4 LAYOUT ELEMENTS ----*/
-/*- - - - - - - - - - - - - - - - - - - - - - - 1.4.1 LAYOUT - BASE SETUP ----*/
+/*------------------------------------------------------ 1.3 ELEMENT BASE ----*/
+/*- - - - - - - - - - - - - - - - - - - - - - - - -  1.3.1 DOCUMENT SETUP ----*/
 
 
 html, body {
@@ -222,224 +208,53 @@ body {
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - -  1.4.2 LAYOUT - GLOBAL GRID - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - -  1.3.2 ELEMENT RESETS - - */
 
 
-.main,
-.header,
-.footer {
-	display: grid;
-	grid-auto-flow: dense;
-	grid-template-columns: [full-l main-l] minmax(0, 1fr) [wide-l dip-l sides-l] minmax(18.8em, 48em) [sides-r dip-r wide-r] minmax(0, 1fr) [main-r full-r];
+* { 
+	box-sizing: border-box;
 }
-
-/* ADD SIDEBAR (OVER 768px) */
-@media (min-width: 48em) {
-	.main,
-	.header,
-	.footer {
-		grid-template-columns: [full-l] 1fr [wide-l dip-l sides-l] 12em [sides-r dip-r main-l] minmax(18.8em, 48em) [main-r wide-r] 1fr [full-r];
-	}
+*, ::after, ::before {
+	box-sizing: border-box;
 }
-
-/* ADD SECOND SIDEBAR (OVER 1120px) */
-@media (min-width: 70em) {
-	.main,
-	.header,
-	.footer {
-		grid-template-columns: [full-l] 1fr [wide-l dip-l] 12em [main-l dip-r] minmax(18.8em, 48em) [main-r sides-l] 12em [sides-r wide-r] 1fr [full-r];
-	}
+:focus-visible {
+	outline: -webkit-focus-ring-color auto 1px;
 }
-
-.base {
-	grid-column: main-l / main-r;
+button,
+select {
+	text-transform: none;
 }
-
-.header_inner,
-.footer_inner {
-	grid-column: wide-l / wide-r;
+button,
+input {
+	overflow: visible;
 }
-
-.sides {
-	grid-column: sides-l / sides-r;
-}
-
-.dip,
-.sides-narrow {
-	grid-column: dip-l / dip-r;
-}
-
-.sides-narrow {
-	display: contents;
-}
-
-@media (min-width: 48em) and (max-width: 70em) {
-	.sides-narrow {
-		display: flex;
-		flex-direction: column;
-	}
-}
-
-/* NESTED SIDEBAR COLUMNS */
-.base,
-.dip,
-.sides {
-	display: flex;
-	flex-direction: column;
-}
-
-/* GUTTERS */
-.main,
-.header,
-.footer,
-.base,
-.dip,
-.sides,
-.sides-narrow {
-	gap: var(--hb_gutters);
+button,
+input,
+optgroup,
+select,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - -  1.4.3 LAYOUT - BLOG POST - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - 1.3.3 INPUT PLACEHOLDER - - */
 
 
-.blog-post {
-    max-width: 100%;
-}
-	.blog-post img {
-		object-fit: contain;
-		height: auto;
-		max-width: 100%;
-		border-radius: var(--hb_radius-small);
-	}
+::placeholder {
+	opacity: 1; /* Chrome, Firefox, Opera, Safari 10.1+ */ /* Firefox */
+	color: var(--hb_grey);
+  }
+	  :-ms-input-placeholder {
+	  color: var(--hb_grey) /* Internet Explorer 10-11 */
+	  }
+	  ::-ms-input-placeholder {
+	  color: var(--hb_grey); /* Microsoft Edge */
+	  }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - -  1.4.4 LAYOUT - ARTICLE - - */
-
-
-main article img {
-    object-fit: contain;
-    height: auto;
-    max-width: 100%;
-    border-radius: var(--hb_radius-small);
-}
-
-
-/*-------------------------------------------------------- 1.5 CONTAINERS ----*/
-/*- - - - - - - - - - - - - - 1.5.1 CONTAINERS - GLOBAL CONTENT CONTAINER - - */
-
-
-.sauce {
-	display: flex;
-	justify-content: center;
-	z-index: 1;
-	box-shadow: var(--hb_shadow);
-	border: var(--hb_border);
-	border-radius: var(--hb_radius);
-	background: var(--hb_background);
-}
-	/* FULL WIDTH ON MOBILE */
-	.base .sauce {
-		border-right: 0;
-		border-left: 0;
-		border-radius: 0;
-	}
-		@media (min-width: 48em) {
-		.base .sauce {
-			border: var(--hb_border);
-			border-radius: var(--hb_radius);
-		} }
-			/* invert secondary element colours */
-			.header_inner.sauce,
-			.footer_inner.sauce {
-				--hb_border: solid 0.3em var(--hb_white);
-				--hb_background: var(--hb_lightGrey);
-				border: var(--hb_border);
-				background: var(--hb_background);
-			}
-
-
-/*- - - - - - - - - - - - - - - - - - - - - -  1.5.2 CONTAINERS - SQUARES - - */
-
-
-.squares {
-	display: grid;
-	grid-template: min-content 100vw min-content min-content / 100%;
-	width: 100%;
-}
-	.squares .column {
-		display: flex;
-		flex-flow: column nowrap;
-		width: 100%;
-		height: 100%;
-	}
-
-		.squares .cheese {
-			justify-content: center;
-			padding: 0 6%;
-			max-width: 100%;
-		}
-
-@media (min-width: 48em) {
-
-	.squares {
-		grid-template: minmax(50vw, min-content) minmax(50vw, min-content) / 60% 40%;
-	}
-}
-
-@media (min-width: 70em) {
-
-	.squares {
-		display: grid;
-		grid-auto-flow: dense;
-		grid-template: min-content min-content / 50% 50%;
-		width: 100%;
-	}
-		.squares > div:nth-of-type(4n+3) {
-			grid-column-start: 2;
-		}
-}
-
-
-/*- - - - - - - - - - - - - - - - - - - - - -  1.5.3 CONTAINERS - VANILLA - - */
-
-
-.row {
-	display: flex;
-	flex-flow: row wrap;
-}
-
-.column {
-	width: 100%;
-	max-width: calc(38rem + 6%);
-	margin: 0 auto;
-	padding: 0 3%;
-}
-
-.column img {
-	max-width: 100%;
-}
-
-.aspect1-1 {
-	aspect-ratio: 1 / 1;
-}
-
-@supports not (aspect-ratio: 1 / 1) {
-	.aspect1-1::before {
-		float: left;
-		padding-top: 100%;
-		content: "";
-	}
-
-	.aspect1-1::after {
-		display: block;
-		clear: both;
-		content: "";
-	}
-}
-
-
-/*-------------------------------------------------------- 1.6 TYPOGRAPHY ----*/
+/*-------------------------------------------------------- 1.4 TYPOGRAPHY ----*/
 
 
 /* All units are rem so font is always locked to root font size */
@@ -638,7 +453,7 @@ strong {
 }
 
 
-/*----------------------------------------------------------- 1.7 WIDGETS ----*/
+/*----------------------------------------------------------- 1.5 WIDGETS ----*/
 
 
 .widget {
@@ -692,7 +507,8 @@ strong {
 }
 
 
-/*-------------------------------------------- 1.8 WORDPRESS CORE CLASSES ----*/
+/*-------------------------------------------- 1.6 WORDPRESS CORE CLASSES ----*/
+
 
 /* Comment out original values for reference */
 
@@ -842,8 +658,241 @@ a img.alignright,
 }
 
 
+/*----------------------------------------------------- 1.7 ACCESSIBILITY ----*/
+
+
+.screenReaderText {
+    width: 1px;
+    margin-left: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0;
+}
+
+
 /*=========================================================== 2. ELEMENTS ====*/
-/*------------------------------------------------------------ 2.1 IMAGES ----*/
+/*--------------------------------------------------- 2.1 LAYOUT ELEMENTS ----*/
+/*- - - - - - - - - - - - - - - - - - - - - -  2.1.1 LAYOUT - GLOBAL GRID - - */
+
+
+.main,
+.header,
+.footer {
+	display: grid;
+	grid-auto-flow: dense;
+	grid-template-columns: [full-l main-l] minmax(0, 1fr) [wide-l dip-l sides-l] minmax(18.8em, 48em) [sides-r dip-r wide-r] minmax(0, 1fr) [main-r full-r];
+}
+
+/* ADD SIDEBAR (OVER 768px) */
+@media (min-width: 48em) {
+	.main,
+	.header,
+	.footer {
+		grid-template-columns: [full-l] 1fr [wide-l dip-l sides-l] 12em [sides-r dip-r main-l] minmax(18.8em, 48em) [main-r wide-r] 1fr [full-r];
+	}
+}
+
+/* ADD SECOND SIDEBAR (OVER 1120px) */
+@media (min-width: 70em) {
+	.main,
+	.header,
+	.footer {
+		grid-template-columns: [full-l] 1fr [wide-l dip-l] 12em [main-l dip-r] minmax(18.8em, 48em) [main-r sides-l] 12em [sides-r wide-r] 1fr [full-r];
+	}
+}
+
+.base {
+	grid-column: main-l / main-r;
+}
+
+.header_inner,
+.footer_inner {
+	grid-column: wide-l / wide-r;
+}
+
+.sides {
+	grid-column: sides-l / sides-r;
+}
+
+.dip,
+.sides-narrow {
+	grid-column: dip-l / dip-r;
+}
+
+.sides-narrow {
+	display: contents;
+}
+
+@media (min-width: 48em) and (max-width: 70em) {
+	.sides-narrow {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+/* NESTED SIDEBAR COLUMNS */
+.base,
+.dip,
+.sides {
+	display: flex;
+	flex-direction: column;
+}
+
+/* GUTTERS */
+.main,
+.header,
+.footer,
+.base,
+.dip,
+.sides,
+.sides-narrow {
+	gap: var(--hb_gutters);
+}
+
+
+/*- - - - - - - - - - - - - - - - - - - - - - -  2.1.2 LAYOUT - BLOG POST - - */
+
+
+.blog-post {
+    max-width: 100%;
+}
+	.blog-post img {
+		object-fit: contain;
+		height: auto;
+		max-width: 100%;
+		border-radius: var(--hb_radius-small);
+	}
+
+
+/*- - - - - - - - - - - - - - - - - - - - - - - -  2.1.3 LAYOUT - ARTICLE - - */
+
+
+main article img {
+    object-fit: contain;
+    height: auto;
+    max-width: 100%;
+    border-radius: var(--hb_radius-small);
+}
+
+
+/*-------------------------------------------------------- 2.2 CONTAINERS ----*/
+/*- - - - - - - - - - - - - - 2.2.1 CONTAINERS - GLOBAL CONTENT CONTAINER - - */
+
+
+.sauce {
+	display: flex;
+	justify-content: center;
+	z-index: 1;
+	box-shadow: var(--hb_shadow);
+	border: var(--hb_border);
+	border-radius: var(--hb_radius);
+	background: var(--hb_background);
+}
+	/* FULL WIDTH ON MOBILE */
+	.base .sauce {
+		border-right: 0;
+		border-left: 0;
+		border-radius: 0;
+	}
+		@media (min-width: 48em) {
+		.base .sauce {
+			border: var(--hb_border);
+			border-radius: var(--hb_radius);
+		} }
+			/* invert secondary element colours */
+			.header_inner.sauce,
+			.footer_inner.sauce {
+				--hb_border: solid 0.3em var(--hb_white);
+				--hb_background: var(--hb_lightGrey);
+				border: var(--hb_border);
+				background: var(--hb_background);
+			}
+
+
+/*- - - - - - - - - - - - - - - - - - - - - -  2.2.2 CONTAINERS - SQUARES - - */
+
+
+.squares {
+	display: grid;
+	grid-template: min-content 100vw min-content min-content / 100%;
+	width: 100%;
+}
+	.squares .column {
+		display: flex;
+		flex-flow: column nowrap;
+		width: 100%;
+		height: 100%;
+	}
+
+		.squares .cheese {
+			justify-content: center;
+			padding: 0 6%;
+			max-width: 100%;
+		}
+
+@media (min-width: 48em) {
+
+	.squares {
+		grid-template: minmax(50vw, min-content) minmax(50vw, min-content) / 60% 40%;
+	}
+}
+
+@media (min-width: 70em) {
+
+	.squares {
+		display: grid;
+		grid-auto-flow: dense;
+		grid-template: min-content min-content / 50% 50%;
+		width: 100%;
+	}
+		.squares > div:nth-of-type(4n+3) {
+			grid-column-start: 2;
+		}
+}
+
+
+/*- - - - - - - - - - - - - - - - - - - - - -  2.2.3 CONTAINERS - VANILLA - - */
+
+
+.row {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.column {
+	width: 100%;
+	max-width: calc(38rem + 6%);
+	margin: 0 auto;
+	padding: 0 3%;
+}
+
+.column img {
+	max-width: 100%;
+}
+
+.aspect1-1 {
+	aspect-ratio: 1 / 1;
+}
+
+@supports not (aspect-ratio: 1 / 1) {
+	.aspect1-1::before {
+		float: left;
+		padding-top: 100%;
+		content: "";
+	}
+
+	.aspect1-1::after {
+		display: block;
+		clear: both;
+		content: "";
+	}
+}
+
+
+/*------------------------------------------------------------ 2.3 IMAGES ----*/
 
 
 .img {
@@ -854,7 +903,7 @@ a img.alignright,
 }
 
 
-/*------------------------------------------------------------- 2.2 FORMS ----*/
+/*------------------------------------------------------------- 2.4 FORMS ----*/
 
 
 .form {
@@ -875,8 +924,8 @@ a img.alignright,
 	}
 
 
-/*----------------------------------------------------------- 2.3 BUTTONS ----*/
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - - 2.3.1 BASE BUTTON - - */
+/*----------------------------------------------------------- 2.5 BUTTONS ----*/
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - 2.5.1 BASE BUTTON - - */
 
 
 .button {
@@ -908,7 +957,7 @@ a img.alignright,
 		}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - -  2.3.2 BUTTONS - FLAPPY - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - -  2.5.2 BUTTONS - FLAPPY - - */
 
 
 .button.flappy {
@@ -950,7 +999,7 @@ a img.alignright,
 		}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - -  2.3.3 BUTTONS - SPINNY - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - -  2.5.3 BUTTONS - SPINNY - - */
 
 
 .button.spinny {
@@ -989,7 +1038,7 @@ a img.alignright,
     }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - -  2.3.4 BUTTONS - CTA SPINNY - - */
+/*- - - - - - - - - - - - - - - - - - - - - -  2.5.4 BUTTONS - CTA SPINNY - - */
 
 
 	.button-cta.spinny > *:first-child {
@@ -998,7 +1047,7 @@ a img.alignright,
 	}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.3.5 WIDGET BUTTON - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.5.5 WIDGET BUTTON - - */
 
 
 .widget .button {
@@ -1006,7 +1055,7 @@ a img.alignright,
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - -  2.3.6 MODAL CLOSE BUTTON - - */
+/*- - - - - - - - - - - - - - - - - - - - - - -  2.5.6 MODAL CLOSE BUTTON - - */
 
 
 .modal_close {
@@ -1033,7 +1082,7 @@ a img.alignright,
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.3.7 HEADER TOGGLE - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.5.7 HEADER TOGGLE - - */
 
 
 .headerToggle {
@@ -1319,127 +1368,85 @@ a img.alignright,
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.6 DROPDOWN - - */
 
 
-*, ::after, ::before {
-	box-sizing: border-box;
-}
-:focus-visible {
-	outline: -webkit-focus-ring-color auto 1px;
-}
-button,
-select {
-	text-transform: none;
-}
-button,
-input {
-	overflow: visible;
-}
-button,
-input,
-optgroup,
-select,
-textarea {
-	font-family: inherit;
-	font-size: inherit;
-	line-height: inherit;
-}
-
-
-	
-
-.screenReaderText {
-    width: 1px;
-    margin-left: -1px;
+.dropdown {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 1px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    max-width: fit-content;
+    height: fit-content;
+    border-radius: 2em;
+    font-size: inherit;
     padding: 0;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-    clip-path: inset(50%);
-    border: 0;
 }
-
-
-	.dropdown > *:not(.dropdown_contents)focus,
-	.dropdown > *:not(.dropdown_contents):hover {
+    .dropdown > a,
+    .dropdown_toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: inherit;
+        padding: 0.8em;
+        background: var(--hb_black);
+        color: var(--hb_white);
+        font-family: var(--hb_font-primary);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        text-decoration: none;
+        border: none;
+        white-space: nowrap;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, filter .15s ease-in-out;
+    }
+	.dropdown > a {
+		border-radius: 2em 0 0 2em;
+	}
+	.dropdown_toggle {
+		border-radius: 0 2em 2em 0;
+	}
+	.dropdown > a:hover,
+	.dropdown_toggle:hover {
 		text-decoration: none;
+		filter: invert(1);
 	}
-	.dropdown > *:not(.dropdown_contents):focus {
+	.dropdown > a:focus,
+	.dropdown_toggle:focus {
+		text-decoration: none;
 		outline: 0;
-		box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+		box-shadow: 0 0 0 0.2rem #49bde9;
 	}
-	.dropdown > *:not(.dropdown_contents):not(:disabled) {
+	.dropdown > a:not(:disabled),
+	.dropdown_toggle:not(:disabled) {
 		cursor: pointer;
 	}
-	
-	
-.dropdown {
-	position: relative;
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: center;
-	align-items: center;
-	gap: 6px;
-}
-	.dropdown > *:not(.dropdown_contents) {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-weight: 400;
-		white-space: nowrap;
-		user-select: none;
-		color: #fff;
-		background-color: #6c757d;
-		border: 1px solid #6c757d;
-		padding: .375rem .75rem;
-		font-size: 1rem;
-		line-height: 1.5;
-		border-radius: .25rem;
-		transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-	}
-
-
-
-.dropdown > *:not(.dropdown_contents):hover {
-	color: #fff;
-	background-color: #5a6268;
-	border-color: #545b62;
-}
-.dropdown > *:not(.dropdown_contents):focus {
-	box-shadow: 0 0 0 0.2rem rgb(108 117 125 / 50%);
-}
-
-.dropdown_toggle svg {
-	height: 1.3em;
-}
-
-
-.dropdown_toggle-active + .dropdown_contents {
-	display: flex;
-	flex-flow: column nowrap;
-	position: absolute;
-	transform: translate3d(0px, 38px, 0px);
-	top: 0px;
-	left: 0px;
-	will-change: transform;
-}
-	.dropdown_contents {
-		position: absolute;
-		top: 100%;
-		left: 0;
-		z-index: 1000;
-		display: none;
-		float: left;
-		min-width: 10rem;
-		padding: .5rem 0;
-		margin: .125rem 0 0;
-		font-size: 1rem;
-		color: #212529;
-		text-align: left;
-		list-style: none;
-		background-color: #fff;
-		background-clip: padding-box;
-		border: 1px solid rgba(0,0,0,.15);
-		border-radius: .25rem;
-	}
+		.dropdown_toggle svg {
+			max-height: 1ex;
+			width: 1.2ch;
+			display: inline-block;
+		}
+		.dropdown_toggle-active + .dropdown_contents {
+			display: flex;
+			flex-flow: column nowrap;
+		}
+			.dropdown_contents {
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+				display: none;
+				min-width: 10rem;
+				padding: .5rem 0;
+				margin: .125rem 0 0;
+				font-size: 1rem;
+				color: #212529;
+				text-align: left;
+				list-style: none;
+				background-color: #fff;
+				background-clip: padding-box;
+				border: 1px solid rgba(0,0,0,.15);
+				border-radius: .25rem;
+			}
 
 
 .menu_item {
@@ -1465,7 +1472,6 @@ textarea {
 		text-decoration: none;
 		background-color: #007bff;
 	}
-	
 
 
 /*----------------------------------------------------- 3.2 MOBILE >= 0em ----*/

@@ -3,9 +3,6 @@
  *
  * A function to hide the header and reveal by button click. Mainly for use on
  * landing pages where the main header isn't required.
- *
- * //Public call syntax
- * //hb_dropdownToggle.closeDropdownMenu();
  * 
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
@@ -17,7 +14,7 @@ var hb_dropdownToggle = (function() {
 
 
     /**
-     * Attach event listener to buttons in the loaded doc
+     * Attach event listener to buttons in the loaded doc.
      */
     function initDropdownButtons() {
 
@@ -33,7 +30,7 @@ var hb_dropdownToggle = (function() {
 
 
     /**
-     * Call init funtion on document ready
+     * Call init function on document ready.
      */
     let docLoaded = setInterval( function() {
         if( document.readyState === 'complete' ) {
@@ -59,35 +56,27 @@ var hb_dropdownToggle = (function() {
 
             let button = document.getElementById( id );
 
-            // Get current state of button
+            //set dropdown popop vertical position
+            let height = window.getComputedStyle( button ).height;
+            let menu = document.querySelector('#' + id + ' + ' + '.dropdown_contents');
+            menu.style.transform = 'translateY(' + height + ')';
+
+            /*  Get current state of button */
             let aria_exp = button.getAttribute( "aria-expanded" );
 
-            // If inactive, make it active
+            /*  If inactive, make it active */
             if ( aria_exp == "false" ) {
                 button.classList.add( "dropdown_toggle-active" );
                 button.setAttribute( "aria-expanded", true );
                 button.setAttribute( "aria-pressed", true );
 
-                // Scroll menu into view
                 menu = button.parentElement;
                 menu.scrollIntoView();
 
-                /**
-                 * Preserves the variable values for event listeners.
-                 */
-                function scopePreserver( id ) {
-                    //Vars will be forgotten in this scope
-                    return function pageClick() {
-                        //Vars will be remembered in this scope
-                        hb_dropdownToggle.clickOff( id, event );
-                    };
-                }
+                /* listen for page clicks */
+                document.addEventListener( 'click', hb_dropdownToggle.pageClick( id ) );
 
-                document.addEventListener( 'click', scopePreserver( id ) );
-
-                console.log('addEventListener ' + id);
-
-            // Else, make it inactive
+            /*  Else, make it inactive */
             } else {
                 hb_dropdownToggle.close( button );
             }
@@ -105,21 +94,31 @@ var hb_dropdownToggle = (function() {
 
         /**
          * Check if the click event was outside of the menu element.
+         * 
+         * Preserves the variable values for event listeners. If vars are
+         * not passed with the returned function, the event listeners
+         * access the function scope at time of event, capturing the wrong
+         * values, or none at all.
          */
-        clickOff: function( id, event ) {
+        pageClick: function( id ) {
+            /* Var values not passed to event listener */
 
-            console.log('clickOff ' + id);
+            return function scopePreserver() {
+                /* Var values passed to event listener */
 
-            let button = document.getElementById( id );
-            let menu = button.parentElement;
+                let button = document.getElementById( id );
+                let menu = button.parentElement;
 
-            if ( menu !== !event.target && !menu.contains( event.target ) ) {
-                hb_dropdownToggle.close( button );
+                /* If click was not on menu element */
+                if ( menu !== !event.target && !menu.contains( event.target ) ) {
 
-                document.removeEventListener( 'click', pageClick() );
-            }
+                    hb_dropdownToggle.close( button );
+                    document.removeEventListener( 'click', scopePreserver );
+                }
+            };
         }
 
-    };//public functions
+
+    };/* public functions */
     
-})();//plugin end
+})();/* plugin end */
