@@ -53,13 +53,13 @@ class Helpers {
 
 
     /**
-     * Public method: output_on_front_end(  )
+     * Public method: output_to_front_end(  )
      * 
      * Print anything to the front end. Useful for quickly outputting variables or function
      * results when debugging/experimenting 🧪
      *
     */
-    public static function output_on_front_end( ...$stuff_to_output ) {
+    public static function output_to_front_end( ...$stuff_to_output ) {
 
         Helpers::enqueue_assets( 'jetbrains' );
 

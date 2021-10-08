@@ -16,7 +16,7 @@ namespace Jefferson\Herringbone;
 		<?php
 		Menu_Walker::output_theme_location( array(
 			'theme_location'	=> 'landing-page-secondary-menu',
-			'menu_class'		=> 'footerNav',
+			'menu_class'		=> 'menu',
 			'nav_or_div'		=> 'div',
 			'nav_aria_label'	=> '',
 			'html_tab_indents'  => 3,
@@ -28,7 +28,7 @@ namespace Jefferson\Herringbone;
 			<?php
 			Menu_Walker::output_theme_location( array(
 				'theme_location'	=> 'global-legal-links',
-				'menu_class'		=> 'footer_label',
+				'menu_class'		=> 'menu',
 				'nav_or_div'		=> false,
 				'nav_aria_label'	=> '',
 				'html_tab_indents'  => 3,

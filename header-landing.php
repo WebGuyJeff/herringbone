@@ -56,7 +56,7 @@ namespace Jefferson\Herringbone;
 				<?php
 				Menu_Walker::output_theme_location( array(
 					'theme_location'	=> 'landing-page-primary-menu',
-					'menu_class'		=> 'headerNav',
+					'menu_class'		=> 'menu',
 					'nav_or_div'		=> 'nav',
 					'nav_aria_label'	=> 'Main Menu',
 					'html_tab_indents'  => 3,

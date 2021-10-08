@@ -231,7 +231,8 @@ class Menu_Walker extends Walker_Nav_Menu {
         $class_string = ( $is_parent )  ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'parent' ]      : $class_string;
         $class_string = ( $is_active )  ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'active' ]      : $class_string;
         $class_string = ( $has_active ) ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'has_active' ]  : $class_string;
-        $class_string = ( $depth == 0 && !$is_parent ) ? $class_string . ' ' . 'button' : $class_string;
+        $class_string = ( $depth === 0 ) ? 'button button-solid' : $class_string;
+        $class_string = ( $depth > 0 && $is_parent ) ? $class_string . ' ' . 'button' : $class_string;
         $class_string = 'class="' . $class_string . '"';
 
         // Aria attributes
@@ -265,7 +266,14 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     public function start_lvl( &$output, $depth = 0, $args = null ) {
 
-        $output .= "{$this->n}{$this->i(0)}<div class=\"dropdown button button-split\">";
+        // Dropdown Class
+        if ( $depth === 0 ) {
+            $dropdown_class = 'dropdown';
+        } else {
+            $dropdown_class = 'dropdown dropdown-inMenu';
+        }
+
+        $output .= "{$this->n}{$this->i(0)}<div class=\"{$dropdown_class}\">";
     }
 
 
@@ -288,11 +296,16 @@ class Menu_Walker extends Walker_Nav_Menu {
         $is_parent  = $item->hb__is_parent;
         $title      = $item->title;
         $id         = $item->ID;
+        $location   = $args->theme_location;
+
+        // Button Classes
+        $button_classes = ( $depth === 0 ) ? 'dropdown_toggle button button-solid' : 'dropdown_toggle button';
+        $button_classes = 'class="' . $button_classes . '"';
 
         // Button aria attributes
         $aria_attributes = ( $is_parent ) ? 'aria-pressed="false" aria-expanded="false" aria-haspopup="menu"' : '';
 
-        $output .= "{$this->n}{$this->i(0)}<button class=\"dropdown_toggle\" id=\"dropdown_toggle-{$id}\" {$aria_attributes}>";
+        $output .= "{$this->n}{$this->i(0)}<button {$button_classes} id=\"{$location}{$id}\" {$aria_attributes}>";
         $output .= "{$this->n}{$this->i(1)}<span class=\"screenReaderText\">{$title}</span>";
         $output .= "{$this->n}{$this->i(1)}{$icon}";
         $output .= "{$this->n}{$this->i(0)}</button>";
