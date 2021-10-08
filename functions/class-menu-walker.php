@@ -231,6 +231,7 @@ class Menu_Walker extends Walker_Nav_Menu {
         $class_string = ( $is_parent )  ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'parent' ]      : $class_string;
         $class_string = ( $is_active )  ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'active' ]      : $class_string;
         $class_string = ( $has_active ) ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'has_active' ]  : $class_string;
+        $class_string = ( $depth == 0 && !$is_parent ) ? $class_string . ' ' . 'button' : $class_string;
         $class_string = 'class="' . $class_string . '"';
 
         // Aria attributes
@@ -244,7 +245,9 @@ class Menu_Walker extends Walker_Nav_Menu {
 
         // Build markup
         $item_output  = "{$this->n}{$this->i(0)}<a {$class_string} {$anchor_attributes} {$aria_attributes}>";
-        $item_output .= "{$this->n}{$this->i(1)}{$item->title}";
+        $item_output .= "{$this->n}{$this->i(1)}<span>";
+        $item_output .= "{$this->n}{$this->i(2)}{$item->title}";
+        $item_output .= "{$this->n}{$this->i(1)}</span>";
         $item_output .= "{$this->n}{$this->i(0)}</a>";
 
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
@@ -262,7 +265,7 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     public function start_lvl( &$output, $depth = 0, $args = null ) {
 
-        $output .= "{$this->n}{$this->i(0)}<div class=\"dropdown\">";
+        $output .= "{$this->n}{$this->i(0)}<div class=\"dropdown button button-split\">";
     }
 
 
