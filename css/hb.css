@@ -636,7 +636,7 @@ a img.alignright,
 	padding: 0;
 	position: absolute !important;
 	width: 1px;
-	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+	word-wrap: normal !important;
 }
 
 .screen-reader-text:focus {
@@ -662,7 +662,7 @@ a img.alignright,
 
 
 .screenReaderText {
-    width: 1px;
+	width: 1px;
     margin-left: -1px;
     padding: 0;
     overflow: hidden;
@@ -670,6 +670,9 @@ a img.alignright,
     white-space: nowrap;
     clip-path: inset(50%);
     border: 0;
+    position: absolute;
+    pointer-events: none;
+	word-wrap: normal !important;
 }
 
 
@@ -940,15 +943,14 @@ main article img {
 }
 
 .button:hover:not(:disabled):not(.disabled) {
-	filter: invert(1);
 	cursor: pointer;
+	filter: contrast(1.5);
 }
 .button:focus,
 .button:focus-visible {
 	z-index: 1;
-	text-decoration: none;
-	outline: 0;
-	box-shadow: 0 0 0 0.2rem var(--hb_blue);
+    outline: 0;
+    box-shadow: 0 0 0 0.25em var(--hb_grey);
 }
 
 
@@ -956,21 +958,19 @@ main article img {
 	position: relative;
 	display: flex;
 	flex-flow: row nowrap;
-	gap: 1px;
 	align-items: center;
 	justify-content: center;
 	border: none;
 	max-width: fit-content;
-	height: fit-content;
-	border-radius: 2em;
+	max-height: fit-content;
+	border-radius: 10em;
 	font-size: inherit;
 	padding: 0;
-	text-decoration: none;
-	transition: color .15s ease-in-out,
-		background-color .15s ease-in-out,
-		border-color .15s ease-in-out,
-		box-shadow .15s ease-in-out,
-		filter .15s ease-in-out;
+	transition: color .2s ease-in-out,
+		background-color .2s ease-in-out,
+		border-color .2s ease-in-out,
+		box-shadow .2s ease-in-out,
+		filter .2s ease-in-out;
 }
 	.button-solid > *:first-child {
 		display: flex;
@@ -989,36 +989,6 @@ main article img {
 		transition: inherit;
 	}
 
-/*
-
-.button:not(.button-split):hover{
-	text-decoration: none;
-	filter: invert(1);
-}
-.button:not(.button-split):focus,
-.button:not(.button-split):focus-visible,
-.button-split > *:first-child:focus,
-.button-split > *:first-child:focus-visible,
-.button-split > button:focus,
-.button-split > button:focus-visible {
-	z-index: 1;
-	text-decoration: none;
-	outline: 0;
-	box-shadow: 0 0 0 0.2rem var(--hb_blue);
-}
-.button:not(.button-split):not(:disabled) {
-	cursor: pointer;
-}
-	.button-split > *:first-child:hover,
-	.button-split > button:hover {
-		text-decoration: none;
-		filter: invert(1);
-	}
-	.button-split > *:first-child:not(:disabled),
-	.button-split > button:not(:disabled) {
-		cursor: pointer;
-	}
-*/
 
 
 /*- - - - - - - - - - - - - - - - - - - - - - - -  2.5.2 BUTTONS - FLAPPY - - */
@@ -1067,25 +1037,38 @@ main article img {
 
 
 .button.spinny {
-    border-radius: 2em;
+    border-radius: 10em;
     background: #000;
     padding: 0;
     width: 8em;
-    max-width: 100%;
     height: 2.5em;
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    max-width: fit-content;
+    border: none;
+    text-decoration: none;
+    transition: 0.2s;
 }
     .button.spinny > *:first-child {
-        transition: 0.2s;
-        border-radius: 2em;
-        background: var(--hb_lightGrey);
-        width: 100%;
-        height: 2.5em;
-        color: var(--hb_white);
-        font-family: var(--hb_font-primary);
-        font-weight: 800;
-        letter-spacing: -0.04em;
-        user-select: none;
-        text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: inherit;
+		padding: 0.5em 1em;
+		text-decoration: none;
+		border: none;
+		white-space: nowrap;
+		transition: inherit;
+		border-radius: inherit;
+		min-width: fit-content;
+		height: 2.5em;
+		font-family: var(--hb_font-primary);
+		font-weight: 800;
+		letter-spacing: -0.04em;
+		user-select: none;
     }
         .button.spinny:hover > *:first-child {
             transform: rotatex(45deg);

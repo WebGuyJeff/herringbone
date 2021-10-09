@@ -306,8 +306,8 @@ class Menu_Walker extends Walker_Nav_Menu {
         $aria_attributes = ( $is_parent ) ? 'aria-pressed="false" aria-expanded="false" aria-haspopup="menu"' : '';
 
         $output .= "{$this->n}{$this->i(0)}<button {$button_classes} id=\"{$location}{$id}\" {$aria_attributes}>";
+        $output .= "{$this->n}{$this->i(1)}<span class=\"dropdown_toggleIcon\">{$icon}</span>";
         $output .= "{$this->n}{$this->i(1)}<span class=\"screenReaderText\">{$title}</span>";
-        $output .= "{$this->n}{$this->i(1)}{$icon}";
         $output .= "{$this->n}{$this->i(0)}</button>";
         $output .= "{$this->n}{$this->i(0)}<div class=\"dropdown_contents\">";
     }
