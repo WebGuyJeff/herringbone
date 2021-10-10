@@ -955,27 +955,22 @@ main article img {
 
 
 .button-solid {
-	position: relative;
-	display: flex;
-	flex-flow: row nowrap;
-	align-items: center;
-	justify-content: center;
-	border: none;
-	max-width: fit-content;
-	max-height: fit-content;
-	border-radius: 10em;
-	font-size: inherit;
-	padding: 0;
-	transition: color .2s ease-in-out,
+    position: relative;
+    display: inline-block;
+    border: none;
+    max-width: fit-content;
+    max-height: fit-content;
+    border-radius: 10em;
+    font-size: inherit;
+    padding: 0;
+    transition: color .2s ease-in-out,
 		background-color .2s ease-in-out,
 		border-color .2s ease-in-out,
 		box-shadow .2s ease-in-out,
 		filter .2s ease-in-out;
 }
 	.button-solid > *:first-child {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		display: inline-block;
 		border-radius: inherit;
 		padding: 0.5em 1em;
 		background: var(--hb_black);
@@ -1404,27 +1399,24 @@ main article img {
 
 
 .dropdown {
-    position: relative;
+	position: relative;
     display: flex;
     flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-	gap: 1px;
+    gap: 1px;
     font-size: inherit;
 }
 .dropdown >:nth-child(1) {
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-	margin-right: 0;
-	padding-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: 0;
+    padding-right: 0;
 }
-.dropdown >:nth-child(2) button {
+.dropdown >:nth-child(2) {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 	margin-left: 0;
 	padding-left: 0;
 }
-
 
 .dropdown-inMenu {
 	border-color: inherit;
