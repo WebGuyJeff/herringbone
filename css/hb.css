@@ -220,15 +220,12 @@ body {
 :focus-visible {
 	outline: -webkit-focus-ring-color auto 1px;
 }
-button,
 select {
 	text-transform: none;
 }
-button,
 input {
 	overflow: visible;
 }
-button,
 input,
 optgroup,
 select,
@@ -236,6 +233,12 @@ textarea {
 	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit;
+}
+input:hover:not(:disabled):not(.disabled),
+optgroup:hover:not(:disabled):not(.disabled),
+select:hover:not(:disabled):not(.disabled),
+textarea:hover:not(:disabled):not(.disabled) {
+	cursor: pointer;
 }
 
 
@@ -933,35 +936,41 @@ main article img {
 /* Base button should only provide button mechanics and no styling */
 /* with the exception of inheritance to override browser defaults. */
 
+
+/* element */
+button:hover:not(:disabled):not(.disabled) {
+	cursor: pointer;
+}
+
+
 .button {
+	display: inline-block;
 	background-color: inherit;
 	color: inherit;
 	font-size: inherit;
+	font-family: inherit;
+	line-height: inherit;
 	border-style: solid;
 	border-width: 1px;
 	border-color: inherit;
+	text-transform: none;
+	overflow: visible;
 }
-
-.button:hover:not(:disabled):not(.disabled) {
-	cursor: pointer;
-	filter: contrast(1.5);
-}
-.button:focus,
-.button:focus-visible {
-	z-index: 1;
-    outline: 0;
-    box-shadow: 0 0 0 0.25em var(--hb_grey);
-}
-
+	.button:focus,
+	.button:focus-visible {
+		z-index: 1;
+		outline: 0;
+		box-shadow: 0 0 0 0.25em var(--hb_grey);
+	}
 
 .button-solid {
     position: relative;
-    display: inline-block;
+    display: flex;
+    height: 2.5em;
     border: none;
     max-width: fit-content;
     max-height: fit-content;
     border-radius: 10em;
-    font-size: inherit;
     padding: 0;
     transition: color .2s ease-in-out,
 		background-color .2s ease-in-out,
@@ -970,7 +979,9 @@ main article img {
 		filter .2s ease-in-out;
 }
 	.button-solid > *:first-child {
-		display: inline-block;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		border-radius: inherit;
 		padding: 0.5em 1em;
 		background: var(--hb_black);
@@ -982,8 +993,8 @@ main article img {
 		border: none;
 		white-space: nowrap;
 		transition: inherit;
+		height: 100%;
 	}
-
 
 
 /*- - - - - - - - - - - - - - - - - - - - - - - -  2.5.2 BUTTONS - FLAPPY - - */
@@ -1324,11 +1335,8 @@ main article img {
 	width: 100%;
 	max-width: 40em;
 }
-	.menu_item > *:first {
-		text-decoration: inherit;
-	}
-	.menu_item:not(.button > *) {
-		display: block;
+	.menu_item {
+		display: inline-flex;
 		width: 100%;
 		padding: .25rem 1.5rem;
 		clear: both;
@@ -1340,13 +1348,17 @@ main article img {
 		border: 0;
 		text-decoration: none;
 	}
-		.menu_item:not(.button):not(.button > *):focus,
-		.menu_item:not(.button):not(.button > *):focus-visible,
-		.menu_item:not(.button):not(.button > *):hover {
+	.menu_item > *:first {
+		text-decoration: inherit;
+	}
+		.menu_item:focus,
+		.menu_item:focus-visible,
+		.menu_item:hover,
+		.menu_item + button:hover {
 			background-color: var(--hb_lightGreen);
 			color: #000;
 		}
-		.menu_item-active:not(.button):not(.button > *) {
+		.menu_item-active {
 			text-decoration: none;
    			border-left: solid 0.5em var(--hb_blue);
 		}
@@ -1405,13 +1417,13 @@ main article img {
     gap: 1px;
     font-size: inherit;
 }
-.dropdown >:nth-child(1) {
+.dropdown > .button:nth-child(1) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     margin-right: 0;
     padding-right: 0;
 }
-.dropdown >:nth-child(2) {
+.dropdown > .button:nth-child(2) {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 	margin-left: 0;
@@ -1420,6 +1432,8 @@ main article img {
 
 .dropdown-inMenu {
 	border-color: inherit;
+	display: inline-flex;
+    align-items: center;
 }
 	.dropdown-inMenu > button {
 		display: inline-flex;
@@ -1433,10 +1447,12 @@ main article img {
 		border-left: solid 1px #000;
     	border-color: inherit;
 	}
+	.dropdown_toggle {
+		font-size: inherit;
+	}
 	.dropdown_toggle svg {
 		max-height: 1ex;
 		width: 1.2ch;
-		display: inline-block;
 		transition: transform 0.15s ease-in-out;
 	}
 	.dropdown_toggle-active svg {
