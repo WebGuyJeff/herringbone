@@ -14,34 +14,29 @@ namespace Jefferson\Herringbone;
 	<div class="footer_inner sauce">
 
 		<?php
-		wp_nav_menu( array(
+			Menu_Walker::output_theme_location_menu( array(
 				'theme_location'	=> 'global-secondary-menu',
-				'items_wrap'		=> '%3$s',
-				'menu_class'		=> 'nav',
-				'container'	   		=> 'div',
-				'container_class' 	=> 'footerNav',
-				'echo'           	=> true,
-				'walker'         	=> new Menu_Walker,
-				'fallback_cb'		=> [ new Menu_Walker(), 'fallback' ],
-		) ); 
+				'menu_class'		=> 'footer_nav',
+				'nav_or_div'		=> 'div',
+				'nav_aria_label'	=> '',
+				'html_tab_indents'  => 3,
+				'button_class'		=> 'button button-noback',
+			) );
 		?>
 
-		<div class="footer_copyright">
 
-			<?php 
-			wp_nav_menu( array(
+		<div class="footer_legalLinks">
+			<?php
+				Menu_Walker::output_theme_location_menu( array(
 					'theme_location'	=> 'global-legal-links',
-					'items_wrap'	  	=> '%3$s',
-					'menu_class'	  	=> 'footer_label',
-					'container'	   		=> false,
-					'echo'           	=> true,
-					'walker'         	=> new Menu_Walker,
-					'fallback_cb'		=> [ new Menu_Walker(), 'fallback' ],
-			) );
+					'nav_or_div'		=> false,
+					'nav_aria_label'	=> '',
+					'html_tab_indents'  => 3,
+					'button_class'		=> 'button button-noback',
+				) );
+
+			echo "<p class=\"footer_label\">&copy; " . date("Y") . " Hello, my name is Jeff</p>";
 			?>
-
-			<?php echo "<p class=\"footer_label\">&copy; " . date("Y") . " Hello, my name is Jeff</p>";?>
-
 		</div>
 
 	</div>

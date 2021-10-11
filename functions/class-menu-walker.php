@@ -46,7 +46,7 @@ class Menu_Walker extends Walker_Nav_Menu {
      * 
      * Think of this as a global indenting value which indents the entire html
      * output by this many \t indents. It is set as parameter 'html_tab_indents'
-     * when calling output_theme_location from within template files, because
+     * when calling output_theme_location_menu from within template files, because
      * it just makes sense to be able to set your desired indentation at this
      * point.
      * 
@@ -54,6 +54,15 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     private $t_offset;
 
+    /**
+     * Button Class.
+     * 
+     * This string is also passed from output_theme_location_menu to provide the ability
+     * to set the desired button classes directly in the template markup.
+     * 
+     * @var string: CSS class(es) string
+     */
+    private $button_class;
 
     /**
      * Keeps track of markup nesting.
@@ -121,10 +130,22 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     public function display_element( $item, &$children_elements, $max_depth, $depth, $args, &$output ) {
 
-        // Grab 'html_tab_indents' passed by output_theme_location
+        // Grab 'html_tab_indents' passed by output_theme_location_menu
         if ( $this->first_call ) {
             $this->first_call = false;
-            $this->t_offset  = $args[0]->html_tab_indents;
+
+            if ( isset( $args[0]->html_tab_indents ) ) {
+                $this->t_offset  = $args[0]->html_tab_indents;
+            } else {
+                $this->t_offset = 1;
+            }
+
+            if ( isset( $args[0]->button_class ) ) {
+                $this->button_class  = $args[0]->button_class;
+            } else {
+                $this->button_class = 'button';
+            }
+
         }
 
         //
@@ -213,7 +234,7 @@ class Menu_Walker extends Walker_Nav_Menu {
      */
     function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 
-        $css_block      = $args->menu_class;
+        $css_block      = 'dropdown';
         $css_element    = '_item';
         $css_modifier   = array(
             'parent'        => '-parent',
@@ -226,12 +247,15 @@ class Menu_Walker extends Walker_Nav_Menu {
         $is_active  = $item->hb__is_active;
         $has_active = $item->hb__has_active;
 
-        // Classes
+        // Button classes
+        $button_classes  = $this->button_class;
+
+        // Menu classes
         $class_string = $css_block . $css_element;
-        $class_string = ( $is_parent )  ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'parent' ]      : $class_string;
-        $class_string = ( $is_active )  ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'active' ]      : $class_string;
+        $class_string = ( $is_parent ) ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'parent' ]      : $class_string;
+        $class_string = ( $is_active ) ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'active' ]      : $class_string;
         $class_string = ( $has_active ) ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'has_active' ]  : $class_string;
-        $class_string = ( $depth === 0 ) ? 'button button-border' : $class_string;
+        $class_string = ( $depth === 0 ) ? $button_classes : $class_string;
         $class_string = 'class="' . $class_string . '"';
 
         // Aria attributes
@@ -298,7 +322,8 @@ class Menu_Walker extends Walker_Nav_Menu {
         $location   = $args->theme_location;
 
         // Button Classes
-        $button_classes = ( $depth === 0 ) ? 'dropdown_toggle button button-border' : 'dropdown_toggle';
+        $button_classes = $this->button_class;
+        $button_classes = ( $depth === 0 ) ? 'dropdown_toggle ' . $button_classes : 'dropdown_toggle';
         $button_classes = 'class="' . $button_classes . '"';
 
         // Button aria attributes
@@ -374,7 +399,7 @@ class Menu_Walker extends Walker_Nav_Menu {
 
 
     /**
-     * output_theme_location
+     * output_theme_location_menu
      * 
      * A wrapper for wp_nav_menu to simplify args template-side and
      * force use of limited arg options. The html structure is BEM so the
@@ -383,7 +408,7 @@ class Menu_Walker extends Walker_Nav_Menu {
      * 
      * Example call:
      * 
-     * Menu_Walker::output_theme_location( array(
+     * Menu_Walker::output_theme_location_menu( array(
      *     'theme_location'	=> 'landing-page-secondary-menu',
      *     'menu_class'		=> 'footerNav',
      *     'nav_or_div'		=> 'div',
@@ -392,17 +417,17 @@ class Menu_Walker extends Walker_Nav_Menu {
      * 
      * @param stdClass $args   An object of wp_nav_menu() arguments.
      */
-    public static function output_theme_location( array $hb__args ) {
+    public static function output_theme_location_menu( array $hb__args ) {
 
         //Test if args are valid
         $pass = true;
-        $test_args = [ 'nav_or_div', 'menu_class', 'nav_aria_label', 'theme_location', 'html_tab_indents' ];
+        $test_args = [ 'nav_or_div', 'menu_class', 'nav_aria_label', 'theme_location', 'html_tab_indents', 'button_class'  ];
 
         if ( !isset( $hb__args[ 'theme_location' ] ) ) {
             $pass = false;
         }
 
-        if ( $pass && count ( $hb__args ) > 5 ) {
+        if ( $pass && count ( $hb__args ) > 6 ) {
             $pass = false;
         } else {
 
@@ -440,10 +465,10 @@ class Menu_Walker extends Walker_Nav_Menu {
 
             echo "<pre>";
             echo "\n# Menu_Walker ERROR 🤕";
-            echo "\n# output_theme_location accepts up to 5 arguments with 'theme_location'";
+            echo "\n# output_theme_location_menu accepts up to 5 arguments with 'theme_location'";
             echo "\n# being the only required parameter. Example:";
             echo "\n#";
-            echo "\n# Menu_Walker::output_theme_location( array(";
+            echo "\n# Menu_Walker::output_theme_location_menu( array(";
             echo "\n#     'theme_location'   => 'main-menu',";
             echo "\n#     'menu_class'       => 'mainMenu',";
             echo "\n#     'nav_or_div'       => 'nav',";
@@ -471,6 +496,7 @@ class Menu_Walker extends Walker_Nav_Menu {
             'html_tab_indents'     => 3,
             'nav_or_div'           => 'div',
             'nav_aria_label'       => 'Menu',
+            'button_class'         => 'button',
         );
 
         // Merge passed args with defaults array

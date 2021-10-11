@@ -32,7 +32,9 @@ wp_enqueue_script( 'hb_hideheader_js' );
 		<?php get_template_part( 'template-parts/landing/dev/usp'); ?>
 	</section>
 
-
+	<section class="contact">
+		<?php get_template_part( 'template-parts/landing/dev/contact'); ?>
+	</section>
 
 	<?php /*
 

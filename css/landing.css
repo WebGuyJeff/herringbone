@@ -59,27 +59,28 @@ h6 {
 .hb__pag-landing .header {
 	margin-top: calc(var(--hb_landingHeaderOffset) - calc( 2 * var(--hb_landingHeaderOffset)));
 }
-	.hb__pag-landing .header_content-left   {
-		flex: 1 1 50%;
-		justify-content: flex-start;
+	.hb__pag-landing .header_inner-landing {
+		padding: 0.3em;
 	}
-	.hb__pag-landing .header_content-right  {
-		display:none;
-		flex: 1 1 33%;
-		justify-content: flex-end;
-	}
-	.hb__pag-landing .header_content-middle {
-		flex: 1 1 50%;
-		justify-content: center;
-	}
-
-
-.hb__pag-landing button.headerToggle {
-	position: absolute;
-	top: var(--hb_landingHeaderOffset);
-	right: 0.5em;
-	font-size: var(--hb_font-base);
-}
+		.hb__pag-landing .header_content-left   {
+			flex: 1 1 50%;
+			justify-content: flex-start;
+		}
+		.hb__pag-landing .header_content-middle {
+			flex: 1 1 50%;
+			justify-content: center;
+		}
+		.hb__pag-landing .header_content-right  {
+			display: flex;
+			flex: 0 0 6.6em;
+			justify-content: flex-end;
+		}
+			.hb__pag-landing button.headerToggle {
+				position: absolute;
+				top: var(--hb_landingHeaderOffset);
+				right: 0.5em;
+				font-size: var(--hb_font-base);
+			}
 
 
 /*------------------------------------ 1.4 GLOBAL - SECTION GRID LAYOUT ----*/

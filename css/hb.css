@@ -83,12 +83,13 @@ Font Size		 Line Height
 	2.4 FORMS
 	2.5 BUTTONS
 		2.5.1 BASE BUTTON
-		2.5.2 BUTTONS - FLAPPY
-		2.5.3 BUTTONS - SPINNY
-		2.5.4 BUTTONS - CTA SPINNY
-		2.5.5 WIDGET BUTTON
-		2.5.6 MODAL CLOSE BUTTON
-		2.5.7 HEADER TOGGLE
+		2.5.2 BUTTON - BORDER
+		2.5.3 BUTTON - NOBACK
+		2.5.4 BUTTON - FLAPPY
+		2.5.5 BUTTON - SPINNY
+		2.5.6 WIDGET BUTTON
+		2.5.7 MODAL CLOSE BUTTON
+		2.5.8 HEADER TOGGLE
 
 3. [BLOCKS]
 	3.1 COMMON
@@ -134,7 +135,7 @@ Font Size		 Line Height
   --hb_shadow: 0 0.25em 0.5em 0.25em #0006,0 0.125em 0.25em 0.125em #0006;
   --hb_shadow-inset: inset -0.1em 0.2em 0.5em 0.2em #000c;
 
-	/* LAYOUT VARS */
+	/* layout variables */
   --hb_radius-tiny: 0.15em;
   --hb_radius-small: 0.6em;
   --hb_radius: 1.2em;
@@ -142,12 +143,12 @@ Font Size		 Line Height
   --hb_border: solid 0.3em var(--hb_lightGrey);
   --hb_gutters: 0.5em;
 
-	/* FONT STACKS */
+	/* font stacks */
   --hb_font-secondary: 'Open Sans', Arial, sans-serif;
   --hb_font-primary: Inter, Helvetica, 'Helvetica Neue', Frutiger, Arial, sans-serif;
   --hb_font-fancy: 'Berkshire Swash', 'Brush Script MT', 'Brush Script Std', cursive;
 
-	/* FONT SIZES */
+	/* font sizes */
 	--hb_font-xxxl: 2.625rem;
 	--hb_font-xxl: 2.063rem;
 	--hb_font-xl: 1.625rem;
@@ -156,18 +157,19 @@ Font Size		 Line Height
 	--hb_font-s: 0.813rem;
 	--hb_font-xs: 0.7rem;
 
-	/* LANDING PAGE HIDDEN HEADER OFFSET */
+	/* landing page hidden header offset */
 	--hb_landingHeaderOffset: 7.1em;
 
-	/* Enable global proximity scroll snapping */
+	/* browser scroll behaviour */
 	scroll-snap-type: y proximity;
+	scroll-behavior: smooth;
 
-	/* FONT DEFAULTS */
+	/* font defaults */
 	color: var(--hb_black);
 	font: 300 1em var(--hb_font-primary);
 	letter-spacing: 0.015625rem;
 
-	/* FLUID ROOT UNITS (14px @ 768 - 18px @ 1920) */
+	/* fluid root units (14px @ 768 - 18px @ 1920) */
 	font-size: clamp(0.875rem, calc(0.875rem + ((1vw - 0.48rem) * 0.3534)), 1.125rem);
 
 } /* ROOT END */
@@ -176,7 +178,7 @@ Font Size		 Line Height
 /*------------------------------------------------- 1.2 BROWSER SCROLLBAR ----*/
 
 
-/* BROWSER SCROLLBAR */
+/* browser scrollbar */
 body::-webkit-scrollbar {
 	width: 0.5em;
 }
@@ -212,9 +214,6 @@ body {
 
 
 * { 
-	box-sizing: border-box;
-}
-*, ::after, ::before {
 	box-sizing: border-box;
 }
 :focus-visible {
@@ -513,46 +512,27 @@ strong {
 /*-------------------------------------------- 1.6 WORDPRESS CORE CLASSES ----*/
 
 
-/* Comment out original values for reference */
-
-/* 
-.alignnone {
-	margin: 5px 20px 20px 0;
-}
-*/
-
-.aligncenter,
-div.aligncenter {
+.aligncenter {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	/*  margin: 5px auto 5px auto; */
+	width: fit-content;
 }
 
 .alignright {
 	float:right;
-	/* margin: 5px 0 20px 20px; */
 }
 
 .alignleft {
 	float: left;
-	/* margin: 5px 20px 20px 0; */
 }
 
 a img.alignright {
 	float: right;
-	/* margin: 5px 0 20px 20px; */
 }
-
-/*
-a img.alignnone {
-	margin: 5px 20px 20px 0;
-}
-*/
 
 a img.alignleft {
 	float: left;
-	/* margin: 5px 20px 20px 0; */
 }
 
 a img.aligncenter {
@@ -564,53 +544,23 @@ a img.aligncenter {
 .wp-caption {
 	background: #fff;
 	border: 0.0625rem solid var(--hb_grey);
-	/* border: 1px solid #f0f0f0; */
-	max-width: 96%; /* Image does not overflow the content area */
+	max-width: 96%;
 	padding: 0.3125rem 0.1875rem 0.625rem;
-	/* padding: 5px 3px 10px; */
 	text-align: center;
 }
 
-/*
-.wp-caption.alignnone {
-	margin: 5px 20px 20px 0;
-}
-
-.wp-caption.alignleft {
-	margin: 5px 20px 20px 0;
-}
-
-.wp-caption.alignright {
-	margin: 5px 0 20px 20px;
-}
-*/
-
-/* Herrinbone Edits START */
-
 .alignnone,
-.alignleft,
-a img.alignnone,
-a img.alignleft,
-.wp-caption.alignnone,
-.wp-caption.alignleft {
+.alignleft {
 	margin: 0.3125rem 1.25rem 1.25rem 0;
-	/*  margin: 5px 20px 20px 0; */
 }
 
-.aligncenter,
-div.aligncenter {
+.aligncenter {
 	margin: 0.3125rem auto;
-	/*  margin: 5px auto 5px auto; */
 }
 
-.alignright,
-a img.alignright,
-.wp-caption.alignright {
+.alignright {
 	margin: 0.3125rem 0 1.25rem 1.25rem;
-	/* margin: 5px 0 20px 20px; */
 }
-
-/* Herrinbone Edits END */
 
 .wp-caption img {
 	border: 0 none;
@@ -622,10 +572,7 @@ a img.alignright,
 }
 
 .wp-caption p.wp-caption-text {
-	/* font-size: 11px; */
-	/* line-height: 17px; */
 	margin: 0;
-	/* padding: 0 4px 5px; */
 }
 
 /* Text meant only for screen readers. */
@@ -657,7 +604,6 @@ a img.alignright,
 	top: 5px;
 	width: auto;
 	z-index: 100000;
-	/* Above WP toolbar. */
 }
 
 
@@ -973,7 +919,7 @@ main article img {
 			cursor: pointer;
 		}
 		.button:hover > *:first-child {
-			background: var(--hb_darkGreen);
+			background: var(--hb_lightGreen);
 		}
 		.button:focus,
 		.button:focus-visible {
@@ -993,11 +939,23 @@ main article img {
     .button-border > *:first-child {
     	background: transparent;
 		color: var(--hb_black);
-    	border: solid 0.25em var(--hb_black);
+		border: dashed 1px var(--hb_black);
     }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - -  2.5.2 BUTTONS - FLAPPY - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - -  2.5.3 BUTTONS - NOBACK - - */
+
+
+.button {
+	background: transparent;
+}
+	.button-noback > *:first-child {
+		background: none;
+		color: var(--hb_black);
+	}
+
+
+/*- - - - - - - - - - - - - - - - - - - - - - - -  2.5.4 BUTTONS - FLAPPY - - */
 
 
 .button.flappy {
@@ -1039,7 +997,7 @@ main article img {
 		}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - -  2.5.3 BUTTONS - SPINNY - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - -  2.5.5 BUTTONS - SPINNY - - */
 
 
 .button.spinny {
@@ -1091,7 +1049,6 @@ main article img {
     }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - -  2.5.4 BUTTONS - CTA SPINNY - - */
 
 
 	.button-cta.spinny > *:first-child {
@@ -1100,7 +1057,7 @@ main article img {
 	}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.5.5 WIDGET BUTTON - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.5.6 WIDGET BUTTON - - */
 
 
 .widget .button {
@@ -1108,7 +1065,7 @@ main article img {
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - -  2.5.6 MODAL CLOSE BUTTON - - */
+/*- - - - - - - - - - - - - - - - - - - - - - -  2.5.7 MODAL CLOSE BUTTON - - */
 
 
 .modal_close {
@@ -1135,7 +1092,7 @@ main article img {
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.5.7 HEADER TOGGLE - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.5.8 HEADER TOGGLE - - */
 
 
 .headerToggle {
@@ -1243,23 +1200,28 @@ main article img {
 				display: none;
 				justify-content: flex-end;
 			}
-			@media (min-width: 32em) {
-				.header_content-left   {
-					flex: 1 1 50%;
-					justify-content: flex-start;
-				}
-				.header_content-middle {
+				.header_nav {
 					display: flex;
-					flex: 1 1 50%;
-					justify-content: flex-end;
+					flex-flow: row wrap;
+					justify-content: center;
+					align-items: center;
+					gap: 0.5em;
+					padding: 0.5em;
+					width: 100%;
+					max-width: 40em;
 				}
-			}
 
-.header_inner-landing {
-	padding: 0.3em;
+@media (min-width: 32em) {
+	.header_content-left   {
+		flex: 1 1 50%;
+		justify-content: flex-start;
+	}
+	.header_content-middle {
+		display: flex;
+		flex: 1 1 50%;
+		justify-content: flex-end;
+	}
 }
-
-
 
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.2 FOOTER - - */
@@ -1279,18 +1241,29 @@ main article img {
 		width: auto;
 		color: var(--hb_black);
 	}
-		.footer_copyright {
+		.footer_nav {
 			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: space-around;
-			margin: 3em 0 0 0;
+			flex-flow: column nowrap;
+			justify-content: center;
+			align-items: center;
+			gap: 0.5em;
+			padding: 0.5em;
 			width: 100%;
-			font-size: var(--hb_font-s);
+			max-width: 40em;
 		}
-		@media (min-width: 48em) { .footer_copyright {
-			justify-content: space-between;
-		}}
+
+			.footer_legalLinks {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				margin: 3em 0 0 0;
+				width: 100%;
+				font-size: var(--hb_font-s);
+			}
+			@media (min-width: 48em) { .footer_legalLinks {
+				justify-content: space-between;
+			}}
 
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.3 SITE TITLE - - */
@@ -1328,49 +1301,7 @@ main article img {
 		}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.4 MENU - - */
-
-
-.menu {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: center;
-	align-items: center;
-	gap: 0.5em;
-	padding: 0.5em;
-	width: 100%;
-	max-width: 40em;
-}
-	.menu_item {
-		display: inline-flex;
-		width: 100%;
-		padding: .25rem 1.5rem;
-		clear: both;
-		font: inherit;
-		color: #212529;
-		text-align: inherit;
-		white-space: nowrap;
-		background-color: transparent;
-		border: 0;
-		text-decoration: none;
-	}
-	.menu_item > *:first {
-		text-decoration: inherit;
-	}
-		.menu_item:focus,
-		.menu_item:focus-visible,
-		.menu_item:hover,
-		.menu_item + button:hover {
-			background-color: var(--hb_lightGreen);
-			color: #000;
-		}
-		.menu_item-active {
-			text-decoration: none;
-   			border-left: solid 0.5em var(--hb_blue);
-		}
-
-
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.5 MODAL - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.4 MODAL - - */
 
 
 .modal {
@@ -1413,7 +1344,7 @@ main article img {
 	}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.6 DROPDOWN - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.5 DROPDOWN - - */
 
 
 .dropdown {
@@ -1423,78 +1354,106 @@ main article img {
     gap: 1px;
     font-size: inherit;
 }
-.dropdown > .button:nth-child(1) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    margin-right: 0;
-    padding-right: 0;
-}
-.dropdown > .button:nth-child(2) {
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-	margin-left: 0;
-	padding-left: 0;
-}
+	.dropdown > .button:nth-child(1) {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		margin-right: 0;
+		padding-right: 0;
+	}
+		.dropdown > .button:nth-child(2) {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+			margin-left: 0;
+			padding-left: 0;
+		}
 
-.dropdown-inMenu {
-	border-color: inherit;
-	display: inline-flex;
-    align-items: center;
+		.dropdown_toggle {
+			font-size: inherit;
+			cursor: pointer;
+		}
+			.dropdown_toggleIcon {
+				height: 1em;
+				line-height: 1;
+				font-size: inherit;
+				justify-content: center;
+				align-items: center;
+			}
+			.button > .dropdown_toggleIcon {
+				padding-right: 0.7em;
+				padding-left: 0.5em;
+			}
+				.dropdown_toggle svg {
+					max-height: 1ex;
+					width: 1.6ch;
+					transition: transform 0.15s ease-in-out;
+					font-size: inherit;
+				}
+					.dropdown_contents {
+						position: absolute;
+						top: 0;
+						z-index: 1;
+						display: none;
+						padding: 0.75em 0;
+						margin: 2px 0;
+						font-size: inherit;
+						text-align: left;
+						background-color: #fff;
+						border-radius: var(--hb_radius-small);
+						box-shadow: 1px 3px 6px 1px #000a;
+						width: 20em;
+						max-width: 100vw;
+					}
+						.dropdown_item {
+							display: inline-flex;
+							width: 100%;
+							padding: 0.4rem 1.5rem;
+							color: var(--hb_black);
+							background-color: transparent;
+							text-decoration: none;
+						}
+
+
+
+
+
+
+.dropdown_toggle-active svg {
+	transform: rotateX( 180deg );
 }
-	.dropdown-inMenu > button {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		border-radius: inherit;
-		padding: .36em 1.5em;
-		background-color: transparent;
-		border: none;
-		height: 100%;
-		border-left: solid 1px #000;
-    	border-color: inherit;
-	}
-	.dropdown_toggle {
-		font-size: inherit;
-		cursor: pointer;
-	}
-	.dropdown_toggleIcon {
-		height: 1em;
-		line-height: 1;
-		font-size: inherit;
-		justify-content: center;
-		align-items: center;
-	}
-	.dropdown_toggle svg {
-		max-height: 1ex;
-		width: 1.6ch;
-		transition: transform 0.15s ease-in-out;
-		font-size: inherit;
-	}
-	.dropdown_toggle-active svg {
-		transform: rotateX(180deg);
-	}
 	.dropdown_toggle-active + .dropdown_contents {
 		display: flex;
 		flex-flow: column nowrap;
 	}
-		.dropdown_contents {
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: 1;
-			display: none;
-			min-width: 10em;
-			padding: 0;
-			margin: .125em 0 0;
-			font-size: inherit;
-			color: #212529;
-			text-align: left;
-			list-style: none;
-			background-color: #fff;
-			background-clip: padding-box;
-			border: 1px solid rgba(0,0,0,.15);
-			border-radius: .25em;
+		.dropdown_item-active {
+			border-left: solid 0.5em var(--hb_blue);
 		}
+
+.dropdown-inMenu {
+    align-items: center;
+    gap: 0;
+    line-height: 1.4;
+}
+	.dropdown-inMenu > .dropdown_toggle {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-self: stretch;
+		padding: .36em 1.5em;
+		background-color: transparent;
+		border: none;
+		border-left: solid 1px var(--hb_grey);
+	}
+
+.dropdown_item:focus,
+.dropdown_item:focus-visible,
+.dropdown_item:hover,
+.dropdown_item + button:hover,
+.dropdown_item + button:focus,
+.dropdown_item + button:hover {
+	outline: 0;
+	background-color: var(--hb_lightGreen);
+	color: #000;
+}
 
 
 /*----------------------------------------------------- 3.2 MOBILE >= 0em ----*/

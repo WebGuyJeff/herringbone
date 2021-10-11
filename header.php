@@ -52,23 +52,16 @@ namespace Jefferson\Herringbone;
 
 			<div class="header_content header_content-middle">
 
-				<div class="headerNav">
-
-					<?php
-					wp_nav_menu( array(
-						'theme_location'		=> 'global-primary-menu',
-						'items_wrap'			=> '%3$s',
-						'menu_class'			=> 'nav',
-						'container'				=> 'nav',
-						'container_class'		=> 'nav',
-						'container_aria_label' 	=> 'Main Menu',
-						'echo'           		=> true,
-						'walker'         		=> new Menu_Walker,
-						'fallback_cb'			=> [ new Menu_Walker(), 'fallback' ],
+				<?php
+					Menu_Walker::output_theme_location_menu( array(
+						'theme_location'	=> 'global-primary-menu',
+						'menu_class'		=> 'header_nav',
+						'nav_or_div'		=> 'nav',
+						'nav_aria_label'	=> 'Main Menu',
+						'html_tab_indents'  => 3,
+						'button_class'		=> 'button button-border',
 					) );
-					?>
-
-				</div>
+				?>
 
 			</div>
 

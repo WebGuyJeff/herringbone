@@ -1,5 +1,5 @@
 <?php
-//namespace Herringbone\Template_Parts\Landing\Dev;
+
 
 /**
  * Herringbone Theme Template Part - Dev Landing Page - Cost Section.

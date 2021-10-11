@@ -54,13 +54,14 @@ namespace Jefferson\Herringbone;
 			<div class="header_content header_content-middle">
 
 				<?php
-				Menu_Walker::output_theme_location( array(
-					'theme_location'	=> 'landing-page-primary-menu',
-					'menu_class'		=> 'menu',
-					'nav_or_div'		=> 'nav',
-					'nav_aria_label'	=> 'Main Menu',
-					'html_tab_indents'  => 3,
-				) );
+					Menu_Walker::output_theme_location_menu( array(
+						'theme_location'	=> 'landing-page-primary-menu',
+						'menu_class'		=> 'header_nav',
+						'nav_or_div'		=> 'nav',
+						'nav_aria_label'	=> 'Main Menu',
+						'html_tab_indents'  => 3,
+						'button_class'		=> 'button button-border',
+					) );
 				?>
 
 			</div>

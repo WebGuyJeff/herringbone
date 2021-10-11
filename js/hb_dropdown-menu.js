@@ -12,6 +12,8 @@
 
 var hb_dropdownToggle = (function() {
 
+    /* Private Functions */
+
 
     /**
      * Attach event listener to buttons in the loaded doc.
@@ -28,11 +30,11 @@ var hb_dropdownToggle = (function() {
 
     }
 
-
     /**
      * Call init function on document ready.
      */
     let docLoaded = setInterval( function() {
+
         if( document.readyState === 'complete' ) {
             clearInterval( docLoaded );
             /* Start the reactor */
@@ -41,13 +43,38 @@ var hb_dropdownToggle = (function() {
     }, 100);
 
 
-	/**
-	 * Public functions
-     * 
-     * call syntax: hb_dropdownToggle.functionName();
-	 */
+    /**
+     * Check if passed elem is in left half of viewport.
+     */
+    function isInLeftHalf( button ) {
+
+        const dims = button.getBoundingClientRect();
+        viewportWidth = window.innerWidth;
+
+        return (
+            dims.left <= viewportWidth / 2
+        );
+    }
+
+
+    /**
+     * Check if passed elem is overflowing viewport bottom.
+     */
+    function isOverflowingViewportBottom( menu ) {
+
+        const dims = menu.getBoundingClientRect();
+        viewportHeight = window.innerHeight;
+
+        return shouldScroll = {
+            bool: dims.bottom > viewportHeight,
+            distance: dims.bottom - viewportHeight
+        };
+    }
+
+
     return {
 
+        /* Public functions */
 
         /**
          * Toggle the dropdown menu.
@@ -56,22 +83,38 @@ var hb_dropdownToggle = (function() {
 
             let button = document.getElementById( id );
 
-            //set dropdown popop vertical position
-            let height = window.getComputedStyle( button ).height;
-            let menu = document.querySelector('#' + id + ' + ' + '.dropdown_contents');
-            menu.style.transform = 'translateY(' + height + ')';
-
             /*  Get current state of button */
             let aria_exp = button.getAttribute( "aria-expanded" );
 
             /*  If inactive, make it active */
             if ( aria_exp == "false" ) {
+
+                //set dropdown popop vertical position
+                let height = window.getComputedStyle( button ).height;
+                let menu = document.querySelector('#' + id + ' + ' + '.dropdown_contents');
+                menu.style.transform = 'translateY(' + height + ')';
+
+                //set dropdown swing direction
+                container = button.parentElement;
+                let shouldDropRight = isInLeftHalf( container );
+                if ( shouldDropRight ) {
+                    menu.style.right = '';
+                    menu.style.left = '0';
+                } else {
+                    menu.style.left = '';
+                    menu.style.right = '0';
+                }
+
+                //set attributes
                 button.classList.add( "dropdown_toggle-active" );
                 button.setAttribute( "aria-expanded", true );
                 button.setAttribute( "aria-pressed", true );
 
-                menu = button.parentElement;
-                menu.scrollIntoView();
+                //now browser has calc'd layout, see if y-scroll req'd
+                let shouldScroll = isOverflowingViewportBottom( menu )
+                if ( shouldScroll.bool ) {
+                    window.scrollBy( 0, shouldScroll.distance ); // x,y
+                }
 
                 /* listen for page clicks */
                 document.addEventListener( 'click', hb_dropdownToggle.pageClick( id ) );
