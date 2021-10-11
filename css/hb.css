@@ -933,44 +933,18 @@ main article img {
 /*----------------------------------------------------------- 2.5 BUTTONS ----*/
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - 2.5.1 BASE BUTTON - - */
 
-/* Base button should only provide button mechanics and no styling */
-/* with the exception of inheritance to override browser defaults. */
-
-
-/* element */
-button:hover:not(:disabled):not(.disabled) {
-	cursor: pointer;
-}
-
 
 .button {
-	display: inline-block;
-	background-color: inherit;
-	color: inherit;
-	font-size: inherit;
-	font-family: inherit;
-	line-height: inherit;
-	border-style: solid;
-	border-width: 1px;
-	border-color: inherit;
-	text-transform: none;
-	overflow: visible;
-}
-	.button:focus,
-	.button:focus-visible {
-		z-index: 1;
-		outline: 0;
-		box-shadow: 0 0 0 0.25em var(--hb_grey);
-	}
-
-.button-solid {
+    display: inline-block;
+    font-size: inherit;
+    overflow: visible;
     position: relative;
-    display: flex;
     height: 2.5em;
     border: none;
     max-width: fit-content;
     max-height: fit-content;
     border-radius: 10em;
+    text-decoration: none;
     padding: 0;
     transition: color .2s ease-in-out,
 		background-color .2s ease-in-out,
@@ -978,7 +952,7 @@ button:hover:not(:disabled):not(.disabled) {
 		box-shadow .2s ease-in-out,
 		filter .2s ease-in-out;
 }
-	.button-solid > *:first-child {
+	.button > *:first-child {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -995,6 +969,32 @@ button:hover:not(:disabled):not(.disabled) {
 		transition: inherit;
 		height: 100%;
 	}
+		.button:hover {
+			cursor: pointer;
+		}
+		.button:hover > *:first-child {
+			background: var(--hb_darkGreen);
+		}
+		.button:focus,
+		.button:focus-visible {
+			z-index: 1;
+			outline: 0;
+			box-shadow: 0 0 0 0.25em var(--hb_green);
+		}
+
+
+/*- - - - - - - - - - - - - - - - - - - - - - - -  2.5.2 BUTTONS - BORDER - - */
+
+
+.button {
+	background: transparent;
+}
+
+    .button-border > *:first-child {
+    	background: transparent;
+		color: var(--hb_black);
+    	border: solid 0.25em var(--hb_black);
+    }
 
 
 /*- - - - - - - - - - - - - - - - - - - - - - - -  2.5.2 BUTTONS - FLAPPY - - */
@@ -1255,6 +1255,12 @@ button:hover:not(:disabled):not(.disabled) {
 				}
 			}
 
+.header_inner-landing {
+	padding: 0.3em;
+}
+
+
+
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.2 FOOTER - - */
 
@@ -1440,7 +1446,7 @@ button:hover:not(:disabled):not(.disabled) {
 		justify-content: center;
 		align-items: center;
 		border-radius: inherit;
-		padding: .25em 1.5em;
+		padding: .36em 1.5em;
 		background-color: transparent;
 		border: none;
 		height: 100%;
@@ -1449,11 +1455,20 @@ button:hover:not(:disabled):not(.disabled) {
 	}
 	.dropdown_toggle {
 		font-size: inherit;
+		cursor: pointer;
+	}
+	.dropdown_toggleIcon {
+		height: 1em;
+		line-height: 1;
+		font-size: inherit;
+		justify-content: center;
+		align-items: center;
 	}
 	.dropdown_toggle svg {
 		max-height: 1ex;
-		width: 1.2ch;
+		width: 1.6ch;
 		transition: transform 0.15s ease-in-out;
+		font-size: inherit;
 	}
 	.dropdown_toggle-active svg {
 		transform: rotateX(180deg);
@@ -1690,7 +1705,6 @@ overflow hidden
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-/*	padding: var(--hb_gapSolid) var(--hb_gapCollapse);  switched to grid gap */
 	width: 100%;
 	height: 400vmin;
 }
@@ -1700,7 +1714,6 @@ overflow hidden
 	position: relative;
 	align-items: center;
 	justify-content: center;
-/*	margin: var(--hb_gapSolid) var(--hb_gapCollapse);  switched to grid gap */
 	box-shadow: var(--hb_shadow);
 	border-radius: var(--hb_radius);
 	width: auto;

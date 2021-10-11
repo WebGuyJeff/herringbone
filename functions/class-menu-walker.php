@@ -231,7 +231,7 @@ class Menu_Walker extends Walker_Nav_Menu {
         $class_string = ( $is_parent )  ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'parent' ]      : $class_string;
         $class_string = ( $is_active )  ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'active' ]      : $class_string;
         $class_string = ( $has_active ) ? $class_string . ' ' . $css_block . $css_element . $css_modifier[ 'has_active' ]  : $class_string;
-        $class_string = ( $depth === 0 ) ? 'button button-solid' : $class_string;
+        $class_string = ( $depth === 0 ) ? 'button button-border' : $class_string;
         $class_string = 'class="' . $class_string . '"';
 
         // Aria attributes
@@ -298,7 +298,7 @@ class Menu_Walker extends Walker_Nav_Menu {
         $location   = $args->theme_location;
 
         // Button Classes
-        $button_classes = ( $depth === 0 ) ? 'dropdown_toggle button button-solid' : 'dropdown_toggle';
+        $button_classes = ( $depth === 0 ) ? 'dropdown_toggle button button-border' : 'dropdown_toggle';
         $button_classes = 'class="' . $button_classes . '"';
 
         // Button aria attributes
