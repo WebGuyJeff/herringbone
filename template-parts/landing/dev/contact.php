@@ -13,7 +13,7 @@
 <div class="landing_content" style="--col: oneone-l / oneone-r;">
 
     <div class="aligncenter">
-        <?php echo do_shortcode('[xocontactform title="Get in Touch" message="Use the form below to send me a message and I&apos;ll get back to you asap."]'); ?>
+        <?php echo do_shortcode('[hb_contact_form title="Get in Touch" message="Use the form below to send me a message and I&apos;ll get back to you asap."]'); ?>
     </div>
 
 </div>

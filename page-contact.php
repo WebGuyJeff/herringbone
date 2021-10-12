@@ -20,7 +20,7 @@ get_header();
 		</section>
 
 		<section class="sauce">
-			<?php echo do_shortcode('[xocontactform title="This is a test form" message="This is a test message"]'); ?>
+			<?php echo do_shortcode('[hb_contact_form title="This is a test form" message="This is a test message"]'); ?>
 		</section>
 
 	</div> <?php //MAIN CONTENT COLUMN END ?>
