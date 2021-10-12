@@ -17,6 +17,6 @@ wp_enqueue_script( 'hb_modal_js' );
 		<button aria-label="Close Contact Form" title="Close Contact Form" type="button" id="modal_contactform-close" class="modal_close">
 			Close
 		</button>
-		<?php echo do_shortcode('[xocontactform title="Let&apos;s Get Your Project Started" message="Complete the form below and I&apos;ll get back to you shortly - Jeff"]'); ?>
+		<?php echo do_shortcode('[hb_contact_form title="Let&apos;s Get Your Project Started" message="Complete the form below and I&apos;ll get back to you shortly - Jeff"]'); ?>
 	</div>
 </aside>

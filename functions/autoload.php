@@ -3,10 +3,10 @@
  * Class Autoloader for the Herringbone Project
  *
  * After registering this autoload function with SPL, the following line
- * would cause the function to attempt to load the \Foo\Bar\Baz\Qux class
- * from /path/to/project/src/Baz/Qux.php:
+ * would cause the function to attempt to load the \Brand\Project\Sub_Project\Class class
+ * from /path/to/project/src/sub_project/class.php:
  *
- *      new \Foo\Bar\Baz\Qux;
+ *      new \Brand\Project\Sub_Project\Class;
  *
  * @param string $class The fully-qualified class name.
  */
