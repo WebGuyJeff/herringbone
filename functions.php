@@ -293,14 +293,25 @@ function herringbone_settings_add_menu() {
 	$icon = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMzIgMTMyIj48cGF0aCBmaWxsPSIjMDAwIiBkPSJNMCAwdjEzYzAgNSAwIDEwIDggMTNsNTggMjcgNTgtMjdjOC0zIDgtOCA4LTEzVjBMNzQgMjZjLTggNC04IDktOCAxNCAwLTUgMC0xMC04LTE0em0wIDQwdjEzYzAgNCAwIDEwIDggMTNsNTggMjcgNTgtMjdjOC0zIDgtOSA4LTEzVjQwTDc0IDY2Yy04IDQtOCA5LTggMTMgMC00IDAtOS04LTEzem0wIDM5djE0YzAgNCAwIDkgOCAxM2w1OCAyNiA1OC0yNmM4LTQgOC05IDgtMTNWNzlsLTU4IDI3Yy04IDMtOCA5LTggMTMgMC00IDAtMTAtOC0xM3oiPjwvcGF0aD48L3N2Zz4=';
 
   	add_menu_page(
-		'Herringbone Settings',
-	  	'Herringbone',
-		'manage_options',
-		'herringbone-settings',
-		'herringbone_settings_page',
-		$icon,
-		4
+		'Herringbone Theme Settings',//page_title
+	  	'Herringbone',		 		 //menu_title
+		'manage_options',			 //capability
+		'herringbone-settings',		 //menu_slug
+		'', 						 //function
+		$icon,						 //icon_url
+		4							 //position
 	);
+
+	add_submenu_page(
+		'herringbone-settings',		 //parent_slug
+	  	'Herringbone Theme Settings',//page_title
+		'Theme Settings',	 	 	 //menu_title
+		'manage_options',		 	 //capability
+		'herringbone-settings', 	 //menu_slug
+		'herringbone_settings_page', //function
+		1							 //position
+	);
+
 }
 add_action( 'admin_menu', 'herringbone_settings_add_menu' );
 
