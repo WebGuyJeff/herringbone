@@ -419,15 +419,35 @@ blockquote {
 
 .alert {
 	border-radius: 0.5rem;
-	background: var(--hb_red);
+	background: var(--hb_lightGrey);
 	padding: 0.1rem;
-	color: #fff;
+	color: var(--hb_black);
 	font-weight: bold;
 	text-align: center;
 }
+	.alert:before {
+		margin-right: 0.5em;
+		content: "ⓘ";
+	}
 	.alert:last-child {
 		margin-bottom: 0;
 	}
+		.alert-danger {
+			background: var(--hb_red);
+			color: #fff;
+		}
+		.alert-success {
+			background: var(--hb_green);
+			color: #fff;
+		}
+		.alert-info {
+			background: var(--hb_blue);
+			color: #fff;
+		}
+		.alert-warning {
+			background: var(--hb_orange);
+			color: #fff;
+		}
 
 strong {
 	font-weight: 400;
