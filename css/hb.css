@@ -230,9 +230,9 @@ input,
 optgroup,
 select,
 textarea {
+	line-height: inherit;
 	font-family: inherit;
 	font-size: inherit;
-	line-height: inherit;
 }
 input:hover:not(:disabled):not(.disabled),
 optgroup:hover:not(:disabled):not(.disabled),
@@ -263,12 +263,12 @@ textarea:hover:not(:disabled):not(.disabled) {
 /* All units are rem so font is always locked to root font size */
 
 .cheese {
+	text-align: left;
+	line-height: 1.688rem;
 	color: var(--hb_black);
 	font-family: var(--hb_font-primary);
 	font-size: var(--hb_font-base);
 	font-weight: 300;
-	line-height: 1.688rem;
-	text-align: left;
 }
 
 .weight400	   { font-weight: 400; }
@@ -287,32 +287,32 @@ h6 {
 
 h1 {
 	margin-bottom: 1.688rem;
-	font-size: var(--hb_font-xxl);
-	letter-spacing: -0.03rem;
 	line-height: 3.25rem;
+	letter-spacing: -0.03rem;
+	font-size: var(--hb_font-xxl);
 }
 
 .title {
 	margin-bottom: 1.6878rem;
-	font-size: var(--hb_font-xxxl);
-	letter-spacing: -0.03rem;
 	line-height: 4.063rem;
+	letter-spacing: -0.03rem;
+	font-size: var(--hb_font-xxxl);
 }
 
 h2 {
 	margin-top: 2.75rem;
 	margin-bottom: 1.063rem;
-	font-size: var(--hb_font-xl);
-	letter-spacing: -0.03rem;
 	line-height: 2.563rem;
+	letter-spacing: -0.03rem;
+	font-size: var(--hb_font-xl);
 }
 
 h2.laurel {
 	margin-bottom: 4vw;
+	line-height: 1.1;
+	letter-spacing: -0.08em;
 	font-size: clamp(7vw, 9vw ,10vw);
 	font-weight: 100;
-	letter-spacing: -0.08em;
-	line-height: 1.1;
 }
 
 h2 .hardy {
@@ -322,27 +322,27 @@ h2 .hardy {
 @media (min-width: 48em) {
 	h2.laurel {
 		margin-bottom: 4vw;
+		letter-spacing: -0.08em;
 		font-size: clamp(3.5vw, 4.5vw ,5vw);
 		font-weight: 100;
-		letter-spacing: -0.08em;
 	}
 }
 
 h3 {
 	margin-top: 1.688rem;
 	margin-bottom: 0.688rem;
-	font-size: var(--hb_font-l);
-	letter-spacing: -0.02rem;
 	line-height: 2.063rem;
+	letter-spacing: -0.02rem;
+	font-size: var(--hb_font-l);
 }
 
 h4,
 h5,
 h6 {
 	margin-bottom: 0.438rem;
-	font-size: var(--hb_font-base);
-	letter-spacing: -0.02rem;
 	line-height: 1.688rem;
+	letter-spacing: -0.02rem;
+	font-size: var(--hb_font-base);
 }
 
 p, ul, ol, blockquote, pre, .alert, .note, .box, .footnotes {
@@ -385,8 +385,8 @@ kbd {
 
 .footnotes {
   padding-top: 1.063rem;
-  font-size: var(--hb_font-s);
   line-height: 1.438rem;
+  font-size: var(--hb_font-s);
 }
 
 .footnotes p {
@@ -407,11 +407,11 @@ blockquote {
 	quotes: "\201C""\201D""\2018""\2019";
 }
 	blockquote:before {
-		vertical-align: -0.4rem;
 		margin-right: 0.15rem;
+		vertical-align: -0.4rem;
+		line-height: 0.1rem;
 		color: #ccc;
 		font-size: var(--hb_font-xxxl);
-		line-height: 0.1rem;
 		content: open-quote;
 	}
 	blockquote-left {
@@ -422,9 +422,6 @@ blockquote {
 	border: var(--hb_border);
 	border-radius: var(--hb_radius-small);
 	background: var(--hb_lightGrey);
-	padding: 0.8em;
-	text-align: center;
-	letter-spacing: var(--hb_letterSpacingInterBold);
 	color: var(--hb_black);
 	font-weight: bold;
 }
