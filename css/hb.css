@@ -168,6 +168,7 @@ Font Size		 Line Height
 	color: var(--hb_black);
 	font: 300 1em var(--hb_font-primary);
 	letter-spacing: 0.015625rem;
+	--hb_letterSpacingInterBold: -0.04em;
 
 	/* fluid root units (14px @ 768 - 18px @ 1920) */
 	font-size: clamp(0.875rem, calc(0.875rem + ((1vw - 0.48rem) * 0.3534)), 1.125rem);
@@ -418,12 +419,14 @@ blockquote {
 	}
 
 .alert {
-	border-radius: 0.5rem;
+	border: var(--hb_border);
+	border-radius: var(--hb_radius-small);
 	background: var(--hb_lightGrey);
-	padding: 0.1rem;
+	padding: 0.8em;
+	text-align: center;
+	letter-spacing: var(--hb_letterSpacingInterBold);
 	color: var(--hb_black);
 	font-weight: bold;
-	text-align: center;
 }
 	.alert:before {
 		margin-right: 0.5em;
@@ -432,22 +435,25 @@ blockquote {
 	.alert:last-child {
 		margin-bottom: 0;
 	}
-		.alert-danger {
-			background: var(--hb_red);
-			color: #fff;
+		.alert-hover {
+			box-shadow: 1px 3px 6px 1px #000a;
 		}
-		.alert-success {
-			background: var(--hb_green);
-			color: #fff;
-		}
-		.alert-info {
-			background: var(--hb_blue);
-			color: #fff;
-		}
-		.alert-warning {
-			background: var(--hb_orange);
-			color: #fff;
-		}
+			.alert-danger {
+				background: var(--hb_red);
+				color: #fff;
+			}
+			.alert-success {
+				background: var(--hb_green);
+				color: #fff;
+			}
+			.alert-info {
+				background: var(--hb_blue);
+				color: #fff;
+			}
+			.alert-warning {
+				background: var(--hb_orange);
+				color: #fff;
+			}
 
 strong {
 	font-weight: 400;
