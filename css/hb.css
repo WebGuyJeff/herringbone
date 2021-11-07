@@ -422,6 +422,9 @@ blockquote {
 	border: var(--hb_border);
 	border-radius: var(--hb_radius-small);
 	background: var(--hb_lightGrey);
+	padding: 0.8em;
+	text-align: center;
+	letter-spacing: var(--hb_letterSpacingInterBold);
 	color: var(--hb_black);
 	font-weight: bold;
 }
