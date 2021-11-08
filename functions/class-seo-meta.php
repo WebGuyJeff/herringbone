@@ -230,7 +230,6 @@ class Seo_Meta {
 
 $head_meta = <<<EOF
 <meta charset="{$meta["charset"]}">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Site verification (to be removed from this template) -->
 <meta name="google-site-verification" content="g9mEcBrJ4uTyVj7KYmGbbuAzqRkeMA2jIJth4hM5Dns" />
