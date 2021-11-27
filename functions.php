@@ -11,7 +11,7 @@
 /**
  * Load the PHP autoloader from it's own file
  */
-require_once(get_template_directory() . '/functions/autoload.php');
+require_once(get_template_directory() . '/classes/autoload.php');
 
 
 /**

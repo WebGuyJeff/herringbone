@@ -135,8 +135,8 @@ multiple landing pages should go in landing.css.
 			}
 				.usp_card {
 					display: flex;
-					grid-area: var(--grid_area);
 					flex-flow: column;
+					grid-area: var(--grid_area);
 					align-items: center;
 					justify-content: flex-end;
 					width: 100%;
@@ -147,24 +147,24 @@ multiple landing pages should go in landing.css.
 						max-height: 100%;
 					}
 						.usp_cacti {
-							filter: drop-shadow(1px 3px 2px #0007);
+							filter: drop-shadow(1px -2px 1px #0006);
 							width: 100%;
 							height: 100%;
 						}
 							.usp_blurb,
 							.usp_subtitle {
-								opacity: 0;
 								transition: opacity 1s ease;
+								opacity: 0;
 								max-height: 0;
 								font-size: 0;
 							}
 								.usp_button {
 									display: block;
-									cursor: pointer;
 									margin: 1% auto;
 									background-position: center center;
 									background-repeat: no-repeat;
 									background-size: contain;
+									cursor: pointer;
 									padding: .8em;
 									width: fit-content;
 									color: #fff;
@@ -189,11 +189,11 @@ multiple landing pages should go in landing.css.
 
 .usp_state:checked + .usp_card {
 	display: grid;
-	grid-column: 1 / -1;
-	grid-row: 1 / -1;
 	grid-template: 40% 60% / 100%;
 	grid-template-areas: "cactus"
 						 "blurb ";
+	grid-row: 1 / -1;
+	grid-column: 1 / -1;
 	justify-content: space-evenly;
 	z-index: 1;
 	padding: 5vh 5vw;
@@ -205,8 +205,8 @@ multiple landing pages should go in landing.css.
 	}
 		.usp_state:checked + .usp_card > .usp_blurb {
 			display: flex;
-			grid-area: blurb;
 			flex-flow: column;
+			grid-area: blurb;
 			justify-content: space-evenly;
 			opacity: 1;
 			height: 100%;
@@ -256,10 +256,10 @@ multiple landing pages should go in landing.css.
 							 "a b c d e f";
 	}
 		.usp_state:checked + .usp_card {
+			filter: drop-shadow(2px 4px 5px #0008);
 			grid-area: i;
 			grid-template: 100% / 70% 30%;
 			grid-template-areas: "blurb cactus";
-			filter: drop-shadow(2px 4px 5px #0008);
 			margin: auto;
 			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' width='100%25' height='100%25' viewBox='0 0 1720 570'%3E%3Cpath fill='%23fafafa' d='M79 21L1640 0c45-1 88 31 79 85l-64 393c-9 54-47 93-102 92L144 539c-49-1-84-36-91-79L1 115c-7-43 25-94 78-94z'/%3E%3C/svg%3E");
 			width: 90%;

@@ -908,16 +908,16 @@ main article img {
 
 .button {
     display: inline-block;
-    font-size: inherit;
-    overflow: visible;
     position: relative;
-    height: 2.5em;
     border: none;
-    max-width: fit-content;
-    max-height: fit-content;
     border-radius: 10em;
-    text-decoration: none;
     padding: 0;
+    max-width: fit-content;
+    height: 2.5em;
+    max-height: fit-content;
+    overflow: visible;
+    text-decoration: none;
+    font-size: inherit;
     transition: color .2s ease-in-out,
 		background-color .2s ease-in-out,
 		border-color .2s ease-in-out,
@@ -926,20 +926,20 @@ main article img {
 }
 	.button > *:first-child {
 		display: flex;
-		justify-content: center;
 		align-items: center;
+		justify-content: center;
+		transition: inherit;
+		border: none;
 		border-radius: inherit;
-		padding: 0.5em 1em;
 		background: var(--hb_black);
+		padding: 0.5em 1em;
+		height: 100%;
+		text-decoration: none;
+		letter-spacing: -0.04em;
+		white-space: nowrap;
 		color: var(--hb_white);
 		font-family: var(--hb_font-primary);
 		font-weight: 800;
-		letter-spacing: -0.04em;
-		text-decoration: none;
-		border: none;
-		white-space: nowrap;
-		transition: inherit;
-		height: 100%;
 	}
 		.button:hover {
 			cursor: pointer;
@@ -965,7 +965,7 @@ main article img {
     .button-border > *:first-child {
     	background: transparent;
 		color: var(--hb_black);
-		border: dashed 1px var(--hb_black);
+		border: dashed 1px #3335;
     }
 
 
