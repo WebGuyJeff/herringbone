@@ -66,7 +66,17 @@
 				one Zoom call away from being anywhere in the world.
 			</p>
 
-			<button aria-label="Send Me a Message" title="Send Me a Message" type="button" id="modal_contactform-open" class="button button-cta spinny aligncenter"><span>Message Me</span></button>
+			<button
+				aria-label="Send Me a Message"
+				title="Send Me a Message"
+				type="button"
+				id="modal_contactForm"
+				class="button button-cta spinny aligncenter modal_control-open"
+			>
+				<span>
+					Message Me
+				</span>
+			</button>
 
 			<img class="svg_grabhand-left" alt="An SVG image of Jefferson Real's left hand postured to hold a sign." src="<?php echo get_bloginfo('template_url') ?>/imagery/landing/dev/grabhand-left.svg"/>
 			<img class="svg_grabhand-right" alt="An SVG image of Jefferson Real's right hand postured to hold a sign." src="<?php echo get_bloginfo('template_url') ?>/imagery/landing/dev/grabhand-right.svg"/>

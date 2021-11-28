@@ -1091,33 +1091,6 @@ main article img {
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - -  2.5.7 MODAL CLOSE BUTTON - - */
-
-
-.modal_close {
-	position: absolute;
-	top: 0.6em;
-	right: 0.6em;
-	border: none;
-	border-radius: var(--hb_radius-tiny);
-	background: var(--hb_red);
-	padding: 0.15em 0.6em;
-	color: var(--hb_white);
-	font-family: inherit;
-	font-size: inherit;
-	font-weight: 600;
-}
-	.modal_close:hover {
-		cursor: pointer;
-	}
-
-@media (min-width: 48em){
-	.modal_close {
-		border-radius: var(--hb_radius-tiny) var(--hb_radius-small) var(--hb_radius-tiny) var(--hb_radius-tiny);
-	}
-}
-
-
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - 2.5.8 HEADER TOGGLE - - */
 
 
@@ -1342,32 +1315,51 @@ main article img {
 		min-width: 32em;
 		max-height: 100vh;
 	}
-
-	@media (max-width: 48em) {
-		.modal_dialog {
-			position: fixed;
-			top: 0;
-			left: 0;
-			align-items: center;
+		.modal_control-close {
+			position: absolute;
+			top: 0.6em;
+			right: 0.6em;
 			border: none;
-			border-radius: 0;
-			min-width: 100vw;
-			min-height: 100vh;
-			overflow: auto;
+			border-radius: var(--hb_radius-tiny);
+			background: var(--hb_red);
+			padding: 0.15em 0.6em;
+			color: var(--hb_white);
+			font-family: inherit;
+			font-size: inherit;
+			font-weight: 600;
 		}
-	}
+		.modal_control-close:hover {
+			cursor: pointer;
+		}
 
-	@media (min-width: 48em) {
-		.modal {
-			position: fixed;
-			top: 0;
-			align-items: center;
-			justify-content: center;
-			backdrop-filter: blur(0.5em) saturate(0.5) brightness(0.5);
-			width: 100%;
-			height: 100vh;
-		}
+@media (max-width: 48em) {
+	.modal_dialog {
+		position: fixed;
+		top: 0;
+		left: 0;
+		align-items: center;
+		border: none;
+		border-radius: 0;
+		min-width: 100vw;
+		min-height: 100vh;
+		overflow: auto;
 	}
+}
+
+@media (min-width: 48em) {
+	.modal {
+		position: fixed;
+		top: 0;
+		align-items: center;
+		justify-content: center;
+		backdrop-filter: blur(0.5em) saturate(0.5) brightness(0.5);
+		width: 100%;
+		height: 100vh;
+	}
+	.modal_control-close {
+		border-radius: var(--hb_radius-tiny) var(--hb_radius-small) var(--hb_radius-tiny) var(--hb_radius-tiny);
+	}
+}
 
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.5 DROPDOWN - - */

@@ -12,11 +12,23 @@ wp_enqueue_script( 'hb_modal_js' );
 
 ?>
 
-<aside id="modal_contactform-overlay" class="modal">
-	<div id="modal_contactform-dialog" role="dialog" aria-labelledby="aria_form-title" aria-describedby="aria_form-desc" class="modal_dialog sauce cheese">
-		<button aria-label="Close Contact Form" title="Close Contact Form" type="button" id="modal_contactform-close" class="modal_close">
-			Close
-		</button>
+<aside class="modal modal_contactForm">
+	<div 
+		role="dialog" 
+		aria-labelledby="aria_form-title" 
+		aria-describedby="aria_form-desc" 
+		class="modal_dialog sauce cheese"
+	>
+		<div class="modal_controls">
+			<button 
+				aria-label="Close Contact Form"
+				title="Close Contact Form"
+				type="button"
+				class="modal_control-close"
+			>
+				Close
+			</button>
+		</div>
 		<?php echo do_shortcode('[hb_contact_form title="Let&apos;s Get Your Project Started" message="Complete the form below and I&apos;ll get back to you shortly - Jeff"]'); ?>
 	</div>
 </aside>

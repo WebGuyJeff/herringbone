@@ -8,280 +8,297 @@
  * @copyright Copyright (c) 2021, Jefferson Real
  */
 
-function hb_modalPlugin() {
 
-	function hb_modal() {
+ const hb_modalPlugin = (function() {
+
+
+	/**
+     * Setup the modal.
+	 * 
+	 * Attach button click listener to all modal buttons. The button
+	 * ID will contain the class name of the modal type to open. This
+	 * allows the launch_modal function to remain generic while having
+	 * multiple modals in the same document. It also means you can
+	 * have multiple buttons pointing to the same modal, or many modals
+	 * and many buttons all initialised with this same function.
+     * 
+     */
+    function modal_init() {
+        document.querySelectorAll( '.modal_control-open' ).forEach( button_open => {
+            button_open.addEventListener( 'click', launch_modal );
+        } );
+    };
+
+
+	// Declare state flags.
+	let animating = false; 	// true when animation is in progress.
+	let active = false;		// true when modal is displayed.
+	let mobile = true;	 	// true when screen width is less than 768px (48em).
+
+
+	// Plugin-wide vars.
+	let overlay;
+	let dialog;
+	let button_close;
+
+
+	/**
+	 * Open the model popup.
+	 * 
+	 */
+	async function launch_modal( event ) {
 
 		// Get the modal elements
-		let overlay = document.getElementById("modal_contactform-overlay");
-		let dialog = document.getElementById("modal_contactform-dialog");
-		let btno = document.getElementById("modal_contactform-open");
-		let btnx = document.getElementById("modal_contactform-close");
+		const modal_class = event.currentTarget.id;
+		overlay = document.querySelector( '.' + modal_class );
 
-		let animating = false; // true when animation is in progress
-		let active = false;	// true when modal is displayed
-		let mobile = true;	 // true when screen width is less than 768px (48em)
+		dialog = overlay.querySelector( '.modal_dialog' );
+		button_close = overlay.querySelector( '.modal_control-close' );
 
-
-
-		function screenSizeCheck() {
-
-			//console.log('Mobile:' + mobile + '  Active:' + active + '  Animating:' + animating);
-
-			let pageWidth = parseInt(document.querySelector("html").getBoundingClientRect().width, 10);
-
-			if (pageWidth <= 768) {
-				mobile = true;
-			} else {
-				mobile = false;
-			}
-
-			if (mobile && active && !animating) {
-				dialog.style.left = '0';
-				dialog.style.transform = 'scale(1)';
-				dialog.style.opacity = '1';
-				overlay.style.display = 'contents';
-				overlay.style.opacity = '1';
-
-			} else if (mobile && !active && !animating) {
-				dialog.style.left = '-768px';
-				dialog.style.transform = 'scale(1)';
-				dialog.style.opacity = '1';
-				overlay.style.display = 'contents';
-				overlay.style.opacity = '1';
-
-			} else if (!mobile && active && !animating) {
-				dialog.style.left = '0';
-				dialog.style.transform = 'scale(1)';
-				dialog.style.opacity = '1';
-				overlay.style.display = 'flex';
-				overlay.style.opacity = '1';
-
-			} else if (!mobile && !active && !animating) {
-				dialog.style.left = '0';
-				dialog.style.transform = 'scale(0)';
-				dialog.style.opacity = '0';
-				overlay.style.display = 'none';
-				overlay.style.opacity = '0';
-
-			}
-		}
-		screenSizeCheck();
-
-
-		let resizeTimer;
-
-		window.addEventListener('resize', function(event) {
-			if(resizeTimer !== null) window.clearTimeout(resizeTimer);
-			resizeTimer = window.setTimeout(function() {
-				screenSizeCheck();
-			}, 20);
-		});
-
-
-		// Chalkboard message button
-		btno.onclick = function() {
-			openModal();
-		}
-
-
-		// Dialog close button
-		btnx.onclick = function() {
+		button_close.onclick = () => {
 			closeModal();
 		}
 
-
 		// If a click event is not on dialog
-		window.onclick = function(event) {
+		window.onclick = function( event ) {
 			if ( dialog !== !event.target && !dialog.contains(event.target) ) {
 				closeModal();
 			}
 		}
 
+		await Promise.all( [
+			set_modal_device_size(),
+			get_scrollbar_width()
+		] );
+		openModal();
 
-		// Open the modal
-		async function openModal() {
-			if ( !active && !animating ) {
-				active = true;
-				animating = true;
-				disableScroll();
+	}
 
-				if (mobile) {
-					dialog.style.left = '-768px';
-					dialog.style.transform = 'scale(1)';
-					dialog.style.opacity = '1';
-					overlay.style.display = 'contents';
-					overlay.style.opacity = '1';
 
-					let result = await hb_animationPlugin.animate( dialog, 'left', 'easeInOutCirc', -768, 0, 800);
+	async function set_modal_device_size() {
 
-					animating = false;
+		let pageWidth = parseInt( document.querySelector("html").getBoundingClientRect().width, 10 );
 
-				} else {
-					dialog.style.left = '0';
-					dialog.style.transform = 'scale(0)';
-					dialog.style.opacity = '0';
-					overlay.style.display = 'flex';
-					overlay.style.opacity = '0';
-
-					fadeIn(overlay);
-					let result = await hb_animationPlugin.animate( dialog, 'scale', 'easeInOutCirc', 0, 1, 800);
-
-					animating = false;
-				}
-			}
+		if ( pageWidth <= 768 ) {
+			mobile = true;
+		} else {
+			mobile = false;
 		}
 
+		if ( mobile && active && !animating ) {
+			dialog.style.left = '0';
+			dialog.style.transform = 'scale(1)';
+			dialog.style.opacity = '1';
+			overlay.style.display = 'contents';
+			overlay.style.opacity = '1';
 
-		// Close the modal
-		async function closeModal() {
-			if ( active && !animating ) {
-				active = false;
-				animating = true;
-				enableScroll();
+		} else if ( mobile && !active && !animating ) {
+			dialog.style.left = '-768px';
+			dialog.style.transform = 'scale(1)';
+			dialog.style.opacity = '1';
+			overlay.style.display = 'contents';
+			overlay.style.opacity = '1';
 
-				if (mobile) {
-					dialog.style.left = '0';
-					dialog.style.transform = 'scale(1)';
-					dialog.style.opacity = '1';
-					overlay.style.display = 'contents';
-					overlay.style.opacity = '1';
+		} else if ( !mobile && active && !animating ) {
+			dialog.style.left = '0';
+			dialog.style.transform = 'scale(1)';
+			dialog.style.opacity = '1';
+			overlay.style.display = 'flex';
+			overlay.style.opacity = '1';
 
-					let result = await hb_animationPlugin.animate( dialog, 'left', 'easeInOutCirc', 0, -768, 800);
-
-					animating = false;
-
-
-				} else {
-					dialog.style.left = '0';
-					dialog.style.transform = 'scale(1)';
-					dialog.style.opacity = '1';
-					overlay.style.display = 'flex';
-					overlay.style.opacity = '1';
-
-					fadeOut(overlay);
-					let result = await hb_animationPlugin.animate( dialog, 'scale', 'easeInOutCirc', 1, 0, 800);
-
-					overlay.style.display = 'none';
-					animating = false;
-				}
-			}
-		}
-
-
-		// Moody overlay - fadeout
-		function fadeOut(overlay) {
-			let p = 100;  // 0.5 x 100 to escape floating point problem
-			let animateFilterOut = setInterval(function() {
-				if (p <= 0){
-					clearInterval(animateFilterOut);
-				}
-
-				overlay.style.opacity = p / 100;
-
-				p -= 2; // 1 represents 0.01 in css output
-			}, 16); // 10ms x 25 for 0.25sec animation
-		}
-
-
-		// Moody overlay - fadein
-		function fadeIn(overlay) {
-			let p = 4;  // 0.01 x 100 to escape floating point problem
-
-			let animateFilterIn = setInterval(function() {
-				if (p >= 100){ // 100 (/100) represents 0.5 in css output
-					clearInterval(animateFilterIn);
-				}
-
-				overlay.style.opacity = p / 100;
-
-				p += 2; // 1 represents 0.01 in css output
-			}, 16); // 10ms x 25 for 0.25sec animation
-		}
-
-
-		// Store the scrollbar width
-		let scrollbarWidth;
-
-		function getScrollbarWidth() {
-
-			// Get window width inc scrollbar
-			const widthWithScrollBar = window.outerWidth;
-			// Get window width exc scrollbar
-			const widthWithoutScrollBar = document.querySelector("html").getBoundingClientRect().width;
-			// Calc the scrollbar width
-			scrollbarWidth = parseInt((widthWithScrollBar - widthWithoutScrollBar), 10) + 'px';
+		} else if ( !mobile && !active && !animating ) {
+			dialog.style.left = '0';
+			dialog.style.transform = 'scale(0)';
+			dialog.style.opacity = '0';
+			overlay.style.display = 'none';
+			overlay.style.opacity = '0';
 
 		}
-		getScrollbarWidth();
+	}
+
+	/**
+	 * Restyle the modal on window resize.
+	 * 
+	 * This prepares the modal by switching between different device
+	 * layouts as required. Without this check, there is an inconsistancy in
+	 * transitions if for example, the modal is launched as 'desktop' then
+	 * closed as 'mobile'.
+	 * 
+	 */
+	let resizeTimer;
+	window.addEventListener( 'resize', function( event ) {
+		if( resizeTimer !== null ) window.clearTimeout( resizeTimer );
+		resizeTimer = window.setTimeout( function() {
+			set_modal_device_size();
+		}, 20 );
+	} );
 
 
-		function disableScroll() {
+	// Open the modal
+	async function openModal() {
+		if ( !active && !animating ) {
+			active = true;
+			animating = true;
+			disableScroll();
 
-			// Cover the missing scrollbar gap with a black div
-			let elemExists = document.getElementById("js_psuedoScrollBar");
+			if ( mobile ) {
+				dialog.style.left = '-768px';
+				dialog.style.transform = 'scale(1)';
+				dialog.style.opacity = '1';
+				overlay.style.display = 'contents';
+				overlay.style.opacity = '1';
+				await hb_animationPlugin.animate( dialog, 'left', 'easeInOutCirc', -768, 0, 800);
+				animating = false;
 
-			if ( elemExists !== null ) {
-				document.getElementById("js_psuedoScrollBar").style.display = 'block';
 			} else {
-				let psuedoScrollBar = document.createElement("div");
-				psuedoScrollBar.setAttribute("id", "js_psuedoScrollBar");
-				psuedoScrollBar.style.position = 'fixed';
-				psuedoScrollBar.style.right = '0';
-				psuedoScrollBar.style.top = '0';
-				psuedoScrollBar.style.width = scrollbarWidth;
-				psuedoScrollBar.style.height = '100vh';
-				psuedoScrollBar.style.background = '#333';
-				psuedoScrollBar.style.zIndex = '9';
-				document.body.appendChild(psuedoScrollBar);
-			}
-
-			document.querySelector("body").style.overflow = 'hidden';
-			document.querySelector("html").style.paddingRight = scrollbarWidth;
-		}
-
-		function enableScroll() {
-
-			let elemExists = document.getElementById("js_psuedoScrollBar");
-
-			if ( elemExists !== null ) {
-				document.getElementById("js_psuedoScrollBar").style.display = 'none';
-				document.querySelector("body").style.overflow = 'visible';
-				document.querySelector("html").style.paddingRight = '0';
+				dialog.style.left = '0';
+				dialog.style.transform = 'scale(0)';
+				dialog.style.opacity = '0';
+				overlay.style.display = 'flex';
+				overlay.style.opacity = '0';
+				fadeIn( overlay );
+				await hb_animationPlugin.animate( dialog, 'scale', 'easeInOutCirc', 0, 1, 800);
+				animating = false;
 			}
 		}
+	}
 
-	}//hb_modal()
+
+	// Close the modal
+	async function closeModal() {
+		if ( active && !animating ) {
+			active = false;
+			animating = true;
+			enableScroll();
+
+			if ( mobile ) {
+				dialog.style.left = '0';
+				dialog.style.transform = 'scale(1)';
+				dialog.style.opacity = '1';
+				overlay.style.display = 'contents';
+				overlay.style.opacity = '1';
+				await hb_animationPlugin.animate( dialog, 'left', 'easeInOutCirc', 0, -768, 800);
+				animating = false;
+
+			} else {
+				dialog.style.left = '0';
+				dialog.style.transform = 'scale(1)';
+				dialog.style.opacity = '1';
+				overlay.style.display = 'flex';
+				overlay.style.opacity = '1';
+				fadeOut(overlay);
+				await hb_animationPlugin.animate( dialog, 'scale', 'easeInOutCirc', 1, 0, 800);
+				overlay.style.display = 'none';
+				animating = false;
+			}
+		}
+	}
+
+
+	// Moody overlay - fadeout
+	function fadeOut( overlay ) {
+		let p = 100;  // 0.5 x 100 to escape floating point problem
+		let animateFilterOut = setInterval( function() {
+			if ( p <= 0 ){
+				clearInterval( animateFilterOut );
+			}
+			overlay.style.opacity = p / 100;
+			p -= 2; // 1 represents 0.01 in css output
+		}, 16 ); // 10ms x 25 for 0.25sec animation
+	}
+
+
+	// Moody overlay - fadein
+	function fadeIn( overlay ) {
+		let p = 4;  // 0.01 x 100 to escape floating point problem
+		let animateFilterIn = setInterval( function() {
+			if ( p >= 100 ){ // 100 (/100) represents 0.5 in css output
+				clearInterval( animateFilterIn );
+			}
+			overlay.style.opacity = p / 100;
+			p += 2; // 1 represents 0.01 in css output
+		}, 16 ); // 10ms x 25 for 0.25sec animation
+	}
+
+	let scrollbarWidth;
+	async function get_scrollbar_width() {
+		// Get window width inc scrollbar
+		const widthWithScrollBar = window.innerWidth;
+		// Get window width exc scrollbar
+		const widthWithoutScrollBar = document.querySelector("html").getBoundingClientRect().width;
+		// Calc the scrollbar width
+		scrollbarWidth = parseInt((widthWithScrollBar - widthWithoutScrollBar), 10) + 'px';
+		return scrollbarWidth;
+	}
+
+
+	function disableScroll() {
+		// Cover the missing scrollbar gap with a black div
+		let elemExists = document.getElementById( "js_psuedoScrollBar" );
+
+		if ( elemExists !== null ) {
+			document.getElementById( "js_psuedoScrollBar" ).style.display = 'block';
+		} else {
+			let psuedoScrollBar = document.createElement( "div" );
+			psuedoScrollBar.setAttribute( "id", "js_psuedoScrollBar" );
+			psuedoScrollBar.style.position = 'fixed';
+			psuedoScrollBar.style.right = '0';
+			psuedoScrollBar.style.top = '0';
+			psuedoScrollBar.style.width = scrollbarWidth;
+			psuedoScrollBar.style.height = '100vh';
+			psuedoScrollBar.style.background = '#333';
+			psuedoScrollBar.style.zIndex = '9';
+			document.body.appendChild( psuedoScrollBar );
+		}
+		document.querySelector( "body" ).style.overflow = 'hidden';
+		document.querySelector( "html" ).style.paddingRight = scrollbarWidth;
+	}
+
+
+	function enableScroll() {
+		let elemExists = document.getElementById("js_psuedoScrollBar");
+		if ( elemExists !== null ) {
+			document.getElementById("js_psuedoScrollBar").style.display = 'none';
+			document.querySelector("body").style.overflow = 'visible';
+			document.querySelector("html").style.paddingRight = '0';
+		}
+	}
 
 
 	// Poll for doc ready state
-	let docLoaded = setInterval(function() {
-		if(document.readyState === 'complete') {
-			clearInterval(docLoaded);
-
-			/* Start the reactor */
-			hb_modal();
+	let docLoaded = setInterval( function() {
+		if( document.readyState === 'complete' ) {
+			clearInterval( docLoaded );
+			modal_init();
 		}
 	}, 100);
 
 
-}//hb_modalPlugin();
-hb_modalPlugin();
+})();//modal plugin end.
 
 
 
 
-
-/*
- * Herringbone Animation Plugin
+/**
+ * Herringbone Animation Plugin.
  *
  * A plugin to handle the animation of css properties using preset eases.
  *
  */
-var hb_animationPlugin = (function() {
+const hb_animationPlugin = (function() {
 
-	/*
-	 * Globally accessible functions (hb_animationPlugin.function();)
+
+	/**
+	 * True when modal is displayed.
+	 */
+	let active;
+
+
+	/**
+	 * Globally accessible functions.
+	 * 
+	 * Syntax: hb_animationPlugin.function();
+	 * 
 	 */
 	return {
 		// Global animate function just passing the baton for now
@@ -289,87 +306,65 @@ var hb_animationPlugin = (function() {
 			const result = await animate(element, property, ease, startValue, endValue, duration);
 			return result;
 		},
-
 		sequence: function() {
 			// This will handle passed arrays to perform multiple animations
 		}
-	};//return global functions
+	};
 
-
-	/*
-	 * Call the animations in sequence
+	/**
+	 * Call the animations in sequence.
 	 */
-
-	// Boolean true when modal is displayed
-	let active;
-
 	async function sequence() {
-
-		if (active != true) {
+		if ( ! active ) {
 			active = true;
-
-			//set the scene
-			//element.style.transform = 'scale(0)';
-			//element.style.opacity = '0';
-
-							// property, ease, startVal, endVal, duration
-			//const result1 = await animate('scale', 'easeInOutQuad', 0, 1, 500);
-
 		} else {
 			active = false;
-
 			fadeOut(overlay);
-
-							// property, ease, startVal, endVal, duration
-			//const result1 = await animate('scale', 'easeInOutQuad', 1, 0, 500);
-
 		}
-	}//sequence();
+	}
 
-	/*
+	/**
 	 * Iterate through the IN animation passed by sequence()
 	 */
-	function animate(element, property, ease, startValue, endValue, duration) {
+	function animate( element, property, ease, startValue, endValue, duration ) {
 
-		let fps		   = 60;
-		let iterations	  = fps * (duration / 1000);
-		let range		 = endValue - startValue;
-		let timeIncrement = (duration) / iterations;
+		let fps		      = 60;
+		let iterations	  = fps * ( duration / 1000 );
+		let range		  = endValue - startValue;
+		let timeIncrement = ( duration ) / iterations;
 		let currentValue  = 0;
 		let time		  = 0;
 		let isIncreasing  = endValue >= startValue; //boolen to test for positive increment
 
-		return new Promise(resolve => {
-
-				let timer = setInterval(function() {
-
-					time += timeIncrement;
-					currentValue = nextValue(ease, startValue, time, range, duration).toFixed(2);
-
-					if ( isIncreasing && currentValue >= endValue || !isIncreasing && currentValue <= endValue ) {
-						clearInterval(timer);
-						set(element, property, endValue);
-						return resolve(property + ' done');
-					}
-					set(element, property, currentValue);
-				}, 1000/fps);
-		});
-	}//animate();
+		return new Promise( resolve => {
+			let timer = setInterval( function() {
+				time += timeIncrement;
+				currentValue = nextValue(ease, startValue, time, range, duration).toFixed(2);
+				if ( isIncreasing && currentValue >= endValue || !isIncreasing && currentValue <= endValue ) {
+					clearInterval( timer );
+					set( element, property, endValue );
+					return resolve( property + ' done' );
+				}
+				set( element, property, currentValue );
+			}, 1000/fps );
+		} );
+	}
 
 
 	/*
-	 * Animation ease
+	 * Animation ease.
+	 *
+	 * Eases are adapted from git repo bameyrick/js-easing-functions.
+	 *
 	 */
 	function nextValue(ease, startValue, time, range, duration) {
 
 		let t = time		// Time elapsed
 		let s = startValue  // Initial property value before animation
-		let r = range	   // The difference between start and end values
+		let r = range	    // The difference between start and end values
 		let d = duration	// Total duration of animation
 
-
 		// The following eases are from git repo bameyrick/js-easing-functions
-
 		switch (ease) {
 			case 'linear': return r * (t / d) + s;
 
@@ -496,9 +491,8 @@ var hb_animationPlugin = (function() {
 					return easeInBounce(t * 2, 0, r, d) * 0.5 + s;
 				}
 				return easeOutBounce(t * 2 - d, 0, r, d) * 0.5 + r * 0.5 + s;
-
 		}
-	}//nextValue();
+	}
 
 
 	/*
@@ -510,172 +504,13 @@ var hb_animationPlugin = (function() {
 			case 'scale':
 				element.style.transform = 'scale(' + (value) + ')';
 				element.style.opacity = (value);
-
 				return;
 
-				case 'left':
-					element.style.left = value + 'px';
-
-					return;
-
-			case 'radius':
-
-				/* Disabled border radius scale as non-performant
-				if (typeof borderRadAll !== 'undefined') {
-					bAll = (borderRadAll + ((range / 100) * (100 - p))).toFixed(0);
-					element.style.borderRadius = "" + (bAll / 100) + 'px';
-
-					return;
-
-				} else {
-					/* //Disabled radius scale as non-performant
-					tl = (borderRadTL + ((rangeTL / 100) * (100 - p))).toFixed(0);
-					tr = (borderRadTR + ((rangeTR / 100) * (100 - p))).toFixed(0);
-					bl = (borderRadBL + ((rangeBL / 100) * (100 - p))).toFixed(0);
-					br = (borderRadBR + ((rangeBR / 100) * (100 - p))).toFixed(0);
-
-					element.style.borderTopLeftRadius = "" + (tl / 100) + 'px';
-					element.style.borderTopRightRadius = "" + (tr / 100) + 'px';
-					element.style.borderBottomLeftRadius = "" + (bl / 100) + 'px';
-					element.style.borderBottomRightRadius = "" + (br / 100) + 'px';
-					return;
-
-				}*/
-
+			case 'left':
+				element.style.left = value + 'px';
 				return;
-		}//switch
-	}//set();
-
-	/*
-	function initZoom(element) {
-
-		// Corner radius values
-		let borderRadTL;
-		let borderRadTR;
-		let borderRadBL;
-		let borderRadBR;
-		let borderRadAll;
-
-		// Used to calc the animated range
-		let width;
-		let height;
-		let max;
-
-		// Store the range for each radius property
-		let rangeTL;
-		let rangeTR;
-		let rangeBL;
-		let rangeBR;
-		let range;
-
-		// Holds the animated values
-		let tl;
-		let tr;
-		let bl;
-		let br;
-		let bAll;
-
-		// Stylesheet CSS properties
-		let storedCSS = {};
-
-		// Computed CSS properties
-		let computedStyles;
-		let computedCSS = {};
-
-		//Get the computed styles
-		computedStyles = window.getComputedStyle(element);
-		computedCSS["borderTopLeftRadius"] = computedStyles.getPropertyValue('border-top-left-radius');
-		computedCSS["borderTopRightRadius"] = computedStyles.getPropertyValue('border-top-right-radius');
-		computedCSS["borderBottomLeftRadius"] = computedStyles.getPropertyValue('border-bottom-left-radius');
-		computedCSS["borderBottomRightRadius"] = computedStyles.getPropertyValue('border-bottom-right-radius');
-		computedCSS["borderRadius"] = computedStyles.getPropertyValue('border-radius');
-
-
-		//Store the stylesheet styles to restore after animation
-		storedCSS["transform"] = computedStyles.getPropertyValue('transform');
-		storedCSS["overflow"] = computedStyles.getPropertyValue('overflow');
-		storedCSS["borderTopLeftRadius"] = computedStyles.getPropertyValue('border-top-left-radius');
-		storedCSS["borderTopRightRadius"] = computedStyles.getPropertyValue('border-top-right-radius');
-		storedCSS["borderBottomLeftRadius"] = computedStyles.getPropertyValue('border-bottom-left-radius');
-		storedCSS["borderBottomRightRadius"] = computedStyles.getPropertyValue('border-bottom-right-radius');
-		storedCSS["borderRadius"] = computedStyles.getPropertyValue('border-radius');
-
-		// checkForNullProperty(storedCSS); Giving crappy results
-
-		// get the computed radius values to animate, without the px units
-		borderRadTL = (computedCSS.borderTopLeftRadius.replace(/[^0-9.]/g,"") * 100);
-		borderRadTR = (computedCSS.borderTopRightRadius.replace(/[^0-9.]/g,"") * 100);
-		borderRadBL = (computedCSS.borderBottomLeftRadius.replace(/[^0-9.]/g,"") * 100);
-		borderRadBR = (computedCSS.borderBottomRightRadius.replace(/[^0-9.]/g,"") * 100);
-
-		// get the computed size dims
-		width = (computedStyles.getPropertyValue('width').replace(/[^0-9.]/g,"") * 100);
-		height = (computedStyles.getPropertyValue('height').replace(/[^0-9.]/g,"") * 100);
-
-		// find the greater dim
-		if (width >= height) {
-			max = (width / 2);
-		} else {
-			max = (height / 2);
 		}
-
-		//if all rads are equal...
-		if (   borderRadTL == borderRadTR
-			&& borderRadTL == borderRadBL
-			&& borderRadTL == borderRadBR ) {
-				// set the singular variable
-				borderRadAll = borderRadTL;
-			}
-
-		if (typeof borderRadAll !== 'undefined') {
-			range = (max - borderRadAll);
-			element.style.borderRadius = (max / 100) + 'px';
-		} else {
-			// Use max - radius to calculate the range for each corner.
-			rangeTL = (max - borderRadTL);
-			rangeTR = (max - borderRadTR);
-			rangeBL = (max - borderRadBL);
-			rangeBR = (max - borderRadBR);
-		}
-		// set the scene
-		element.style.transform = 'scale(0)';
-		element.style.overflow = 'hidden';
-
-	}//initZoom()
-
-	// Init the zoom vars ready for use
-	if (typeof computedStyles == 'undefined') {
-		initZoom(element);
 	}
-	*/
 
 
-	/*
-	 * Restore the original css values
-	 *
-	 * Currently unable to reliably return properties to original value.
-	 * Omitting for another day.
-	 */
-	function cleanup() {
-		for (const [key, value] of Object.entries(storedCSS)) {
-			element.style[key] = value;
-		}
-	}//cleanup()
-
-
-	/*
-	 * Check the stored CSS properties for null.
-	 *
-	 * When a null value is found, set the value as revert
-	 *
-	 */
-	function checkForNullProperty(propertyArray) {
-		for (let [key, value] of Object.entries(propertyArray)) {
-			if (value == '' || value == 'none' || value == 'undefined') {
-				value = 'revert';
-			}
-		}
-	}//checkForNullProperty()
-
-
-})();//hb_animationPlugin();
+})();//animation plugin end.
