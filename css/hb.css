@@ -1307,30 +1307,44 @@ main article img {
 	display: none; /* flex */
 	opacity: 1;
 	z-index: 10;
+	overflow: auto;
 }
 	.modal_dialog {
-		position: relative;
-		flex-flow: column;
+		display: grid;
+		grid: [controls] max-content 1fr [contents] auto 1fr / 100%;
+		justify-items: center;
 		z-index: 10;
+		margin: auto;
+		border-radius: var(--hb_radius-small);
 		min-width: 32em;
-		max-height: 100vh;
+		max-height: fit-content;
+		overflow: auto;
 	}
-		.modal_control-close {
-			position: absolute;
-			top: 0.6em;
-			right: 0.6em;
-			border: none;
-			border-radius: var(--hb_radius-tiny);
-			background: var(--hb_red);
-			padding: 0.15em 0.6em;
-			color: var(--hb_white);
-			font-family: inherit;
-			font-size: inherit;
-			font-weight: 600;
+		.modal_controls {
+			display: flex;
+			flex-flow: row;
+			grid-row: controls / span 1;
+			justify-content: flex-end;
+			padding: var(--hb_gutters);
+			width: 100%;
+			height: fit-content;
 		}
-		.modal_control-close:hover {
-			cursor: pointer;
+		.modal_contents {
+			grid-row: contents / span 1;
 		}
+			.modal_control-close {
+				border: none;
+				border-radius: var(--hb_radius-tiny);
+				background: var(--hb_red);
+				padding: 0.15em 0.6em;
+				color: var(--hb_white);
+				font-family: inherit;
+				font-size: inherit;
+				font-weight: 600;
+			}
+			.modal_control-close:hover {
+				cursor: pointer;
+			}
 
 @media (max-width: 48em) {
 	.modal_dialog {
@@ -1340,8 +1354,8 @@ main article img {
 		align-items: center;
 		border: none;
 		border-radius: 0;
-		min-width: 100vw;
-		min-height: 100vh;
+		width: 100vw;
+		height: 100vh;
 		overflow: auto;
 	}
 }
@@ -1350,14 +1364,9 @@ main article img {
 	.modal {
 		position: fixed;
 		top: 0;
-		align-items: center;
-		justify-content: center;
 		backdrop-filter: blur(0.5em) saturate(0.5) brightness(0.5);
 		width: 100%;
 		height: 100vh;
-	}
-	.modal_control-close {
-		border-radius: var(--hb_radius-tiny) var(--hb_radius-small) var(--hb_radius-tiny) var(--hb_radius-tiny);
 	}
 }
 

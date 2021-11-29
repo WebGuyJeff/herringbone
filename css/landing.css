@@ -83,6 +83,16 @@ h6 {
 			}
 
 
+/*--------------------------------------- 1.4 GLOBAL - MAIN GRID LAYOUT ----*/
+
+
+.main-landing {
+	display: grid;
+	grid: auto / 100%;
+	grid-auto-flow: row dense;
+}
+
+
 /*------------------------------------ 1.4 GLOBAL - SECTION GRID LAYOUT ----*/
 
 

@@ -18,7 +18,7 @@ wp_enqueue_script( 'gsap_cssrule' );
 wp_enqueue_script( 'hb_hideheader_js' );
 ?>
 
-<main class="main">
+<main class="main-landing">
 
 	<section class="welcome">
 		<?php get_template_part( 'template-parts/landing/dev/welcome' ); ?>
