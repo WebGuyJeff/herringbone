@@ -14,8 +14,10 @@ namespace Jefferson\Herringbone;
  */
 class Seo_Meta {
 
-    //public $meta; //array of meta vars
-    //public $head_meta; //complete output ready for <head>
+    //array of meta vars
+    public $meta;
+    //complete output ready for <head>
+    public $head_meta;
 
     //init the class on each new instance
 	function __construct() {
@@ -24,12 +26,10 @@ class Seo_Meta {
 	}//__construct
 
 
-//THIS NEEDS TO BE FIXED
-
     //to be called inside the html head
-    public static function print_head_meta() {
+    public function print_head_meta() {
         echo $this->head_meta;
-    }//print_head_meta
+    }
 
 
     /**
@@ -46,7 +46,6 @@ class Seo_Meta {
         }
         return $url;
     }
-
 
 
     /**
@@ -73,7 +72,6 @@ class Seo_Meta {
         }
         return $string;
     }//first_not_empty()
-
 
 
     /**
@@ -112,19 +110,16 @@ class Seo_Meta {
     }//extract_image_from_content()
 
 
-
     public function build_meta_vars() {
 
 
         /* Constants (need a source) */
-
         $hb_siteauthor    	= 'Jefferson Real';
         $hb_localealt     	= 'en_US';
         $hb_objecttype		= 'website';
         $hb_robots          = 'index, follow, nocache, noarchive';
 
         /* Sitewide */
-
         $hb_sitetitle       = wp_strip_all_tags( get_bloginfo( 'name', 'display' ) );
         $hb_blogtitle		= wp_strip_all_tags( get_the_title( get_option('page_for_posts', true) ) );
         $hb_sitedesc        = wp_strip_all_tags( get_bloginfo( 'description', 'display' ) );
@@ -134,7 +129,6 @@ class Seo_Meta {
         $hb_charset         = wp_strip_all_tags( get_bloginfo( 'charset' ) );
 
         /* Page-Specific */
-
         $post = get_post();//Set up the post manually
         setup_postdata($post);
         $hb_postid          = get_the_ID();
@@ -144,14 +138,12 @@ class Seo_Meta {
         $hb_permalink       = esc_url( get_permalink() );
 
         /* Set scope */
-
         $hb_catexcerpt		= '';
         $hb_archivetitle	= '';
         $hb_postexcerpt		= '';
         $hb_postauthor		= '';
 
         /* scrape conditionally by page type */
-
         if ( is_category() ) { //User may have set desc
             $hb_catexcerpt 		= preg_split('/[.?!]/',  wp_strip_all_tags( category_description(), true ) )[0] . '.';
         }
@@ -165,7 +157,6 @@ class Seo_Meta {
         }
 
         /* choose the most suitable scraped value with preference order by page type */
-
         if ( is_front_page() ) { //Homepage
             $hb_title   	= ucwords( $hb_sitetitle );
             $hb_desc    	= ucfirst( $this->first_not_empty( [ $hb_sitedesc, $hb_postexcerpt ] ) );

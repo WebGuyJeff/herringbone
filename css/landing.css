@@ -314,7 +314,7 @@ h6 {
 
 
 .screen {
-	filter: drop-shadow(0.125em 0.250em 0.375em black);
+	filter: drop-shadow(8px 12px 5px #0007);
 	animation: squish 6s ease-in-out alternate infinite;
 	border: solid 0.5em #333;
 	border-radius: 1.5em;
