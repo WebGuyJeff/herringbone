@@ -194,7 +194,7 @@ multiple landing pages should go in landing.css.
 .usp_card > .usp_button {
 	display: none;
 }
-.usp_state:checked ~ .usp_card > .usp_button {
+.usp_state:checked + .usp_card > .usp_button {
 	display: block;
 }
 
@@ -251,7 +251,6 @@ multiple landing pages should go in landing.css.
 		grid-template-areas: "cactus"
 								"blurb "
 								"button";
-		padding: 1px;
 	}
 	.usp_state:checked + .usp_card > .usp_cactiWrap {
 		height: 100%;
@@ -286,7 +285,8 @@ multiple landing pages should go in landing.css.
 				font-size: revert;
 				font-weight: 400;
 			}
-				.usp_button {
+			    .usp_card > .usp_button,
+				.usp_state:checked + .usp_card > .usp_button {
 					display:none;
 				}
 	.landscape .usp > .landing_content {
