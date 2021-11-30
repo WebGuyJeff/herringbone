@@ -142,14 +142,19 @@ multiple landing pages should go in landing.css.
 					width: 100%;
 				}
 					.usp_cactiWrap {
+						display: flex;
+						aspect-ratio: 25 / 35;
+						margin: auto;
 						cursor: pointer;
 						padding-top: 4vh;
-						max-height: 100%;
+						max-width: 100%;
+						height: 100%;
 					}
 						.usp_cacti {
 							filter: drop-shadow(1px -2px 1px #0006);
+							margin: auto auto 0 auto;
 							width: 100%;
-							height: 100%;
+							max-height: 100%;
 						}
 							.usp_blurb,
 							.usp_subtitle {
@@ -160,12 +165,13 @@ multiple landing pages should go in landing.css.
 							}
 								.usp_button {
 									display: block;
+									grid-area: button;
 									margin: 1% auto;
 									background-position: center center;
 									background-repeat: no-repeat;
 									background-size: contain;
 									cursor: pointer;
-									padding: .8em;
+									padding: 0.4em 0.8em;
 									width: fit-content;
 									color: #fff;
 									font-family: 'Wellfleet';
@@ -176,8 +182,20 @@ multiple landing pages should go in landing.css.
 									.usp_button.green {
 										background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 150 100'%3E%3Cpath fill='%2361af76' d='M11 8l125-7c8 0 15 7 13 19l-6 65c-1 9-5 15-13 14L24 92c-6 0-12-3-14-15L1 23C0 15 4 8 11 8z'/%3E%3C/svg%3E");										}
 
+/* default usp card checkbox's initial state is checked */
+#usp_default + .usp_card {
+	display: none;
+}
 #usp_default:checked + .usp_card {
 	display: flex;
+}
+
+/* hide button when card inactive */
+.usp_card > .usp_button {
+	display: none;
+}
+.usp_state:checked ~ .usp_card > .usp_button {
+	display: block;
 }
 
 .landscape .usp > .landing_content {
@@ -189,9 +207,10 @@ multiple landing pages should go in landing.css.
 
 .usp_state:checked + .usp_card {
 	display: grid;
-	grid-template: 40% 60% / 100%;
+	grid-template: 35% 55% 10% / 100%;
 	grid-template-areas: "cactus"
-						 "blurb ";
+						 "blurb "
+						 "button";
 	grid-row: 1 / -1;
 	grid-column: 1 / -1;
 	justify-content: space-evenly;
@@ -215,15 +234,35 @@ multiple landing pages should go in landing.css.
 		}
 			.usp_state:checked + .usp_card > .usp_cactiWrap > .usp_cacti {
 				animation: floaty 2s ease-in-out alternate infinite;
+				margin: auto;
 			}
 
 .landscape .usp_state:checked + .usp_card {
-	gap: 1em;
-	grid-template: 100% / 70% 30%;
-	grid-template-areas: "blurb cactus";
+	column-gap: 1em;
+	grid-template: 70% 30% / 80% 20%;
+	grid-template-areas: "blurb cactus"
+						"blurb button";
 }
 
-@media (max-width: 48em) {
+/* fallback for old devices 360x640 */
+@media ( max-width: 22.5em ), ( max-height: 22.5em ) and ( max-width: 40em ) {
+	.usp_state:checked + .usp_card {
+		grid-template: 25% 65% 10% / 100%;
+		grid-template-areas: "cactus"
+								"blurb "
+								"button";
+		padding: 1px;
+	}
+	.usp_state:checked + .usp_card > .usp_cactiWrap {
+		height: 100%;
+	}
+	.usp_blurb,
+	.usp_subtitle {
+		margin: 0;
+	}
+}
+
+@media (max-width: 47.999em) {
 	.usp_card {
 		background: #fff3d4;
 	}
@@ -258,11 +297,12 @@ multiple landing pages should go in landing.css.
 		.usp_state:checked + .usp_card {
 			filter: drop-shadow(2px 4px 5px #0008);
 			grid-area: i;
-			grid-template: 100% / 70% 30%;
+			grid-template: 100% / 80% 20%;
 			grid-template-areas: "blurb cactus";
 			margin: auto;
 			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' width='100%25' height='100%25' viewBox='0 0 1720 570'%3E%3Cpath fill='%23fafafa' d='M79 21L1640 0c45-1 88 31 79 85l-64 393c-9 54-47 93-102 92L144 539c-49-1-84-36-91-79L1 115c-7-43 25-94 78-94z'/%3E%3C/svg%3E");
-			width: 90%;
+			width: max-content;
+			max-width: 90%;
 			text-align: left;
 		}
 			.usp_state:checked + .usp_card > .usp_blurb {
@@ -271,7 +311,6 @@ multiple landing pages should go in landing.css.
 				align-items: flex-start;
 				justify-content: center;
 				padding: 2%;
-				width: 80%;
 				max-width: 44em;
 			}
 				.usp_state:checked + .usp_card > .usp_cactiWrap {
@@ -279,7 +318,7 @@ multiple landing pages should go in landing.css.
 				}
 
 	.landscape .usp_state:checked + .usp_card {
-		grid-template: 100% / 70% 30%;
+		grid-template: 100% / 80% 20%;
 		grid-template-areas: "blurb cactus";
 	}
 
