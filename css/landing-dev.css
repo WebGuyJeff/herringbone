@@ -21,6 +21,8 @@ multiple landing pages should go in landing.css.
 	2.2 SECTION - PRODUCT
 	2.3 SECTION - TICKLE
 	2.4 SECTION - USP
+3. ANIMATION
+	3.1 ANIMATION - KEYFRAMES
 */
 
 
@@ -116,6 +118,12 @@ multiple landing pages should go in landing.css.
 	height: 100vh;
 	text-align: center;
 }
+.landscape .usp > .landing_content {
+	display: grid;
+	grid-template: repeat(2, 50%) / repeat(3, 33.333%);
+	grid-template-areas: "a b c"
+						 "d e f";
+}
 	.usp_title {
 		font-family: 'Wellfleet';
 		font-size: 2.2em;
@@ -141,8 +149,15 @@ multiple landing pages should go in landing.css.
 					justify-content: flex-end;
 					width: 100%;
 				}
+				#usp_default + .usp_card {
+					display: none;
+				}
 					.usp_cactiWrap {
-						display: flex;
+						display: grid;
+						grid: 10% 90% / 100%;
+						grid-template-areas:
+							"playerselect"
+							"cacti";
 						aspect-ratio: 25 / 35;
 						margin: auto;
 						cursor: pointer;
@@ -150,61 +165,80 @@ multiple landing pages should go in landing.css.
 						max-width: 100%;
 						height: 100%;
 					}
+						.usp_playerSelect {
+							grid-area: playerselect;
+							place-self: end center;
+							transition: 0.2s;
+							height: 0em;
+							width: 0em;
+							border-radius: 50%;
+							animation: spinHorizontalWithLighting 3s linear infinite;
+							width: 20%;
+							padding-bottom: 14.184%; /* = width / 1.41 */
+							position: relative;
+							overflow: hidden;
+						}
+							.usp_playerSelect:before{
+								content: '';
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								background: #999;
+								transform-origin: 100% 0;
+								transform: rotate(45deg);
+								filter: drop-shadow(1px -2px 1px #0006);
+							}
 						.usp_cacti {
 							filter: drop-shadow(1px -2px 1px #0006);
-							margin: auto auto 0 auto;
+							grid-area: cacti;
+							place-self: end center;
 							width: 100%;
 							max-height: 100%;
 						}
-							.usp_blurb,
-							.usp_subtitle {
-								transition: opacity 1s ease;
-								opacity: 0;
-								max-height: 0;
-								font-size: 0;
-							}
-								.usp_button {
-									display: block;
-									grid-area: button;
-									margin: 1% auto;
-									background-position: center center;
-									background-repeat: no-repeat;
-									background-size: contain;
-									cursor: pointer;
-									padding: 0.4em 0.8em;
-									width: fit-content;
-									color: #fff;
-									font-family: 'Wellfleet';
-									font-weight: 400;
-								}
-									.usp_button.red {
-										background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 150 100'%3E%3Cpath fill='%23e54242' d='M11 8l125-7c8 0 15 7 13 19l-6 65c-1 9-5 15-13 14L24 92c-6 0-12-3-14-15L1 23C0 15 4 8 11 8z'/%3E%3C/svg%3E");										}
-									.usp_button.green {
-										background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 150 100'%3E%3Cpath fill='%2361af76' d='M11 8l125-7c8 0 15 7 13 19l-6 65c-1 9-5 15-13 14L24 92c-6 0-12-3-14-15L1 23C0 15 4 8 11 8z'/%3E%3C/svg%3E");										}
+						.usp_cactiShadow {
+							filter: drop-shadow( 0 0 3px #000 );
+							display: none;
+							height: 50%;
+							width: 30%;
+							z-index: -1;
+							grid-area: shadow;
+							border-radius: 100%;
+							background: #0002;
+							place-self: end center;
+						}
+					.usp_blurb,
+					.usp_subtitle {
+						transition: opacity 1s ease;
+						opacity: 0;
+						max-height: 0;
+						font-size: 0;
+					}
+					.usp_button {
+						display: none;
+						grid-area: button;
+						margin: 1% auto;
+						background-position: center center;
+						background-repeat: no-repeat;
+						background-size: contain;
+						cursor: pointer;
+						padding: 0.4em 0.8em;
+						width: fit-content;
+						color: #fff;
+						font-family: 'Wellfleet';
+						font-weight: 400;
+					}
+						.usp_button.red {
+							background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 150 100'%3E%3Cpath fill='%23e54242' d='M11 8l125-7c8 0 15 7 13 19l-6 65c-1 9-5 15-13 14L24 92c-6 0-12-3-14-15L1 23C0 15 4 8 11 8z'/%3E%3C/svg%3E");										}
+						.usp_button.green {
+							background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 150 100'%3E%3Cpath fill='%2361af76' d='M11 8l125-7c8 0 15 7 13 19l-6 65c-1 9-5 15-13 14L24 92c-6 0-12-3-14-15L1 23C0 15 4 8 11 8z'/%3E%3C/svg%3E");										}
 
-/* default usp card checkbox's initial state is checked */
-#usp_default + .usp_card {
-	display: none;
-}
+
+/* .usp_state:checked */
 #usp_default:checked + .usp_card {
 	display: flex;
 }
-
-/* hide button when card inactive */
-.usp_card > .usp_button {
-	display: none;
-}
-.usp_state:checked + .usp_card > .usp_button {
-	display: block;
-}
-
-.landscape .usp > .landing_content {
-	display: grid;
-	grid-template: repeat(2, 50%) / repeat(3, 33.333%);
-	grid-template-areas: "a b c"
-						 "d e f";
-}
-
 .usp_state:checked + .usp_card {
 	display: grid;
 	grid-template: 35% 55% 10% / 100%;
@@ -217,32 +251,46 @@ multiple landing pages should go in landing.css.
 	z-index: 1;
 	padding: 5vh 5vw;
 }
-	.usp_state:checked + .usp_card > .usp_cactiWrap {
-		grid-area: cactus;
-		padding-top: 0;
-		height: 80%;
-	}
-		.usp_state:checked + .usp_card > .usp_blurb {
-			display: flex;
-			flex-flow: column;
-			grid-area: blurb;
-			justify-content: space-evenly;
-			opacity: 1;
-			height: 100%;
-			max-height: 100%;
-			font-size: 1em;
-		}
-			.usp_state:checked + .usp_card > .usp_cactiWrap > .usp_cacti {
-				animation: floaty 2s ease-in-out alternate infinite;
-				margin: auto;
-			}
-
 .landscape .usp_state:checked + .usp_card {
 	column-gap: 1em;
 	grid-template: 70% 30% / 80% 20%;
 	grid-template-areas: "blurb cactus"
 						"blurb button";
 }
+	.usp_state:checked + .usp_card > .usp_cactiWrap {
+		grid-area: cactus;
+		padding-top: 0;
+		height: 80%;
+		display: grid;
+		grid: 10% 80% 10% / 100%;
+		grid-template-areas:
+			"playerselect"
+			"cacti"
+			"shadow";
+		animation: floaty 2s ease-in-out alternate infinite;
+	}
+		.usp_state:checked + .usp_card > .usp_cactiWrap > .usp_cacti {
+			place-self: start center;
+		}
+		.usp_state:checked + .usp_card .usp_cactiShadow {
+			display: block;
+			/* delay by 0.5s to offset the vertical movement */
+			animation: floaty 2s 0.5s ease-in-out infinite;
+		}
+	.usp_state:checked + .usp_card > .usp_blurb {
+		display: flex;
+		flex-flow: column;
+		grid-area: blurb;
+		justify-content: space-evenly;
+		opacity: 1;
+		height: 100%;
+		max-height: 100%;
+		font-size: 1em;
+	}
+	.usp_state:checked + .usp_card .usp_button {
+		display: block;
+	}
+
 
 /* fallback for old devices 360x640 */
 @media ( max-width: 22.5em ), ( max-height: 22.5em ) and ( max-width: 40em ) {
@@ -274,9 +322,18 @@ multiple landing pages should go in landing.css.
 							 "a b c"
 							 "d e f";
 	}
-		.usp_cactiWrap {
-			padding: 0;
+	.landscape .usp > .landing_content {
+		grid-template: 70% 30% / repeat(6, 16.666%);
+		grid-template-areas: "i i i i i i"
+							 "a b c d e f";
+	}
+		.landscape .usp_state:checked + .usp_card {
+			grid-template: 100% / 80% 20%;
+			grid-template-areas: "blurb cactus";
 		}
+			.usp_cactiWrap {
+				padding: 0;
+			}
 			.usp_subtitle {
 				opacity: revert;
 				margin: 0;
@@ -285,15 +342,10 @@ multiple landing pages should go in landing.css.
 				font-size: revert;
 				font-weight: 400;
 			}
-			    .usp_card > .usp_button,
-				.usp_state:checked + .usp_card > .usp_button {
-					display:none;
-				}
-	.landscape .usp > .landing_content {
-		grid-template: 70% 30% / repeat(6, 16.666%);
-		grid-template-areas: "i i i i i i"
-							 "a b c d e f";
-	}
+			.usp_card > .usp_button,
+			.usp_state:checked + .usp_card > .usp_button {
+				display:none;
+			}
 		.usp_state:checked + .usp_card {
 			filter: drop-shadow(2px 4px 5px #0008);
 			grid-area: i;
@@ -317,13 +369,7 @@ multiple landing pages should go in landing.css.
 					height: 100%;
 				}
 
-	.landscape .usp_state:checked + .usp_card {
-		grid-template: 100% / 80% 20%;
-		grid-template-areas: "blurb cactus";
-	}
-
 }/* media min-width: 48em */
-
 
 @media (min-width: 70em) {
 	.usp > .landing_content {
@@ -333,7 +379,24 @@ multiple landing pages should go in landing.css.
 							 "a b c d e f";
 	}
 	.usp_state:checked + .usp_card {
-		min-height: 25vw;
-		max-height: 90%;
+		max-height: 60vh;
 	}
 }/* media min-width: 70em */
+
+
+/*========================================================= 3. ANIMATION ==== */
+/*--------------------------------------------- 3.1 ANIMATION - KEYFRAMES --- */
+
+@keyframes spinHorizontalWithLighting {
+    0%    {transform: rotatey(0deg);     filter:  brightness(1.2); }
+    12.5% {transform: rotatey(45deg);    filter:  brightness(1.8); }
+    25%   {transform: rotatey(90deg);    filter:  brightness(1.2); }
+    25.1% {transform: rotatey(90.1deg);  filter:  brightness(0.2); }
+    37.5% {transform: rotatey(135deg);   filter:  brightness(0.8); }
+    50%   {transform: rotatey(180deg);   filter:  brightness(1.2); }
+    62.5% {transform: rotatey(225deg);   filter:  brightness(1.8); }
+    75%   {transform: rotatey(270deg);   filter:  brightness(1.2); }
+    75.1% {transform: rotatey(270.1deg); filter:  brightness(0.2); }
+    87.5% {transform: rotatey(315deg);   filter:  brightness(0.8); }
+    100%  {transform: rotatey(360deg);   filter:  brightness(1.2); }
+}

@@ -36,7 +36,14 @@ wp_enqueue_script( 'hb_usp_js' );
 	<input type="checkbox" class="usp_state" id="usp_complete" />
 	<div class="usp_card" style="--grid_area: a;">
 		<label for="usp_complete" onclick="toggleCheckboxes('usp_state');" style="--grid_area: a;" class="usp_cactiWrap">
-			<img class="usp_cacti" src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_complete.svg'; ?>">
+			<div class="usp_playerSelect"></div>
+			<img
+				class="usp_cacti"
+				alt="Complete Start to Finish Website Solution"
+				title="Complete Start to Finish Website Solution"
+				src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_complete.svg'; ?>"
+			>
+			<div class="usp_cactiShadow"></div>
 		</label>
 		<div class="usp_blurb">
 			<div class="column">
@@ -56,7 +63,14 @@ wp_enqueue_script( 'hb_usp_js' );
 	<input type="checkbox" class="usp_state" id="usp_personal" />
 	<div class="usp_card" style="--grid_area: b;">
 		<label for="usp_personal" onclick="toggleCheckboxes('usp_state');" class="usp_cactiWrap">
-			<img class="usp_cacti" src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_personal.svg'; ?>">
+			<div class="usp_playerSelect"></div>
+			<img
+				class="usp_cacti"
+				alt="Personal Service from a Dedicated Professional"
+				title="Personal Service from a Dedicated Professional"
+				src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_personal.svg'; ?>"
+			>
+			<div class="usp_cactiShadow"></div>
 		</label>
 		<div class="usp_blurb">
 			<div class="column">
@@ -81,7 +95,14 @@ wp_enqueue_script( 'hb_usp_js' );
 	<input type="checkbox" class="usp_state" id="usp_flexibility" />
 	<div class="usp_card" style="--grid_area: c;">
 		<label for="usp_flexibility" onclick="toggleCheckboxes('usp_state');" class="usp_cactiWrap">
-			<img class="usp_cacti" src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_flexibility.svg'; ?>">
+			<div class="usp_playerSelect"></div>
+			<img
+				class="usp_cacti"
+				alt="Flexible to Fit Your Working Style"
+				title="Flexible to Fit Your Working Style"
+				src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_flexibility.svg'; ?>"
+			>
+			<div class="usp_cactiShadow"></div>
 		</label>
 		<div class="usp_blurb">
 			<div class="column">
@@ -102,7 +123,14 @@ wp_enqueue_script( 'hb_usp_js' );
 	<input type="checkbox" class="usp_state" id="usp_experience" />
 	<div class="usp_card" style="--grid_area: d;">
 		<label for="usp_experience" onclick="toggleCheckboxes('usp_state');" class="usp_cactiWrap">
-			<img class="usp_cacti" src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_experience.svg'; ?>">
+			<div class="usp_playerSelect"></div>
+			<img
+				class="usp_cacti"
+				alt="Diverse Experience"
+				title="Diverse Experience"
+				src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_experience.svg'; ?>"
+			>
+			<div class="usp_cactiShadow"></div>
 		</label>
 		<div class="usp_blurb">
 			<div class="column">
@@ -123,7 +151,14 @@ wp_enqueue_script( 'hb_usp_js' );
 	<input type="checkbox" class="usp_state" id="usp_value" />
 	<div class="usp_card" style="--grid_area: e;">
 		<label for="usp_value" onclick="toggleCheckboxes('usp_state');" class="usp_cactiWrap">
-			<img class="usp_cacti" src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_value.svg'; ?>">
+			<div class="usp_playerSelect"></div>
+			<img
+				class="usp_cacti"
+				alt="Value for Money"
+				title="Value for Money"
+				src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_value.svg'; ?>"
+			>
+			<div class="usp_cactiShadow"></div>
 		</label>
 		<div class="usp_blurb">
 			<div class="column">
@@ -144,7 +179,14 @@ wp_enqueue_script( 'hb_usp_js' );
 	<input type="checkbox" class="usp_state" id="usp_aftercare" />
 	<div class="usp_card" style="--grid_area: f;">
 		<label for="usp_aftercare" onclick="toggleCheckboxes('usp_state');" class="usp_cactiWrap">
-			<img class="usp_cacti" src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_aftercare.svg'; ?>">
+			<div class="usp_playerSelect"></div>
+			<img
+				class="usp_cacti"
+				alt="Aftercare and Support"
+				title="Aftercare and Support"
+				src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_aftercare.svg'; ?>"
+			>
+			<div class="usp_cactiShadow"></div>
 		</label>
 		<div class="usp_blurb">
 			<div class="column">

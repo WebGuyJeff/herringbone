@@ -444,9 +444,9 @@ h6 {
 
 
 @keyframes floaty {
-	0%   { transform: translatey(0px)	rotatey(-20deg); filter: brightness(1.4) drop-shadow(1px 3px 2px #0009); }
+	0%   { transform: translatey(0px)	rotatey(-20deg); filter: brightness(1.4); }
 	25%  { transform: translatey(10px) rotatey(-10deg);  }
 	50%  { transform: translatey(0px)  rotatey(0)	 ;  }
 	75%  { transform: translatey(10px) rotatey(10deg) ;  }
-	100% { transform: translatey(0px)  rotatey(20deg) ; filter: brightness(0.6) drop-shadow(1px 3px 2px #0009); }
+	100% { transform: translatey(0px)  rotatey(20deg) ; filter: brightness(0.6); }
 }
