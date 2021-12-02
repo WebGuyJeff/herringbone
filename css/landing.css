@@ -443,10 +443,3 @@ h6 {
 /*----------------------------------------------------- 3.1 CSS KEYFRAMES ----*/
 
 
-@keyframes floaty {
-	0%   { transform: translatey(0px)	rotatey(-20deg); filter: brightness(1.4); }
-	25%  { transform: translatey(10px) rotatey(-10deg);  }
-	50%  { transform: translatey(0px)  rotatey(0)	 ;  }
-	75%  { transform: translatey(10px) rotatey(10deg) ;  }
-	100% { transform: translatey(0px)  rotatey(20deg) ; filter: brightness(0.6); }
-}
