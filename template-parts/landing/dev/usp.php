@@ -37,7 +37,7 @@ wp_enqueue_script( 'hb_usp_js' );
 	<div class="usp_card" style="--grid_area: a;">
 		<label for="usp_complete" onclick="toggleCheckboxes('usp_state');" style="--grid_area: a;" class="usp_graphicWrap">
 			<div class="usp_playerSelect"></div>
-			<div class="usp_perspective">
+			<div class="usp_cactiBox">
 				<img
 					class="usp_cacti"
 					alt="Complete Start to Finish Website Solution"
@@ -66,7 +66,7 @@ wp_enqueue_script( 'hb_usp_js' );
 	<div class="usp_card" style="--grid_area: b;">
 		<label for="usp_personal" onclick="toggleCheckboxes('usp_state');" class="usp_graphicWrap">
 			<div class="usp_playerSelect"></div>
-			<div class="usp_perspective">
+			<div class="usp_cactiBox">
 				<img
 					class="usp_cacti"
 					alt="Personal Service from a Dedicated Professional"
@@ -100,7 +100,7 @@ wp_enqueue_script( 'hb_usp_js' );
 	<div class="usp_card" style="--grid_area: c;">
 		<label for="usp_flexibility" onclick="toggleCheckboxes('usp_state');" class="usp_graphicWrap">
 			<div class="usp_playerSelect"></div>
-			<div class="usp_perspective">
+			<div class="usp_cactiBox">
 				<img
 					class="usp_cacti"
 					alt="Flexible to Fit Your Working Style"
@@ -130,7 +130,7 @@ wp_enqueue_script( 'hb_usp_js' );
 	<div class="usp_card" style="--grid_area: d;">
 		<label for="usp_experience" onclick="toggleCheckboxes('usp_state');" class="usp_graphicWrap">
 			<div class="usp_playerSelect"></div>
-			<div class="usp_perspective">
+			<div class="usp_cactiBox">
 				<img
 					class="usp_cacti"
 					alt="Diverse Experience"
@@ -160,7 +160,7 @@ wp_enqueue_script( 'hb_usp_js' );
 	<div class="usp_card" style="--grid_area: e;">
 		<label for="usp_value" onclick="toggleCheckboxes('usp_state');" class="usp_graphicWrap">
 			<div class="usp_playerSelect"></div>
-			<div class="usp_perspective">
+			<div class="usp_cactiBox">
 				<img
 					class="usp_cacti"
 					alt="Value for Money"
@@ -190,7 +190,7 @@ wp_enqueue_script( 'hb_usp_js' );
 	<div class="usp_card" style="--grid_area: f;">
 		<label for="usp_aftercare" onclick="toggleCheckboxes('usp_state');" class="usp_graphicWrap">
 			<div class="usp_playerSelect"></div>
-			<div class="usp_perspective">
+			<div class="usp_cactiBox">
 				<img
 					class="usp_cacti"
 					alt="Aftercare and Support"

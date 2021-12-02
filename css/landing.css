@@ -95,35 +95,97 @@ h6 {
 
 
 /*
- * SECTION GRID COLUMNS
- *
- *	centre column == 1:1 box.
- *	secondary columns == 3:2 box.
- *	tertiary columns == 16:9 box.
- *
- * Column min-widths are based on a percentage of the viewport height:
- * 
- * The ultrawide aspect ratio is the most extreme aspect ratio in common use.
- * Any aspect ratio wider than this will be created through browser resizing
- * or specialist monitor configs and the user will likely be expecting to 
- * scroll the content.
- * 
- * 3440/1440 = 2.39 (ultrawide aspect ratio)
- * 100/2.389 = 41.86 (height should be no less than 41.86% of width)
- * 
- * 41.86vw will be the smallest viewport height with a fullscreen browser (ex UI)
- * on an ultrawide monitor. The centre column should be no narrower than this.
- * 
- * When the column outer edges meet the viewport edge, the column reponds by only
- * being as wide as the viewable space to prevent overflow.
- * 
- */
+### Aspect ratio grid layout.
+
+This layout provides grid tracks set at aspect ratios based on viewport height. The viewport edges
+form the 'top and bottom' of the aspect ratio container. This allows you to create a screen space
+based on an aspect ratio which best suits your content. There is no limit to the height of the
+grid layout.
+
+#### Layout
+
+[Full-width] [16:9] [3:2] [1:1] [3:2] [16:9] [Full-width]
+
+Columns are always centered to the viewport. As the viewport widens in relation to the height, the
+extra columns get added left and right and expand until they reach their ratio max. E.g when the
+viewport is wider than 100% of the height (> 1:1), the 3:2 columns begin to fill the available
+space until they hit their max, and so on. The full-width tracks are always 100vw.
+
+
+#### Columns
+
+3 ratios are achieved when the columns are fully expanded:
+
+			 [1:1] 				= 1:1
+	   [3:2] [1:1] [3:2]		= 3:2
+[16:9] [3:2] [1:1] [3:2] [16:9] = 16:9
+
+The ultrawide aspect ratio is the most extreme aspect ratio in common use, so the min-width is based
+on the UW aspect ratio of 64:27. In other words, the 1:1 column will never be narrower than
+42.186vh ( 100vh / 64 * 27).
+
+
+#### Max Column Widths (between tracks)
+
+ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
+
+1:1  = 100vh 	(100vh by 100vh)
+3:2  = 25vh  	(150vh - 100vh / 2)
+16:9 = 13.888vh (100vh / 9 * 16 = 177.776vh then 177.776vh - 150vh = 27.776vh / 2)
+*/
+
+html {
+	/*
+	### Scrollbar width
+	*/
+	--scrollbar: calc(100vw - 100%);
+	/*
+	usage:
+	calc( 55vw - calc( 0.55 * var( --scrollbar ) );
+	0.55 <= this is the percentage of scrollbar width to deduct (55vw / 100).
+	*/
+}
+
 
 .hb__pag-landing section {
 	gap: 0;
-	--oneone: clamp(41.86vmax, 100vmin, 100vmin); /* Creates a square centre section */
-	--threetwo: clamp(clamp(0px, calc(50vw - 50vh), 10.47vmax), calc(50vw - 50vh), 25vmin); /* These columns create a 3:2 view */
-	--sixteennine: clamp(clamp(0px, calc(50vw - 75vh), 5.81vmax), calc(50vw - 75vh), 13.89vmin); /* These columns create a 16:9 view */
+
+
+/*
+
+--oneone: 
+	clamp(
+		calc( 42.186vw - calc( 0.42186 * var( --scrollbar ) ) ),
+		100vh,
+		100vh
+	);
+--threetwo:
+	clamp( 
+		clamp(
+			0px,
+			calc( calc( 50vw - calc( 0.50 * var( --scrollbar ) ) ) - 50vh ),
+			10.47vw
+		),
+		calc( calc( 50vw - calc( 0.50 * var( --scrollbar ) ) ) - 50vh ),
+		25vh
+	);
+--sixteennine: clamp( clamp(
+			0px,
+			calc( calc( 50vw - calc( 0.50 * var( --scrollbar ) ) ) - 75vh),
+			calc( 5.81vw - calc( 0.0581 * var( --scrollbar ) ) ),
+		calc( calc( 50vw - calc( 0.50 * var( --scrollbar ) ) ) - 75vh )
+		),
+		13.89vh
+	);
+
+*/
+
+
+
+
+    --oneone: clamp( 42.186vw, 100vh, 100vh );
+    --threetwo: clamp( clamp(0px, calc( 50vw - 50vh ), 10.47vw ), calc( 50vw - 50vh ), 25vh );
+    --sixteennine: clamp( clamp( 0px, calc( 50vw - 75vh ), 5.81vw ), calc( 50vw - 75vh ) , 13.89vh );
 	display: grid;
 	position: relative;
 	grid-column: 1 / -1;
@@ -175,10 +237,13 @@ h6 {
 	margin-top: 160px;
 	border: solid 20px;
 	border-radius: 3px;
-	border-image: var(--hb_triBorder);
+	-o-border-image: var(--hb_triBorder);
+	   border-image: var(--hb_triBorder);
 	background: #fff;
 	padding: 0 5% 1em 5%;
 	width: clamp(41.86vmax, 100vmin, 100vmin);
+	height: -webkit-fit-content;
+	height: -moz-fit-content;
 	height: fit-content;
 }
 	.chalkboard_title {
@@ -271,7 +336,7 @@ h6 {
 									}
 									@media (min-width: 100vh) {
 										.svg_grabhand-left {
-											right: calc(220px - calc(100vw - 100vh) /2);
+											right: calc(220px - calc( calc( 100vw - var(--scrollbar) ) - 100vh) /2);
 										}
 										.svg_grabhand-right {
 											display: none;
@@ -315,7 +380,8 @@ h6 {
 
 .screen {
 	filter: drop-shadow(8px 12px 5px #0007);
-	animation: squish 6s ease-in-out alternate infinite;
+	-webkit-animation: squish 6s ease-in-out alternate infinite;
+	        animation: squish 6s ease-in-out alternate infinite;
 	border: solid 0.5em #333;
 	border-radius: 1.5em;
 	background: #333;
@@ -361,18 +427,22 @@ h6 {
 						overflow: hidden;
 					}
 						h4.screen_title > span:nth-of-type(1) {
-							animation: titleSwitch-mobile 6s ease-in-out alternate infinite;
+							-webkit-animation: titleSwitch-mobile 6s ease-in-out alternate infinite;
+							        animation: titleSwitch-mobile 6s ease-in-out alternate infinite;
 						}
 						h4.screen_title > span:nth-of-type(2) {
-							animation: titleSwitch-tablet 6s ease-in-out alternate infinite;
+							-webkit-animation: titleSwitch-tablet 6s ease-in-out alternate infinite;
+							        animation: titleSwitch-tablet 6s ease-in-out alternate infinite;
 						}
 						h4.screen_title > span:nth-of-type(3) {
-							animation: titleSwitch-desktop 6s ease-in-out alternate infinite;
+							-webkit-animation: titleSwitch-desktop 6s ease-in-out alternate infinite;
+							        animation: titleSwitch-desktop 6s ease-in-out alternate infinite;
 						}
 
 
 .screen_row.a > .screen_column {
-	animation: screen_row-a 6s ease-in-out alternate infinite;
+	-webkit-animation: screen_row-a 6s ease-in-out alternate infinite;
+	        animation: screen_row-a 6s ease-in-out alternate infinite;
 	background: var(--hb_blue);
 }
 
@@ -381,13 +451,23 @@ h6 {
 }
 
 .screen_row.c > .screen_column {
-	animation: screen_row-c 6s ease-in-out alternate infinite;
+	-webkit-animation: screen_row-c 6s ease-in-out alternate infinite;
+	        animation: screen_row-c 6s ease-in-out alternate infinite;
 	background: var(--hb_orange);
 }
 
 .screen_row.d > .screen_column {
-	animation: screen_row-d 6s ease-in-out alternate infinite;
+	-webkit-animation: screen_row-d 6s ease-in-out alternate infinite;
+	        animation: screen_row-d 6s ease-in-out alternate infinite;
 	background: var(--hb_green);
+}
+
+
+@-webkit-keyframes screen_row-a {
+	0%	{ width: calc( 40% - .5em  ); } /* minus 1.5vmin to account for the padding and margin 2 x .75vmin */
+	75.3% { width: calc( 40% - .5em  ); }
+	75.4% { width: calc( 100% - .5em ); }
+	100%  { width: calc( 100% - .5em ); }
 }
 
 
@@ -396,6 +476,15 @@ h6 {
 	75.3% { width: calc( 40% - .5em  ); }
 	75.4% { width: calc( 100% - .5em ); }
 	100%  { width: calc( 100% - .5em ); }
+}
+
+@-webkit-keyframes screen_row-c {
+	0%	 { width: calc(  33% - .5em ); }
+	28.7%  { width: calc(  33% - .5em ); } /* Sandwich together the keyframes to create a stepped change in	*/
+	28.8%  { width: calc(  50% - .5em ); } /* the calculated widths, otherwise the threshold is unpredictable. */
+	75.3%  { width: calc(  50% - .5em ); }
+	75.4%  { width: calc( 100% - .5em ); }
+	100%   { width: calc( 100% - .5em ); }
 }
 
 @keyframes screen_row-c {
@@ -407,6 +496,13 @@ h6 {
 	100%   { width: calc( 100% - .5em ); }
 }
 
+@-webkit-keyframes screen_row-d {
+	0%	{ width: calc( 25% - .5em ); }
+	51.4% { width: calc( 25% - .5em ); }
+	51.5% { width: calc( 50% - .5em ); }
+	100%  { width: calc( 50% - .5em ); }
+}
+
 @keyframes screen_row-d {
 	0%	{ width: calc( 25% - .5em ); }
 	51.4% { width: calc( 25% - .5em ); }
@@ -414,9 +510,20 @@ h6 {
 	100%  { width: calc( 50% - .5em ); }
 }
 
+@-webkit-keyframes squish {
+	0%   { width: 100%; height: 70%; }
+	100% { width: 50%; height: 100%; }
+}
+
 @keyframes squish {
 	0%   { width: 100%; height: 70%; }
 	100% { width: 50%; height: 100%; }
+}
+
+@-webkit-keyframes titleSwitch-desktop {
+	0%  { opacity: 1; height: 100%; }
+	25% { opacity: 1; height: 100%; }
+	30% { opacity: 0; height: 0;	}
 }
 
 @keyframes titleSwitch-desktop {
@@ -425,11 +532,24 @@ h6 {
 	30% { opacity: 0; height: 0;	}
 }
 
+@-webkit-keyframes titleSwitch-tablet {
+	25% { opacity: 0; height: 0;	}
+	30% { opacity: 1; height: 100%; }
+	75% { opacity: 1; height: 100%; }
+	80% { opacity: 0; height: 0;	}
+}
+
 @keyframes titleSwitch-tablet {
 	25% { opacity: 0; height: 0;	}
 	30% { opacity: 1; height: 100%; }
 	75% { opacity: 1; height: 100%; }
 	80% { opacity: 0; height: 0;	}
+}
+
+@-webkit-keyframes titleSwitch-mobile {
+	75%  { opacity: 0; height: 0;	}
+	80%  { opacity: 1; height: 100%; }
+	100% { opacity: 1; height: 100%; }
 }
 
 @keyframes titleSwitch-mobile {
@@ -441,5 +561,3 @@ h6 {
 
 /*========================================================= 3. ANIMATION =====*/
 /*----------------------------------------------------- 3.1 CSS KEYFRAMES ----*/
-
-

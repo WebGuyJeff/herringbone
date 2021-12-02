@@ -161,7 +161,8 @@ Font Size		 Line Height
 	--hb_landingHeaderOffset: 7.1em;
 
 	/* browser scroll behaviour */
-	scroll-snap-type: y proximity;
+	-ms-scroll-snap-type: y proximity;
+	    scroll-snap-type: y proximity;
 	scroll-behavior: smooth;
 
 	/* font defaults */
@@ -174,6 +175,12 @@ Font Size		 Line Height
 	font-size: clamp(0.875rem, calc(0.875rem + ((1vw - 0.48rem) * 0.3534)), 1.125rem);
 
 } /* ROOT END */
+
+html {
+	/* This should be deducted wherever 100vw is used to prevent x-overflow */
+	/* nb: var doesn't work on root{} */
+	--scrollbar: calc( 100vw - 100% );
+}
 
 
 /*------------------------------------------------- 1.2 BROWSER SCROLLBAR ----*/
@@ -243,6 +250,18 @@ textarea:hover:not(:disabled):not(.disabled) {
 
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - 1.3.3 INPUT PLACEHOLDER - - */
+
+
+::-moz-placeholder {
+	opacity: 1; /* Chrome, Firefox, Opera, Safari 10.1+ */ /* Firefox */
+	color: var(--hb_grey);
+  }
+
+
+:-ms-input-placeholder {
+	opacity: 1; /* Chrome, Firefox, Opera, Safari 10.1+ */ /* Firefox */
+	color: var(--hb_grey);
+  }
 
 
 ::placeholder {
@@ -542,6 +561,8 @@ strong {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
 	width: fit-content;
 }
 
@@ -605,7 +626,8 @@ a img.aligncenter {
 .screen-reader-text {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
+	-webkit-clip-path: inset(50%);
+	        clip-path: inset(50%);
 	height: 1px;
 	margin: -1px;
 	overflow: hidden;
@@ -618,7 +640,8 @@ a img.aligncenter {
 .screen-reader-text:focus {
 	background-color: #eee;
 	clip: auto !important;
-	clip-path: none;
+	-webkit-clip-path: none;
+	        clip-path: none;
 	color: #444;
 	display: block;
 	font-size: 1em;
@@ -643,7 +666,8 @@ a img.aligncenter {
     overflow: hidden;
     clip: rect(0,0,0,0);
     white-space: nowrap;
-    clip-path: inset(50%);
+    -webkit-clip-path: inset(50%);
+            clip-path: inset(50%);
     border: 0;
     position: absolute;
     pointer-events: none;
@@ -738,7 +762,8 @@ a img.aligncenter {
     max-width: 100%;
 }
 	.blog-post img {
-		object-fit: contain;
+		-o-object-fit: contain;
+		   object-fit: contain;
 		height: auto;
 		max-width: 100%;
 		border-radius: var(--hb_radius-small);
@@ -749,7 +774,8 @@ a img.aligncenter {
 
 
 main article img {
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
     height: auto;
     max-width: 100%;
     border-radius: var(--hb_radius-small);
@@ -795,7 +821,8 @@ main article img {
 
 .squares {
 	display: grid;
-	grid-template: min-content 100vw min-content min-content / 100%;
+	grid-template: -webkit-min-content calc( 100vw - var(--scrollbar) ) -webkit-min-content -webkit-min-content / 100%;
+	grid-template: min-content calc( 100vw - var(--scrollbar) ) min-content min-content / 100%;
 	width: 100%;
 }
 	.squares .column {
@@ -814,6 +841,7 @@ main article img {
 @media (min-width: 48em) {
 
 	.squares {
+		grid-template: minmax(50vw, -webkit-min-content) minmax(50vw, -webkit-min-content) / 60% 40%;
 		grid-template: minmax(50vw, min-content) minmax(50vw, min-content) / 60% 40%;
 	}
 }
@@ -823,6 +851,7 @@ main article img {
 	.squares {
 		display: grid;
 		grid-auto-flow: dense;
+		grid-template: -webkit-min-content -webkit-min-content / 50% 50%;
 		grid-template: min-content min-content / 50% 50%;
 		width: 100%;
 	}
@@ -877,7 +906,8 @@ main article img {
 	border-radius: var(--hb_radius-small);
 	max-width: 100%;
 	height: auto;
-	object-fit: contain;
+	-o-object-fit: contain;
+	   object-fit: contain;
 }
 
 
@@ -912,8 +942,12 @@ main article img {
     border: none;
     border-radius: 10em;
     padding: 0;
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
     max-width: fit-content;
     height: 2.5em;
+    max-height: -webkit-fit-content;
+    max-height: -moz-fit-content;
     max-height: fit-content;
     overflow: visible;
     text-decoration: none;
@@ -1001,7 +1035,10 @@ main article img {
 		font-size: var(--hb_font-l);
 		font-weight: 800;
 		letter-spacing: -0.04em;
-		user-select: none;
+		-webkit-user-select: none;
+		   -moz-user-select: none;
+		    -ms-user-select: none;
+		        user-select: none;
 		text-align: center;
 		text-decoration: none;
 	}
@@ -1037,6 +1074,8 @@ main article img {
     flex-flow: row nowrap;
     align-items: center;
     justify-content: center;
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
     max-width: fit-content;
     border: none;
     text-decoration: none;
@@ -1053,12 +1092,17 @@ main article img {
 		white-space: nowrap;
 		transition: inherit;
 		border-radius: inherit;
+		min-width: -webkit-fit-content;
+		min-width: -moz-fit-content;
 		min-width: fit-content;
 		height: 2.5em;
 		font-family: var(--hb_font-primary);
 		font-weight: 800;
 		letter-spacing: -0.04em;
-		user-select: none;
+		-webkit-user-select: none;
+		   -moz-user-select: none;
+		    -ms-user-select: none;
+		        user-select: none;
     }
         .button.spinny:hover > *:first-child {
             transform: rotatex(45deg);
@@ -1311,12 +1355,15 @@ main article img {
 }
 	.modal_dialog {
 		display: grid;
+		grid: [controls] -webkit-max-content 1fr [contents] auto 1fr / 100%;
 		grid: [controls] max-content 1fr [contents] auto 1fr / 100%;
 		justify-items: center;
 		z-index: 10;
 		margin: auto;
 		border-radius: var(--hb_radius-small);
 		min-width: 32em;
+		max-height: -webkit-fit-content;
+		max-height: -moz-fit-content;
 		max-height: fit-content;
 		overflow: auto;
 	}
@@ -1327,6 +1374,8 @@ main article img {
 			justify-content: flex-end;
 			padding: var(--hb_gutters);
 			width: 100%;
+			height: -webkit-fit-content;
+			height: -moz-fit-content;
 			height: fit-content;
 		}
 		.modal_contents {
@@ -1354,7 +1403,7 @@ main article img {
 		align-items: center;
 		border: none;
 		border-radius: 0;
-		width: 100vw;
+		width: calc( 100vw - var(--scrollbar) );
 		height: 100vh;
 		overflow: auto;
 	}
@@ -1364,7 +1413,8 @@ main article img {
 	.modal {
 		position: fixed;
 		top: 0;
-		backdrop-filter: blur(0.5em) saturate(0.5) brightness(0.5);
+		-webkit-backdrop-filter: blur(0.5em) saturate(0.5) brightness(0.5);
+		        backdrop-filter: blur(0.5em) saturate(0.5) brightness(0.5);
 		width: 100%;
 		height: 100vh;
 	}
@@ -1428,7 +1478,7 @@ main article img {
 						border-radius: var(--hb_radius-small);
 						box-shadow: 1px 3px 6px 1px #000a;
 						width: 20em;
-						max-width: 100vw;
+						max-width: calc( 100vw - var(--scrollbar) );
 					}
 						.dropdown_item {
 							display: inline-flex;
@@ -1539,7 +1589,6 @@ main article img {
 			justify-content: center;
 			opacity: 0;
 			transition: all ease-out 200ms;
-			transition: all ease-out 200ms,;
 			border-radius: 3em;
 			background: var(--hb_lightGrey);
 			width: 6em;
@@ -1591,6 +1640,15 @@ main article img {
 
 /*========================================================= 4. ANIMATION =====*/
 /*----------------------------------------------------- 4.1 CSS KEYFRAMES ----*/
+
+
+@-webkit-keyframes pulse {
+	0% { transform: scale(1);}
+	33% { transform: scale(1.2);}
+	50% {transform: scale(1);}
+	66% {transform: scale(1.2);}
+	100% {transform: scale(1);}
+}
 
 
 @keyframes pulse {
