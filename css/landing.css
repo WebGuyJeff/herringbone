@@ -178,7 +178,37 @@ html {
 		13.89vh
 	);
 
+
+    --oneone: clamp( 42.186vw, 100vh, 100vh );
+    --threetwo: clamp( clamp(0px, calc( 50vw - 50vh ), 10.47vw ), calc( 50vw - 50vh ), 25vh );
+    --sixteennine: clamp( clamp( 0px, calc( 50vw - 75vh ), 5.81vw ), calc( 50vw - 75vh ) , 13.89vh );
+
+
 */
+
+
+
+
+--oneone: 
+clamp(
+	calc( 42.186vw - calc( 0.42186 * var( --scrollbar ) ) ),
+	100vh,
+	100vh
+);
+--threetwo:
+clamp( 
+	clamp(
+		0px,
+		calc( calc( 50vw - calc( 0.50 * var( --scrollbar ) ) ) - 50vh ),
+		10.47vw
+	),
+	calc( calc( 50vw - calc( 0.50 * var( --scrollbar ) ) ) - 50vh ),
+	25vh
+);
+--sixteennine: clamp( clamp( 0px, calc( 50vw - 75vh ), 5.81vw ), calc( 50vw - 75vh ) , 13.89vh );
+
+
+
 
 
 
