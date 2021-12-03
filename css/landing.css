@@ -24,6 +24,8 @@ that pages dedicated css file.
 	2.3 .tickle
 3. ANIMATION
 	3.1 CSS KEYFRAMES
+4. THEMES
+	4.1 THEMES - MEXICO
 */
 
 
@@ -40,15 +42,7 @@ that pages dedicated css file.
 /*--------------------------------------------- 1.2 GLOBAL - TYPOGRAPHY ----*/
 
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: 'wellfleet';
-	font-weight: 400;
-}
+
 
 
 /*------------------------------------------------- 1.3 GLOBAL - HEADER ----*/
@@ -134,126 +128,46 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 16:9 = 13.888vh (100vh / 9 * 16 = 177.776vh then 177.776vh - 150vh = 27.776vh / 2)
 */
 
-html {
-	/*
-	### Scrollbar width
-	*/
-	--scrollbar: calc(100vw - 100%);
-	/*
-	usage:
-	calc( 55vw - calc( 0.55 * var( --scrollbar ) );
-	0.55 <= this is the percentage of scrollbar width to deduct (55vw / 100).
-	*/
-}
-
 
 .hb__pag-landing section {
+	--oneone: clamp( 42.186%, calc(100% - 2 * var(--hb_gutters)), calc( 100vh - var(--scrollbar) ) );
+	--sixteennine: clamp( 0px, calc( calc( 50% - 75vh ) - calc( 0.50 * var(--scrollbar) ) ), 13.888vh );
+	--threetwo: clamp( 0px, calc( 50% - 50vh ), 25vh );
 	gap: 0;
-
-
-/*
-
---oneone: 
-	clamp(
-		calc( 42.186vw - calc( 0.42186 * var( --scrollbar ) ) ),
-		100vh,
-		100vh
-	);
---threetwo:
-	clamp( 
-		clamp(
-			0px,
-			calc( calc( 50vw - calc( 0.50 * var( --scrollbar ) ) ) - 50vh ),
-			10.47vw
-		),
-		calc( calc( 50vw - calc( 0.50 * var( --scrollbar ) ) ) - 50vh ),
-		25vh
-	);
---sixteennine: clamp( clamp(
-			0px,
-			calc( calc( 50vw - calc( 0.50 * var( --scrollbar ) ) ) - 75vh),
-			calc( 5.81vw - calc( 0.0581 * var( --scrollbar ) ) ),
-		calc( calc( 50vw - calc( 0.50 * var( --scrollbar ) ) ) - 75vh )
-		),
-		13.89vh
-	);
-
-
-    --oneone: clamp( 42.186vw, 100vh, 100vh );
-    --threetwo: clamp( clamp(0px, calc( 50vw - 50vh ), 10.47vw ), calc( 50vw - 50vh ), 25vh );
-    --sixteennine: clamp( clamp( 0px, calc( 50vw - 75vh ), 5.81vw ), calc( 50vw - 75vh ) , 13.89vh );
-
-
-*/
-
-
-
-
---oneone: 
-clamp(
-	calc( 42.186vw - calc( 0.42186 * var( --scrollbar ) ) ),
-	100vh,
-	100vh
-);
---threetwo:
-clamp( 
-	clamp(
-		0px,
-		calc( calc( 50vw - calc( 0.50 * var( --scrollbar ) ) ) - 50vh ),
-		10.47vw
-	),
-	calc( calc( 50vw - calc( 0.50 * var( --scrollbar ) ) ) - 50vh ),
-	25vh
-);
---sixteennine: clamp( clamp( 0px, calc( 50vw - 75vh ), 5.81vw ), calc( 50vw - 75vh ) , 13.89vh );
-
-
-
-
-
-
-
-    --oneone: clamp( 42.186vw, 100vh, 100vh );
-    --threetwo: clamp( clamp(0px, calc( 50vw - 50vh ), 10.47vw ), calc( 50vw - 50vh ), 25vh );
-    --sixteennine: clamp( clamp( 0px, calc( 50vw - 75vh ), 5.81vw ), calc( 50vw - 75vh ) , 13.89vh );
 	display: grid;
 	position: relative;
+	grid-template-columns: [full-l] 1fr [sixteennine-l threetwo-l oneone-l] var(--oneone) [oneone-r threetwo-r sixteennine-r] 1fr [full-r];
 	grid-column: 1 / -1;
-	grid-template-columns: [full-l] 1fr [sixteennine-l threetwo-l oneone-l] calc(100% - 2 * var(--hb_gutters)) [oneone-r threetwo-r sixteennine-r] 1fr [full-r];
 	justify-content: center;
 	width: 100%;
 	text-align: center;
 }
 	.landing_content {
 		position: relative;
-		grid-column: var(--col);
 		grid-row: var(--row);
+		grid-column: var(--col);
 		z-index: 0;
 	}
 	.landing_backdrop {
 		position: absolute;
-		grid-column: 1 / -1;
 		grid-row: 1 / -1;
+		grid-column: 1 / -1;
 		z-index: -1;
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
 	}
-	@media (min-width: 100vh) {
-		.hb__pag-landing section {
-			grid-template-columns: [full-l] 1fr [sixteennine-l threetwo-l] var(--threetwo) [oneone-l] var(--oneone) [oneone-r] var(--threetwo) [threetwo-r sixteennine-r] 1fr [full-r];
-		}
+
+@media (min-width: 100vh) {
+	.hb__pag-landing section {
+		grid-template-columns: [full-l] 1fr [sixteennine-l threetwo-l] var(--threetwo) [oneone-l] var(--oneone) [oneone-r] var(--threetwo) [threetwo-r sixteennine-r] 1fr [full-r];
 	}
-	@media (min-width: 150vh) {
-		.hb__pag-landing section {
-			grid-template-columns: [full-l] 1fr [sixteennine-l] var(--sixteennine) [threetwo-l] var(--threetwo) [oneone-l] var(--oneone) [oneone-r] var(--threetwo) [threetwo-r] var(--sixteennine) [sixteennine-r] 1fr [full-r];
-		}
+}
+@media (min-width: 150vh) {
+	.hb__pag-landing section {
+		grid-template-columns: [full-l] 1fr [sixteennine-l] var(--sixteennine) [threetwo-l] var(--threetwo) [oneone-l] var(--oneone) [oneone-r] var(--threetwo) [threetwo-r] var(--sixteennine) [sixteennine-r] 1fr [full-r];
 	}
-	@media (orientation : portrait) {
-		.hb__pag-landing section {
-			grid-template-columns: [full-l] 1fr [sixteennine-l threetwo-l oneone-l] calc(100% - 2 * var(--hb_gutters)) [oneone-r threetwo-r sixteennine-r] 1fr [full-r];
-		}
-	}
+}
 
 
 /*============================================================ 2. BLOCKS =====*/
@@ -281,21 +195,14 @@ clamp(
 		font-weight: 400;
 		font-family: 'wellfleet';
 		letter-spacing: 0.75px;
+		margin-block-start: 1.75em;
+		margin-block-end: 1em;
+		line-height: 2em;
 	}
-		.chalkboard_title-hype {
-			color: var(--hb_orange);
-			font-weight: 900;
-			white-space: nowrap;
-			font-family: 'jokerman';
-			font-size: var(--hb_font-xxxl);
-		}
 		@media (max-width: 500px) {
 			.chalkboard_title {
 				font-size: clamp(1rem, 6vmin, 2.063rem);
 				line-height: clamp(2.5rem, 10vmin, 6rem);
-			}
-			.chalkboard_title-hype {
-				font-size: clamp(1.2rem, 8vmin, 2.625rem);
 			}
 		}
 			.chalkboard_list {
@@ -591,3 +498,35 @@ clamp(
 
 /*========================================================= 3. ANIMATION =====*/
 /*----------------------------------------------------- 3.1 CSS KEYFRAMES ----*/
+
+
+/* IMPORT LANDING GLOBALS FROM LANDING>DEV */
+
+
+
+/*============================================================ 4. THEMES =====*/
+/*--------------------------------------------------- 4.1 THEMES - MEXICO ----*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'wellfleet';
+	font-weight: 400;
+	letter-spacing: normal;
+}
+
+.title-hype {
+	color: var(--hb_orange);
+	font-weight: 900;
+	white-space: nowrap;
+	font-family: 'jokerman';
+	font-size: 130%;
+}
+@media (max-width: 500px) {
+	.title-hype {
+		font-size: clamp(100%, 8vmin, 250%);
+	}
+}

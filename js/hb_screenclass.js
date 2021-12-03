@@ -61,9 +61,24 @@
 			element.classList.add(newDevice);
 			oldDevice = newDevice;
 		}
-
 	}
 
+	// Set a CSS custom property with the window scrollbar width.
+	function set_scrollbar_custom_property() {
+		const withScrollBar = window.innerWidth;
+		const noScrollBar = document.querySelector("html").getBoundingClientRect().width;
+		scrollbarWidth = parseInt((withScrollBar - noScrollBar), 10) + 'px';
+		let root = document.documentElement;
+		root.style.setProperty('--scrollbar', scrollbarWidth);
+	}
+
+	// Observe body height changes and update the scrollbar width.
+	// create an Observer instance
+	const resizeObserver = new ResizeObserver( entries => 
+		set_scrollbar_custom_property()
+	);
+	// start observing doc node
+	resizeObserver.observe( document.body );
 
 	// Poll for doc ready state
 	let docLoaded = setInterval(function() {
@@ -72,7 +87,7 @@
 			/* Start the reactor */
 			getScreen();
 		}
-	}, 50);
+	}, 10);
 
 
 	// Poll for resize settle to throttle updates
@@ -84,6 +99,7 @@
 		resizeTimeout = setTimeout(function() {
 			/* Start the reactor */
 			getScreen();
+			set_scrollbar_custom_property();
 		}, 10);  //Lessen this value for faster response at performance cost
 	};
 

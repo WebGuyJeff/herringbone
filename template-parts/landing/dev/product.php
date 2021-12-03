@@ -15,8 +15,8 @@
 
 		<div class="column cheese">
 
-			<h2 class="laurel">
-				Exploring Human Interaction Through <span class="hardy">Website Design</span>
+			<h2 class="title">
+				Exploring Human Interaction Through <span class="title-hype">Website Design</span>
 			</h2>
 			<p>
 				As a web <i>designer</i>, I deal with the research and idea stages of
@@ -26,8 +26,8 @@
 				needs must be considered to successfully inform the designs.
 			</p>
 
-			<h2 class="laurel">
-				Connecting the Pieces With <span class="hardy">Website Development</span>
+			<h2 class="title">
+				Connecting the Pieces With <span class="title-hype">Website Development</span>
 			</h2>
 			<p>
 				As a web developer, I write website and web app core systems. 
@@ -39,8 +39,8 @@
 				is on-spec with the intended experience.
 			</p>
 
-			<h2 class="laurel">
-				Signposting and <span class="hardy">Website Marketing</span>
+			<h2 class="title">
+				Signposting and <span class="title-hype">Website Marketing</span>
 			</h2>
 			<p>
 				As an online marketer, I leverage web-based channels and search engine

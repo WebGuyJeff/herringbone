@@ -157,6 +157,9 @@ Font Size		 Line Height
 	--hb_font-s: 0.813rem;
 	--hb_font-xs: 0.7rem;
 
+	/* other font custom props */
+	--hb_letterSpacingInterBold: -0.04em;
+
 	/* landing page hidden header offset */
 	--hb_landingHeaderOffset: 7.1em;
 
@@ -166,21 +169,21 @@ Font Size		 Line Height
 	scroll-behavior: smooth;
 
 	/* font defaults */
+	/* Font dims set on root don't get scaled by component level font size, apart from font. */
+	/* I don't know why, but that's the behaviour in Chrome currently. */
+	/* Only set styles here, no dimensional props like line-height, or letter-spacing. */
+
 	color: var(--hb_black);
-	font: 300 1em var(--hb_font-primary);
-	letter-spacing: 0.015625rem;
-	--hb_letterSpacingInterBold: -0.04em;
+	font-weight: 300;
+	font-family: var(--hb_font-primary);
 
 	/* fluid root units (14px @ 768 - 18px @ 1920) */
 	font-size: clamp(0.875rem, calc(0.875rem + ((1vw - 0.48rem) * 0.3534)), 1.125rem);
 
-} /* ROOT END */
+	/* Scrollbar width updated by js function */
+	--scrollbar: 0px;
 
-html {
-	/* This should be deducted wherever 100vw is used to prevent x-overflow */
-	/* nb: var doesn't work on root{} */
-	--scrollbar: calc( 100vw - 100% );
-}
+} /* ROOT END */
 
 
 /*------------------------------------------------- 1.2 BROWSER SCROLLBAR ----*/
@@ -279,20 +282,34 @@ textarea:hover:not(:disabled):not(.disabled) {
 /*-------------------------------------------------------- 1.4 TYPOGRAPHY ----*/
 
 
-/* All units are rem so font is always locked to root font size */
+/* All units are em so font can be set at a component level */
 
-.cheese {
-	text-align: left;
-	line-height: 1.688rem;
-	color: var(--hb_black);
-	font-family: var(--hb_font-primary);
-	font-size: var(--hb_font-base);
-	font-weight: 300;
-}
+/* generic style classes */
 
 .weight400	   { font-weight: 400; }
 .textAlignCenter { text-align: center; }
 .textAlignRight  { text-align: right; }
+
+.title {
+	margin-block-end: 1.688em;
+    margin-block-start: 2.75em;
+    letter-spacing: -0.03em;
+    font-size: var(--hb_font-xxxl);
+}
+
+.display {
+	margin-block-end: 4vw;
+	line-height: 1.1;
+	font-size: clamp(7vw, 9vw ,10vw);
+	font-weight: 100;
+}
+@media (min-width: 48em) {
+	.display {
+		margin-block-end: 4vw;
+		font-size: clamp( 3.5vw, 4.5vw , 5vw );
+		font-weight: 100;
+	}
+}
 
 h1,
 h2,
@@ -305,79 +322,63 @@ h6 {
 }
 
 h1 {
-	margin-bottom: 1.688rem;
-	line-height: 3.25rem;
-	letter-spacing: -0.03rem;
+	margin-block-end: 1.688em;
+	margin-block-start: 2.75em;
+	line-height: 2.463em;
+	letter-spacing: -0.03em;
 	font-size: var(--hb_font-xxl);
 }
 
-.title {
-	margin-bottom: 1.6878rem;
-	line-height: 4.063rem;
-	letter-spacing: -0.03rem;
-	font-size: var(--hb_font-xxxl);
-}
-
 h2 {
-	margin-top: 2.75rem;
-	margin-bottom: 1.063rem;
-	line-height: 2.563rem;
-	letter-spacing: -0.03rem;
+	margin-block-end: 1.063em;
+	margin-block-start: 2.2em;
+	line-height: 2.063em;
+	letter-spacing: -0.03em;
 	font-size: var(--hb_font-xl);
 }
 
-h2.laurel {
-	margin-bottom: 4vw;
-	line-height: 1.1;
-	letter-spacing: -0.08em;
-	font-size: clamp(7vw, 9vw ,10vw);
-	font-weight: 100;
-}
-
-h2 .hardy {
-	font-weight: 900;
-}
-
-@media (min-width: 48em) {
-	h2.laurel {
-		margin-bottom: 4vw;
-		letter-spacing: -0.08em;
-		font-size: clamp(3.5vw, 4.5vw ,5vw);
-		font-weight: 100;
-	}
-}
-
 h3 {
-	margin-top: 1.688rem;
-	margin-bottom: 0.688rem;
-	line-height: 2.063rem;
-	letter-spacing: -0.02rem;
+	margin-block-end: 0.688em;
+	margin-block-start: 1.688em;
+	line-height: 1.863em;
+	letter-spacing: -0.02em;
 	font-size: var(--hb_font-l);
 }
 
 h4,
 h5,
 h6 {
-	margin-bottom: 0.438rem;
-	line-height: 1.688rem;
-	letter-spacing: -0.02rem;
+	margin-block-end: 0.438em;
+	margin-block-start: 0.178em;
+	line-height: 1.688em;
+	letter-spacing: -0.02em;
 	font-size: var(--hb_font-base);
 }
 
-p, ul, ol, blockquote, pre, .alert, .note, .box, .footnotes {
-  margin-bottom: 1.688rem;
+p,
+ul,
+ol,
+blockquote,
+pre {
+    margin-block-end: 1.688em;
+	margin-block-start: 1em;
+    margin-inline-end: 0;
+    margin-inline-start: 0;
+    line-height: 1.688em;
+    letter-spacing: 0.016em;
 }
 
-ul, ol {
-  margin-left: 1.688rem;
+ul,
+ol {
+	margin-inline-start: 1.688em;
 }
 
 li {
-  margin-bottom: 0.688rem;
+	margin-block-end: 0.688em;
 }
 
 sub, sup {
-  padding: 0.0 0.063rem;
+  padding: 0.0 0.063em;
 }
 
 code, pre, kbd {
@@ -385,74 +386,72 @@ code, pre, kbd {
 }
 
 code {
-  margin: 0.0 0.063rem;
-  padding: 0.188rem 0.25rem;
+  margin: 0.0 0.063em;
+  padding: 0.188em 0.25em;
 }
 
 pre {
-  padding: 0.688rem;
+  padding: 0.688em;
 }
 
 kbd {
-  margin: 0.0 0.063rem;
-  padding: 0.188rem 0.25rem;
-}
-
-.alert {
-  padding: 1.063rem;
+  margin: 0.0 0.063em;
+  padding: 0.188em 0.25em;
 }
 
 .footnotes {
-  padding-top: 1.063rem;
-  line-height: 1.438rem;
+  padding-top: 1.063em;
+  line-height: 1.438em;
   font-size: var(--hb_font-s);
 }
 
-.footnotes p {
-  margin-bottom: 1.063rem;
-}
-
-ul ul, ul ol, ol ul, ol ol, blockquote.right p, blockquote.left p, .alert :last-child, .footnotes :last-child {
-  margin-bottom: 0.0;
+ul ul,
+ul ol,
+ol ul,
+ol ol,
+blockquote p:last-child {
+	margin-block-end: 0.0;
 }
 
 blockquote {
-	border-width: 0 0 0 0.4rem;
+	border-width: 0 0 0 0.4em;
 	border-style: solid;
 	border-color: #0004;
 	background: var(--hb_lightGrey);
-	padding: 0.1rem 1.1rem;
+	padding: 0.1em 1.1em;
 	font-style: italic;
 	quotes: "\201C""\201D""\2018""\2019";
 }
 	blockquote:before {
-		margin-right: 0.15rem;
-		vertical-align: -0.4rem;
-		line-height: 0.1rem;
+		margin-inline-end: 0.15em;
+		vertical-align: -0.4em;
+		line-height: 0.1em;
 		color: #ccc;
 		font-size: var(--hb_font-xxxl);
 		content: open-quote;
 	}
 	blockquote-left {
-		padding: 0 0 0 1.1rem;
+		padding: 0 0 0 1.1em;
 	}
 
 .alert {
+	margin-block-end: 1.688em;
 	border: var(--hb_border);
 	border-radius: var(--hb_radius-small);
 	background: var(--hb_lightGrey);
 	padding: 0.8em;
 	text-align: center;
+	line-height: 1.688em;
 	letter-spacing: var(--hb_letterSpacingInterBold);
 	color: var(--hb_black);
 	font-weight: bold;
 }
 	.alert:before {
-		margin-right: 0.5em;
+		margin-inline-end: 0.5em;
 		content: "ⓘ";
 	}
 	.alert:last-child {
-		margin-bottom: 0;
+		margin-block-end: 0;
 	}
 		.alert-hover {
 			box-shadow: 1px 3px 6px 1px #000a;
@@ -479,24 +478,24 @@ strong {
 }
 
 .narrow {
-	max-width: 27rem;
+	max-width: 27em;
 	text-align: center;
 }
 
 .tip:before {
-	margin-right: 0.5em;
+	margin-inline-end: 0.5em;
 	content: "ⓘ";
 }
 
 .tip {
+	margin-inline-start: 1.2em;
 	display: block;
 	margin: 0 1.2em 2.6em 1.2em;
-	margin-left: 1.2em;
 	background: var(--hb_lightGrey);
 	padding: 0 0.5em 0 0.5em;
+	line-height: 2;
 	color: var(--hb_black);
 	font-size: var(--hb_font-xs);
-	line-height: 2;
 }
 
 

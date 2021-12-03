@@ -15,7 +15,7 @@
 		<div class="column textAlignCenter">
 			<h1 class="chalkboard_title title">
 				Hi I’m Jeff, a
-				<span class="chalkboard_title-hype">
+				<span class="title-hype">
 					Web Developer
 				</span>
 			</h1>
