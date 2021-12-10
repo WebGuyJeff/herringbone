@@ -1,0 +1,11 @@
+<svg class="usp_cactiShadow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 27 4.8">
+	<defs>
+		<radialGradient xlink:href="#catiShadowLinGrad" id="catiShadowRadGrad" cx="38.2" cy="11.5" r="17.7" fx="38.2" fy="11.5" gradientTransform="matrix(.74927 .00283 -.0005 .11988 -15.1 .9)" gradientUnits="userSpaceOnUse"/>
+		<linearGradient id="catiShadowLinGrad">
+			<stop offset="0" stop-color="#626262" stop-opacity=".6"/>
+			<stop offset=".8" stop-color="#626262" stop-opacity=".6"/>
+			<stop offset="1" stop-color="#666" stop-opacity="0"/>
+		</linearGradient>
+	</defs>
+	<ellipse cx="13.5" cy="2.4" fill="url(#catiShadowRadGrad)" rx="13.2" ry="2.1"/>
+</svg>

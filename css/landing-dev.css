@@ -159,7 +159,7 @@ multiple landing pages should go in landing.css.
 						display: grid;
 						grid: 10% 90% / 100%;
 						grid-template-areas:
-							"playerselect"
+							"plumbob"
 							"cacti";
 						justify-items: center;
 						cursor: pointer;
@@ -168,20 +168,14 @@ multiple landing pages should go in landing.css.
 						height: 100%;
 						overflow: hidden;
 					}
-						.usp_playerSelect {
-							place-self: end center;
-							grid-area: playerselect;
-							height: 100%;
-							overflow: hidden;
-						}
 						.usp_cactiBox {
 							aspect-ratio: 25 / 35;
 							place-items: flex-end;
 							display: flex;
 							grid-area: cacti;
 							perspective: 12em;
+							width: auto;
 							max-width: 100%;
-							height: 100%;
 						}
 							.usp_cacti {
 								filter: drop-shadow(1px -2px 1px #0006);
@@ -190,19 +184,14 @@ multiple landing pages should go in landing.css.
 								max-height: 100%;
 							}
 						.usp_cactiShadow {
-							filter: drop-shadow( 0 0 3px #000 );
 							place-self: end center;
-							display: none;
 							grid-area: shadow;
 							z-index: -1;
-							border-radius: 100%;
-							background: #0002;
-							width: 30%;
-							height: 50%;
+							width: 100%;
+							height: 0;
 						}
 					.usp_blurb,
 					.usp_subtitle {
-						transition: opacity 1s ease;
 						opacity: 0;
 						max-height: 0;
 						font-size: 0;
@@ -244,6 +233,8 @@ multiple landing pages should go in landing.css.
 	justify-content: space-evenly;
 	z-index: 1;
 	padding: 5vh 5vw;
+	-webkit-animation: animation_fadeIn 0.75s ease;
+	animation: animation_fadeIn 0.75s ease;
 }
 .landscape .usp_state:checked + .usp_card {
 	-moz-column-gap: 1em;
@@ -254,17 +245,17 @@ multiple landing pages should go in landing.css.
 }
 	.usp_state:checked + .usp_card .usp_graphicWrap {
 		display: grid;
-		grid: 10% 80% 10% / 100%;
+		grid: 15% 80% 5% / 100%;
 		grid-area: cactus;
 		padding-top: 0;
 		height: 80%;
 		pointer-events: none;
 		grid-template-areas:
-			"playerselect"
+			"plumbob"
 			"cacti"
 			"shadow";
 	}
-		.usp_state:checked + .usp_card  .usp_playerSelect {
+		.usp_state:checked + .usp_card  .plumbob {
 			-webkit-animation: animation_floaty 0.5s ease-in-out alternate infinite;
 			animation: animation_floaty 0.5s ease-in-out alternate infinite;
 		}
@@ -280,7 +271,7 @@ multiple landing pages should go in landing.css.
 					    animation: animation_swagger 2s linear alternate infinite;
 			}
 		.usp_state:checked + .usp_card .usp_cactiShadow {
-			display: block;
+			height: 100%;
 			-webkit-animation: animation_swell 0.5s ease-in-out alternate infinite;
 					animation: animation_swell 0.5s ease-in-out alternate infinite;
 		}
@@ -523,4 +514,14 @@ multiple landing pages should go in landing.css.
 	0%   { transform: rotateY( 0deg );   }
 	50%  { transform: rotateY( 180deg ); }
 	100% { transform: rotateY( 360deg ); }
+}
+
+
+@-webkit-keyframes animation_fadeIn {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes animation_fadeIn {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
 }
