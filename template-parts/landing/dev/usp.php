@@ -36,7 +36,9 @@ wp_enqueue_script( 'hb_usp_js' );
 	<input type="checkbox" class="usp_state" id="usp_complete" />
 	<div class="usp_card" style="--grid_area: a;">
 		<label for="usp_complete" onclick="toggleCheckboxes('usp_state');" style="--grid_area: a;" class="usp_graphicWrap" role="button">
-			<div class="usp_playerSelect"></div>
+			<div class="usp_playerSelect">
+				<?php get_template_part( 'template-parts/landing/dev/plumbob' ); ?>
+			</div>
 			<div class="usp_cactiBox">
 				<img
 					class="usp_cacti"

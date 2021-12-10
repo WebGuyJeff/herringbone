@@ -131,7 +131,7 @@ wp_enqueue_script('svgWheel_js');
 
 		<div class="animation_wrap animation_wrap-wheel">
 			<h2 class="cheese_h2 animation_title">I Make Things</h2>
-			<?php echo file_get_contents( get_theme_file_path( "animation/svgWheel/svgWheel.svg" )) ;?>
+			<?php echo file_get_contents( get_theme_file_path( "animation/svgWheel/svgWheel.svg" ) ) ;?>
 		</div>
 
 	</div> <?php //MAIN CONTENT COLUMN END ?>
