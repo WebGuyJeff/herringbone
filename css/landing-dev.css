@@ -243,9 +243,13 @@ multiple landing pages should go in landing.css.
 	grid-template-areas: "blurb cactus"
 						 "blurb button";
 }
+	.landscape .usp_state:checked + .usp_card .usp_blurb {
+		text-align: start;
+	}
 	.usp_state:checked + .usp_card .usp_graphicWrap {
 		display: grid;
-		grid: 15% 80% 5% / 100%;
+		grid: 12% 76% 4% / 100%;
+		gap: 4%;
 		grid-area: cactus;
 		padding-top: 0;
 		height: 80%;
@@ -416,7 +420,7 @@ multiple landing pages should go in landing.css.
 			transform: rotateX( 180deg );
 		}
 			.plumbob_face {
-				color: #29eb39a4;
+				color: #e2e542;
 				position:absolute;
 				transform: rotateY( var( --rotateY ) )
 						   rotateX( 23deg );

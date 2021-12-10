@@ -10,7 +10,7 @@
 
 ?>
 
-<div class="plumbob solid">
+<div class="plumbob">
     <div class="plumbob_model">
         <div class="plumbob_top">
             <svg viewBox="0 0 90 200" style="--rotateY: 0deg;   --animDelay:3s;" class="plumbob_face">
