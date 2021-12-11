@@ -31,27 +31,27 @@
 
 			<ul class="chalkboard_list" style="list-style:none; margin:1em 0; padding:0;">
 				<li>
-					<img class="chalkboard_icon" alt="Web Design by Jefferson Real" src="<?php echo get_bloginfo('template_url') ?>/imagery/icons_services/icon-design.svg"/>
+				<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-design.svg' ) ); ?>
 					Web Design
 				</li>
 				<li>
-					<img class="chalkboard_icon" alt="Web Development by Jefferson Real" src="<?php echo get_bloginfo('template_url') ?>/imagery/icons_services/icon-develop.svg"/>
+				<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-develop.svg' ) ); ?>
 					Web Development
 				</li>
 				<li>
-					<img class="chalkboard_icon" alt="Web Hosting by Jefferson Real" src="<?php echo get_bloginfo('template_url') ?>/imagery/icons_services/icon-hosting.svg"/>
+				<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-hosting.svg' ) ); ?>
 					Web Hosting
 				</li>
 				<li>
-					<img class="chalkboard_icon" alt="Web Support by Jefferson Real" src="<?php echo get_bloginfo('template_url') ?>/imagery/icons_services/icon-support.svg"/>
+				<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-support.svg' ) ); ?>
 					Support Plans
 				</li>
 				<li>
-					<img class="chalkboard_icon" alt="WordPress Development by Jefferson Real" src="<?php echo get_bloginfo('template_url') ?>/imagery/icons_services/icon-wordpress.svg"/>
+				<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-wordpress.svg' ) ); ?>
 					WordPress Expert
 				</li>
 				<li>
-					<img class="chalkboard_icon" alt="Email and Cloud Solutions by Jefferson Real" src="<?php echo get_bloginfo('template_url') ?>/imagery/icons_services/icon-cloud.svg"/>
+				<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-cloud.svg' ) ); ?>
 					Email & Cloud Solutions
 				</li>
 			</ul>
@@ -78,8 +78,8 @@
 				</span>
 			</button>
 
-			<img class="svg_grabhand-left" alt="An SVG image of Jefferson Real's left hand postured to hold a sign." src="<?php echo get_bloginfo('template_url') ?>/imagery/landing/dev/grabhand-left.svg"/>
-			<img class="svg_grabhand-right" alt="An SVG image of Jefferson Real's right hand postured to hold a sign." src="<?php echo get_bloginfo('template_url') ?>/imagery/landing/dev/grabhand-right.svg"/>
+			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-left.svg' ) ); ?>
+			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-right.svg' ) ); ?>
 		</div>
 	</div>
 
@@ -87,6 +87,7 @@
 </div>
 
 <div class="landing_backdrop">
-	<img class="sun" alt="Animated SVG sun with rotating layers jeffersonreal.com" src="<?php echo get_bloginfo('template_url') ?>/imagery/landing/dev/sun.svg"/>
-	<img class="clouds" alt="Animated SVG scrolling clouds with transparent background jeffersonreal.com" src="<?php echo get_bloginfo('template_url') ?>/imagery/landing/dev/clouds-noback.svg"/>
+	<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/sun.svg' ) ); ?>
+	<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/clouds.svg' ) ); ?>
+	<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-scape.svg' ) ); ?>
 </div>

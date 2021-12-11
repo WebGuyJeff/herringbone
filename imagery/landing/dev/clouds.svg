@@ -1,9 +1,11 @@
-<svg id="clouds" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice" width="100%" viewBox="0 0 1920 1920">
+<svg 
+	class="welcome_clouds"
+	xmlns="http://www.w3.org/2000/svg"
+	preserveAspectRatio="xMidYMin slice"
+	width="100%"
+	viewBox="0 0 1920 1920">
 	<defs>
 		<style>
-			#clouds {
-				background: radial-gradient(at 7.5% 7.5%, #fffc 0%, #fff6 30%), linear-gradient(#00b8ff 10%, #fff 100%);
-			}
 			.cloud {
 				animation: linear infinite clouds_scroll;
 			}
