@@ -149,9 +149,11 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 		z-index: 0;
 	}
 	.landing_backdrop {
+		display: flex;
 		position: absolute;
 		grid-row: 1 / -1;
 		grid-column: 1 / -1;
+		justify-content: center;
 		z-index: -1;
 		width: 100%;
 		height: 100%;
@@ -315,14 +317,15 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 	}
 	.welcome_desert {
 		position: absolute;
-		right: 0;
 		bottom: 0;
-		left: 0;
-		width: 1920px;
-		min-width: 100vw;
-		height: 540px;
+		width: clamp(100vw, 1080px, 177.777vw);
+		height: clamp(32vh, 303.75px, 50vmin);
 	}
-
+		.desert-cactus,
+		.desert-shrub {
+			position: absolute;
+			bottom: 10%;
+		}
 
 /*- - - - - - - - - - - - - - -  2.2 BLOCKS - RESPONSIVE SCREEN ANIMATION - - */
 

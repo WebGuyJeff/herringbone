@@ -87,7 +87,24 @@
 </div>
 
 <div class="landing_backdrop">
-	<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/sun.svg' ) ); ?>
-	<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/clouds.svg' ) ); ?>
-	<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-scape.svg' ) ); ?>
+	<?php
+		echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/sun.svg' ) );
+		echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/clouds.svg' ) );
+		echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-scape.svg' ) );
+		echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-cactus.svg' ) );
+		echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-shrub.svg' ) );
+	?>
+		<svg class="desert-cactus" fill="#61af76"><use href="url(#desert-cactus)" /></svg>
+		<svg class="desert-cactus" fill="#61af76"><use href="url(#desert-cactus)" /></svg>
+		<svg class="desert-cactus" fill="#61af76"><use href="url(#desert-cactus)" /></svg>
+		<svg class="desert-cactus" fill="#61af76"><use href="url(#desert-cactus)" /></svg>
+		<svg class="desert-shrub" fill="#61af76"><use href="url(#desert-shrub)" /></svg>
+		<svg class="desert-shrub" fill="#61af76"><use href="url(#desert-shrub)" /></svg>
+		<svg class="desert-shrub" fill="#61af76"><use href="url(#desert-shrub)" /></svg>
+		<svg class="desert-shrub" fill="#61af76"><use href="url(#desert-shrub)" /></svg>
+		<svg class="desert-shrub" fill="#61af76"><use href="url(#desert-shrub)" /></svg>
+		<svg class="desert-shrub" fill="#61af76"><use href="url(#desert-shrub)" /></svg>
+		<svg class="desert-shrub" fill="#61af76"><use href="url(#desert-shrub)" /></svg>
+		<svg class="desert-shrub" fill="#61af76"><use href="url(#desert-shrub)" /></svg>
+		<svg class="desert-shrub" fill="#61af76"><use href="url(#desert-shrub)" /></svg>
 </div>
