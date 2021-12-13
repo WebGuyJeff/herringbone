@@ -1,0 +1,21 @@
+<svg
+    class="desert_fills"
+    viewBox="0 0 1920 540">
+    <defs>
+        <linearGradient id="desert_fill-sand" x1="0" x2="0" y1="342" y2="720" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#fadcb0"></stop>
+            <stop offset=".2" stop-color="#f8d094"></stop>
+            <stop offset=".5" stop-color="#f7bf74"></stop>
+            <stop offset=".8" stop-color="#f7bf74"></stop>
+            <stop offset="1" stop-color="#fff"></stop>
+        </linearGradient>
+		<pattern id="desert_pattern-greenWool" width="15" height="15" patternUnits="userSpaceOnUse">
+			<path fill="#93c9a1" d="M0 0v15h15V0Z"/>
+			<path fill="#61af76" d="M10 0 9 3 8 5 7 6V3l1-3H6v6L5 8 4 9v1H3L2 8l1-1V4l1-3V0H0v15h4v-2l2-2c1-1 1 0 1 1l-1 2v1l1-1 2-5V8l1-1 1 1-1 3v4h5V0Zm4 3 1 2-1 2v6l-2-1V6l1-2 1-1ZM1 3v2l1 2v1l-1 3v2l-1-2a159 159 0 0 0 1-7V3Zm6 6v1-1Z"/>
+		</pattern>
+        <linearGradient id="desert_gradient-FadeToWhite" x1="0" x2="0" y1="0" y2="540" gradientUnits="userSpaceOnUse">
+            <stop offset="0.7" stop-color="#fff3d4"></stop>
+            <stop offset="1" stop-color="#fff"></stop>
+        </linearGradient>
+    </defs>
+</svg>
