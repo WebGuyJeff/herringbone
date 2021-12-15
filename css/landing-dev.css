@@ -38,6 +38,7 @@ multiple landing pages should go in landing.css.
 	.welcome > .landing_content {
 		display: flex;
 		flex-flow: row nowrap;
+        margin-bottom: 8%;
 	}
 
 

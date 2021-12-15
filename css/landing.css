@@ -323,8 +323,8 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 		position: relative;
 		margin-top: auto;
 		bottom: 0;
-		width: 100vw;
-		height: 53%;
+		width: clamp(100vw, 1080px, 177.777vw);
+		height: 70%;
 	}
 	.desert_scape {
 		width: clamp(100vw, 1080px, 177.777vw);
@@ -355,10 +355,10 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
         .desert_shrub:nth-child(9)        { bottom: 33%; left:  60%; height: 11%; color: #61af76; }
         .desert_cactus:nth-child(10)      { bottom: 34%; left:  80%; height: 28%; color: #448756; }
         .desert_shrub:nth-child(11)       { bottom: 32%; right: 93%; height: 14%; color: #61af76; }
-        .desert_pricklyPear:nth-child(12) { bottom: 24%; right: 83%; height: 51%;}
+        .desert_pricklyPear:nth-child(12) { bottom: 14%; right: 75%; height: 63%;}
         .desert_shrub:nth-child(13)       { bottom: 25%; left:  90%; height: 19%; color: #93c9a1; }
         .desert_cactus:nth-child(14)      { bottom: 23%; left:  84%; height: 73%; color: #61af76; }
-        .desert_shrub:nth-child(15)       { bottom: 19%; right: 82%; height: 20%; color: #93c9a1; }
+        .desert_shrub:nth-child(15)       { bottom: 13%; right: 73%; height: 20%; color: #93c9a1; }
         .desert_shrub:nth-child(16)       { bottom: 16%; left:  77%; height: 26%; color: #93c9a1; }
 
 .desert_fills {
