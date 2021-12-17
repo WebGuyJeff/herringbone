@@ -187,7 +187,7 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 	   border-image: var(--hb_triBorder);
 	background: #fff;
 	padding: 0 5% 1em 5%;
-	width: clamp(41.86vmax, 100vmin, 100vmin);
+	width: clamp(41.86vmax, calc( 20px + calc(36rem + 20%) ), calc( 100vmin - calc( 2 * var(--hb_gutters) ) ) );
 	height: -webkit-fit-content;
 	height: -moz-fit-content;
 	height: fit-content;
