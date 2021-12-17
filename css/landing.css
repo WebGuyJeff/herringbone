@@ -324,7 +324,7 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 		margin-top: auto;
 		bottom: 0;
 		width: clamp(100vw, 1080px, 177.777vw);
-		height: 70%;
+		height: 62%;
 	}
 	.desert_scape {
 		width: clamp(100vw, 1080px, 177.777vw);
