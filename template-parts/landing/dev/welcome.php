@@ -10,7 +10,7 @@
  */
 ?>
 
-<div class="landing_content" style="--row: 1 / -1; --col: oneone-l / threetwo-r;">
+<div class="landing_content" style="--row: 1 / -1; --col: oneone-l / oneone-r;">
 	<div class="chalkboard cheese">
 		<div class="column textAlignCenter">
 			<h1 class="chalkboard_title title">
@@ -82,11 +82,12 @@
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-right.svg' ) ); ?>
 		</div>
 	</div>
-	<div class="welcome_SVGwrap">
-		<img class="svg_me" alt="An SVG figure of Jefferson Real, WordPress and Website Designer and Developer." src="<?php echo get_bloginfo('template_url') ?>/imagery/landing/dev/me.svg"/>
-	</div>
+    <div class="chalkboard_pinRightOfChalkboard">
+        <div class="svg_dimensionsBox">
+            <?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/me.svg' ) ); ?>
+        </div>
+    </div>
 </div>
-
 <div class="landing_backdrop">
 	<?php
 		echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/sun.svg' ) );

@@ -256,9 +256,9 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 								z-index: 1;
 								filter: drop-shadow(1px 2px 1px #0008);
 								margin-top: calc(-32px - calc( 0.45 * clamp(0px,calc(3vw - 3vh),12px)));
-								margin-right: 2em;
+                                margin-right: 8px;
 								margin-left: 2em;
-								width: calc(80px + clamp(0em,calc(3vw - 3vh),22px));
+								width: calc(80px + clamp(0em,calc(3vw - 3vh),14px));
 								max-width: 25%;
 							}
 								.svg_grabhand-left {
@@ -275,29 +275,79 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 									}
 									@media (min-width: 100vh) {
 										.svg_grabhand-left {
-											right: calc(220px - calc( calc( 100vw - var(--scrollbar) ) - 100vh) /2);
+                                            right: clamp( 0px, calc(220px - calc( 56vw - 60vh ) ), 220px);
 										}
 										.svg_grabhand-right {
 											display: none;
 										}
 									}
-									@media (min-width: 150vh) {
-										.svg_grabhand-left {
-											right:0;
-										}
-									}
 
-.welcome_SVGwrap {
-	position: relative;
+.chalkboard_pinRightOfChalkboard {
+    position: relative;
+    height: 100%;
 }
-	.svg_me {
-		filter: drop-shadow(1px 2px 1px #0008);
-		position: absolute;
-		height: 100%;
-		top: clamp( 0vw, calc( 5vw - 5vh ), 2vw );
-		right: 0;
-	}
-
+    .svg_dimensionsBox {
+        position: absolute;
+        height: 100%;
+        width: max-content;
+        top: clamp( 0vw, calc( 3vw - 5vh ), 2vw );
+        right: 0;
+    }
+        .svg_me {
+            filter: drop-shadow(1px 2px 1px #0008);
+            height: 100%;
+            max-width: 100vw;
+            margin-right: clamp( -160%, calc( -50vw + 50vh ), 0px);
+        }
+            .svg_me #head_eyelids {
+                animation: svg_me-blinking 10s infinite;
+            }
+            .svg_me #head_eye-right,
+            .svg_me #head_eye-left {
+                animation: svg_me-lookingdown 12s infinite;
+            }
+            @media (min-width: 48em) {
+                .svg_me #head_eye-right,
+                .svg_me #head_eye-left {
+                animation: svg_me-looking 12s infinite; }
+            }
+            @keyframes svg_me-blinking {
+                20% { opacity: 0; }
+                21% { opacity: 1; }
+                22% { opacity: 0; }
+                75% { opacity: 0; }
+                76% { opacity: 1; }
+                77% { opacity: 0; }
+                82% { opacity: 0; }
+                83% { opacity: 1; }
+                84% { opacity: 0; }
+            }
+            @keyframes svg_me-looking {
+                8%   { transform: translateX( 0  ) translateY( 0  ); }
+                9%   { transform: translateX(-2px) translateY( 3px); }
+                19%  { transform: translateX(-2px) translateY( 3px); }
+                20%  { transform: translateX( 0  ) translateY( 0  ); }
+                75%  { transform: translateX( 0  ) translateY( 0  ); }
+                76%  { transform: translateX(-2px) translateY( 3px); }
+                86%  { transform: translateX(-2px) translateY( 3px); }
+                87%  { transform: translateX( 0  ) translateY( 0  ); }
+                94%  { transform: translateX( 0  ) translateY( 0  ); }
+                99%  { transform: translateX(-2px) translateY( 3px); }
+                100% { transform: translateX( 0  ) translateY( 0  ); }
+            }
+            @keyframes svg_me-lookingdown {
+                8%   { transform: translateY( 0  ); }
+                9%   { transform: translateY( 4px); }
+                29%  { transform: translateY( 4px); }
+                30%  { transform: translateY( 0  ); }
+                75%  { transform: translateY( 0  ); }
+                76%  { transform: translateY( 4px); }
+                86%  { transform: translateY( 4px); }
+                87%  { transform: translateY( 0  ); }
+                94%  { transform: translateY( 0  ); }
+                99%  { transform: translateY( 4px); }
+                100% { transform: translateY( 0  ); }
+            }
 .welcome > .landing_backdrop {
 	background: radial-gradient(at 7.5% 7.5%, #fffc 0%, #fff6 30%), linear-gradient(#00b8ff 10%, #fff 100%);
 }
@@ -587,7 +637,6 @@ h6 {
 .title-hype {
 	color: var(--hb_orange);
 	font-weight: 900;
-	white-space: nowrap;
 	font-family: 'jokerman';
 	font-size: 130%;
 }

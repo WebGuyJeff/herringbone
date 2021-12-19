@@ -332,7 +332,7 @@ h1 {
 h2 {
 	margin-block-end: 1.063em;
 	margin-block-start: 2.2em;
-	line-height: 2.063em;
+    line-height: 1.5;
 	letter-spacing: -0.03em;
 	font-size: var(--hb_font-xl);
 }

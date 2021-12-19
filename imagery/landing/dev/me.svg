@@ -1,56 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg84" class="svg_me" version="1.1" viewBox="0 0 350 1000">
+<svg class="svg_me" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMin meet" viewBox="0 0 350 1000">
 	<defs>
-		<style type="text/css">
-			.svg_me #head_eyelids {
-				animation: svg_me-blinking 10s infinite;
-			}
-			.svg_me #head_eye-right,
-			.svg_me #head_eye-left {
-				animation: svg_me-lookingdown 12s infinite;
-			}
-			@media (min-width: 48em) {
-				.svg_me #head_eye-right,
-				.svg_me #head_eye-left {
-				animation: svg_me-looking 12s infinite; }
-			}
-			@keyframes svg_me-blinking {
-				20% { opacity: 0; }
-				21% { opacity: 1; }
-				22% { opacity: 0; }
-				75% { opacity: 0; }
-				76% { opacity: 1; }
-				77% { opacity: 0; }
-				82% { opacity: 0; }
-				83% { opacity: 1; }
-				84% { opacity: 0; }
-			}
-			@keyframes svg_me-looking {
-				8%   { transform: translateX( 0  ) translateY( 0  ); }
-				9%   { transform: translateX(-2px) translateY( 3px); }
-				19%  { transform: translateX(-2px) translateY( 3px); }
-				20%  { transform: translateX( 0  ) translateY( 0  ); }
-				75%  { transform: translateX( 0  ) translateY( 0  ); }
-				76%  { transform: translateX(-2px) translateY( 3px); }
-				86%  { transform: translateX(-2px) translateY( 3px); }
-				87%  { transform: translateX( 0  ) translateY( 0  ); }
-				94%  { transform: translateX( 0  ) translateY( 0  ); }
-				99%  { transform: translateX(-2px) translateY( 3px); }
-				100% { transform: translateX( 0  ) translateY( 0  ); }
-			}
-			@keyframes svg_me-lookingdown {
-				8%   { transform: translateY( 0  ); }
-				9%   { transform: translateY( 4px); }
-				29%  { transform: translateY( 4px); }
-				30%  { transform: translateY( 0  ); }
-				75%  { transform: translateY( 0  ); }
-				76%  { transform: translateY( 4px); }
-				86%  { transform: translateY( 4px); }
-				87%  { transform: translateY( 0  ); }
-				94%  { transform: translateY( 0  ); }
-				99%  { transform: translateY( 4px); }
-				100% { transform: translateY( 0  ); }
-			}
-		</style>
 		<linearGradient id="linearGradient14759">
 			<stop id="stop14755" offset="0" stop-color="#555" stop-opacity="1"/>
 			<stop id="stop14757" offset="1" stop-color="#333" stop-opacity="1"/>
