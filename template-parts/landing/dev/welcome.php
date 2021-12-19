@@ -82,8 +82,9 @@
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-right.svg' ) ); ?>
 		</div>
 	</div>
-
-	<img class="svg_me" alt="An SVG figure of Jefferson Real, WordPress and Website Designer and Developer." src="<?php echo get_bloginfo('template_url') ?>/imagery/landing/dev/me.svg"/>
+	<div class="welcome_SVGwrap">
+		<img class="svg_me" alt="An SVG figure of Jefferson Real, WordPress and Website Designer and Developer." src="<?php echo get_bloginfo('template_url') ?>/imagery/landing/dev/me.svg"/>
+	</div>
 </div>
 
 <div class="landing_backdrop">
