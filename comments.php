@@ -8,7 +8,7 @@ if ( post_password_required() ) {
 
 <div id="comments" class="comments-area">
 
-	<h1 id="title" class="cheese_h1 cheese_title">
+	<h1 id="title" >
 	  Comments.php
 	</h1>
 

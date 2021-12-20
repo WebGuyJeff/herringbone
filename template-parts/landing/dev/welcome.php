@@ -11,8 +11,15 @@
 ?>
 
 <div class="landing_content" style="--row: 1 / -1; --col: oneone-l / oneone-r;">
-	<div class="chalkboard cheese">
+	<div class="chalkboard ">
+
+        <div class="chalkboard_pinChalkboardTop">
+            <?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-left.svg' ) ); ?>
+			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-right.svg' ) ); ?>
+        </div>
+
 		<div class="column textAlignCenter">
+
 			<h1 class="chalkboard_title title">
 				Hi I’m Jeff, a
 				<span class="title-hype">
@@ -78,11 +85,9 @@
 				</span>
 			</button>
 
-			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-left.svg' ) ); ?>
-			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-right.svg' ) ); ?>
 		</div>
 	</div>
-    <div class="chalkboard_pinRightOfChalkboard">
+    <div class="chalkboard_pinChalkboardRight">
         <div class="svg_dimensionsBox">
             <?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/me.svg' ) ); ?>
         </div>

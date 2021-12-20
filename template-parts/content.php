@@ -14,7 +14,7 @@ use Jefferson\Herringbone;
 ?>
 
 <section class="sauce">
-	<article class="cheese" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<header class="entry-header">
 			<?php
 			if ( is_singular() ) :

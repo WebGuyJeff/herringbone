@@ -9,12 +9,12 @@ get_header();
 	<div class="base"> <?php //MAIN CONTENT COLUMN ?>
 
 		<section class="sauce">
-		<div class="cheese">
+		<div >
 			<a id="need_help">
-				<h1 class="cheese_h1 cheese_title">Learn How to Develop Your Business Online</h1>
+				<h1 >Learn How to Develop Your Business Online</h1>
 			</a>
 			<a id="contact_form">
-				<p class="cheese_p">Fill out the form below and I'll be in touch shortly.</p>
+				<p >Fill out the form below and I'll be in touch shortly.</p>
 			</a>
 		</div>
 		</section>

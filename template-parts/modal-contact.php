@@ -17,7 +17,7 @@ wp_enqueue_script( 'hb_modal_js' );
 		role="dialog" 
 		aria-labelledby="aria_form-title" 
 		aria-describedby="aria_form-desc" 
-		class="modal_dialog sauce cheese"
+		class="modal_dialog sauce "
 	>
 		<div class="modal_controls">
 			<button 

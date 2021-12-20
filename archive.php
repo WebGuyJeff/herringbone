@@ -26,9 +26,9 @@ get_header();
 	<div class="base"> <?php //MAIN CONTENT COLUMN ?>
 
 		<section class="sauce">
-			<div class="cheese">
+			<div >
 
-				<h1 id="title" class="cheese_h1 cheese_title">
+				<h1 id="title" >
 				Archive.php
 				</h1>
 				
@@ -36,7 +36,7 @@ get_header();
 		</section>
 
 		<section class="sauce">
-			<div class="cheese">
+			<div >
 
 				<?php
 					if ( have_posts() ) :

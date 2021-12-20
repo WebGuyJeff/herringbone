@@ -12,7 +12,7 @@ namespace Jefferson\Herringbone;
 ?>
 
 <section class="no-results not-found sauce">
-	<div class="cheese">
+	<div >
 		<header class="page-header">
 			<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'herringbone' ); ?></h1>
 		</header><!-- .page-header -->

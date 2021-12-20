@@ -116,7 +116,7 @@ space until they hit their max, and so on. The full-width tracks are always 100v
 
 The ultrawide aspect ratio is the most extreme aspect ratio in common use, so the min-width is based
 on the UW aspect ratio of 64:27. In other words, the 1:1 column will never be narrower than
-42.186vh ( 100vh / 64 * 27).
+42.186vw ( 100vw / 64 * 27).
 
 
 #### Max Column Widths (between tracks)
@@ -130,9 +130,19 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 
 
 .hb__pag-landing section {
+
+/*
 	--oneone: clamp( 42.186%, calc(100% - 2 * var(--hb_gutters)), calc( 100vh - var(--scrollbar) ) );
 	--sixteennine: clamp( 0px, calc( calc( 50% - 75vh ) - calc( 0.50 * var(--scrollbar) ) ), 13.888vh );
 	--threetwo: clamp( 0px, calc( 50% - 50vh ), 25vh );
+*/
+
+
+	--oneone: minmax( min-content, 48rem );                 /* 48rem */
+	--threetwo: clamp( 0px, calc( 50% - 24rem), 8rem );     /* 64rem */
+	--sixteennine: clamp( 0px, calc( 50% - 32rem), 13rem ); /* 90rem */
+
+
 	gap: 0;
 	display: grid;
 	position: relative;
@@ -187,11 +197,40 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 	   border-image: var(--hb_triBorder);
 	background: #fff;
 	padding: 0 5% 1em 5%;
-	width: clamp(41.86vmax, calc( 20px + calc(36rem + 20%) ), calc( 100vmin - calc( 2 * var(--hb_gutters) ) ) );
+	width: clamp(10em, calc( 20px + calc(36rem + 20%) ), calc( 100vmin - calc( 2 * var(--hb_gutters) ) ) );
 	height: -webkit-fit-content;
 	height: -moz-fit-content;
 	height: fit-content;
 }
+    .chalkboard_pinChalkboardTop {
+        height: 0;
+        width: 100%;
+        position: relative;
+        margin-top: -20px;
+        display: flex;
+        align-items: center;
+    }
+        .svg_grabhand-left,
+        .svg_grabhand-right {
+            filter: drop-shadow(1px 2px 1px #0008);
+            margin-top: 10px;
+            z-index: 1;
+            --handWidth: calc( 80px + 2% );
+            width: var(--handWidth);
+            max-width: 37%;
+        }
+        .svg_grabhand-left {
+            left: 0;
+            margin-left: clamp( 0px, calc(-151px + calc( 0.9 * 48vw) ), calc( 100% - var(--handWidth) ) );
+        }
+        .svg_grabhand-right {
+            margin-left: auto;
+        }
+        @media (min-width: 48em) {
+            .svg_grabhand-right {
+                display: none;
+            }
+        }
 	.chalkboard_title {
 		margin-block-end: 1em;
 		margin-block-start: 1.75em;
@@ -207,62 +246,41 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 				font-size: clamp(1rem, 6vmin, 2.063rem);
 			}
 		}
-			.chalkboard_list {
-				display: flex;
-				flex-flow: row wrap;
-			}
-				.chalkboard_list > li {
-					display: flex;
-					flex: 1 1 30%;
-					flex-flow: column nowrap;
-					align-items: center;
-					justify-content: center;
-					background-image: var(--hb_iconBackground);
-					background-position: center;
-					background-repeat: no-repeat;
-					background-size: contain;
-					padding: 1%;
-					letter-spacing: -0.25px;
-					white-space: nowrap;
-					font-family: 'wellfleet';
-				}
-					.chalkboard_icon {
-						margin-bottom: 2px;
-						width: 22px;
-						height: 22px;
-					}
-						.chalkboard_cta {
-							margin: 0.5em 0 0 0;
-							letter-spacing: 0.75px;
-							color: var(--hb_green);
-							font-family: 'wellfleet';
-							font-size: var(--hb_font-xl);
-							font-weight: 900;
-						}
-						.svg_grabhand-left,
-						.svg_grabhand-right {
-							filter: drop-shadow(1px 2px 1px #0008);
-							position: absolute;
-							top: calc(-32px - calc( 0.45 * clamp(0px,calc(3vw - 3vh),12px)));
-							z-index: 1;
-							--handWidth: calc( 80px + clamp( 0em,calc( 3vw - 3vh ), 14px ) );
-							width: var(--handWidth);
-							max-width: 25%;
-						}
-							.svg_grabhand-left {
-								left: 0;
-								left: clamp( 0px, calc( 0.75 * 30vw ), calc( 100% - var(--handWidth) ) );
-							}
-							.svg_grabhand-right {
-								right:0;
-							}
-								@media (min-width: 100vh) {
-									.svg_grabhand-right {
-										display: none;
-									}
-								}
+        .chalkboard_list {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+        }
+            .chalkboard_list > li {
+                display: flex;
+                flex: 1 1 30%;
+                flex-flow: column nowrap;
+                align-items: center;
+                justify-content: center;
+                background-image: var(--hb_iconBackground);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                padding: 1%;
+                letter-spacing: -0.25px;
+                white-space: nowrap;
+                font-family: 'wellfleet';
+            }
+                .chalkboard_icon {
+                    margin-bottom: 2px;
+                    width: 22px;
+                    height: 22px;
+                }
+        .chalkboard_cta {
+            margin: 0.5em 0 0 0;
+            letter-spacing: 0.75px;
+            color: var(--hb_green);
+            font-family: 'wellfleet';
+            font-size: var(--hb_font-xl);
+            font-weight: 900;
+        }
 
-.chalkboard_pinRightOfChalkboard {
+.chalkboard_pinChalkboardRight {
     position: relative;
 	left: var(--hb_gutters);
     height: 100%;
@@ -276,7 +294,7 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
     }
         .svg_me {
             filter: drop-shadow(1px 2px 1px #0008);
-            margin-right: clamp( -160%, calc( -50vw + 50vh ), 0px);
+            margin-right: clamp( -150%, calc( -50vw + 50vh ), 0px);
             max-width: 100vw;
             height: 100%;
         }
@@ -360,6 +378,7 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 		bottom: 0;
 		width: clamp(100vw, 1080px, 177.777vw);
 		height: 62%;
+        overflow: hidden;
 	}
 	.desert_scape {
 		width: clamp(100vw, 1080px, 177.777vw);

@@ -13,7 +13,7 @@
 <div class="landing_content" style="--row: 1 / -1; --col: threetwo-l / threetwo-r;">
 	<div class="squares">
 
-		<div class="column cheese">
+		<div class="column ">
 
 			<h2 class="title">
 				Exploring Human Interaction Through <span class="title-hype">Website Design</span>
@@ -59,7 +59,7 @@
 			<img class="svg_me-laptop" alt="An SVG figure of Jefferson Real holding a laptop displaying your new business website." src="<?php echo get_bloginfo('template_url') ?>/imagery/landing/dev/me-laptop.svg"/>
 		</div>
 
-		<div class="column cheese">
+		<div class="column ">
 
 			<p> I’m armed with a wealth of real-world solutions and I love getting
 				stuck in to projects big and small. I can build you a show-stopping

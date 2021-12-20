@@ -13,9 +13,9 @@ namespace Jefferson\Herringbone;
 
 
 <article class="sauce">
-	<div class="blog-post cheese">
+	<div class="blog-post ">
 
-		<h1 id="title" class="cheese_h1 cheese_title">
+		<h1 id="title" >
 		Content-single.php
 		</h1>
 

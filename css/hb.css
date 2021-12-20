@@ -831,7 +831,7 @@ main article img {
 		height: 100%;
 	}
 
-		.squares .cheese {
+		.squares {
 			justify-content: center;
 			padding: 0 6%;
 			max-width: 100%;

@@ -14,7 +14,7 @@ wp_enqueue_script( 'hb_usp_js' );
 ?>
 
 
-<div class="landing_content cheese" style="--row: 1 / -1; --col: full-l / full-r;">
+<div class="landing_content " style="--row: 1 / -1; --col: full-l / full-r;">
 
 	<input type="checkbox" checked class="usp_state" id="usp_default">
 	<div class="usp_card">

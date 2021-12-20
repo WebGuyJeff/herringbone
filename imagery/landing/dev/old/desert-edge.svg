@@ -1,0 +1,9 @@
+<svg class="desert_edge" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920 140">
+	<defs>
+		<linearGradient id="desert_gradSand-edge" x1=".5" x2=".5" y1="660.5" y2="799.5" gradientTransform="matrix(1.00052 0 0 1.0072 -1 -665)" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#f3a037"/>
+			<stop offset="1" stop-color="#e88527"/>
+		</linearGradient>
+	</defs>
+	<path fill="url(#desert_gradSand-edge)" d="M0 0v140c132-18 258-55 388-60 171-5 340 66 510 50 126-11 239-89 364-103 135-15 271-2 406 23 72 13 195 15 252-50Z"/>
+</svg>

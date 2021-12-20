@@ -24,12 +24,12 @@ get_header(); ?>
 	<div class="base">
 
 		<section class="sauce">
-			<div class="cheese">
+			<div >
 				<a id="page_not_found">
 					<h1 class="title">Clang! 🤕</h1>
 				</a>
 				<span class="subtitle">Error 404</span>
-				<p class="cheese_p">Sorry, we couldn't find that. Navigate to the <a href="/">homepage</a> or try the links below.</p>
+				<p >homepage</a> or try the links below.</p>
 			</div>
 		</section>
 

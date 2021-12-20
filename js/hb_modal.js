@@ -71,7 +71,6 @@
 			get_scrollbar_width()
 		] );
 		openModal();
-
 	}
 
 
@@ -116,6 +115,7 @@
 		}
 	}
 
+
 	/**
 	 * Restyle the modal on window resize.
 	 * 
@@ -125,13 +125,20 @@
 	 * closed as 'mobile'.
 	 * 
 	 */
-	let resizeTimer;
-	window.addEventListener( 'resize', function( event ) {
-		if( resizeTimer !== null ) window.clearTimeout( resizeTimer );
-		resizeTimer = window.setTimeout( function() {
-			set_modal_device_size();
-		}, 20 );
-	} );
+    function set_browser_resize_listener() {
+        let resizeTimer;
+        let resize_listener = ( event ) => {
+            if ( resizeTimer !== null ) window.clearTimeout( resizeTimer );
+            resizeTimer = window.setTimeout( function() {
+                if ( !active ) {
+                    window.removeEventListener( 'resize', resize_listener );
+                    return;
+                }
+                set_modal_device_size();
+            }, 20 );
+        };
+        window.addEventListener( 'resize', resize_listener );
+    }
 
 
 	// Open the modal
@@ -140,6 +147,7 @@
 			active = true;
 			animating = true;
 			disableScroll();
+            set_browser_resize_listener();
 
 			if ( mobile ) {
 				dialog.style.left = '-768px';
@@ -220,14 +228,15 @@
 		}, 16 ); // 10ms x 25 for 0.25sec animation
 	}
 
+
 	let scrollbarWidth;
 	async function get_scrollbar_width() {
 		// Get window width inc scrollbar
 		const widthWithScrollBar = window.innerWidth;
 		// Get window width exc scrollbar
-		const widthWithoutScrollBar = document.querySelector("html").getBoundingClientRect().width;
+		const widthWithoutScrollBar = document.querySelector( "html" ).getBoundingClientRect().width;
 		// Calc the scrollbar width
-		scrollbarWidth = parseInt((widthWithScrollBar - widthWithoutScrollBar), 10) + 'px';
+		scrollbarWidth = parseInt( (widthWithScrollBar - widthWithoutScrollBar), 10 ) + 'px';
 		return scrollbarWidth;
 	}
 
@@ -272,7 +281,6 @@
 			modal_init();
 		}
 	}, 100);
-
 
 })();//modal plugin end.
 
