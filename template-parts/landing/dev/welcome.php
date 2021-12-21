@@ -18,7 +18,7 @@
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-right.svg' ) ); ?>
         </div>
 
-		<div class="column textAlignCenter">
+		<div class="column">
 
 			<h1 class="chalkboard_title title">
 				Hi I’m Jeff, a
