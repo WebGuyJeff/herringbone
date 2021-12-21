@@ -59,7 +59,7 @@
 				</li>
 				<li>
 				<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-cloud.svg' ) ); ?>
-					Email & Cloud Solutions
+					Cloud Solutions
 				</li>
 			</ul>
 

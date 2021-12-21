@@ -869,10 +869,12 @@ main article img {
 }
 
 .column {
-	width: 100%;
-	max-width: calc(38rem + 6%);
-	margin: 0 auto;
-	padding: 0 3%;
+    width: 100%;
+    max-width: 30em;
+    margin: 0 2em;
+    text-align: start;
+    margin-block-start: 2em;
+    margin-block-end: 2em;
 }
 
 .column img {

@@ -170,12 +170,12 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 		overflow: hidden;
 	}
 
-@media (min-width: 100vh) {
+@media (min-width: 64rem) {
 	.hb__pag-landing section {
 		grid-template-columns: [full-l] 1fr [sixteennine-l threetwo-l] var(--threetwo) [oneone-l] var(--oneone) [oneone-r] var(--threetwo) [threetwo-r sixteennine-r] 1fr [full-r];
 	}
 }
-@media (min-width: 150vh) {
+@media (min-width: 90rem) {
 	.hb__pag-landing section {
 		grid-template-columns: [full-l] 1fr [sixteennine-l] var(--sixteennine) [threetwo-l] var(--threetwo) [oneone-l] var(--oneone) [oneone-r] var(--threetwo) [threetwo-r] var(--sixteennine) [sixteennine-r] 1fr [full-r];
 	}
@@ -196,8 +196,7 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 	-o-border-image: var(--hb_triBorder);
 	   border-image: var(--hb_triBorder);
 	background: #fff;
-	padding: 0 5% 1em 5%;
-	width: clamp(10em, calc( 20px + calc(36rem + 20%) ), calc( 100vmin - calc( 2 * var(--hb_gutters) ) ) );
+	padding: 3em;
 	height: -webkit-fit-content;
 	height: -moz-fit-content;
 	height: fit-content;
@@ -206,7 +205,8 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
         height: 0;
         width: 100%;
         position: relative;
-        margin-top: -20px;
+        margin-top: calc(-20px - 3em );
+		margin-bottom: calc(20px + 3em);
         display: flex;
         align-items: center;
     }
@@ -250,6 +250,8 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
             display: flex;
             flex-flow: row wrap;
             justify-content: center;
+            gap: 1em;
+            margin: 3em 0;
         }
             .chalkboard_list > li {
                 display: flex;
@@ -261,7 +263,6 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: contain;
-                padding: 1%;
                 letter-spacing: -0.25px;
                 white-space: nowrap;
                 font-family: 'wellfleet';
@@ -272,7 +273,6 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
                     height: 22px;
                 }
         .chalkboard_cta {
-            margin: 0.5em 0 0 0;
             letter-spacing: 0.75px;
             color: var(--hb_green);
             font-family: 'wellfleet';
@@ -635,10 +635,9 @@ h6 {
 }
 
 .title-hype {
-	color: var(--hb_orange);
+	color: var(--hb_green);
 	font-weight: 900;
-	font-family: 'jokerman';
-	font-size: 130%;
+	white-space: nowrap;
 }
 @media (max-width: 500px) {
 	.title-hype {
