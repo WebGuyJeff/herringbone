@@ -1,0 +1,11 @@
+<svg class="desert_sand" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="0 0 1920 800">
+	<defs>
+		<linearGradient id="desert_gradSand" x1="0" x2="0" y1="277" y2="800" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#fae87f"/>
+            <stop offset=".3" stop-color="#facf4a"/>
+            <stop offset=".5" stop-color="#fcb645"/>
+            <stop offset="1" stop-color="#e88527"/>
+		</linearGradient>
+	</defs>
+	<path fill="url(#desert_gradSand)" d="M1920 260H0v540s257-56 388-60c170-5 339 65 510 50 125-12 270-86 364-103 183-33 306 16 406 23 206 15 252-43 252-43z" />
+</svg>
