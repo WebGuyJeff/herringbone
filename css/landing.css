@@ -384,7 +384,7 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
         overflow: hidden;
 	}
         .desert_scape {
-            width: clamp(80%, 1920px, 177.777%);
+            width: clamp(100%, 1920px, 177.777%);
             height: 100%;
         }
         .desert_sand {

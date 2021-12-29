@@ -100,6 +100,6 @@
 	?>
 	<div class="welcome_desert">
         <?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-sand.svg' ) ); ?>
-        <?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-scape.svg' ) ); ?>
+        <?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-scape_no-sand.svg' ) ); ?>
 	</div>
 </div>
