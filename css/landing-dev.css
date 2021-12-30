@@ -39,7 +39,7 @@ multiple landing pages should go in landing.css.
 		display: flex;
 		flex-flow: row nowrap;
         justify-content: center;
-        margin-bottom: 140px;
+        margin-bottom: 200px;
 	}
 
 
