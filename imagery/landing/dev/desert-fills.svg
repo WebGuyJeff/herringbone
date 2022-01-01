@@ -1,21 +1,26 @@
 <svg
     class="desert_fills"
-    viewBox="0 0 1920 540">
+    viewBox="0 0 50 50">
     <defs>
-        <linearGradient id="desert_fill-sand" x1="0" x2="0" y1="342" y2="720" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#fadcb0"></stop>
-            <stop offset=".2" stop-color="#f8d094"></stop>
-            <stop offset=".5" stop-color="#f7bf74"></stop>
-            <stop offset=".8" stop-color="#f7bf74"></stop>
-            <stop offset="1" stop-color="#fff"></stop>
-        </linearGradient>
-		<pattern id="desert_pattern-greenWool" width="15" height="15" patternUnits="userSpaceOnUse">
-			<path fill="#93c9a1" d="M0 0v15h15V0Z"/>
-			<path fill="#61af76" d="M10 0 9 3 8 5 7 6V3l1-3H6v6L5 8 4 9v1H3L2 8l1-1V4l1-3V0H0v15h4v-2l2-2c1-1 1 0 1 1l-1 2v1l1-1 2-5V8l1-1 1 1-1 3v4h5V0Zm4 3 1 2-1 2v6l-2-1V6l1-2 1-1ZM1 3v2l1 2v1l-1 3v2l-1-2a159 159 0 0 0 1-7V3Zm6 6v1-1Z"/>
+		<pattern id="desert_pattern-greenWool" width="50" height="50" patternUnits="userSpaceOnUse">
+			<path id="path2744" fill="#93c9a1" d="M0 0v50h50V0Z"></path>
+			<path id="path2746" fill="#61af76" d="m33 0-3 10-3 7-4 3V10l4-10h-7v20l-3 7-4 3v3h-3l-3-6 3-4V13l3-10V0H0v50h13v-7l7-6c3-4 3 0 3 3l-3 7v3l3-3 7-17v-3l3-4 4 4-4 10v13h17V0Zm14 10 3 7-3 6v20l-7-3V20l3-7zM3 10v7l4 6v4L3 37v6l-3-6a530 530 0 0 0 3-24Zm20 20v3z"></path>
 		</pattern>
-        <linearGradient id="desert_gradient-FadeToWhite" x1="0" x2="0" y1="0" y2="540" gradientUnits="userSpaceOnUse">
-            <stop offset="0.7" stop-color="#fff3d4"></stop>
-            <stop offset="1" stop-color="#fff"></stop>
+        <filter id="desert_filter-roughPaper" y="0" height="1" x="0" width="1" style="color-interpolation-filters:sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.003" numOctaves="8" seed="0" result="result4" id="feTurbulence115" />
+            <feDisplacementMap in="SourceGraphic" in2="result4" yChannelSelector="G" xChannelSelector="R" scale="0" result="result3" id="feDisplacementMap117" />
+            <feDiffuseLighting lighting-color="#e9e6d7" diffuseConstant="1" surfaceScale="-5" result="result1" in="result4" id="feDiffuseLighting121" kernelUnitLength="0.01">
+                <feDistantLight id="feDistantLight192" azimuth="118" elevation="42" />
+            </feDiffuseLighting>
+            <feComposite operator="in" in="result3" in2="result1" result="result2" id="feComposite123" />
+            <feComposite in2="result1" result="result5" operator="arithmetic" k1="1.7" id="feComposite125" k2="0" k3="0" k4="0" />
+            <feBlend in="result5" in2="result3" mode="normal" id="feBlend127" />
+        </filter>
+        <linearGradient id="desert_linearGradient-welcomeSand" x1="0" x2="0" y1="277" y2="800" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#fae87f"/>
+            <stop offset=".3" stop-color="#facf4a"/>
+            <stop offset=".5" stop-color="#fcb645"/>
+            <stop offset="1" stop-color="#e88527"/>
         </linearGradient>
     </defs>
 </svg>

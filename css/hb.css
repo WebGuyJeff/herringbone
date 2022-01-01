@@ -129,6 +129,7 @@ Font Size		 Line Height
   --hb_white: #fff;
   --hb_lightGrey: #eee;
   --hb_grey: #bbb;
+  --hb_darkGrey: #888;
   --hb_background-gradient: radial-gradient(at 50% 100%, #63CFA7 40%, #3AB09E);
 	/* Gradient must be in same background-image rule AFTER the svg pattern */
   --hb_hover: 0 0 0 0.25em #63CFA7;
@@ -891,7 +892,6 @@ main article img {
 		padding-top: 100%;
 		content: "";
 	}
-
 	.aspect1-1::after {
 		display: block;
 		clear: both;
@@ -980,7 +980,8 @@ main article img {
 			cursor: pointer;
 		}
 		.button:hover > *:first-child {
-			background: var(--hb_lightGreen);
+            color: var(--hb_black);
+			background: #0000;
 		}
 		.button:focus,
 		.button:focus-visible {
@@ -1000,9 +1001,13 @@ main article img {
     .button-border > *:first-child {
     	background: transparent;
 		color: var(--hb_black);
-		border: dashed 1px #3335;
+		border: dashed 1px var(--hb_darkGrey);
     }
-
+    .button-border:hover > *:first-child {
+    	background: var(--hb_black);
+		color: var(--hb_white);
+		border: solid 1px var(--hb_black);
+    }
 
 /*- - - - - - - - - - - - - - - - - - - - - - - -  2.5.3 BUTTONS - NOBACK - - */
 

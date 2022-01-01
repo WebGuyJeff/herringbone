@@ -78,7 +78,7 @@
 				title="Send Me a Message"
 				type="button"
 				id="modal_contactForm"
-				class="button button-cta spinny aligncenter modal_control-open"
+				class="button aligncenter modal_control-open"
 			>
 				<span>
 					Message Me
@@ -95,11 +95,12 @@
 </div>
 <div class="landing_backdrop">
 	<?php
+        echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-fills.svg' ) );
 		echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/sun.svg' ) );
 		echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/clouds.svg' ) );
 	?>
-	<div class="welcome_desert">
+	<div class="desert_terrain">
         <?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-sand.svg' ) ); ?>
-        <?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-scape_no-sand.svg' ) ); ?>
+        <?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-furniture.svg' ) ); ?>
 	</div>
 </div>
