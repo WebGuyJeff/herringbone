@@ -12,7 +12,7 @@
 
 <div class="landing_content " style="--row: 1 / -1; --col: oneone-l / oneone-r;">
 
-	<div class="column">
+	<div class="copy">
 		<h2>The Website Building Process</h2>
 		<p>You don’t need to know anything about websites to work with me as I guide you through the entire process explaining everything in plain English. I take the time to learn about your ambition, the target audience and the competitive landscape to design a well-informed website which we will continue to build and develop as your business grows.</p>
 		<h3>Research</h3>

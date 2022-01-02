@@ -12,7 +12,7 @@
 
 <div class="landing_content " style="--row: 1 / -1; --col: oneone-l / oneone-r;">
 
-	<div class="column">
+	<div class="copy">
 		<h2>Web Development for a Small Business</h2>
 		<p>Having worked closely with many business owners experiencing technological hardships as both employee and consultant, solving website and cloud service (such as email) problems has become my speciality.</p>
 		<p>

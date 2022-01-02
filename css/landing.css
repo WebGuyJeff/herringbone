@@ -18,6 +18,7 @@ that pages dedicated css file.
 	1.2 GLOBAL - TYPOGRAPHY
 	1.3 GLOBAL - HEADER
 	1.4 GLOBAL - SECTION GRID LAYOUT
+    1.5 GLOBAL - MASONFLIP LAYOUT
 2. BLOCKS
 	2.1 BLOCKS - CHALKBOARD
 	2.2 BLOCKS - RESPONSIVE SCREEN ANIMATION
@@ -182,6 +183,69 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 }
 
 
+/*--------------------------------------- 1.4 GLOBAL - MASONFLOP LAYOUT ----*/
+
+/* Masonry + FlipFlop = MasonFlop */
+
+
+.masonFlop {
+    padding: 2em;
+    width: 100%;
+    filter: url(#desert_filter-roughPaper); 
+}
+	.masonFlop_card {
+		gap: 2em;
+		display: flex;
+		flex: 1 1 auto;
+		flex-flow: column;
+		margin-bottom: 2em;
+		border-radius: 2em;
+		background: #fff3d4;
+		padding: 2em;
+	}
+		.masonFlop_content-left,
+		.masonFlop_content-right {
+			flex: 0.5 1 auto;
+		}
+            .masonFlop_heading {
+                font-size: 125%;
+            }
+
+@media (max-width: 320px) {
+	.masonFlop {
+		margin: 0.5em;
+	}
+	.masonFlop_card {
+		gap: 0.5em;
+		margin-bottom: 0.5em;
+		border-radius: 0.5em;
+		padding: 1em;
+	}
+}
+
+/* flip-flop */
+@media (min-width: 608px) and (max-width: 1023px) {
+	.masonFlop_card:nth-child(even) {
+		flex-flow: row;
+	}
+	.masonFlop_card:nth-child(odd) {
+		flex-flow: row-reverse;
+	}
+}
+
+/* masonry */
+@media (min-width: 1024px) {
+	.masonFlop {
+		columns: 28em;
+		column-gap: 2em;
+	}
+	.masonFlop_card {
+		break-inside: avoid-column;
+		flex-flow: column nowrap;
+	}
+}
+
+
 /*============================================================ 2. BLOCKS =====*/
 /*- - - - - - - - - - - - - - - - - - - - - - - - 2.1 BLOCKS - CHALKBOARD - - */
 
@@ -202,20 +266,20 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 	height: fit-content;
 }
     .chalkboard_pinChalkboardTop {
-        height: 0;
-        width: 100%;
+        display: flex;
         position: relative;
+        align-items: center;
         margin-top: calc(-20px - 3em );
 		margin-bottom: calc(20px + 3em);
-        display: flex;
-        align-items: center;
+        width: 100%;
+        height: 0;
     }
         .svg_grabhand-left,
         .svg_grabhand-right {
-            filter: drop-shadow(1px 2px 1px #0008);
-            margin-top: 10px;
-            z-index: 1;
             --handWidth: calc( 80px + 2% );
+            filter: drop-shadow(1px 2px 1px #0008);
+            z-index: 1;
+            margin-top: 10px;
             width: var(--handWidth);
             max-width: 37%;
         }
@@ -235,7 +299,6 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 		margin-block-end: 1em;
 		margin-block-start: 1.75em;
 		line-height: 2em;
-		letter-spacing: 0.75px;
 		font-family: 'wellfleet';
 		font-size: var(--hb_font-xxl);
 		font-weight: 400;
@@ -247,33 +310,33 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 			}
 		}
         .chalkboard_list {
+            gap: 1em;
             display: flex;
             flex-flow: row wrap;
             justify-content: center;
-            gap: 1em;
             margin: 3em 0;
         }
             .chalkboard_list > li {
-                display: flex;
                 flex: 1 1 30%;
-                flex-flow: column nowrap;
-                align-items: center;
-                justify-content: center;
                 background-image: var(--hb_iconBackground);
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: contain;
-                letter-spacing: -0.25px;
-                white-space: nowrap;
-                font-family: 'wellfleet';
             }
                 .chalkboard_icon {
                     margin-bottom: 2px;
                     width: 22px;
                     height: 22px;
                 }
+                .chalkboard_link {
+                    display: flex;
+                    flex-flow: column nowrap;
+                    align-items: center;
+                    letter-spacing: -0.25px;
+                    white-space: nowrap;
+                    font-family: 'wellfleet';
+                }
         .chalkboard_cta {
-            letter-spacing: 0.75px;
             color: var(--hb_green);
             font-family: 'wellfleet';
             font-size: var(--hb_font-xl);
@@ -348,74 +411,6 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
                 100% { transform: translateY( 0  ); }
             }
 
-.welcome > .landing_backdrop {
-    background:
-        radial-gradient(
-            at 9% 9%,
-            #fffb 0%,
-            #fff0 30%
-        ),
-        linear-gradient(
-            #66d4ff 0%,
-            #ccf1ff 20%,
-            #fce889 55%,
-            #fcd762 60%,
-            #fff 61%
-        );
-}
-	.desert_clouds {
-		position: absolute;
-        /* dimensions are inline */
-        width: 100%;
-		height: 100%;
-	}
-        .desert_cloud {
-            animation: linear infinite animation_scrollLeftToRight;
-            animation-duration: var(--animDur);
-        }
-	.desert_sun {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        margin-top: 15px;
-        margin-left: 2%;
-        height: 20%;
-        max-height: 25vw;
-	}
-	.desert_terrain {
-        display: flex;
-        position: relative;
-        bottom: 0;
-        justify-content: center;
-        z-index: 0;
-        margin-top: auto;
-        width: 100%;
-        height: 75%;
-        overflow: hidden;
-	}
-        .desert_furniture {
-            width: clamp(100%, 1920px, 177.777%);
-            height: 100%;
-        }
-        .desert_sand {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: -1;
-            width: clamp(100%, 1920px, 175%);
-            height: 100%;
-        }
-        .desert_rock {
-            filter: url(#desert_filter-roughPaper);
-        }
-
-.desert_fills {
-    position: absolute;
-    opacity: 0;
-    height: 0;
-}
 
 
 /*- - - - - - - - - - - - - - -  2.2 BLOCKS - RESPONSIVE SCREEN ANIMATION - - */

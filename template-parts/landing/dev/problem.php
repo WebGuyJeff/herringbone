@@ -12,7 +12,7 @@
 
 <div class="landing_content " style="--row: 1 / -1; --col: oneone-l / oneone-r;">
 
-	<div class="column">
+	<div class="copy">
 		<h2>The Troubles with Getting a Small Business Website</h2>
 		<p>Choosing a web design company and the right web hosting services are up there with the most confusing decisions a business owner has to make. They often don’t know what managing a website entails and assume it’s beyond their technical know-how. They also may not be aware of the benefits a website is capable of bringing to a business, beyond simply existing as a web address on their stationary.</p>
 		<h3>How much should you spend on a small business website?</h3>

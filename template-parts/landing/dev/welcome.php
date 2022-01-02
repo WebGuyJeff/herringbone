@@ -18,7 +18,7 @@
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-right.svg' ) ); ?>
         </div>
 
-		<div class="column">
+		<div class="copy">
 
 			<h1 class="chalkboard_title title">
 				Hi I’m Jeff, a
@@ -38,28 +38,40 @@
 
 			<ul class="chalkboard_list" style="list-style:none; margin:1em 0; padding:0;">
 				<li>
-				<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-design.svg' ) ); ?>
-					Web Design
+                    <a href="#website-design" class="chalkboard_link">
+                        <?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-design.svg' ) ); ?>
+                        Web Design
+                    </a>
 				</li>
 				<li>
-				<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-develop.svg' ) ); ?>
-					Web Development
+                    <a href="#website-development" class="chalkboard_link">
+                        <?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-develop.svg' ) ); ?>
+                        Web Development
+                    </a>
 				</li>
 				<li>
-				<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-hosting.svg' ) ); ?>
-					Web Hosting
+                    <a href="#" class="chalkboard_link">
+                        <?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-hosting.svg' ) ); ?>
+                        Web Hosting
+                    </a>
 				</li>
 				<li>
-				<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-support.svg' ) ); ?>
-					Support Plans
+                    <a href="#" class="chalkboard_link">
+                        <?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-support.svg' ) ); ?>
+                        Support Plans
+                    </a>
 				</li>
 				<li>
-				<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-wordpress.svg' ) ); ?>
-					WordPress Expert
+                    <a href="#" class="chalkboard_link">
+                        <?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-wordpress.svg' ) ); ?>
+                        WordPress Expert
+                    </a>
 				</li>
 				<li>
-				<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-cloud.svg' ) ); ?>
-					Cloud Solutions
+                    <a href="#" class="chalkboard_link">
+                        <?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-cloud.svg' ) ); ?>
+                        Cloud Solutions
+                    </a>
 				</li>
 			</ul>
 

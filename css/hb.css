@@ -864,6 +864,19 @@ main article img {
 /*- - - - - - - - - - - - - - - - - - - - - -  2.2.3 CONTAINERS - VANILLA - - */
 
 
+.copy {
+    width: 96%;
+	max-width: 30em;
+	margin: 0 auto;
+	text-align: start;
+	margin-block-start: 2em;
+	margin-block-end: 2em;
+}
+
+.copy img {
+	max-width: 100%;
+}
+
 .row {
 	display: flex;
 	flex-flow: row wrap;
@@ -876,10 +889,6 @@ main article img {
     text-align: start;
     margin-block-start: 2em;
     margin-block-end: 2em;
-}
-
-.column img {
-	max-width: 100%;
 }
 
 .aspect1-1 {

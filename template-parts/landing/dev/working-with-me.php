@@ -12,7 +12,7 @@
 
 <div class="landing_content " style="--row: 1 / -1; --col: oneone-l / oneone-r;">
 
-	<div class="column">
+	<div class="copy">
 
 		<h2>Working With Me</h2>
 		<p>Successful websites are influential, easy to use and effective sellers of the product or message. To get this right requires research, design, development, marketing, and hosting with a plan for support and development for the journey ahead. This list packs many skilled resources and is just the short version.</p>

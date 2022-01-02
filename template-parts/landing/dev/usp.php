@@ -19,7 +19,7 @@ wp_enqueue_script( 'hb_usp_js' );
 	<input type="checkbox" checked class="usp_state" id="usp_default">
 	<div class="usp_card">
 		<div class="usp_blurb">
-			<div class="column">
+			<div class="copy">
 				<h2 class="usp_title">Working With Me</h2>
 				<p>
 					There are many benefits to working with me, not least becauase it's just easy.
@@ -48,7 +48,7 @@ wp_enqueue_script( 'hb_usp_js' );
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) ); ?>
 		</label>
 		<div class="usp_blurb">
-			<div class="column">
+			<div class="copy">
 				<h3 class="usp_subtitle">Complete Solution</h3>
 				<p>
 					By adapting a development model I adopted in high street retail and eCommerce, I
@@ -77,7 +77,7 @@ wp_enqueue_script( 'hb_usp_js' );
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) ); ?>
 		</label>
 		<div class="usp_blurb">
-			<div class="column">
+			<div class="copy">
 				<h3 class="usp_subtitle">Personal Service</h3>
 				<p>
 					I'll always be your direct point of contact, and getting to know you means we
@@ -111,7 +111,7 @@ wp_enqueue_script( 'hb_usp_js' );
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) ); ?>
 		</label>
 		<div class="usp_blurb">
-			<div class="column">
+			<div class="copy">
 				<h3 class="usp_subtitle">Flexibility</h3>
 				<p>
 					As an experienced project manager, I foresee opportunities for improvement early
@@ -141,7 +141,7 @@ wp_enqueue_script( 'hb_usp_js' );
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) ); ?>
 		</label>
 		<div class="usp_blurb">
-			<div class="column">
+			<div class="copy">
 				<h3 class="usp_subtitle">Experience</h3>
 				<p>
 					I've worked most roles in eCommerce, including being on the front line with
@@ -171,7 +171,7 @@ wp_enqueue_script( 'hb_usp_js' );
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) ); ?>
 		</label>
 		<div class="usp_blurb">
-			<div class="column">
+			<div class="copy">
 				<h3 class="usp_subtitle">Value For Money</h3>
 				<p>
 					I code everything as if it were my own, following strict standards to ensure
@@ -201,7 +201,7 @@ wp_enqueue_script( 'hb_usp_js' );
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) ); ?>
 		</label>
 		<div class="usp_blurb">
-			<div class="column">
+			<div class="copy">
 				<h3 class="usp_subtitle">Aftercare</h3>
 				<p>
 					I see my projects through for the long journey ahead, providing dedicated
