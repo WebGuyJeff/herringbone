@@ -773,13 +773,7 @@ a img.aligncenter {
 /*- - - - - - - - - - - - - - - - - - - - - - - -  2.1.3 LAYOUT - ARTICLE - - */
 
 
-main article img {
-    -o-object-fit: contain;
-       object-fit: contain;
-    height: auto;
-    max-width: 100%;
-    border-radius: var(--hb_radius-small);
-}
+
 
 
 /*-------------------------------------------------------- 2.2 CONTAINERS ----*/
