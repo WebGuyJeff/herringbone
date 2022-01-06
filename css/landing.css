@@ -191,7 +191,6 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 .masonFlop {
     padding: 2em;
     width: 100%;
-    filter: url(#desert_filter-roughPaper); 
 }
 	.masonFlop_card {
 		gap: 2em;
@@ -205,10 +204,13 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 	}
 		.masonFlop_content-left,
 		.masonFlop_content-right {
-			flex: 0.5 1 auto;
+            flex: 1 1 50%;
 		}
             .masonFlop_heading {
                 font-size: 125%;
+            }
+            .masonFlop_card img {
+                max-width: 100%;
             }
 
 @media (max-width: 320px) {
@@ -319,21 +321,24 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
             .chalkboard_list > li {
                 flex: 1 1 30%;
                 background-image: var(--hb_iconBackground);
-                background-position: center;
+                background-position: top;
                 background-repeat: no-repeat;
-                background-size: contain;
+                background-size: 3.5em;
             }
                 .chalkboard_icon {
-                    margin-bottom: 2px;
-                    width: 22px;
-                    height: 22px;
+                    margin-top: 0.2em;
+                    margin-bottom: 0.2em;
+                    width: 1.6em;
+                    height: 1.6em;
                 }
                 .chalkboard_link {
                     display: flex;
                     flex-flow: column nowrap;
                     align-items: center;
+                    text-align: center;
+                    text-decoration: none;
                     letter-spacing: -0.25px;
-                    white-space: nowrap;
+                    color: var(--hb_black);
                     font-family: 'wellfleet';
                 }
         .chalkboard_cta {

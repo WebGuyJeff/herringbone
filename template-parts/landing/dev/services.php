@@ -24,10 +24,14 @@
 
     <div class="masonFlop">
 
-        <article id="website-design" class="masonFlop_card">
+        <article id="web-design" class="masonFlop_card">
             <div class="masonFlop_content-left">
                 <figure>
-                    <img src="https://picsum.photos/300/200">
+                    <img
+                        alt="Web Design"
+                        title="Web Design"
+                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-design.jpg'; ?>"
+                    >
                 </figure>
             </div>
             <div class="masonFlop_content-right">
@@ -46,10 +50,14 @@
             </div>
         </article>
 
-        <article id="website-development" class="masonFlop_card">
+        <article id="web-development" class="masonFlop_card">
             <div class="masonFlop_content-left">
                 <figure>
-                    <img src="https://picsum.photos/300/200">
+                    <img
+                        alt="Web Development"
+                        title="Web Development"
+                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-development.jpg'; ?>"
+                    >
                 </figure>
             </div>
             <div class="masonFlop_content-right">
@@ -69,11 +77,95 @@
                 </div>
             </div>
         </article>
-
-        <article id="website-marketing" class="masonFlop_card">
+    
+        <article id="wordpress-expert" class="masonFlop_card">
             <div class="masonFlop_content-left">
                 <figure>
-                    <img class="svg_me-laptop" alt="An SVG figure of Jefferson Real holding a laptop displaying your new business website." src="<?php echo get_bloginfo('template_url') ?>/imagery/landing/dev/me-laptop.svg"/>
+                    <img
+                        alt="WordPress Expert"
+                        title="WordPress Expert"
+                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-wordpress.jpg'; ?>"
+                    >
+                </figure>
+            </div>
+            <div class="masonFlop_content-right">
+                <div class="copy">
+                    <h3 class="masonFlop_heading">
+                        WordPress Expert
+                    </h3>
+                    <p>
+                        WordPress is the worlds number one website platform which as of January 2022
+                        powers 43% 
+                        <sup class="reference">
+                            <a href="#kinsta-wordpress-usage">
+                                [1]
+                            </a> 
+                        </sup>
+                        of all websites! It&apos;s a versatile and user-friendly platform that was
+                        originally built for blogging but now powers everything from e-commerce to
+                        social media platforms. The real power of WordPress is in its infinite
+                        potential.
+                    </p>
+                    <p>
+                        With WordPress I can quickly launch a website with the aid of existing
+                        themes and plugins. If you have big ideas but a tight budget, we can achieve
+                        great results by off-setting development time with these existing building
+                        blocks.
+                    </p>
+                    <p>
+                        WordPress provides a great content managment system (CMS) core, giving
+                        website owners infinite control to create and manage the content of their
+                        website. I can build a bespoke 'backend' to manage any type of content you
+                        may want to publish to your website, whether it be a blog post, a product
+                        or a property listing.
+                    </p>
+                    <p>
+                        For large projects, your requirements are the limit, and if it appears
+                        WordPress may not be the best fit for your needs, no problem! While I
+                        love WordPress, I&apos;m a platform-agnostic developer and will ensure your
+                        website or web app is launched on the best platform for the job. Even if
+                        that solution is no existing platform at all and we code from scratch.
+                    </p>
+                    <p class="footnotes" id="kinsta-wordpress-usage">
+                        [1] source: <a target="_blank" href="https://kinsta.com/blog/wordpress-statistics/">https://kinsta.com/blog/wordpress-statistics/</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article id="hosting-and-support" class="masonFlop_card">
+            <div class="masonFlop_content-left">
+                <figure>
+                    <img
+                        alt="Hosting and Support"
+                        title="Hosting and Support"
+                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-hosting.jpg'; ?>"
+                    >
+                </figure>
+            </div>
+            <div class="masonFlop_content-right">
+                <div class="copy">
+                    <h3 class="masonFlop_heading">
+                        Hosting and Support
+                    </h3>
+                    <p>
+                        I manage all the technical elements of the website, hosting, emails and
+                        other cloud services to take these concerns away from the daily running
+                        of your business. I can even adopt an existing site with a support plan
+                        providing advice on digital next steps to grow your business.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article id="search-engine-optimisation" class="masonFlop_card">
+            <div class="masonFlop_content-left">
+                <figure>
+                    <img
+                        alt="Search Engine Optimisation"
+                        title="Search Engine Optimisation"
+                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-seo.jpg'; ?>"
+                    >
                 </figure>
             </div>
             <div class="masonFlop_content-right">
@@ -110,7 +202,11 @@
         <article id="digital-marketing" class="masonFlop_card">
             <div class="masonFlop_content-left">
                 <figure>
-                    <img class="svg_me-laptop" alt="An SVG figure of Jefferson Real holding a laptop displaying your new business website." src="<?php echo get_bloginfo('template_url') ?>/imagery/landing/dev/me-laptop.svg"/>
+                    <img
+                        alt="Digital Marketing"
+                        title="Digital Marketing"
+                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-digital-marketing.jpg'; ?>"
+                    >
                 </figure>
             </div>
             <div class="masonFlop_content-right">
@@ -128,65 +224,6 @@
                         social platforms to maximise outreach while organic content gains
                         traction.
                     </p>
-                </div>
-            </div>
-        </article>
-
-        <article id="innovative-solutions" class="masonFlop_card">
-            <div class="masonFlop_content-left">
-                <figure>
-                    <div class="graphicContainer aspect1-1">
-                        <div class="screen">
-                            <div class="screen_demo">
-                                <div class="screen_row a">
-                                    <div class="screen_column"></div>
-                                    <div class="screen_column"></div>
-                                </div>
-                                <div class="screen_row b">
-                                    <div class="screen_column">
-                                        <h4 class="screen_title">
-                                            <span>Mobile</span>
-                                            <span>Tablet</span>
-                                            <span>Desktop</span>
-                                        </h4>
-                                    </div>
-                                </div>
-                                <div class="screen_row c">
-                                    <div class="screen_column"></div>
-                                    <div class="screen_column"></div>
-                                    <div class="screen_column"></div>
-                                </div>
-                                <div class="screen_row d">
-                                    <div class="screen_column"></div>
-                                    <div class="screen_column"></div>
-                                    <div class="screen_column"></div>
-                                    <div class="screen_column"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </figure>
-            </div>
-            <div class="masonFlop_content-right">
-                <div class="copy">
-                    <h3 class="masonFlop_heading">
-                        Real-World Solutions
-                    </h3>
-                    <p> I’m armed with a wealth of real-world solutions and I love getting stuck in to
-                        projects big and small. I can build you a show-stopping website dripping with
-                        intricate animation when impact is required and I can implement clean, pixel-perfect
-                        user interfaces when clarity and ease of use is key.
-                    </p>
-                    <p> 
-                        Responsive layouts, mobile-first code and SEO best practice is the basis for all my
-                        projects. This means everything is designed to work on any device with any screen
-                        size. Optimised mobile-first for bandwidth-concious devices and adapted on-the-fly
-                        for larger screens as the code detects them. Decreased load-times and a smoother
-                        overall experience will increase user engagement and search engine rankings.
-                    </p>
-                    <span class="tip">
-                        Resize your browser window or rotate your screen to see this website adapt to fit.
-                    </span>
                 </div>
             </div>
         </article>

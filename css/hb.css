@@ -405,6 +405,19 @@ kbd {
   line-height: 1.438em;
   font-size: var(--hb_font-s);
 }
+    .footnotes > a {
+        text-decoration: none;
+    }
+    .footnotes > a:hover {
+        text-decoration: underline;
+    }
+
+.reference > a {
+    text-decoration: none;
+}
+    .reference > a:hover {
+        text-decoration: underline;
+    }
 
 ul ul,
 ul ol,
