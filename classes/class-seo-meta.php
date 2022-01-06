@@ -127,6 +127,7 @@ class Seo_Meta {
         $hb_sitelogo        = esc_url( wp_get_attachment_url( get_theme_mod( 'custom_logo' ) ) );
         $hb_locale			= wp_strip_all_tags( get_bloginfo( 'language' ) );
         $hb_charset         = wp_strip_all_tags( get_bloginfo( 'charset' ) );
+        $hb_themeuri        = get_template_directory_uri();
 
         /* Page-Specific */
         $post = get_post();//Set up the post manually
@@ -211,6 +212,7 @@ class Seo_Meta {
             "ogdesc"        => $hb_desc,
             "ogsitename"    => $hb_sitetitle,
             "charset"       => $hb_charset,
+            "themeuri"      => $hb_themeuri,
         ];
 
     }//build_meta_vars()
@@ -244,11 +246,11 @@ $head_meta = <<<EOF
 <!-- Favicon and Web App Definitions -->
 <meta name="application-name" content="Jefferson Real - Web Development">
 <meta name="msapplication-TileColor" content="#fff">
-<meta name="msapplication-TileImage" content="/imagery/favicon/mstile-144x144.png">
-<meta name="msapplication-square70x70logo" content="/imagery/favicon/mstile-70x70.png">
-<meta name="msapplication-square150x150logo" content="/imagery/favicon/mstile-150x150.png">
-<meta name="msapplication-wide310x150logo" content="/imagery/favicon/mstile-310x150.png">
-<meta name="msapplication-square310x310logo" content="/imagery/favicon/mstile-310x310.png">
+<meta name="msapplication-TileImage" content="{$meta["themeuri"]}/imagery/favicon/mstile-144x144.png">
+<meta name="msapplication-square70x70logo" content="{$meta["themeuri"]}/imagery/favicon/mstile-70x70.png">
+<meta name="msapplication-square150x150logo" content="{$meta["themeuri"]}/imagery/favicon/mstile-150x150.png">
+<meta name="msapplication-wide310x150logo" content="{$meta["themeuri"]}/imagery/favicon/mstile-310x150.png">
+<meta name="msapplication-square310x310logo" content="{$meta["themeuri"]}/imagery/favicon/mstile-310x310.png">
 <!-- Mobile Browser Colours -->
 <!-- Chrome, Firefox OS and Opera -->
 <meta name="theme-color" content="#262422">
@@ -258,20 +260,20 @@ $head_meta = <<<EOF
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#262422">
 <!-- Favicons and vendor-specific icons -->
-<link rel="shortcut icon" href="/imagery/favicon/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" sizes="57x57" href="/imagery/favicon/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/imagery/favicon/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/imagery/favicon/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/imagery/favicon/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/imagery/favicon/apple-touch-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/imagery/favicon/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/imagery/favicon/apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/imagery/favicon/apple-touch-icon-152x152.png">
-<link rel="icon" type="image/png" href="/imagery/favicon/favicon-196x196.png" sizes="196x196">
-<link rel="icon" type="image/png" href="/imagery/favicon/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="/imagery/favicon/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/imagery/favicon/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/imagery/favicon/favicon-128.png" sizes="128x128">
+<link rel="shortcut icon" href="{$meta["themeuri"]}/imagery/favicon/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="57x57" href="{$meta["themeuri"]}/imagery/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="{$meta["themeuri"]}/imagery/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="72x72" href="{$meta["themeuri"]}/imagery/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="{$meta["themeuri"]}/imagery/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="60x60" href="{$meta["themeuri"]}/imagery/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="120x120" href="{$meta["themeuri"]}/imagery/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="{$meta["themeuri"]}/imagery/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="152x152" href="{$meta["themeuri"]}/imagery/favicon/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="{$meta["themeuri"]}/imagery/favicon/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="{$meta["themeuri"]}/imagery/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="{$meta["themeuri"]}/imagery/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="{$meta["themeuri"]}/imagery/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="{$meta["themeuri"]}/imagery/favicon/favicon-128.png" sizes="128x128">
 <!-- hb_head end -->
 EOF;
 
