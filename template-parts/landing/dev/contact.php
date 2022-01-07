@@ -10,7 +10,7 @@
 ?>
 
 
-<div class="landing_content" style="--col: oneone-l / oneone-r;">
+<div class="landing_content" style="--col: narrow-l / narrow-r;">
 
     <div class="copy">
         <h2 class="title">
@@ -22,7 +22,7 @@
         </p>
     </div>
 
-    <div class="aligncenter">
+    <div class="align_me-centre">
         <?php echo do_shortcode('[hb_contact_form title="" message=""]'); ?>
     </div>
 

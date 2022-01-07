@@ -89,65 +89,14 @@ that pages dedicated css file.
 /*------------------------------------ 1.4 GLOBAL - SECTION GRID LAYOUT ----*/
 
 
-/*
-### Aspect ratio grid layout.
-
-This layout provides grid tracks set at aspect ratios based on viewport height. The viewport edges
-form the 'top and bottom' of the aspect ratio container. This allows you to create a screen space
-based on an aspect ratio which best suits your content. There is no limit to the height of the
-grid layout.
-
-#### Layout
-
-[Full-width] [16:9] [3:2] [1:1] [3:2] [16:9] [Full-width]
-
-Columns are always centered to the viewport. As the viewport widens in relation to the height, the
-extra columns get added left and right and expand until they reach their ratio max. E.g when the
-viewport is wider than 100% of the height (> 1:1), the 3:2 columns begin to fill the available
-space until they hit their max, and so on. The full-width tracks are always 100vw.
-
-
-#### Columns
-
-3 ratios are achieved when the columns are fully expanded:
-
-			 [1:1] 				= 1:1
-	   [3:2] [1:1] [3:2]		= 3:2
-[16:9] [3:2] [1:1] [3:2] [16:9] = 16:9
-
-The ultrawide aspect ratio is the most extreme aspect ratio in common use, so the min-width is based
-on the UW aspect ratio of 64:27. In other words, the 1:1 column will never be narrower than
-42.186vw ( 100vw / 64 * 27).
-
-
-#### Max Column Widths (between tracks)
-
-ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
-
-1:1  = 100vh 	(100vh by 100vh)
-3:2  = 25vh  	(150vh - 100vh / 2)
-16:9 = 13.888vh (100vh / 9 * 16 = 177.776vh then 177.776vh - 150vh = 27.776vh / 2)
-*/
-
-
 .hb__pag-landing section {
-
-/*
-	--oneone: clamp( 42.186%, calc(100% - 2 * var(--hb_gutters)), calc( 100vh - var(--scrollbar) ) );
-	--sixteennine: clamp( 0px, calc( calc( 50% - 75vh ) - calc( 0.50 * var(--scrollbar) ) ), 13.888vh );
-	--threetwo: clamp( 0px, calc( 50% - 50vh ), 25vh );
-*/
-
-
-	--oneone: minmax( min-content, 48rem );                 /* 48rem */
-	--threetwo: clamp( 0px, calc( 50% - 24rem), 8rem );     /* 64rem */
-	--sixteennine: clamp( 0px, calc( 50% - 32rem), 13rem ); /* 90rem */
-
-
+	--narrow: minmax( min-content, 48rem );             /* 48rem */
+	--medium: clamp( 0px, calc( 50% - 24rem), 8rem );   /* 64rem */
+	--wide: clamp( 0px, calc( 50% - 32rem), 13rem );    /* 90rem */
 	gap: 0;
 	display: grid;
 	position: relative;
-	grid-template-columns: [full-l] 1fr [sixteennine-l threetwo-l oneone-l] var(--oneone) [oneone-r threetwo-r sixteennine-r] 1fr [full-r];
+	grid-template-columns: [full-l] 1fr [wide-l medium-l narrow-l] var(--narrow) [narrow-r medium-r wide-r] 1fr [full-r];
 	grid-column: 1 / -1;
 	justify-content: center;
 	width: 100%;
@@ -173,12 +122,12 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 
 @media (min-width: 64rem) {
 	.hb__pag-landing section {
-		grid-template-columns: [full-l] 1fr [sixteennine-l threetwo-l] var(--threetwo) [oneone-l] var(--oneone) [oneone-r] var(--threetwo) [threetwo-r sixteennine-r] 1fr [full-r];
+		grid-template-columns: [full-l] 1fr [wide-l medium-l] var(--medium) [narrow-l] var(--narrow) [narrow-r] var(--medium) [medium-r wide-r] 1fr [full-r];
 	}
 }
 @media (min-width: 90rem) {
 	.hb__pag-landing section {
-		grid-template-columns: [full-l] 1fr [sixteennine-l] var(--sixteennine) [threetwo-l] var(--threetwo) [oneone-l] var(--oneone) [oneone-r] var(--threetwo) [threetwo-r] var(--sixteennine) [sixteennine-r] 1fr [full-r];
+		grid-template-columns: [full-l] 1fr [wide-l] var(--wide) [medium-l] var(--medium) [narrow-l] var(--narrow) [narrow-r] var(--medium) [medium-r] var(--wide) [wide-r] 1fr [full-r];
 	}
 }
 
@@ -336,7 +285,6 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
                     flex-flow: column nowrap;
                     align-items: center;
                     text-align: center;
-                    text-decoration: none;
                     letter-spacing: -0.25px;
                     color: var(--hb_black);
                     font-family: 'wellfleet';
@@ -350,7 +298,6 @@ ALWAYS ROUND DOWN TO PREVENT OVERFLOW!
 
 .chalkboard_pinChalkboardRight {
     position: relative;
-	left: var(--hb_gutters);
     height: 100%;
 }
     .svg_dimensionsBox {

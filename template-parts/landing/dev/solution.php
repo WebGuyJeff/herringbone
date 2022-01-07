@@ -10,7 +10,7 @@
  */
 ?>
 
-<div class="landing_content " style="--row: 1 / -1; --col: oneone-l / oneone-r;">
+<div class="landing_content " style="--row: 1 / -1; --col: narrow-l / narrow-r;">
 
 	<div class="copy">
 		<h2>Web Development for a Small Business</h2>

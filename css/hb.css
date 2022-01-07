@@ -175,7 +175,7 @@ Font Size		 Line Height
 	/* Only set styles here, no dimensional props like line-height, or letter-spacing. */
 
 	color: var(--hb_black);
-	font-weight: 300;
+	font-weight: 400;
 	font-family: var(--hb_font-primary);
 
 	/* fluid root units (14px @ 768 - 18px @ 1920) */
@@ -283,13 +283,27 @@ textarea:hover:not(:disabled):not(.disabled) {
 /*-------------------------------------------------------- 1.4 TYPOGRAPHY ----*/
 
 
-/* All units are em so font can be set at a component level */
-
-/* generic style classes */
-
-.weight400	   { font-weight: 400; }
 .textAlignCenter { text-align: center; }
-.textAlignRight  { text-align: right; }
+.textAlignRight  { text-align: end; }
+
+
+.copy {
+    width: 96%;
+	max-width: 30em;
+	margin: 0 auto;
+	text-align: start;
+	margin-block-start: 2em;
+	margin-block-end: 2em;
+}
+    .copy img {
+        max-width: 100%;
+    }
+    .copy a {
+        text-decoration: none;
+    }
+    .copy a:hover {
+        text-decoration: underline;
+    }
 
 .title {
 	margin-block-end: 1.688em;
@@ -570,91 +584,102 @@ strong {
 /*-------------------------------------------- 1.6 WORDPRESS CORE CLASSES ----*/
 
 
-.aligncenter {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: -webkit-fit-content;
-	width: -moz-fit-content;
-	width: fit-content;
+/* These should be maintained to ensure support for WP core and 3rd party plugins */
+
+.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 5px auto 5px auto;
 }
 
 .alignright {
-	float:right;
+    float:right;
+    margin: 5px 0 20px 20px;
 }
 
 .alignleft {
-	float: left;
+    float: left;
+    margin: 5px 20px 20px 0;
 }
 
 a img.alignright {
-	float: right;
+    float: right;
+    margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+    margin: 5px 20px 20px 0;
 }
 
 a img.alignleft {
-	float: left;
+    float: left;
+    margin: 5px 20px 20px 0;
 }
 
 a img.aligncenter {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .wp-caption {
-	background: #fff;
-	border: 0.0625rem solid var(--hb_grey);
-	max-width: 96%;
-	padding: 0.3125rem 0.1875rem 0.625rem;
-	text-align: center;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    max-width: 96%; /* Image does not overflow the content area */
+    padding: 5px 3px 10px;
+    text-align: center;
 }
 
-.alignnone,
-.alignleft {
-	margin: 0.3125rem 1.25rem 1.25rem 0;
+.wp-caption.alignnone {
+    margin: 5px 20px 20px 0;
 }
 
-.aligncenter {
-	margin: 0.3125rem auto;
+.wp-caption.alignleft {
+    margin: 5px 20px 20px 0;
 }
 
-.alignright {
-	margin: 0.3125rem 0 1.25rem 1.25rem;
+.wp-caption.alignright {
+    margin: 5px 0 20px 20px;
 }
 
 .wp-caption img {
-	border: 0 none;
-	height: auto;
-	margin: 0;
-	max-width: 98.5%;
-	padding: 0;
-	width: auto;
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 98.5%;
+    padding: 0;
+    width: auto;
 }
 
 .wp-caption p.wp-caption-text {
-	margin: 0;
+    font-size: 11px;
+    line-height: 17px;
+    margin: 0;
+    padding: 0 4px 5px;
 }
 
 /* Text meant only for screen readers. */
 .screen-reader-text {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
-	-webkit-clip-path: inset(50%);
-	        clip-path: inset(50%);
+	clip-path: inset(50%);
 	height: 1px;
 	margin: -1px;
 	overflow: hidden;
 	padding: 0;
 	position: absolute !important;
 	width: 1px;
-	word-wrap: normal !important;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
 
 .screen-reader-text:focus {
 	background-color: #eee;
 	clip: auto !important;
-	-webkit-clip-path: none;
-	        clip-path: none;
+	clip-path: none;
 	color: #444;
 	display: block;
 	font-size: 1em;
@@ -666,26 +691,13 @@ a img.aligncenter {
 	top: 5px;
 	width: auto;
 	z-index: 100000;
+	/* Above WP toolbar. */
 }
 
 
 /*----------------------------------------------------- 1.7 ACCESSIBILITY ----*/
 
-
-.screenReaderText {
-	width: 1px;
-    margin-left: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-    -webkit-clip-path: inset(50%);
-            clip-path: inset(50%);
-    border: 0;
-    position: absolute;
-    pointer-events: none;
-	word-wrap: normal !important;
-}
+/* see .screen-reader-text in WP core classes */
 
 
 /*=========================================================== 2. ELEMENTS ====*/
@@ -871,19 +883,6 @@ a img.aligncenter {
 /*- - - - - - - - - - - - - - - - - - - - - -  2.2.3 CONTAINERS - VANILLA - - */
 
 
-.copy {
-    width: 96%;
-	max-width: 30em;
-	margin: 0 auto;
-	text-align: start;
-	margin-block-start: 2em;
-	margin-block-end: 2em;
-}
-
-.copy img {
-	max-width: 100%;
-}
-
 .row {
 	display: flex;
 	flex-flow: row wrap;
@@ -896,6 +895,11 @@ a img.aligncenter {
     text-align: start;
     margin-block-start: 2em;
     margin-block-end: 2em;
+}
+
+.align_me-centre {
+	width: fit-content;
+	margin: 0 auto;
 }
 
 .aspect1-1 {
@@ -994,6 +998,7 @@ a img.aligncenter {
 	}
 		.button:hover {
 			cursor: pointer;
+            box-shadow: 0em 0em 0em 0.2em #000;
 		}
 		.button:hover > *:first-child {
             color: var(--hb_black);

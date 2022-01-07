@@ -331,7 +331,7 @@ class Menu_Walker extends Walker_Nav_Menu {
 
         $output .= "{$this->n}{$this->i(0)}<button {$button_classes} id=\"{$location}{$id}\" {$aria_attributes}>";
         $output .= "{$this->n}{$this->i(1)}<span class=\"dropdown_toggleIcon\">{$icon}</span>";
-        $output .= "{$this->n}{$this->i(1)}<span class=\"screenReaderText\">{$title}</span>";
+        $output .= "{$this->n}{$this->i(1)}<span class=\"screen-reader-text\">{$title}</span>";
         $output .= "{$this->n}{$this->i(0)}</button>";
         $output .= "{$this->n}{$this->i(0)}<div class=\"dropdown_contents\">";
     }

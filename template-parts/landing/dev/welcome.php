@@ -10,7 +10,7 @@
  */
 ?>
 
-<div class="landing_content" style="--row: 1 / -1; --col: oneone-l / oneone-r;">
+<div class="landing_content" style="--row: 1 / -1; --col: narrow-l / narrow-r;">
 	<div class="chalkboard ">
 
         <div class="chalkboard_pinChalkboardTop">
@@ -27,7 +27,7 @@
 				</span>
 			</h1>
 
-			<p class="weight400">
+			<p>
 				I help businesses, individuals and start-ups by providing website
 				development and website design services. I'm a complete one-man web
 				design company delivering more punch per pound and a higher
@@ -79,24 +79,25 @@
 				Need Website Help?
 			</h2>
 
-			<p class="weight400">
+			<p>
 				I’m available to discuss, plan and quote for your project and
 				my advice is always free! I’m based in Hampshire (South UK) but only
 				one Zoom call away from being anywhere in the world.
 			</p>
 
-			<button
-				aria-label="Send Me a Message"
-				title="Send Me a Message"
-				type="button"
-				id="modal_contactForm"
-				class="button aligncenter modal_control-open"
-			>
-				<span>
-					Message Me
-				</span>
-			</button>
-
+            <div class="textAlignCenter">
+                <button
+                    aria-label="Send Me a Message"
+                    title="Send Me a Message"
+                    type="button"
+                    id="modal_contactForm"
+                    class="button aligncenter modal_control-open"
+                >
+                    <span>
+                        Message Me
+                    </span>
+                </button>
+            </div>
 		</div>
 	</div>
     <div class="chalkboard_pinChalkboardRight">
