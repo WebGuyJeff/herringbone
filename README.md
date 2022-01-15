@@ -2,4 +2,13 @@
 
 ## A WordPress theme for my developer site and blog.
 
-**Currently making preparations to continue development as a modularised Gutenberg block theme.**
+###Idea Stew
+
+- modularise theme components as React components (Guten-blocks).
+- separate any superfluous functionality into plugins to keep theme pure.
+
+###Build Tools
+
+Format: prettier
+Lint: eslint
+Bundle: parcel

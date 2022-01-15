@@ -1,0 +1,78 @@
+{
+    "name": "herringbone",
+    "version": "0.0.5",
+    "description": "## A WordPress theme for my developer site and blog.",
+    "main": "index.php",
+    "source": "src/index.html",
+    "targets": {
+        "default": {
+            "distDir": "./build"
+        }
+    },
+    "browserslist": "> 0.5%, last 2 versions, not dead",
+    "scripts": {
+      "start": "parcel",
+      "build": "parcel build",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wordpressjeff/herringbone.git"
+    },
+    "author": "Jefferson Real",
+    "email": "me@jeffersonreal.com",
+    "homepage": "https://github.com/wordpressjeff/herringbone#readme",
+    "license": "GPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/wordpressjeff/herringbone/issues"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "eslint": "latest",
+        "eslint-plugin-react": "latest",
+        "parcel": "latest",
+        "prettier": "latest"
+    },
+    "prettier": {
+        "singleQuote": true,
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "useTabs": true,
+        "semi": true,
+        "bracketSpacing": true,
+        "bracketSameLine": false,
+        "arrowParens": "always",
+        "insertPragma": true,
+        "embeddedLanguageFormatting": "off",
+        "overrides": [
+            {
+                "excludeFiles": "*.css"
+            }
+        ]
+    },
+    "eslint": {
+        "env": {
+            "es6": true,
+            "browser": true
+        },
+        "extends": [
+            "eslint:recommended",
+            "plugin:react/recommended"
+        ],
+        "parserOptions": {
+            "ecmaVersion": 6,
+            "sourceType": "module",
+            "ecmaFeatures": {
+                "jsx": true
+            }
+        },
+        "plugins": [
+            "react"
+        ],
+        "rules": {
+            "semi": "error",
+            "no-console": 0,
+            "react/jsx-uses-vars": "error"
+        }
+    }
+}
