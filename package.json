@@ -2,6 +2,10 @@
     "name": "herringbone",
     "version": "0.0.5",
     "description": "## A WordPress theme for my developer site and blog.",
+    "author": "Jefferson Real",
+    "email": "me@jeffersonreal.com",
+    "homepage": "https://github.com/wordpressjeff/herringbone#readme",
+    "license": "GPL-3.0-or-later",
     "main": "index.php",
     "source": "src/index.html",
     "targets": {
@@ -9,33 +13,31 @@
             "distDir": "./build"
         }
     },
-    "browserslist": "> 0.5%, last 2 versions, not dead",
-    "scripts": {
-      "start": "parcel",
-      "build": "parcel build",
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/wordpressjeff/herringbone.git"
     },
-    "author": "Jefferson Real",
-    "email": "me@jeffersonreal.com",
-    "homepage": "https://github.com/wordpressjeff/herringbone#readme",
-    "license": "GPL-3.0-or-later",
     "bugs": {
         "url": "https://github.com/wordpressjeff/herringbone/issues"
     },
-    "dependencies": {},
+    "browserslist": "> 0.5%, last 2 versions, not dead",
+    "scripts": {
+        "start": "parcel",
+        "dev": "parcel watch src/js/index.js src/styles/_.css --public-url /wp-content/themes/THEME/dist",
+        "build": "parcel build",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "pretest": "phplint 'src/**/*.php'"
+    },
     "devDependencies": {
         "eslint": "latest",
-        "eslint-plugin-react": "latest",
+        "@wordpress/eslint-plugin": "latest",
         "parcel": "latest",
+        "phplint": "latest",
         "prettier": "latest"
     },
     "prettier": {
         "singleQuote": true,
-        "trailingComma": "es5",
+        "trailingComma": "none",
         "tabWidth": 4,
         "useTabs": true,
         "semi": true,
@@ -57,7 +59,8 @@
         },
         "extends": [
             "eslint:recommended",
-            "plugin:react/recommended"
+            "plugin:react/recommended",
+            "plugin:@wordpress/eslint-plugin/recommended"
         ],
         "parserOptions": {
             "ecmaVersion": 6,

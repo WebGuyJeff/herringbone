@@ -10,6 +10,11 @@ namespace Jefferson\Herringbone;
  * @copyright Copyright (c) 2021, Jefferson Real
  */
 
+//enqueue styles and scripts
+wp_enqueue_script( 'gsap' );
+wp_enqueue_script( 'gsap_cssrule' );
+wp_enqueue_script( 'hb_hideheader_js' );
+
 ?>
 
 <!DOCTYPE html>

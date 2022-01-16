@@ -23,10 +23,8 @@ that pages dedicated css file.
 	2.1 BLOCKS - CHALKBOARD
 	2.2 BLOCKS - RESPONSIVE SCREEN ANIMATION
 	2.3 .tickle
-3. ANIMATION
-	3.1 CSS KEYFRAMES
-4. THEMES
-	4.1 THEMES - MEXICO
+3. THEMES
+	3.1 THEMES - MEXICO
 */
 
 
@@ -549,23 +547,8 @@ that pages dedicated css file.
 }
 
 
-/*========================================================= 3. ANIMATION =====*/
-/*----------------------------------------------------- 3.1 CSS KEYFRAMES ----*/
-
-
-/* clouds */
-@keyframes animation_scrollLeftToRight {
-    0%		{ transform: translateX(0); }
-    45%	    { opacity:1; }
-    50.001% { transform: translateX(120%);  opacity:0; }
-    50.002% { transform: translateX(-120%); opacity:0; }
-    55%	    { opacity:1; }
-    100%	{ transform: translateX(0); }
-}
-
-
-/*============================================================ 4. THEMES =====*/
-/*--------------------------------------------------- 4.1 THEMES - MEXICO ----*/
+/*============================================================ 3. THEMES =====*/
+/*--------------------------------------------------- 3.1 THEMES - MEXICO ----*/
 
 h1,
 h2,
