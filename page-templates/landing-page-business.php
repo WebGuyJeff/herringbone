@@ -9,7 +9,7 @@
  */
 
 get_header( 'landing' );
-get_template_part( 'screens/landing-business/entry' );
+get_template_part( 'views/landing-business/entry' );
 get_footer( 'landing' );
 
 ?>

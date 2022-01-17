@@ -11,7 +11,7 @@
 wp_enqueue_style( 'hb_landing_css' );
 
 get_header( 'landing' );
-get_template_part( 'screens/landing-developer/entry' );
+get_template_part( 'views/landing-developer/entry' );
 get_footer( 'landing' );
 
 ?>
