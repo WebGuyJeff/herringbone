@@ -1,7 +1,13 @@
 <?php
 
 get_header();
+
+wp_enqueue_script( 'gsap' );
+wp_enqueue_script( 'gsap_cssrule' );
+wp_enqueue_script( 'gsap_scrolltrigger' );
+
 wp_enqueue_script('svgWheel_js');
+
 ?>
 
 <main class="main">
@@ -144,4 +150,4 @@ wp_enqueue_script('svgWheel_js');
 </main>
 
 <?php get_footer(); ?>
-<script> console.log( 'wp-template: page-about.php' );</script>
+<!--<script> console.log( 'wp-template: page-about.php' );</script>-->

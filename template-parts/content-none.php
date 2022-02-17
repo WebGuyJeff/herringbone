@@ -6,7 +6,7 @@ namespace Jefferson\Herringbone;
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
- * @copyright Copyright (c) 2021, Jefferson Real
+ * @copyright Copyright (c) 2022, Jefferson Real
  */
 
 ?>
@@ -53,4 +53,4 @@ namespace Jefferson\Herringbone;
 		</div><!-- .page-content -->
 	</div>	
 </section><!-- .no-results -->
-<script> console.log( 'wp-template: content-none.php' );</script>
+<!--<script> console.log( 'wp-template: content-none.php' );</script>-->

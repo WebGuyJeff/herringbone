@@ -14,7 +14,7 @@
  * 
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
- * @copyright Copyright (c) 2021, Jefferson Real
+ * @copyright Copyright (c) 2022, Jefferson Real
  */
 
 get_header();
@@ -67,4 +67,4 @@ get_header();
 </main>
 
 <?php get_footer(); ?>
-<script> console.log( 'wp-template: index.php' );</script>
+<!--<script> console.log( 'wp-template: index.php' );</script>-->

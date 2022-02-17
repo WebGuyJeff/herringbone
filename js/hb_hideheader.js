@@ -1,12 +1,12 @@
 /**
- * Herrinbone Hide-Header Javascript
+ * Herringbone Hide-Header Javascript
  *
  * A function to hide the header and reveal by button click. Mainly for use on
  * landing pages where the main header isn't required.
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
- * @copyright Copyright (c) 2021, Jefferson Real
+ * @copyright Copyright (c) 2022, Jefferson Real
  */
 
 gsap.registerPlugin( CSSRulePlugin );

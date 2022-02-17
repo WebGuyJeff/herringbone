@@ -1,11 +1,11 @@
 /**
- * Herrinbone USP Javascript
+ * Herringbone USP Javascript
  *
  * Handles the USP section auto scroll and checkbox clearing.
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
- * @copyright Copyright (c) 2021, Jefferson Real
+ * @copyright Copyright (c) 2022, Jefferson Real
  */
 
 

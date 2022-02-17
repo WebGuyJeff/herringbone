@@ -5,7 +5,7 @@
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
- * @copyright Copyright (c) 2021, Jefferson Real
+ * @copyright Copyright (c) 2022, Jefferson Real
  */
 
 get_header( 'landing' );
@@ -14,4 +14,4 @@ get_footer( 'landing' );
 
 ?>
 
-<script> console.log( 'wp-template: landing-page.php' );</script>
+<!--<script> console.log( 'wp-template: landing-page-business.php' );</script>-->

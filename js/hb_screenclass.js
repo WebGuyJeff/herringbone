@@ -1,12 +1,12 @@
 /**
- * Herrinbone Dynamic Classes Javascript
+ * Herringbone Dynamic Classes Javascript
  *
  * Applies classes to the body element to indicate screen size and orientation.
  * These can be accessed using CSS as a global alternative to media queries.
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
- * @copyright Copyright (c) 2021, Jefferson Real
+ * @copyright Copyright (c) 2022, Jefferson Real
  */
 
 

@@ -7,13 +7,8 @@ namespace Jefferson\Herringbone;
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
- * @copyright Copyright (c) 2021, Jefferson Real
+ * @copyright Copyright (c) 2022, Jefferson Real
  */
-
-//enqueue styles and scripts
-wp_enqueue_script( 'gsap' );
-wp_enqueue_script( 'gsap_cssrule' );
-wp_enqueue_script( 'hb_hideheader_js' );
 
 ?>
 
@@ -28,7 +23,7 @@ wp_enqueue_script( 'hb_hideheader_js' );
 	?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> >
 
 	<header class="header">
 		<div class="header_inner header_inner-landing">
@@ -103,4 +98,4 @@ wp_enqueue_script( 'hb_hideheader_js' );
 		</button>
 
 	</header>
-<script> console.log( 'wp-template: header-landing.php' );</script>
+<!--<script> console.log( 'wp-template: header-landing.php' );</script>-->

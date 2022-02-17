@@ -34,6 +34,7 @@ multiple landing pages should go in landing.css.
 
 .welcome {
 	/*min-height: 100vh;*/
+    overflow: hidden;
 }
 	.welcome > .landing_content {
 		display: flex;
@@ -269,6 +270,9 @@ multiple landing pages should go in landing.css.
 						max-height: 0;
 						font-size: 0;
 					}
+                        .usp_blurb > .copy {
+                            overflow-y: auto;
+                        }
 					.usp_button {
 						display: none;
 						grid-area: button;
@@ -277,7 +281,7 @@ multiple landing pages should go in landing.css.
 						background-repeat: no-repeat;
 						background-size: contain;
 						cursor: pointer;
-						padding: 0.4em 0.8em;
+						padding: 0.8em 1.2em;
 						width: -webkit-fit-content;
 						width: -moz-fit-content;
 						width: fit-content;

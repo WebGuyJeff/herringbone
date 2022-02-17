@@ -5,10 +5,18 @@
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
- * @copyright Copyright (c) 2021, Jefferson Real
+ * @copyright Copyright (c) 2022, Jefferson Real
  */
 
+// wp_enqueue WARNING: only seems to work at this level?!
+
+wp_enqueue_style( 'hb_landing_css' );
 wp_enqueue_style( 'hb_landingdev_css' );
+
+// Landing page animated header
+wp_enqueue_script( 'gsap' );
+wp_enqueue_script( 'gsap_cssrule' );
+wp_enqueue_script( 'hb_hideheader_js' );
 
 ?>
 

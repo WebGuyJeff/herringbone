@@ -309,7 +309,7 @@ textarea:hover:not(:disabled):not(.disabled) {
 	margin-block-end: 1.688em;
     margin-block-start: 2.75em;
     letter-spacing: -0.03em;
-    font-size: var(--hb_font-xxxl);
+    font-size: clamp( var(--hb_font-xxl), 1vw, var(--hb_font-xxxl) );
 }
 
 .display {
@@ -963,9 +963,7 @@ a img.aligncenter {
     border: none;
     border-radius: 10em;
     padding: 0;
-    max-width: -webkit-fit-content;
-    max-width: -moz-fit-content;
-    max-width: fit-content;
+    max-width: 100%;
     height: 2.5em;
     max-height: -webkit-fit-content;
     max-height: -moz-fit-content;
@@ -988,7 +986,9 @@ a img.aligncenter {
 		border-radius: inherit;
 		background: var(--hb_black);
 		padding: 0.5em 1em;
+        max-width: 100%;
 		height: 100%;
+        text-align: center;
 		text-decoration: none;
 		letter-spacing: -0.04em;
 		white-space: nowrap;
@@ -1280,6 +1280,12 @@ a img.aligncenter {
 					width: 100%;
 					max-width: 40em;
 				}
+                    .header_nav .button {
+                        height: min-content;
+                    }
+                        .header_nav .button > *:first-child {
+                            white-space: normal;
+                        }
 
 @media (min-width: 32em) {
 	.header_content-left   {
@@ -1307,8 +1313,9 @@ a img.aligncenter {
 		flex-wrap: wrap;
 		justify-content: center;
 		margin: 1.5em 0 1em 0;
-		padding: 1em;
+		padding-top: 1em;
 		width: auto;
+        max-width: 100vw;
 		color: var(--hb_black);
 	}
 		.footer_nav {
@@ -1334,6 +1341,14 @@ a img.aligncenter {
 			@media (min-width: 48em) { .footer_legalLinks {
 				justify-content: space-between;
 			}}
+            
+            .footer_nav .button {
+                height: min-content;
+            }
+
+                .footer_nav .button > *:first-child {
+                    white-space: normal;
+                }
 
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.3 SITE TITLE - - */
@@ -1388,7 +1403,7 @@ a img.aligncenter {
 		z-index: 10;
 		margin: auto;
 		border-radius: var(--hb_radius-small);
-		min-width: 32em;
+		min-width: clamp(10em, 100%, 32em);
 		max-height: -webkit-fit-content;
 		max-height: -moz-fit-content;
 		max-height: fit-content;
@@ -1452,10 +1467,12 @@ a img.aligncenter {
 
 
 .dropdown {
-	position: relative;
-    display: flex;
-    flex-flow: row nowrap;
     gap: 1px;
+    display: flex;
+	position: relative;
+    flex-flow: row nowrap;
+    width: max-content;
+	max-width: 100%;
     font-size: inherit;
 }
 	.dropdown > .button:nth-child(1) {
@@ -1465,10 +1482,11 @@ a img.aligncenter {
 		padding-right: 0;
 	}
 		.dropdown > .button:nth-child(2) {
+			margin-left: 0;
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
-			margin-left: 0;
 			padding-left: 0;
+            height: 100%;
 		}
 
 		.dropdown_toggle {

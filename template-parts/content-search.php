@@ -6,7 +6,7 @@ namespace Jefferson\Herringbone;
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.com>
- * @copyright Copyright (c) 2021, Jefferson Real
+ * @copyright Copyright (c) 2022, Jefferson Real
  */
 
 ?>
@@ -37,4 +37,4 @@ namespace Jefferson\Herringbone;
 		</footer><!-- .entry-footer -->
 	</article><!-- #post-<?php the_ID(); ?> -->
 </section>
-<script> console.log( 'wp-template: content-search.php' );</script>
+<!--<script> console.log( 'wp-template: content-search.php' );</script>-->
