@@ -1245,13 +1245,13 @@ a img.aligncenter {
 
 
 .header {
-	position: relative;
+    content-visibility: visible;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
 	z-index: 10;
     background: var(--hb_white);
+    width: 100%;
     height: fit-content;
-    transition: transform 1s ease-in-out;
-    content-visibility: visible;
-    opacity: 1;
 }
 	.header_inner {
 		display: flex;

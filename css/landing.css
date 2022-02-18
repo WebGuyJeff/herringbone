@@ -48,8 +48,8 @@ that pages dedicated css file.
 
 
 .hb__pag-landing .header {
-    position: absolute;
-    border: solid 1em black;
+    position: fixed;
+    border-bottom: solid 0.3em var(--hb_black);
 }
 
 @media (min-width: 45em) {
