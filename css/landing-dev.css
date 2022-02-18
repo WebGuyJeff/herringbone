@@ -34,7 +34,6 @@ multiple landing pages should go in landing.css.
 
 .welcome {
 	/*min-height: 100vh;*/
-    overflow: hidden;
 }
 	.welcome > .landing_content {
 		display: flex;

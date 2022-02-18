@@ -998,7 +998,7 @@ a img.aligncenter {
 	}
 		.button:hover {
 			cursor: pointer;
-            box-shadow: 0em 0em 0em 0.2em #000;
+            box-shadow: 0em 0em 0em 0.2em #333333;
 		}
 		.button:hover > *:first-child {
             color: var(--hb_black);
@@ -1239,16 +1239,19 @@ a img.aligncenter {
 
 
 .header {
-	z-index: 10;
 	position: relative;
+	z-index: 10;
+    background: var(--hb_white);
+    height: fit-content;
 }
 	.header_inner {
 		display: flex;
-		flex-wrap: nowrap;
-		justify-content: space-between;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
 		margin: 1em 0 1.5em 0;
 		width: auto;
-		height: 4.6em;
+        height: fit-content;
 	}
 		.header_content {
 			display: flex;
@@ -1263,19 +1266,17 @@ a img.aligncenter {
 				flex: 1 1 100%;
 				justify-content: flex-start;
 			}
-			.header_content-middle {
-				display: none;
-			}
 			.header_content-right  {
 				display: none;
 				justify-content: flex-end;
 			}
 				.header_nav {
+					gap: 0.5em;
 					display: flex;
 					flex-flow: row wrap;
-					justify-content: center;
 					align-items: center;
-					gap: 0.5em;
+					justify-content: center;
+                    margin: 3em 0.5em 0.5em 0.5em;
 					padding: 0.5em;
 					width: 100%;
 					max-width: 40em;
@@ -1287,20 +1288,39 @@ a img.aligncenter {
                             white-space: normal;
                         }
 
-@media (min-width: 32em) {
-	.header_content-left   {
-		flex: 1 1 50%;
-		justify-content: flex-start;
-	}
-	.header_content-middle {
-		display: flex;
-		flex: 1 1 50%;
-		justify-content: flex-end;
-	}
+
+/*- - - - - - - - - - - - - - - - - - - - - - - -  3.1.2 HEADER - DESKTOP - - */
+
+
+@media (min-width: 45rem) {
+    .header {
+        background: unset;
+        height: fit-content;
+    }
+        .header_inner {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            margin: 1em 0 1.5em 0;
+            width: auto;
+            min-height: 4.6em;
+        }
+            .header_content-left   {
+                flex: 1 1 50%;
+                justify-content: flex-start;
+            }
+            .header_content-middle {
+                display: flex;
+                flex: 1 1 50%;
+                justify-content: flex-end;
+            }
+                .header_nav {
+                    margin: unset;
+                }
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.2 FOOTER - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.3 FOOTER - - */
 
 
 .footer {
@@ -1351,7 +1371,7 @@ a img.aligncenter {
                 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.3 SITE TITLE - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.4 SITE TITLE - - */
 
 
 .siteTitle {
@@ -1386,7 +1406,7 @@ a img.aligncenter {
 		}
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.4 MODAL - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.5 MODAL - - */
 
 
 .modal {
@@ -1463,7 +1483,7 @@ a img.aligncenter {
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.5 DROPDOWN - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.6 DROPDOWN - - */
 
 
 .dropdown {
@@ -1574,7 +1594,7 @@ a img.aligncenter {
 .dropdown_item + button:hover {
 	outline: 0;
 	background-color: var(--hb_lightGreen);
-	color: #000;
+	color: #333333;
 }
 
 

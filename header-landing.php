@@ -60,7 +60,7 @@ namespace Jefferson\Herringbone;
 						'nav_or_div'		=> 'nav',
 						'nav_aria_label'	=> 'Main Menu',
 						'html_tab_indents'  => 3,
-						'button_class'		=> 'button button-border',
+						'button_class'		=> 'button button-noback',
 					) );
 				?>
 

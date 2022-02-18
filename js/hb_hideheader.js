@@ -37,8 +37,8 @@ var hb_header = (function() {
 	let heightEm;
 
 	return {
-		toggle: function() {
 
+		toggle: function() {
 			// Check if the header is already toggled and supply vars to invert the state
 			// We update variables every toggle as layout may have changed
 			if ( !isAnimating ) {
@@ -62,6 +62,14 @@ var hb_header = (function() {
 				}
 			}
 		},
+
+        init: function() {
+            console.log(`toggled!`);
+            let offsetInit = getHeaderHeight();
+            let root = document.documentElement;
+            root.style.setProperty('--hb_landingHeaderOffset', offsetInit + "em");
+        }
+
 	};
 
 	// Move the elements! - GSAP v3 CSSRule Plugin
@@ -95,3 +103,15 @@ var hb_header = (function() {
 	}
 
 })();
+
+
+// Poll for resize settle to throttle updates
+let headerResizeTimeout;
+window.onresize = function() {
+    if (headerResizeTimeout) {
+        clearTimeout(headerResizeTimeout);
+    }
+    headerResizeTimeout = setTimeout(function() {
+        hb_header.init();
+    }, 20);
+};

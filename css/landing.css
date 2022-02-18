@@ -62,14 +62,14 @@ that pages dedicated css file.
 			justify-content: center;
 		}
 		.hb__pag-landing .header_content-right  {
-			display: flex;
+			display: none;
 			flex: 0 0 6.6em;
-			justify-content: flex-end;
+            justify-content: flex-end;
 		}
 			.hb__pag-landing button.headerToggle {
 				position: absolute;
 				top: var(--hb_landingHeaderOffset);
-				right: 0.5em;
+				right: 0;
 				font-size: var(--hb_font-base);
 			}
 
