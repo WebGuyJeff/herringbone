@@ -48,30 +48,15 @@ that pages dedicated css file.
 
 
 .hb__pag-landing .header {
-	margin-top: calc(var(--hb_landingHeaderOffset) - calc( 2 * var(--hb_landingHeaderOffset)));
+    position: absolute;
+    border: solid 1em black;
 }
-	.hb__pag-landing .header_inner-landing {
-		padding: 0.3em;
-	}
-		.hb__pag-landing .header_content-left   {
-			flex: 1 1 50%;
-			justify-content: flex-start;
-		}
-		.hb__pag-landing .header_content-middle {
-			flex: 1 1 50%;
-			justify-content: center;
-		}
-		.hb__pag-landing .header_content-right  {
-			display: none;
-			flex: 0 0 6.6em;
-            justify-content: flex-end;
-		}
-			.hb__pag-landing button.headerToggle {
-				position: absolute;
-				top: var(--hb_landingHeaderOffset);
-				right: 0;
-				font-size: var(--hb_font-base);
-			}
+
+@media (min-width: 45em) {
+    .hb__pag-landing .menuToggle {
+        display: flex;
+    }
+}
 
 
 /*--------------------------------------- 1.4 GLOBAL - MAIN GRID LAYOUT ----*/

@@ -9,109 +9,61 @@
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 
-gsap.registerPlugin( CSSRulePlugin );
-
 var hb_header = (function() {
 
-	//Get the elements being animated
 	let header = document.querySelector( '.header' );
-	let backdrop = document.querySelector( 'body > main > section:first-child > .landing_backdrop' );
-
-	//This function calculates the new position values for the animation
-	function getHeaderHeight() {
-
-		// Get the header height
-		let headerFontSize = window.getComputedStyle( header ).fontSize;
-		let headerHeight = parseFloat( window.getComputedStyle( header ).height );
-
-		// We use the element font size to convert the values to em units
-		let headerHeightEm = ( parseFloat( headerHeight ) / parseFloat( headerFontSize )).toFixed(2);
-
-		return headerHeightEm;
-	}
-
 	let isAnimating = false;
 	let isToggled = false;
-	let newHeaderMargTop;
-	let btnOffset;
-	let heightEm;
+	let propertyValue;
 
-	return {
+	// Transition element and return a promise of transition end.
+	const transitionToPromise = ( element, property, value ) =>
+        new Promise( resolve => {
+            try {
+                element.style[property] = value;
+                const transitionEnded = event => {
+                    if ( event.propertyName !== property ) return;
+                    header.removeEventListener( 'transitionend', transitionEnded );
+                    resolve( 'Transition complete.' );
+                }
+                header.addEventListener( 'transitionend', transitionEnded );
+            } catch ( error ) {
+                console.error( error.name + ': ' + error.message );
+                reject( error );
+            }
+        } );
 
-		toggle: function() {
-			// Check if the header is already toggled and supply vars to invert the state
-			// We update variables every toggle as layout may have changed
-			if ( !isAnimating ) {
-				isAnimating = true;
-				if ( isToggled ) {
-					isToggled = false;
-					bodyClassToggle();
-					heightEm		  = getHeaderHeight();
-					newHeaderMargTop  = -Math.abs(heightEm) + 'em';
-					newSectionMargTop = '0em';
-					btnOffset		  = '0em';
-					animate();
-				} else {
-					isToggled = true;
-					bodyClassToggle();
-					heightEm	      = getHeaderHeight();
-					newHeaderMargTop  = '0em';
-					newSectionMargTop = -Math.abs(heightEm) + 'em';
-					btnOffset		  = -Math.abs( heightEm ) + 'em';
-					animate();
-				}
-			}
-		},
-
-        init: function() {
-            console.log(`toggled!`);
-            let offsetInit = getHeaderHeight();
-            let root = document.documentElement;
-            root.style.setProperty('--hb_landingHeaderOffset', offsetInit + "em");
-        }
-
-	};
-
-	// Move the elements! - GSAP v3 CSSRule Plugin
-	function animate() {
-		let headerHide = gsap.timeline( {
-			defaults: {
-				duration:1,
-				ease:"elastic.out( 1,0.8 )"
-			},
-			force3D:true,
-			onComplete:isAnimatingToggleFalse,
-		});
-			headerHide.to( ".header", { marginTop:newHeaderMargTop }, 0 )
-					  .to( ".headerToggle", { y:btnOffset }, 0 )
-					  .to( backdrop, { marginTop:newSectionMargTop }, 0 )
-	}
-
-	// Do nothing if animation is already in progress
-	function isAnimatingToggleFalse() {
-		isAnimating = false;
-	}
 
 	// Add a classname to the body element when header is active
 	function bodyClassToggle() {
 		let body = document.querySelector( 'body' );
 		if ( isToggled ) {
-			body.classList.add( "header_active" );
+			body.classList.add( "menu_active" );
 		} else {
-			body.classList.remove( "header_active" );
+			body.classList.remove( "menu_active" );
 		}
 	}
 
+    // Public functions
+	return {
+
+		toggle: async function() {
+			if ( !isAnimating ) {
+				isAnimating = true;
+				if ( isToggled ) {
+					isToggled = false;
+					bodyClassToggle();
+					propertyValue = `translate( 0, -100% )`;
+				} else {
+					isToggled = true;
+					bodyClassToggle();
+					propertyValue = `translate( 0, 0 )`;
+				}
+                await transitionToPromise( header, 'transform', propertyValue);
+                isAnimating = false;
+			}
+		},
+
+	};
+
 })();
-
-
-// Poll for resize settle to throttle updates
-let headerResizeTimeout;
-window.onresize = function() {
-    if (headerResizeTimeout) {
-        clearTimeout(headerResizeTimeout);
-    }
-    headerResizeTimeout = setTimeout(function() {
-        hb_header.init();
-    }, 20);
-};
