@@ -28,7 +28,8 @@ namespace Jefferson\Herringbone;
 	<header 
         class="header"
         style="transform: translate( 0, -100% );
-               position: absolute;"
+               position: fixed;"
+        hidden="true"
     >
 		<div class="header_inner header_inner-landing">
 

@@ -22,7 +22,7 @@ var hb_header = (function() {
             try {
                 element.style[property] = value;
                 const transitionEnded = event => {
-                    if ( event.propertyName !== property ) return;
+                    if ( event.target !== element ) return;
                     header.removeEventListener( 'transitionend', transitionEnded );
                     resolve( 'Transition complete.' );
                 }
@@ -44,6 +44,12 @@ var hb_header = (function() {
 		}
 	}
 
+    // Close the header if the user starts scrolling
+    const autoclose = event => {
+        console.log('scrolled!');
+        hb_header.toggle();
+    }
+
     // Public functions
 	return {
 
@@ -52,11 +58,14 @@ var hb_header = (function() {
 				isAnimating = true;
 				if ( isToggled ) {
 					isToggled = false;
+                    header.setAttribute('hidden', true);
 					bodyClassToggle();
 					propertyValue = `translate( 0, -100% )`;
 				} else {
 					isToggled = true;
+                    header.setAttribute('hidden', false);
 					bodyClassToggle();
+                    window.addEventListener( 'scroll', autoclose, { once: true });
 					propertyValue = `translate( 0, 0 )`;
 				}
                 await transitionToPromise( header, 'transform', propertyValue);
