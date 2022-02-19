@@ -49,7 +49,6 @@ that pages dedicated css file.
 
 .hb__pag-landing .header {
     position: fixed;
-    background: var(--hb_white);
     border-bottom: solid 0.3em var(--hb_black);
 }
 
