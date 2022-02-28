@@ -963,6 +963,7 @@ a img.aligncenter {
     position: relative;
     border: none;
     border-radius: 10em;
+    background-color: #0000;
     padding: 0;
 	width: max-content;
     max-width: 100%;
@@ -973,35 +974,33 @@ a img.aligncenter {
     transition: color .2s ease-in-out,
 		background-color .2s ease-in-out,
 		border-color .2s ease-in-out,
-		box-shadow .2s ease-in-out,
 		filter .2s ease-in-out;
 }
-
-.button > *:first-child {
-	display: inline-block;
-	transition: inherit;
-	border: none;
-	border-radius: inherit;
-	background: var(--hb_black);
-	padding: 0.25em 1em;
-	width: max-content;
-	max-width: 100%;
-	height: 100%;
-	text-align: center;
-	text-decoration: none;
-	letter-spacing: -0.04em;
-	white-space: normal;
-	color: var(--hb_white);
-	font-family: var(--hb_font-primary);
-	font-weight: 800;
-}
+    .button > *:first-child {
+        display: inline-block;
+        transition: inherit;
+        border: solid 0.2em #0000;
+        border-radius: inherit;
+        background: var(--hb_black);
+        padding: 0.25em 1em;
+        width: max-content;
+        max-width: 100%;
+        height: 100%;
+        text-align: center;
+        text-decoration: none;
+        letter-spacing: -0.04em;
+        white-space: normal;
+        color: var(--hb_white);
+        font-family: var(--hb_font-primary);
+        font-weight: 800;
+    }
 		.button:hover {
 			cursor: pointer;
-            box-shadow: 0em 0em 0em 0.2em #333333;
 		}
 		.button:hover > *:first-child {
             color: var(--hb_black);
 			background: #0000;
+            border: solid 0.2em #333333;
 		}
 		.button:focus,
 		.button:focus-visible {
@@ -1036,7 +1035,7 @@ a img.aligncenter {
 	background: transparent;
 }
 	.button-noback > *:first-child {
-		background: none;
+		background: transparent;
 		color: var(--hb_black);
 	}
 
@@ -1167,16 +1166,16 @@ a img.aligncenter {
 .menuToggle {
 	display: flex;
 	position: absolute;
-	top: 0.5em;
-	right: 0.5em;
+    top: 1.5em;
+    right: 1.5em;
 	border: none;
 	background: none;
 	padding: 0.2em;
 	width: 4em;
 	height: 4em;
 	font-size: var(--hb_font-base);
-	margin: 1.3em;
     z-index: 10;
+    transition: top 0.2s ease, right 0.2s ease;
 }
 	.menuToggle:hover {
 		cursor: pointer;
@@ -1467,8 +1466,7 @@ a img.aligncenter {
 	.modal {
 		position: fixed;
 		top: 0;
-		-webkit-backdrop-filter: blur(0.5em) saturate(0.5) brightness(0.5);
-		        backdrop-filter: blur(0.5em) saturate(0.5) brightness(0.5);
+		background: #000a;
 		width: 100%;
 		height: 100vh;
 	}

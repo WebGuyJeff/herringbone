@@ -53,6 +53,12 @@ that pages dedicated css file.
     border-bottom: solid 0.3em var(--hb_black);
 }
 
+@media (max-width: 44.999em) {
+    .menu_active .menuToggle {
+        top: 0.5em;
+        right: 0.5em;
+    }
+}
 @media (min-width: 45em) {
     .hb__pag-landing .menuToggle {
         display: flex;
@@ -144,6 +150,7 @@ that pages dedicated css file.
             }
             .masonFlop_card img {
                 max-width: 100%;
+                border-radius: 1em;
             }
 
 @media (max-width: 320px) {
@@ -175,8 +182,10 @@ that pages dedicated css file.
 		column-gap: 2em;
 	}
 	.masonFlop_card {
-		break-inside: avoid-column;
-		flex-flow: column nowrap;
+        flex-flow: column nowrap;
+        break-inside: avoid-column;
+        page-break-inside: avoid;
+        overflow: hidden; /* fix for firefox */
 	}
 }
 
@@ -295,7 +304,7 @@ that pages dedicated css file.
         .svg_me {
             filter: drop-shadow(1px 2px 1px #0008);
             display: block;
-            transform: translateX( clamp( 0px, calc( 34vw - 64% ), 78%) );
+            transform: translateX( clamp( 0px, calc( 28vw - 64% ), 78%) );
             width: clamp(0px,24em,100vw);
             height: 100%;
         }
