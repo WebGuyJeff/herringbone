@@ -30,7 +30,7 @@ wp_enqueue_script( 'hb_modal_js' );
 			</button>
 		</div>
 		<div class="modal_contents">
-			<?php echo do_shortcode('[hb_contact_form title="Let&apos;s Get Your Project Started" message="Complete the form below and I&apos;ll get back to you shortly - Jeff"]'); ?>
+			<?php echo do_shortcode('[bigup_contact_form title="Let&apos;s Get Your Project Started" message="Complete the form below and I&apos;ll get back to you shortly - Jeff"]'); ?>
 
 		</div>
 	</div>

@@ -23,7 +23,7 @@
     </div>
 
     <div class="align_me-centre">
-        <?php echo do_shortcode('[hb_contact_form title="" message=""]'); ?>
+        <?php echo do_shortcode('[bigup_contact_form title="" message=""]'); ?>
     </div>
 
 </div>
