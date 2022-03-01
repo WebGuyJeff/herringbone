@@ -288,7 +288,8 @@ textarea:hover:not(:disabled):not(.disabled) {
 .textAlignRight  { text-align: end; }
 
 
-.copy {
+.copy,
+.hentry {
     width: 96%;
 	max-width: 30em;
 	margin: 0 auto;
