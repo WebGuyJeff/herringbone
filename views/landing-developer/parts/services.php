@@ -113,11 +113,11 @@
                         blocks.
                     </p>
                     <p>
-                        WordPress provides a great content managment system (CMS) core, giving
-                        website owners infinite control to create and manage the content of their
-                        website. I can build a bespoke 'backend' to manage any type of content you
-                        may want to publish to your website, whether it be a blog post, a product
-                        or a property listing.
+						WordPress provides a great content management system (CMS) core, giving
+						website owners infinite control to create and manage the content of their
+						website. I can build a bespoke 'back-end' to manage any type of content you
+						may want to publish to your website, whether it be a blog post, a product or
+						a property listing.
                     </p>
                     <p>
                         For large projects, your requirements are the limit, and if it appears
