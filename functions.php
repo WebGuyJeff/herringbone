@@ -3,7 +3,7 @@
  * Herringbone Theme Functions.php config file.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.com>
+ * @author Jefferson Real <me@jeffersonreal.uk>
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 

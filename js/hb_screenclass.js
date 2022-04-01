@@ -5,7 +5,7 @@
  * These can be accessed using CSS as a global alternative to media queries.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.com>
+ * @author Jefferson Real <me@jeffersonreal.uk>
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 

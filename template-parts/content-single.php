@@ -5,7 +5,7 @@ namespace Jefferson\Herringbone;
  * Template part for displaying a single post and used by single.php.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.com>
+ * @author Jefferson Real <me@jeffersonreal.uk>
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 

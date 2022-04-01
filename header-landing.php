@@ -6,7 +6,7 @@ namespace Jefferson\Herringbone;
  * Herringbone Theme Template - Header Variant for Landing Pages.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.com>
+ * @author Jefferson Real <me@jeffersonreal.uk>
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 

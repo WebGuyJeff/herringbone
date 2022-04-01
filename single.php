@@ -19,7 +19,7 @@
  * - Show navigation links to next and previous post using previous_post_link() and next_post_link().
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.com>
+ * @author Jefferson Real <me@jeffersonreal.uk>
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 
