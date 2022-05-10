@@ -29,7 +29,7 @@ spl_autoload_register( function( $class ) {
     $sub_namespace = str_replace( $classname, '', $relative_classname );
 
     $filename = str_replace('\\', DIRECTORY_SEPARATOR, $sub_namespace . DIRECTORY_SEPARATOR . $filename_prefix . $classname . '.php' );
-    $class_filepath = strtolower( str_replace( '_', '-', $root_dir . $sub_dir . $filename ) );
+    $class_filepath = strtolower( $root_dir . $sub_dir . str_replace( '_', '-', $filename ) );
 
     // if the file exists, require it
     if ( file_exists( $class_filepath ) ) {
