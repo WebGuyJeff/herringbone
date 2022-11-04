@@ -35,7 +35,7 @@ wp_enqueue_script( 'hb_usp_js' );
 
 	<input type="checkbox" class="usp_state" id="usp_complete" />
 	<div class="usp_card" style="--grid_area: a;">
-		<label for="usp_complete" onclick="toggleCheckboxes('usp_state');" style="--grid_area: a;" class="usp_graphicWrap" role="button">
+		<label for="usp_complete" style="--grid_area: a;" class="usp_graphicWrap" role="button">
 			<?php get_template_part( 'views/landing-developer/parts/plumbob' ); ?>
 			<div class="usp_cactiBox">
 				<img
@@ -64,7 +64,7 @@ wp_enqueue_script( 'hb_usp_js' );
 
 	<input type="checkbox" class="usp_state" id="usp_personal" />
 	<div class="usp_card" style="--grid_area: b;">
-		<label for="usp_personal" onclick="toggleCheckboxes('usp_state');" class="usp_graphicWrap" role="button">
+		<label for="usp_personal" class="usp_graphicWrap" role="button">
 			<?php get_template_part( 'views/landing-developer/parts/plumbob' ); ?>
 			<div class="usp_cactiBox">
 				<img
@@ -98,7 +98,7 @@ wp_enqueue_script( 'hb_usp_js' );
 
 	<input type="checkbox" class="usp_state" id="usp_flexibility" />
 	<div class="usp_card" style="--grid_area: c;">
-		<label for="usp_flexibility" onclick="toggleCheckboxes('usp_state');" class="usp_graphicWrap" role="button">
+		<label for="usp_flexibility" class="usp_graphicWrap" role="button">
 			<?php get_template_part( 'views/landing-developer/parts/plumbob' ); ?>
 			<div class="usp_cactiBox">
 				<img
@@ -128,7 +128,7 @@ wp_enqueue_script( 'hb_usp_js' );
 
 	<input type="checkbox" class="usp_state" id="usp_experience" />
 	<div class="usp_card" style="--grid_area: d;">
-		<label for="usp_experience" onclick="toggleCheckboxes('usp_state');" class="usp_graphicWrap" role="button">
+		<label for="usp_experience" class="usp_graphicWrap" role="button">
 			<?php get_template_part( 'views/landing-developer/parts/plumbob' ); ?>
 			<div class="usp_cactiBox">
 				<img
@@ -158,7 +158,7 @@ wp_enqueue_script( 'hb_usp_js' );
 
 	<input type="checkbox" class="usp_state" id="usp_value" />
 	<div class="usp_card" style="--grid_area: e;">
-		<label for="usp_value" onclick="toggleCheckboxes('usp_state');" class="usp_graphicWrap" role="button">
+		<label for="usp_value" class="usp_graphicWrap" role="button">
 			<?php get_template_part( 'views/landing-developer/parts/plumbob' ); ?>
 			<div class="usp_cactiBox">
 				<img
@@ -188,7 +188,7 @@ wp_enqueue_script( 'hb_usp_js' );
 
 	<input type="checkbox" class="usp_state" id="usp_aftercare" />
 	<div class="usp_card" style="--grid_area: f;">
-		<label for="usp_aftercare" onclick="toggleCheckboxes('usp_state');" class="usp_graphicWrap" role="button">
+		<label for="usp_aftercare" class="usp_graphicWrap" role="button">
 			<?php get_template_part( 'views/landing-developer/parts/plumbob' ); ?>
 			<div class="usp_cactiBox">
 				<img

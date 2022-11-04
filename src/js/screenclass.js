@@ -10,7 +10,7 @@
  */
 
 
-(function() {
+ const screenClass = () => {
 
 	let winPxWidth,
 		winPxHeight;
@@ -104,4 +104,6 @@
 	};
 
 
-})();
+};
+
+export { screenClass };

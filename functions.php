@@ -31,21 +31,16 @@ function enqueue_scripts_and_styles() {
 	if (!is_admin() && $GLOBALS['pagenow'] != 'wp-login.php') {
 		wp_register_style( 'hb_landing_css', get_template_directory_uri() . '/css/landing.css', array( 'hb_css' ), filemtime(get_template_directory() . '/css/landing.css'), 'all');
 		wp_register_style( 'hb_landingdev_css', get_template_directory_uri() . '/css/landing-dev.css', array( 'hb_landing_css' ), filemtime(get_template_directory() . '/css/landing-dev.css'), 'all');
-		wp_enqueue_script( 'hb_screenclass_js', get_template_directory_uri() . '/js/hb_screenclass.js', array (), '0.1', true );
+		wp_enqueue_script( 'hb_bundle_js', get_template_directory_uri() . '/js/bundle.js', array (), '0.1', true );
 		// De-register wp jquery and use CDN
 		wp_deregister_script('jquery');
 		wp_enqueue_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js', array (), '3.6.0', true );
 		// Other front end resources
-		wp_enqueue_script( 'hb_mobile-popup-menu', get_template_directory_uri() . '/js/hb_mobile-popup-menu.js', array( 'jquery' ), '1.0', true );
-		wp_enqueue_script( 'hb_dropdownToggle', get_template_directory_uri() . '/js/hb_dropdown-menu.js', array(), '1.0', true );
 		wp_register_script( 'gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js', array( 'jquery' ), '3.9.1', true );
 		// CSSRule this is part of core but there's a separate CDN?
         wp_register_script( 'gsap_cssrule', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/CSSRulePlugin.min.js', array( 'gsap' ), '3.9.1', true );
 		wp_register_script( 'gsap_scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js', array( 'gsap' ), '3.9.1', true );
 		wp_register_script( 'svgWheel_js', get_template_directory_uri() . '/animation/svgWheel/svgWheel.js', array( 'gsap_cssrule' ), '1.0', true );
-		wp_register_script( 'hb_modal_js', get_template_directory_uri() . '/js/hb_modal.js', array (), '0.1', true );
-		wp_register_script( 'hb_hideheader_js', get_template_directory_uri() . '/js/hb_hideheader.js', array( 'gsap_cssrule' ), '0.2', true );
-		wp_register_script( 'hb_usp_js', get_template_directory_uri() . '/js/hb_usp.js', array(), '0.1', true );
 		//wp_enqueue_style( 'jetbrains', 'https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap', array(), time() , 'all');
 	}
 }

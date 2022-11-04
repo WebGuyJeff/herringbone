@@ -9,7 +9,8 @@
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 
-var hb_header = (function() {
+
+const hideHeader = () => {
 
 	let header = document.querySelector( '.header' );
 	let isAnimating = false;
@@ -75,4 +76,6 @@ var hb_header = (function() {
 
 	};
 
-})();
+};
+
+export { hideHeader };

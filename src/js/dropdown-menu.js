@@ -1,7 +1,7 @@
 /**
  * Herringbone Dropdown Menu Javascript
  *
- * A function to hide the header and reveal by button click. Mainly for use on
+ * Hide the header and reveal by button click. Mainly for use on
  * landing pages where the main header isn't required.
  * 
  * @package herringbone
@@ -10,10 +10,9 @@
  */
 
 
-var hb_dropdownToggle = (function() {
+const dropdownMenu = () => {
 
     /* Private Functions */
-
 
     /**
      * Attach event listener to buttons in the loaded doc.
@@ -139,9 +138,7 @@ var hb_dropdownToggle = (function() {
          * Check if the click event was outside of the menu element.
          * 
          * Preserves the variable values for event listeners. If vars are
-         * not passed with the returned function, the event listeners
-         * access the function scope at time of event, capturing the wrong
-         * values, or none at all.
+         * not passed with the returned function, the event listenersdropdownMenu
          */
         pageClick: function( id ) {
             /* Var values not passed to event listener */
@@ -164,4 +161,6 @@ var hb_dropdownToggle = (function() {
 
     };/* public functions */
     
-})();/* plugin end */
+};
+
+export { dropdownMenu };
