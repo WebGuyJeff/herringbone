@@ -78,7 +78,7 @@ namespace Jefferson\Herringbone;
 
 	</header>
 
-    <button aria-label="Main Menu" title="Main Menu" type="button" class="menuToggle" onclick="hb_header.toggle();">
+    <button aria-label="Main Menu" title="Main Menu" type="button" class="menuToggle">
         <svg class="burger" version="1.1" preserveAspectRatio="xMidYMid meet" height="100" width="100" viewBox="0 0 100 100">
             <defs>
                 <filter id="gooeyness">

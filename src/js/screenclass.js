@@ -64,27 +64,23 @@
 	}
 
 	// Set a CSS custom property with the window scrollbar width.
-	function set_scrollbar_custom_property() {
-		const withScrollBar = window.innerWidth;
-		const noScrollBar = document.querySelector("html").getBoundingClientRect().width;
-		scrollbarWidth = parseInt((withScrollBar - noScrollBar), 10) + 'px';
+	function set_scrollbar_css_custom_property() {
+		const withScrollBar  = window.innerWidth;
+		const noScrollBar    = document.querySelector("html").getBoundingClientRect().width;
+		const scrollbarWidth = parseInt( ( withScrollBar - noScrollBar ), 10 ) + 'px';
 		let root = document.documentElement;
-		root.style.setProperty('--scrollbar', scrollbarWidth);
+		root.style.setProperty( '--scrollbar', scrollbarWidth );
 	}
 
-	// Observe body height changes and update the scrollbar width.
-	// create an Observer instance
+	// Detect body resize changes and update the scrollbar width property.
 	const resizeObserver = new ResizeObserver( entries => 
-		set_scrollbar_custom_property()
+		set_scrollbar_css_custom_property()
 	);
-	// start observing doc node
 	resizeObserver.observe( document.body );
 
-	// Poll for doc ready state
-	let docLoaded = setInterval(function() {
-		if(document.readyState === 'complete') {
-			clearInterval(docLoaded);
-			/* Start the reactor */
+	let docLoaded = setInterval( function() {
+		if( document.readyState === 'complete' ) {
+			clearInterval( docLoaded );
 			getScreen();
 		}
 	}, 10);
@@ -93,14 +89,13 @@
 	// Poll for resize settle to throttle updates
 	var resizeTimeout;
 	window.onresize = function() {
-		if (resizeTimeout) {
-			clearTimeout(resizeTimeout);
+		if ( resizeTimeout ) {
+			clearTimeout( resizeTimeout );
 		}
-		resizeTimeout = setTimeout(function() {
-			/* Start the reactor */
+		resizeTimeout = setTimeout( function() {
 			getScreen();
-			set_scrollbar_custom_property();
-		}, 10);  //Lessen this value for faster response at performance cost
+			set_scrollbar_css_custom_property();
+		}, 10);
 	};
 
 

@@ -9,7 +9,6 @@
 import { dropdownMenu } from './js/dropdown-menu.js';
 import { hideHeader } from './js/hideheader';
 import { mobilePopupMenu } from './js/mobile-popup-menu';
-import { cssAnimator } from './js/css-animator';
 import { modal } from './js/modal';
 import { screenClass } from './js/screenclass';
 import { uspSection } from './js/usp-section';
@@ -17,7 +16,6 @@ import { uspSection } from './js/usp-section';
 dropdownMenu();
 hideHeader();
 mobilePopupMenu();
-cssAnimator();
 modal();
 screenClass();
 uspSection();

@@ -1,8 +1,7 @@
 /**
- * Herringbone Hide-Header Javascript
+ * Herringbone Hide-Header
  *
- * A function to hide the header and reveal by button click. Mainly for use on
- * landing pages where the main header isn't required.
+ * Handle header hide and reveal animation on button click and scroll events.
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.uk>
@@ -12,17 +11,45 @@
 
 const hideHeader = () => {
 
-	let header = document.querySelector( '.header' );
+	let body        = document.querySelector( 'body' );
+	let header      = document.querySelector( '.header' );
+	let button      = document.querySelector( '.menuToggle' );
 	let isAnimating = false;
-	let isToggled = false;
-	let propertyValue;
 
-	// Transition element and return a promise of transition end.
-	const transitionToPromise = ( element, property, value ) =>
+	const docLoaded = setInterval( () => {
+		if ( document.readyState === 'complete' ) {
+			clearInterval( docLoaded );
+			button.addEventListener( 'click', toggleState );
+		}
+	}, 100);
+
+	const toggleState = () => {
+		if ( !isAnimating ) {
+			isAnimating = true;
+			( body.classList.contains( "menu_active" ) ) ? hide() : show();
+		}
+	};
+
+	const show = async () => {
+		header.setAttribute( 'hidden', false );
+		body.classList.add( "menu_active" );
+		await transitionToPromise( header, 'transform', 'translate( 0, 0 )' );
+		window.addEventListener( 'scroll', hide, { once: true } );
+		isAnimating = false;
+	};
+
+	const hide = async () => {
+		header.setAttribute( 'hidden', true );
+		body.classList.remove( "menu_active" );
+		await transitionToPromise( header, 'transform', 'translate( 0, -100% )' );
+		isAnimating = false;
+    };
+
+	const transitionToPromise = ( element, property, value ) => {
         new Promise( resolve => {
             try {
-                element.style[property] = value;
-                const transitionEnded = event => {
+                element.style[ property ] = value;
+                const transitionEnded = ( event ) => {
                     if ( event.target !== element ) return;
                     header.removeEventListener( 'transitionend', transitionEnded );
                     resolve( 'Transition complete.' );
@@ -33,47 +60,6 @@ const hideHeader = () => {
                 reject( error );
             }
         } );
-
-
-	// Add a classname to the body element when header is active
-	function bodyClassToggle() {
-		let body = document.querySelector( 'body' );
-		if ( isToggled ) {
-			body.classList.add( "menu_active" );
-		} else {
-			body.classList.remove( "menu_active" );
-		}
-	}
-
-    // Close the header if the user starts scrolling
-    const autoclose = event => {
-        console.log('scrolled!');
-        hb_header.toggle();
-    }
-
-    // Public functions
-	return {
-
-		toggle: async function() {
-			if ( !isAnimating ) {
-				isAnimating = true;
-				if ( isToggled ) {
-					isToggled = false;
-                    header.setAttribute('hidden', true);
-					bodyClassToggle();
-					propertyValue = `translate( 0, -100% )`;
-				} else {
-					isToggled = true;
-                    header.setAttribute('hidden', false);
-					bodyClassToggle();
-                    window.addEventListener( 'scroll', autoclose, { once: true });
-					propertyValue = `translate( 0, 0 )`;
-				}
-                await transitionToPromise( header, 'transform', propertyValue);
-                isAnimating = false;
-			}
-		},
-
 	};
 
 };

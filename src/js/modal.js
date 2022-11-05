@@ -8,6 +8,8 @@
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 
+import { animate } from './css-animator';
+
 const modal = () => {
 
     function modal_init() {
@@ -138,7 +140,7 @@ const modal = () => {
 				dialog.style.opacity = '1';
 				overlay.style.display = 'contents';
 				overlay.style.opacity = '1';
-				await cssAnimator.animate( dialog, 'left', 'easeInOutCirc', -768, 0, 800);
+				await animate( dialog, 'left', 'easeInOutCirc', -768, 0, 800);
 				animating = false;
 
 			} else {
@@ -148,7 +150,7 @@ const modal = () => {
 				overlay.style.display = 'flex';
 				overlay.style.opacity = '0';
 				fadeIn( overlay );
-				await cssAnimator.animate( dialog, 'scale', 'easeInOutCirc', 0, 1, 800);
+				await animate( dialog, 'scale', 'easeInOutCirc', 0, 1, 800);
 				animating = false;
 			}
 		}
@@ -168,7 +170,7 @@ const modal = () => {
 				dialog.style.opacity = '1';
 				overlay.style.display = 'contents';
 				overlay.style.opacity = '1';
-				await cssAnimator.animate( dialog, 'left', 'easeInOutCirc', 0, -768, 800);
+				await animate( dialog, 'left', 'easeInOutCirc', 0, -768, 800);
 				animating = false;
 
 			} else {
@@ -178,7 +180,7 @@ const modal = () => {
 				overlay.style.display = 'flex';
 				overlay.style.opacity = '1';
 				fadeOut(overlay);
-				await cssAnimator.animate( dialog, 'scale', 'easeInOutCirc', 1, 0, 800);
+				await animate( dialog, 'scale', 'easeInOutCirc', 1, 0, 800);
 				overlay.style.display = 'none';
 				animating = false;
 			}
