@@ -8,14 +8,36 @@
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 
- 
-// wp_enqueue WARNING: does not work at this template level!
-
+wp_enqueue_style( 'hb_landing_css' );
+wp_enqueue_style( 'hb_landingdev_css' );
+wp_enqueue_script( 'hb_hideheader_js' );
 
 get_header( 'landing' );
-get_template_part( 'views/landing-developer/entry' );
-get_footer( 'landing' );
+?>
 
+<main class="main-landing">
+
+	<section class="welcome">
+		<?php get_template_part( 'template-parts/landing-developer/welcome' ); ?>
+	</section>
+
+	<section class="services" id="section-services">
+		<?php get_template_part( 'template-parts/landing-developer/services'); ?>
+	</section>
+
+	<section class="usp" id="working-with-me">
+		<?php get_template_part( 'template-parts/landing-developer/usp'); ?>
+	</section>
+
+	<section class="contact" id="section-contact">
+		<?php get_template_part( 'template-parts/landing-developer/contact'); ?>
+	</section>
+
+</main>
+
+<?php
+	get_footer( 'landing' );
+	get_template_part( 'template-parts/modal', 'contact' );
 ?>
 
 <!--<script> console.log( 'wp-template: landing-page.php' );</script>-->
