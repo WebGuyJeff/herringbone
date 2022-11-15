@@ -30,7 +30,7 @@
                     <img
                         alt="Web Design"
                         title="Web Design"
-                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-design.jpg'; ?>"
+                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-design.webp'; ?>"
                     >
                 </figure>
             </div>
@@ -56,7 +56,7 @@
                     <img
                         alt="Web Development"
                         title="Web Development"
-                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-development.jpg'; ?>"
+                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-development.webp'; ?>"
                     >
                 </figure>
             </div>
@@ -84,7 +84,7 @@
                     <img
                         alt="WordPress Expert"
                         title="WordPress Expert"
-                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-wordpress.jpg'; ?>"
+                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-wordpress.webp'; ?>"
                     >
                 </figure>
             </div>
@@ -139,7 +139,7 @@
                     <img
                         alt="Hosting and Support"
                         title="Hosting and Support"
-                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-hosting.jpg'; ?>"
+                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-hosting.webp'; ?>"
                     >
                 </figure>
             </div>
@@ -164,7 +164,7 @@
                     <img
                         alt="Search Engine Optimisation"
                         title="Search Engine Optimisation"
-                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-seo.jpg'; ?>"
+                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-seo.webp'; ?>"
                     >
                 </figure>
             </div>
@@ -205,7 +205,7 @@
                     <img
                         alt="Digital Marketing"
                         title="Digital Marketing"
-                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-digital-marketing.jpg'; ?>"
+                        src="<?php echo get_template_directory_uri() . '/imagery/raster_temp/raster-digital-marketing.webp'; ?>"
                     >
                 </figure>
             </div>

@@ -13,7 +13,7 @@ module.exports = ( env ) => {
                 patterns: [
                     {
 						from: './**',
-						to: './toecaps',
+						to: './herringbone',
 						globOptions: {
 							dot: false,
 							gitignore: false,
@@ -39,7 +39,7 @@ module.exports = ( env ) => {
 				{
 					// Defaults to the Webpack output path.
 					path: './',
-					filename: 'toecaps.zip',
+					filename: 'herringbone.zip',
 					extension: 'zip',
 					pathPrefix: '',
 					fileOptions: {
