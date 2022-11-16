@@ -1,6 +1,4 @@
 <?php
-namespace Jefferson\Herringbone;
-
 /**
  * Template part for displaying a single post and used by single.php.
  *
@@ -9,8 +7,9 @@ namespace Jefferson\Herringbone;
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 
-?>
+namespace Jefferson\Herringbone;
 
+?>
 
 <article class="sauce">
 	<div class="blog-post ">
@@ -20,9 +19,11 @@ namespace Jefferson\Herringbone;
 		</h1>
 
 		<!-- If the post has a featured image, display it -->
-		<?php if ( has_post_thumbnail() ) {
-		the_post_thumbnail();
-		} ?>
+		<?php
+		if ( has_post_thumbnail() ) {
+			the_post_thumbnail();
+		}
+		?>
 
 		<h2 class="blog-post-title">
 			<?php the_title(); ?>

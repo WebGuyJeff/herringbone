@@ -8,33 +8,35 @@
  *
  *      new \Brand\Project\Sub_Project\Class;
  *
+ * @package herringbone
  * @param string $class The fully-qualified class name.
  */
-spl_autoload_register( function( $class ) {
 
-    $namespace = 'Jefferson\\Herringbone\\';
-    $root_dir = get_template_directory();
-    $sub_dir = str_replace( $root_dir, '', dirname( __FILE__ ) );
-    $filename_prefix = 'class-';
+spl_autoload_register(
+	function( $class ) {
 
-    // does the class use the namespace prefix?
-    $namespace_length = strlen( $namespace );
-    if (strncmp( $namespace, $class, $namespace_length ) !== 0) {
-        // no, move to the next registered autoloader
-        return;
-    }
+		$namespace       = 'Jefferson\\Herringbone\\';
+		$root_dir        = get_template_directory();
+		$sub_dir         = str_replace( $root_dir, '', dirname( __FILE__ ) );
+		$filename_prefix = 'class-';
 
-    $relative_classname = substr( $class, $namespace_length );
-    $classname = array_reverse( explode( '\\', $class ) )[0];
-    $sub_namespace = str_replace( $classname, '', $relative_classname );
+		// does the class use the namespace prefix?
+		$namespace_length = strlen( $namespace );
+		if ( strncmp( $namespace, $class, $namespace_length ) !== 0 ) {
+			return;
+		}
 
-    $filename = str_replace('\\', DIRECTORY_SEPARATOR, $sub_namespace . DIRECTORY_SEPARATOR . $filename_prefix . $classname . '.php' );
-    $class_filepath = strtolower( $root_dir . $sub_dir . str_replace( '_', '-', $filename ) );
+		$relative_classname = substr( $class, $namespace_length );
+		$classname          = array_reverse( explode( '\\', $class ) )[0];
+		$sub_namespace      = str_replace( $classname, '', $relative_classname );
 
-    // if the file exists, require it
-    if ( file_exists( $class_filepath ) ) {
-        require $class_filepath;
-    } else {
-        echo '<script>console.log("ERROR: herringbone php autoload | Class not found: ' . $classname . '");</script>';
-    }
-});
+		$filename       = str_replace( '\\', DIRECTORY_SEPARATOR, $sub_namespace . DIRECTORY_SEPARATOR . $filename_prefix . $classname . '.php' );
+		$class_filepath = strtolower( $root_dir . $sub_dir . str_replace( '_', '-', $filename ) );
+
+		if ( file_exists( $class_filepath ) ) {
+			require $class_filepath;
+		} else {
+			echo '<script>console.log("ERROR: herringbone php autoload | Class not found: ' . $classname . '");</script>';
+		}
+	}
+);

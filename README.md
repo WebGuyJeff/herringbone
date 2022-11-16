@@ -26,20 +26,44 @@ To install the project dependencies:
 'composer install'
 
 Register an added coding standard (wpcs):
-'./vendor/bin/phpcs --config-set installed_paths /vendor/wp-coding-standards/wpcs'
+'./vendor/squizlabs/php_codesniffer/bin/phpcs --config-set installed_paths ../../wp-coding-standards/wpcs'
 
 Update your VS Code settings file:
-'"./vendor/bin/phpcs.standard": "WordPress"'
+```
+	"phpcs.executablePath": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
+	"phpcs.standard": "WordPress",
+	"phpcbf.executablePath": "./vendor/squizlabs/php_codesniffer/bin/phpcbf",
+	"phpcbf.standard": "WordPress",
+	[...]
+	"phpsab.executablePathCS": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
+	"phpsab.executablePathCBF": "./vendor/squizlabs/php_codesniffer/bin/phpcbf",
+	"phpcs.composerJsonPath": ".composer.json",
+	"phpsab.composerJsonPath": ".composer.json",
+```
 
 Check the installed standards:
-'./vendor/bin/phpcs -i'
+'./vendor/squizlabs/php_codesniffer/bin/phpcs -i'
 
 #### Global install
 
 Install PHP_CodeSniffer globally
 'composer global require "squizlabs/php_codesniffer=*"'
 
-Make sure you have the composer bin dir in your PATH. The default value is ~/.composer/vendor/bin/, but you can check the value that you need to use by running 'composer global config bin-dir --absolute'.
+Make sure you have the composer bin dir in your PATH. The default value is ~/.composer/vendor/bin, but you can check the value that you need to use by running 'composer global config bin-dir --absolute'.
+
+**To update the PATH variable**
+
+Open ~/.bashrc and add a line to update the PATH variable with this location.
+`sudo nano ~/.bashrc`
+
+Add/update the following line:
+`export PATH="~/.composer/vendor/bin:$PATH"`
+
+Save and close, then reload your bash config:
+`source ~/.bashrc`
+
+Confirm the variable now contains the location:
+`echo $PATH`
 
 #### Usage
 

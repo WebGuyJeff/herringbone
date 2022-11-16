@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template Name: Landing Page
  *
@@ -20,15 +19,15 @@ get_header( 'landing' );
 	</section>
 
 	<section class="services" id="section-services">
-		<?php get_template_part( 'template-parts/landing-developer/services'); ?>
+		<?php get_template_part( 'template-parts/landing-developer/services' ); ?>
 	</section>
 
 	<section class="usp" id="working-with-me">
-		<?php get_template_part( 'template-parts/landing-developer/usp'); ?>
+		<?php get_template_part( 'template-parts/landing-developer/usp' ); ?>
 	</section>
 
 	<section class="contact" id="section-contact">
-		<?php get_template_part( 'template-parts/landing-developer/contact'); ?>
+		<?php get_template_part( 'template-parts/landing-developer/contact' ); ?>
 	</section>
 
 </main>

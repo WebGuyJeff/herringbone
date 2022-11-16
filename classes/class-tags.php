@@ -1,11 +1,17 @@
 <?php
-namespace Jefferson\Herringbone;
-
 /**
  * Custom template tags for this theme
  *
+ * @package herringbone
+ */
+
+namespace Jefferson\Herringbone;
+
+/**
+ * Tags Class
+ *
  * These methods provide common post html snippets:
- * 
+ *
  * ### print_html_posted_on()
  *  - Prints HTML with meta information for the current post-date/time.
  * ### print_html_posted_by()
@@ -14,8 +20,6 @@ namespace Jefferson\Herringbone;
  *  - Prints HTML with meta information for the categories, tags and comments.
  * ### print_html_post_thumbnail_wrapper()
  *  - Displays an optional post thumbnail, and wraps according to context.
- *
- * @package herringbone
  */
 class Tags {
 
@@ -132,7 +136,7 @@ class Tags {
 	 * element when on single views.
 	 */
 	public static function print_html_post_thumbnail_wrapper() {
-		
+
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
@@ -166,4 +170,4 @@ class Tags {
 	}
 
 
-}//class
+}//end class

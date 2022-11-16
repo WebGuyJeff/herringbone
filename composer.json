@@ -1,14 +1,4 @@
 {
-    "name": "bigupjeff/bigup-custom-fields",
-    "description": "A WordPress plugin which provides the ability to add custom post types and custom fields.",
-    "type": "project",
-    "license": "GPL-3.0-only / GPL-3.0-or-later",
-    "authors": [
-        {
-            "name": "Jefferson",
-            "email": "me@jeffersonreal.uk"
-        }
-    ],
     "require-dev": {
 		"squizlabs/php_codesniffer": "^3.3.1",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
@@ -20,14 +10,8 @@
         }
     },
 	"scripts": {
-        "phpcheck": "./vendor/bin/phpcs --standard=WordPress **/*.php",
-		"phpcheck-summary": "./vendor/bin/phpcs --report=summary --standard=WordPress **/*.php",
-		"phpfix": "./vendor/bin/phpcbf --standard=WordPress -v **/*.php",
-		"install-codestandards": [
-            "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
-        ],
-		"post-install-cmd": [
-            "@install-codestandards"
-        ]
+        "phpcheck": "./vendor/squizlabs/php_codesniffer/bin/phpcs --standard=WordPress **/*.php",
+		"phpcheck-summary": "./vendor/squizlabs/php_codesniffer/bin/phpcs --report=summary --standard=WordPress **/*.php",
+		"phpfix": "./vendor/squizlabs/php_codesniffer/bin/phpcbf --standard=WordPress -v **/*.php"
     }
 }

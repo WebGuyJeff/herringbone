@@ -1,6 +1,4 @@
 <?php
-namespace Jefferson\Herringbone;
-
 /**
  * Template part for displaying results in search pages
  *
@@ -8,6 +6,8 @@ namespace Jefferson\Herringbone;
  * @author Jefferson Real <me@jeffersonreal.uk>
  * @copyright Copyright (c) 2022, Jefferson Real
  */
+
+namespace Jefferson\Herringbone;
 
 ?>
 

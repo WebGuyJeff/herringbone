@@ -1,6 +1,4 @@
 <?php
-namespace Jefferson\Herringbone;
-
 /**
  * Template part for displaying page content in page.php
  *
@@ -9,6 +7,7 @@ namespace Jefferson\Herringbone;
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 
+namespace Jefferson\Herringbone;
 
 ?>
 <section class="sauce">

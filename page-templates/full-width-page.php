@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template Name: Full Width Page
  *
@@ -11,7 +10,7 @@
 get_header(); ?>
 
 <main class="main">
-	
+
 	<div class="base">
 
 		<?php

@@ -8,14 +8,14 @@ namespace Jefferson\Herringbone;
  */
 class Hooks {
 
-	
-	//init the class on each new instance
+
+	// init the class on each new instance
 	function __construct() {
 
 		add_filter( 'body_class', array( $this, 'add_body_classes' ) );
 		add_action( 'wp_head', array( $this, 'add_pingback_header' ) );
 
-	}//__construct
+	}//end __construct()
 
 
 	/**
@@ -27,18 +27,18 @@ class Hooks {
 	public function add_body_classes( $classes ) {
 
 		// Home
-		if ( is_front_page() ) { //Homepage
+		if ( is_front_page() ) { // Homepage
 			$classes[] = 'hb__home';
 		}
 
 		// Page type
 		if ( is_page_template( 'page-templates/landing-page.php' ) ) {
 			$classes[] = 'hb__pag-landing';
-		} elseif ( is_home() ) { //Posts Page
+		} elseif ( is_home() ) { // Posts Page
 			$classes[] = 'hb__pag-posts';
 		} elseif ( is_category() ) {
 			$classes[] = 'hb__pag-category';
-		} elseif ( is_archive() ) { //Auto-gen 'cats'
+		} elseif ( is_archive() ) { // Auto-gen 'cats'
 			$classes[] = 'hb__pag-archive';
 		} elseif ( is_singular() ) {
 			$classes[] = 'hb__pag-singular';
@@ -73,4 +73,4 @@ class Hooks {
 	}
 
 
-}//class
+}//end class
