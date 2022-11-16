@@ -8,8 +8,6 @@
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 
-wp_enqueue_style( 'hb_landing_css' );
-wp_enqueue_style( 'hb_landingdev_css' );
 wp_enqueue_script( 'hb_hideheader_js' );
 
 get_header( 'landing' );

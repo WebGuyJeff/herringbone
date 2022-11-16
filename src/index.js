@@ -6,6 +6,11 @@
  * @link https://metabox.io/modernizing-javascript-code-in-wordpress/
  */
 
+import './css/hb.css';
+import './css/fonts.css';
+import './css/landing.css';
+import './css/landing-dev.css';
+
 import { dropdownMenu } from './js/dropdown-menu.js';
 import { hideHeader } from './js/hideheader';
 import { mobilePopupMenu } from './js/mobile-popup-menu';

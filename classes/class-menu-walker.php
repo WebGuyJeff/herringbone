@@ -497,6 +497,17 @@ class Menu_Walker extends Walker_Nav_Menu {
             'nav_or_div'           => 'div',
             'nav_aria_label'       => 'Menu',
             'button_class'         => 'button',
+
+			// Added below to see if it helps bug "Undefined array key"
+			'before'               => '',
+			'after'                => '',
+			'link_before'          => '',
+			'link_after'           => '',
+			'menu_id'              => '',
+			'container_id'         => '',
+			'menu'                 => '',
+			'menu'                 => '',
+			
         );
 
         // Merge passed args with defaults array

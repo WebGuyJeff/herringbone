@@ -1,24 +1,26 @@
-/*~~~~~~~~~~oOo~~~~~~~~~~o~
-~o DOCUMENT  INFORMATION o~
+/*
+Theme Name: Herringbone
+Theme URI: https://jeffersonreal.uk
+Author: Jefferson Real
+Author URI: https://jeffersonreal.uk
+Description: The Herringbone theme adapted for WordPress
+Version: 0.6.1
+License: GNU General Public License v3.0
+License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
+*/
 
-o Document  Herringbone Theme
-o Version   v0.6
-o Author	Jefferson Real
-o Contact   me@jeffersonreal.uk
+/*
 
-
-~o~~~~~~~~oOo~~~~~~~~o~
-~o NAMING CONVENTION o~
+## NAMING CONVENTION
 
 o BEM
 o camelCase
 o Single separators (_/-)
 
-blockName_elemName-modName
+e.g. blockName_elemName-modName
 
 
-~o~~~~~~~~oOo~~~~~~~~~o~
-~o MEDIA BREAK POINTS o~
+## MEDIA BREAK POINTS
 
 o Mobile-first >= 0em
 o Tablet	   >= 48em
@@ -27,8 +29,7 @@ o Desktop	  >= 100em
 o XL devices   >= 120em
 
 
-~o~~~~~~oOo~~~~~~o~
-~o GOLDEN  RATIO o~
+## GOLDEN  RATIO
 
 Unit/font sizes were calculated using the golden ratio as a starting point.
 @link https://grtcalculator.com/
@@ -53,8 +54,7 @@ Font Size		 Line Height
 13  |  0.813  ||  23  |  1.769
 
 
-~o~~~~oOo~~~~o~
-~o CSS INDEX o~
+## CSS INDEX
 
   !! Landing Page CSS in separate sheets
 
