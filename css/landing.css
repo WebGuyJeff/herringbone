@@ -284,7 +284,7 @@ that pages dedicated css file.
                     font-family: 'wellfleet';
                 }
         .chalkboard_cta {
-            color: var(--hb_green);
+            color: var(--hb_darkGreen);
             font-family: 'wellfleet';
             font-size: var(--hb_font-xl);
             font-weight: 900;
@@ -444,7 +444,7 @@ that pages dedicated css file.
 .screen_row.d > .screen_column {
 	-webkit-animation: screen_row-d 6s ease-in-out alternate infinite;
 	        animation: screen_row-d 6s ease-in-out alternate infinite;
-	background: var(--hb_green);
+	background: var(--hb_darkGreen);
 }
 
 
@@ -559,7 +559,7 @@ h6 {
 }
 
 .title-hype {
-	color: var(--hb_green);
+	color: var(--hb_darkGreen);
 	font-weight: 900;
 	white-space: nowrap;
 }

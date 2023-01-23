@@ -4,7 +4,7 @@ Theme URI: https://jeffersonreal.uk
 Author: Jefferson Real
 Author URI: https://jeffersonreal.uk
 Description: The Herringbone theme adapted for WordPress
-Version: 0.6.1
+Version: 0.6.2
 License: GNU General Public License v3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 */
@@ -121,9 +121,9 @@ Font Size		 Line Height
 :root {
 
   --hb_black: #333;
-  --hb_green: #63CFA7;
+  --hb_darkGreen: #63CFA7;
   --hb_lightGreen: #b1e7d3;
-  --hb_darkGreen: #309c74;
+  --hb_darkGreen: #3f8369;
   --hb_blue: #b1e8f2;
   --hb_red: #fd6a42;
   --hb_orange: #ffb908;
@@ -491,7 +491,7 @@ blockquote {
 				color: #fff;
 			}
 			.alert-success {
-				background: var(--hb_green);
+				background: var(--hb_darkGreen);
 				color: #fff;
 			}
 			.alert-info {
@@ -561,7 +561,7 @@ strong {
 		}
 			.widget ul li:hover {
 				cursor: pointer;
-				background: var(--hb_green);
+				background: var(--hb_darkGreen);
 				color: var(--hb_white);
 			}
 
@@ -1007,7 +1007,7 @@ a img.aligncenter {
 		.button:focus-visible {
 			z-index: 1;
 			outline: 0;
-			box-shadow: 0 0 0 0.25em var(--hb_green);
+			box-shadow: 0 0 0 0.25em var(--hb_darkGreen);
 		}
 
 
@@ -1148,7 +1148,7 @@ a img.aligncenter {
 
 
 	.button-cta.spinny > *:first-child {
-		background: var(--hb_green);
+		background: var(--hb_darkGreen);
 		color: var(--hb_white);
 	}
 
@@ -1375,7 +1375,8 @@ a img.aligncenter {
 	text-decoration: none;
 }
 	.siteTitle_logo {
-		border-radius: 0.9em;
+		object-fit: contain;
+		width: 4em;
 		height: 4em;
 	}
 	.siteTitle_text {

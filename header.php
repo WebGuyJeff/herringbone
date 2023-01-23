@@ -16,7 +16,7 @@ namespace Jefferson\Herringbone;
 
 <head>
 	<?php
-	$seo = new Seo_Meta;
+	$seo = new Seo_Meta();
 	echo $seo->head_meta;
 	wp_head();
 	?>
@@ -29,14 +29,14 @@ namespace Jefferson\Herringbone;
 
 			<div class="header_content header_content-left header_content-third">
 
-				<a class="siteTitle" href="<?php echo get_bloginfo( 'wpurl' );?>" aria-label="Home">
+				<a class="siteTitle" href="<?php echo get_bloginfo( 'wpurl' ); ?>" aria-label="Home">
 					<?php
 					if ( has_custom_logo() ) {
 
-						$logo_id = get_theme_mod( 'custom_logo' );
-						$logo_src = wp_get_attachment_image_src( $logo_id , 'full' );
-						echo '<img class="siteTitle_logo" src="' . esc_url( $logo_src[0] ) . '">';
-					} 
+						$logo_id  = get_theme_mod( 'custom_logo' );
+						$logo_src = wp_get_attachment_image_src( $logo_id, 'full' );
+						echo '<img class="siteTitle_logo" alt="Jefferson Real Web Development Logo" src="' . esc_url( $logo_src[0] ) . '">';
+					}
 					?>
 					<div class="siteTitle_text">
 						<p class="siteTitle_sitename">
@@ -53,15 +53,17 @@ namespace Jefferson\Herringbone;
 			<div class="header_content header_content-middle">
 
 				<?php
-					Menu_Walker::output_theme_location_menu( array(
-						'theme_location'	=> 'global-primary-menu',
-						'menu_class'		=> 'mainMenu',
-						'nav_or_div'		=> 'nav',
-						'nav_aria_label'	=> 'Main Menu',
-						'html_tab_indents'  => 3,
-						'button_class'		=> 'button button-noback',
-					) );
-				?>
+					Menu_Walker::output_theme_location_menu(
+						array(
+							'theme_location'   => 'global-primary-menu',
+							'menu_class'       => 'mainMenu',
+							'nav_or_div'       => 'nav',
+							'nav_aria_label'   => 'Main Menu',
+							'html_tab_indents' => 3,
+							'button_class'     => 'button button-noback',
+						)
+					);
+					?>
 
 			</div>
 
