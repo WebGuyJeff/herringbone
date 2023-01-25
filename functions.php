@@ -11,37 +11,41 @@
 /**
  * Load the PHP autoloader from it's own file
  */
-require_once(get_template_directory() . '/classes/autoload.php');
+require_once get_template_directory() . '/classes/autoload.php';
 
 
 /**
  * WordPress hooks for this theme.
  */
 use Jefferson\Herringbone\Hooks;
-$hooks = new Hooks;
+$hooks = new Hooks();
 
 
 /**
  * Enqueue scripts and styles
  */
 function enqueue_scripts_and_styles() {
-	wp_enqueue_style( 'style_css', get_template_directory_uri() . '/style.css', array(), filemtime(get_template_directory() . '/style.css'), 'all');
-	// If not in admin area
-	if (!is_admin() && $GLOBALS['pagenow'] != 'wp-login.php') {
-		wp_enqueue_script( 'hb_bundle_js', get_template_directory_uri() . '/js/bundle.js', array (), '0.1', true );
-		// De-register wp jquery and use CDN
-		wp_deregister_script('jquery');
-		wp_enqueue_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js', array (), '3.6.0', true );
-		// Other front end resources
+	wp_enqueue_style( 'style_css', get_template_directory_uri() . '/style.css', array(), filemtime( get_template_directory() . '/style.css' ), 'all' );
+	// If the site is being previewed in the Customizer.
+	if ( is_customize_preview() ) {
+		wp_enqueue_script( 'hb_customizer-bundle_js', get_template_directory_uri() . '/js/customizer-bundle.js', array(), '0.1', true );
+	}
+	// If not in admin area.
+	if ( ! is_admin() && $GLOBALS['pagenow'] !== 'wp-login.php' ) {
+		wp_enqueue_script( 'hb_frontend-bundle_js', get_template_directory_uri() . '/js/frontend-bundle.js', array(), '0.1', true );
+		// De-register wp jquery and use CDN.
+		wp_deregister_script( 'jquery' );
+		wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js', array(), '3.6.0', true );
+		// Other front end resources.
 		wp_register_script( 'gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js', array( 'jquery' ), '3.9.1', true );
 		// CSSRule this is part of core but there's a separate CDN?
-        wp_register_script( 'gsap_cssrule', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/CSSRulePlugin.min.js', array( 'gsap' ), '3.9.1', true );
+		wp_register_script( 'gsap_cssrule', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/CSSRulePlugin.min.js', array( 'gsap' ), '3.9.1', true );
 		wp_register_script( 'gsap_scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js', array( 'gsap' ), '3.9.1', true );
 		wp_register_script( 'svgWheel_js', get_template_directory_uri() . '/animation/svgWheel/svgWheel.js', array( 'gsap_cssrule' ), '1.0', true );
-		//wp_enqueue_style( 'jetbrains', 'https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap', array(), time() , 'all');
+		// wp_enqueue_style( 'jetbrains', 'https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap', array(), time() , 'all');.
 	}
 	global $template;
-	if ( !is_admin() && basename( $template ) == 'landing-page.php') {
+	if ( ! is_admin() && basename( $template ) == 'landing-page.php' ) {
 		bigup_remove_wp_block_library_css();
 	}
 }
@@ -51,7 +55,7 @@ function bigup_remove_wp_block_library_css() {
 	wp_dequeue_style( 'wp-block-library' );       // Gutenburg CSS
 	wp_dequeue_style( 'wp-block-library-theme' ); // Gutenburg CSS
 	wp_dequeue_style( 'wc-blocks-style' );        // WooCommerce block CSS
-} 
+}
 
 
 // ======================================================= Basic WordPress setup
@@ -73,8 +77,8 @@ add_filter( 'auto_update_theme', '__return_false' );
 function herringbone_widgets_init() {
 	register_sidebar(
 		array(
-			'name'		    => esc_html__( 'Left Sidebar', 'herringbone' ),
-			'id'			=> 'sidebar-left',
+			'name'          => esc_html__( 'Left Sidebar', 'herringbone' ),
+			'id'            => 'sidebar-left',
 			'description'   => esc_html__( 'Used for article contents and includes right sidebar content at mid-width.', 'herringbone' ),
 			'before_widget' => '<section id="%1$s" class="sauce widget %2$s">',
 			'after_widget'  => '</section>',
@@ -84,8 +88,8 @@ function herringbone_widgets_init() {
 	);
 	register_sidebar(
 		array(
-			'name'		    => esc_html__( 'Right Sidebar', 'herringbone' ),
-			'id'			=> 'sidebar-right',
+			'name'          => esc_html__( 'Right Sidebar', 'herringbone' ),
+			'id'            => 'sidebar-right',
 			'description'   => esc_html__( 'Used for related content and unimportant stuff.', 'herringbone' ),
 			'before_widget' => '<section id="%1$s" class="sauce widget %2$s">',
 			'after_widget'  => '</section>',
@@ -114,10 +118,10 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 
 		/*
 		 * Let WordPress manage the document title.
-		 * Wordpress will dynamically populate the title tag using the page H1.
+		 * WordPress will dynamically populate the title tag using the page H1.
 		 */
 		// Handled by HB SEO functionality
-		//add_theme_support( 'title-tag' );
+		// add_theme_support( 'title-tag' );
 
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.
@@ -127,40 +131,45 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 		/*
 		 * Enable custom image sizes and set the sizes required for the theme
 		 */
-		//add_theme_support( 'pop-up-banner' );
-		//add_image_size( 'service-tile', 960, 960, TRUE );
-		//add_image_size( 'review-avatar', 150, 150, TRUE );
-		//add_image_size( 'full-width-banner', 1920, 480, TRUE );
-		//add_image_size( 'page-featured', 615, 615, TRUE );
+		// add_theme_support( 'pop-up-banner' );
+		// add_image_size( 'service-tile', 960, 960, TRUE );
+		// add_image_size( 'review-avatar', 150, 150, TRUE );
+		// add_image_size( 'full-width-banner', 1920, 480, TRUE );
+		// add_image_size( 'page-featured', 615, 615, TRUE );
 
+		/**
+		 * Enable categories and tags for default post types.
+		 */
+		function enable_categories_and_tags_for_default_posts() {
+			register_taxonomy_for_object_type( 'post_tag', 'page' );
+			register_taxonomy_for_object_type( 'category', 'page' );
+		}
+		add_action( 'init', 'enable_categories_and_tags_for_default_posts' );
 
-		/*
+		/**
 		 * Register WordPress wp_nav_menu() locations
-		 * 
+		 *
 		 * This option exists in the wp_nav_menu function:
-		 * 
+		 *
 		 * "'fallback_cb'
 		 * (callable|false) If the menu doesn't exist, a callback function will fire.
 		 * Default is 'wp_page_menu'. Set to false for no fallback."
-		 * 
+		 *
 		 * This means where the user hasn't set a menu in the theme settings, for instance,
 		 * straight after theme install, WP will display a meaninglesss pages menu which
 		 * makes the theme look broken. TODO: A FALLBACK MUST BE PUT IN PLACE
-		 * 
 		 */
-
 
 		register_nav_menus(
 			array(
-				'mobile-popup-menu' 			=> esc_html__( 'Mobile Popup Menu', 'herringbone' ),
-				'global-primary-menu' 			=> esc_html__( 'Global Header Menu', 'herringbone' ),
-				'global-secondary-menu' 		=> esc_html__( 'Global Footer Menu', 'herringbone' ),
-				'global-legal-links' 			=> esc_html__( 'Global Legal Links', 'herringbone' ),
-				'landing-page-primary-menu' 	=> esc_html__( 'Landing Page Header Menu', 'herringbone' ),
-				'landing-page-secondary-menu'	=> esc_html__( 'Landing Page Footer Menu', 'herringbone' ),
+				'mobile-popup-menu'           => esc_html__( 'Mobile Popup Menu', 'herringbone' ),
+				'global-primary-menu'         => esc_html__( 'Global Header Menu', 'herringbone' ),
+				'global-secondary-menu'       => esc_html__( 'Global Footer Menu', 'herringbone' ),
+				'global-legal-links'          => esc_html__( 'Global Legal Links', 'herringbone' ),
+				'landing-page-primary-menu'   => esc_html__( 'Landing Page Header Menu', 'herringbone' ),
+				'landing-page-secondary-menu' => esc_html__( 'Landing Page Footer Menu', 'herringbone' ),
 			)
 		);
-
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -179,7 +188,6 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 			)
 		);
 
-
 		/**
 		 * Add theme support for selective refresh for widgets.
 		 */
@@ -191,8 +199,8 @@ if ( ! function_exists( 'herringbone_setup' ) ) :
 		add_theme_support(
 			'custom-logo',
 			array(
-				'height'	  => 1000,
-				'width'		  => 1000,
+				'height'      => 1000,
+				'width'       => 1000,
 				'flex-width'  => true,
 				'flex-height' => true,
 			)
@@ -208,48 +216,51 @@ add_action( 'after_setup_theme', 'herringbone_setup' );
 /**
  * Return a title without prefix for every type used in the get_the_archive_title().
  */
-add_filter('get_the_archive_title', function ($title) {
-	if ( is_category() ) {
-		$title = single_cat_title( '', false );
-	} elseif ( is_tag() ) {
-		$title = single_tag_title( '', false );
-	} elseif ( is_author() ) {
-		$title = '<span class="vcard">' . get_the_author() . '</span>';
-	} elseif ( is_year() ) {
-		$title = get_the_date( _x( 'Y', 'yearly archives date format' ) );
-	} elseif ( is_month() ) {
-		$title = get_the_date( _x( 'F Y', 'monthly archives date format' ) );
-	} elseif ( is_day() ) {
-		$title = get_the_date( _x( 'F j, Y', 'daily archives date format' ) );
-	} elseif ( is_tax( 'post_format' ) ) {
-		if ( is_tax( 'post_format', 'post-format-aside' ) ) {
-			$title = _x( 'Asides', 'post format archive title' );
-		} elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
-			$title = _x( 'Galleries', 'post format archive title' );
-		} elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
-			$title = _x( 'Images', 'post format archive title' );
-		} elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
-			$title = _x( 'Videos', 'post format archive title' );
-		} elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
-			$title = _x( 'Quotes', 'post format archive title' );
-		} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
-			$title = _x( 'Links', 'post format archive title' );
-		} elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
-			$title = _x( 'Statuses', 'post format archive title' );
-		} elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
-			$title = _x( 'Audio', 'post format archive title' );
-		} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
-			$title = _x( 'Chats', 'post format archive title' );
+add_filter(
+	'get_the_archive_title',
+	function ( $title ) {
+		if ( is_category() ) {
+			$title = single_cat_title( '', false );
+		} elseif ( is_tag() ) {
+			$title = single_tag_title( '', false );
+		} elseif ( is_author() ) {
+			$title = '<span class="vcard">' . get_the_author() . '</span>';
+		} elseif ( is_year() ) {
+			$title = get_the_date( _x( 'Y', 'yearly archives date format' ) );
+		} elseif ( is_month() ) {
+			$title = get_the_date( _x( 'F Y', 'monthly archives date format' ) );
+		} elseif ( is_day() ) {
+			$title = get_the_date( _x( 'F j, Y', 'daily archives date format' ) );
+		} elseif ( is_tax( 'post_format' ) ) {
+			if ( is_tax( 'post_format', 'post-format-aside' ) ) {
+				$title = _x( 'Asides', 'post format archive title' );
+			} elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
+				$title = _x( 'Galleries', 'post format archive title' );
+			} elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
+				$title = _x( 'Images', 'post format archive title' );
+			} elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
+				$title = _x( 'Videos', 'post format archive title' );
+			} elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
+				$title = _x( 'Quotes', 'post format archive title' );
+			} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
+				$title = _x( 'Links', 'post format archive title' );
+			} elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
+				$title = _x( 'Statuses', 'post format archive title' );
+			} elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
+				$title = _x( 'Audio', 'post format archive title' );
+			} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
+				$title = _x( 'Chats', 'post format archive title' );
+			}
+		} elseif ( is_post_type_archive() ) {
+			$title = post_type_archive_title( '', false );
+		} elseif ( is_tax() ) {
+			$title = single_term_title( '', false );
+		} else {
+			$title = __( 'Archives' );
 		}
-	} elseif ( is_post_type_archive() ) {
-		$title = post_type_archive_title( '', false );
-	} elseif ( is_tax() ) {
-		$title = single_term_title( '', false );
-	} else {
-		$title = __( 'Archives' );
+		return $title;
 	}
-	return $title;
-});
+);
 
 
 /**
@@ -279,9 +290,14 @@ remove_action( 'wp_head', '_wp_render_title_tag', 1 );
 /**
  * Remove USERS from sitemap
  */
-add_filter( 'wp_sitemaps_add_provider', function ($provider, $name) {
-  return ( $name == 'users' ) ? false : $provider;
-}, 10, 2);
+add_filter(
+	'wp_sitemaps_add_provider',
+	function ( $provider, $name ) {
+		return ( $name == 'users' ) ? false : $provider;
+	},
+	10,
+	2
+);
 
 // ================================================== Herringbone admin settings
 
@@ -293,25 +309,24 @@ function herringbone_settings_add_menu() {
 
 	$hb__icon = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMzIgMTMyIj48cGF0aCBmaWxsPSIjMDAwIiBkPSJNMCAwdjEzYzAgNSAwIDEwIDggMTNsNTggMjcgNTgtMjdjOC0zIDgtOCA4LTEzVjBMNzQgMjZjLTggNC04IDktOCAxNCAwLTUgMC0xMC04LTE0em0wIDQwdjEzYzAgNCAwIDEwIDggMTNsNTggMjcgNTgtMjdjOC0zIDgtOSA4LTEzVjQwTDc0IDY2Yy04IDQtOCA5LTggMTMgMC00IDAtOS04LTEzem0wIDM5djE0YzAgNCAwIDkgOCAxM2w1OCAyNiA1OC0yNmM4LTQgOC05IDgtMTNWNzlsLTU4IDI3Yy04IDMtOCA5LTggMTMgMC00IDAtMTAtOC0xM3oiPjwvcGF0aD48L3N2Zz4=';
 
-
-  	add_menu_page(
-		'Herringbone Theme Settings',//page_title
-	  	'Herringbone',		 		 //menu_title
-		'manage_options',			 //capability
-		'herringbone-settings',		 //menu_slug
-		'', 						 //function
-		$hb__icon,					 //icon_url
-		4							 //position
+	add_menu_page(
+		'Herringbone Theme Settings', // page_title
+		'Herringbone',               // menu_title
+		'manage_options',            // capability
+		'herringbone-settings',      // menu_slug
+		'',                          // function
+		$hb__icon,                   // icon_url
+		4                            // position
 	);
 
 	add_submenu_page(
-		'herringbone-settings',		 //parent_slug
-	  	'Herringbone Theme Settings',//page_title
-		'Theme Settings',	 	 	 //menu_title
-		'manage_options',		 	 //capability
-		'herringbone-settings', 	 //menu_slug
-		'herringbone_settings_page', //function
-		1							 //position
+		'herringbone-settings',      // parent_slug
+		'Herringbone Theme Settings', // page_title
+		'Theme Settings',            // menu_title
+		'manage_options',            // capability
+		'herringbone-settings',      // menu_slug
+		'herringbone_settings_page', // function
+		1                            // position
 	);
 
 }
@@ -326,11 +341,11 @@ function herringbone_settings_page() {
 	$hb__icon = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMzIgMTMyIj48cGF0aCBmaWxsPSIjMDAwIiBkPSJNMCAwdjEzYzAgNSAwIDEwIDggMTNsNTggMjcgNTgtMjdjOC0zIDgtOCA4LTEzVjBMNzQgMjZjLTggNC04IDktOCAxNCAwLTUgMC0xMC04LTE0em0wIDQwdjEzYzAgNCAwIDEwIDggMTNsNTggMjcgNTgtMjdjOC0zIDgtOSA4LTEzVjQwTDc0IDY2Yy04IDQtOCA5LTggMTMgMC00IDAtOS04LTEzem0wIDM5djE0YzAgNCAwIDkgOCAxM2w1OCAyNiA1OC0yNmM4LTQgOC05IDgtMTNWNzlsLTU4IDI3Yy04IDMtOCA5LTggMTMgMC00IDAtMTAtOC0xM3oiPjwvcGF0aD48L3N2Zz4=';
 
 	?>
-  	<div class="wrap">
-	  	<h1>
+	  <div class="wrap">
+		  <h1>
 			<span>
 				<img style="max-height: 1em;margin-right: 0.5em;vertical-align: middle;" src="
-					<?php echo $hb__icon ?>" 
+					<?php echo $hb__icon; ?>" 
 				 />
 			</span>
 			Herringbone Settings
@@ -342,15 +357,16 @@ function herringbone_settings_page() {
 							submit_button();
 					?>
 			</form>
-  	</div>
-<?php }
+	  </div>
+	<?php
+}
 
 /*
  * Add options fields to the admin page
  *
 // Codepen
 function setting_codepen() { ?>
-  	<input type="text" name="codepen" id="codepen" value="<?php echo get_option( 'codepen' ); ?>" />
+	  <input type="text" name="codepen" id="codepen" value="<?php echo get_option( 'codepen' ); ?>" />
 <?php }
 // Instagram
 function setting_instagram() { ?>
@@ -367,12 +383,12 @@ function setting_facebook() { ?>
  * Tell WordPress to build the admin page
  *
 function herringbone_settings_page_setup() {
-  	add_settings_section( 'section', 'Social Links', null, 'theme-options' );
-  	add_settings_field( 'codepen', 'Codepen URL', 'setting_codepen', 'theme-options', 'section' );
+	  add_settings_section( 'section', 'Social Links', null, 'theme-options' );
+	  add_settings_field( 'codepen', 'Codepen URL', 'setting_codepen', 'theme-options', 'section' );
 	add_settings_field( 'instagram', 'Instagram URL', 'setting_instagram', 'theme-options', 'section' );
 	add_settings_field( 'facebook', 'Facebook URL', 'setting_facebook', 'theme-options', 'section' );
 
-  	register_setting( 'section', 'codepen' );
+	  register_setting( 'section', 'codepen' );
 	register_setting( 'section', 'instagram' );
 	register_setting( 'section', 'facebook' );
 }
@@ -382,7 +398,8 @@ add_action( 'admin_init', 'herringbone_settings_page_setup' );
 // =========================================================== Custom Post Types
 
 
-/* Custom Post Type
+/*
+ Custom Post Type
 function create_my_custom_post() {
 	register_post_type( 'my-custom-post',
 		array(

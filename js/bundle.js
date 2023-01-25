@@ -1,3 +1,18 @@
+/**
+ * Theme Name: Herringbone
+ * Theme URI: https://github.com/wordpressjeff/herringbone#readme
+ * Author: Jefferson Real
+ * Author URI: https://jeffersonreal.uk
+ * Description: A WordPress theme for my developer site and blog.
+ * Tags: blog, sidebar, 2-column, 3-column, custom-logo, sidebar-widgets
+ * Version: 0.6.2
+ * Requires at least: 5.0
+ * Tested up to: 6.1.1
+ * Requires PHP: 8.0
+ * License: GPL-3.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain: herringbone
+ */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 var __webpack_exports__ = {};

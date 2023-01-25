@@ -1,0 +1,15 @@
+{
+    "themeName": "Herringbone",
+	"themeUri": "https://github.com/wordpressjeff/herringbone#readme",
+	"author": "Jefferson Real",
+	"authorUri": "https://jeffersonreal.uk",
+	"description": "A WordPress theme for my developer site and blog.",
+	"tags": "blog, sidebar, 2-column, 3-column, custom-logo, sidebar-widgets",
+    "version": "0.6.2",
+	"requiresAtLeast": "5.0",
+	"testedUpTo": "6.1.1",
+	"requiresPhp": "8.0",
+    "license": "GPL-3.0-or-later",
+	"licenseUri": "https://www.gnu.org/licenses/gpl-3.0.html",
+	"textDomain": "herringbone"
+}
