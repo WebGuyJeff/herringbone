@@ -53,14 +53,19 @@ module.exports = {
 			raw: true, // if true, banner will not be wrapped in a comment.
 			entryOnly: false,
 			include: /\.(js|css|scss)$/,
-			/*
-			 * entryOnly: true, // if true, the banner will only be added to the entry chunks.
-			 * include: /\.(scss|css)$/,
-			 */
 		} ),
 		new BrowserSyncPlugin ( {
 			files: "**/*(php|js|css|scss)",
-			proxy: "http://192.168.1.92:8001/"
+			// browse to http://localhost:3000/ during development
+			host: 'localhost',
+			port: 8001,
+			/*
+			 * proxy the Webpack Dev Server endpoint
+			 * (which should be serving on http://localhost:3100/)
+			 * through BrowserSync
+			 */
+			proxy: 'http://localhost:8001/',
+			injectCss: true
 		} )
 	],
 	module: {

@@ -6,7 +6,7 @@ namespace Jefferson\Herringbone;
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.uk>
- * @copyright Copyright (c) 2022, Jefferson Real
+ * @copyright Copyright (c) 2023, Jefferson Real
  */
 ?>
 
@@ -14,26 +14,30 @@ namespace Jefferson\Herringbone;
 	<div class="footer_inner sauce">
 
 		<?php
-			Menu_Walker::output_theme_location_menu( array(
-				'theme_location'	=> 'global-secondary-menu',
-				'menu_class'		=> 'footer_nav',
-				'nav_or_div'		=> 'div',
-				'nav_aria_label'	=> '',
-				'html_tab_indents'  => 3,
-				'button_class'		=> 'button button-noback',
-			) );
+			Menu_Walker::output_theme_location_menu(
+				array(
+					'theme_location'    => 'global-secondary-menu',
+					'menu_class'        => 'footer_nav',
+					'nav_or_div'        => 'nav',
+					'nav_aria_label'    => 'Footer menu',
+					'html_tab_indents'  => 3,
+					'top_level_classes' => 'button button-noback',
+				)
+			);
 		?>
 
 
 		<div class="footer_legalLinks">
 			<?php
-				Menu_Walker::output_theme_location_menu( array(
-					'theme_location'	=> 'global-legal-links',
-					'nav_or_div'		=> false,
-					'nav_aria_label'	=> '',
-					'html_tab_indents'  => 3,
-					'button_class'		=> 'button button-noback',
-				) );
+				Menu_Walker::output_theme_location_menu(
+					array(
+						'theme_location'    => 'global-legal-links',
+						'nav_or_div'        => 'nav',
+						'nav_aria_label'    => 'Legal links',
+						'html_tab_indents'  => 3,
+						'top_level_classes' => 'button button-noback',
+					)
+				);
 
 			echo "<p class=\"footer_label\">&copy; " . date("Y") . " Hello, my name is Jeff</p>";
 			?>
@@ -42,8 +46,8 @@ namespace Jefferson\Herringbone;
 	</div>
 </footer>
 
-<?php get_template_part( 'template-parts/nav', 'mobile' );?>
-<?php echo do_shortcode('[wallomatic]'); ?>
+<?php get_template_part( 'template-parts/mobile-popup-menu' ); ?>
+<?php echo do_shortcode( '[wallomatic]' ); ?>
 
 <?php wp_footer(); ?>
 

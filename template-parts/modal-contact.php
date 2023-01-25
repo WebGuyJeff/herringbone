@@ -4,7 +4,7 @@
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.uk>
- * @copyright Copyright (c) 2022, Jefferson Real
+ * @copyright Copyright (c) 2023, Jefferson Real
  */
 
 wp_enqueue_script( 'hb_modal_js' );

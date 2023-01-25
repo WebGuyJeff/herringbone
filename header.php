@@ -6,7 +6,7 @@ namespace Jefferson\Herringbone;
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.uk>
- * @copyright Copyright (c) 2022, Jefferson Real
+ * @copyright Copyright (c) 2023, Jefferson Real
  */
 
 ?>
@@ -53,18 +53,17 @@ namespace Jefferson\Herringbone;
 			<div class="header_content header_content-middle">
 
 				<?php
-					Menu_Walker::output_theme_location_menu(
-						array(
-							'theme_location'   => 'global-primary-menu',
-							'menu_class'       => 'mainMenu',
-							'nav_or_div'       => 'nav',
-							'nav_aria_label'   => 'Main Menu',
-							'html_tab_indents' => 3,
-							'button_class'     => 'button button-noback',
-						)
-					);
-					?>
-
+				Menu_Walker::output_theme_location_menu(
+					array(
+						'theme_location'    => 'global-primary-menu',
+						'menu_class'        => 'mainMenu',
+						'nav_or_div'        => 'nav',
+						'nav_aria_label'    => 'Menu',
+						'html_tab_indents'  => 3,
+						'top_level_classes' => 'button button-noback',
+					)
+				);
+				?>
 			</div>
 
 			<div class="header_content header_content-right header_content-third">

@@ -8,7 +8,7 @@
 
 /*! ./css/frontend/landing.css */
 
-/*! ./js/frontend/dropdown-menu.js */
+/*! ./js/frontend/dropdown-control */
 
 /*! ./js/frontend/hideheader */
 
@@ -60,9 +60,9 @@
   !*** ./src/css/frontend/landing-dev.css ***!
   \******************************************/
 
-/*!******************************************!*\
-  !*** ./src/js/frontend/dropdown-menu.js ***!
-  \******************************************/
+/*!*********************************************!*\
+  !*** ./src/js/frontend/dropdown-control.js ***!
+  \*********************************************/
 
 /*!**********************************************!*\
   !*** ./src/js/frontend/mobile-popup-menu.js ***!

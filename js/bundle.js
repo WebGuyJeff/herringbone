@@ -26,7 +26,7 @@ var __webpack_exports__ = {};
  * 
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.uk>
- * @copyright Copyright (c) 2022, Jefferson Real
+ * @copyright Copyright (c) 2023, Jefferson Real
  */
 
 
@@ -193,7 +193,7 @@ const dropdownMenu = () => {
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.uk>
- * @copyright Copyright (c) 2022, Jefferson Real
+ * @copyright Copyright (c) 2023, Jefferson Real
  */
 
 
@@ -301,7 +301,7 @@ const mobilePopupMenu = () => {
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.uk>
- * @copyright Copyright (c) 2022, Jefferson Real
+ * @copyright Copyright (c) 2023, Jefferson Real
  */
 
 /**
@@ -526,7 +526,7 @@ const animate = async (element, property, ease, startValue, endValue, duration) 
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.uk>
- * @copyright Copyright (c) 2022, Jefferson Real
+ * @copyright Copyright (c) 2023, Jefferson Real
  */
 
 
@@ -801,7 +801,7 @@ const modal = () => {
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.uk>
- * @copyright Copyright (c) 2022, Jefferson Real
+ * @copyright Copyright (c) 2023, Jefferson Real
  */
 
 
@@ -905,7 +905,7 @@ const modal = () => {
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.uk>
- * @copyright Copyright (c) 2022, Jefferson Real
+ * @copyright Copyright (c) 2023, Jefferson Real
  */
 
 

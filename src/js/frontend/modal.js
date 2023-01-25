@@ -5,27 +5,27 @@
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.uk>
- * @copyright Copyright (c) 2022, Jefferson Real
+ * @copyright Copyright (c) 2023, Jefferson Real
  */
 
-import { animate } from './css-animator';
+import { animate } from './css-animator'
 
 const modal = () => {
 
     function modal_init() {
         document.querySelectorAll( '.modal_control-open' ).forEach( button_open => {
-            button_open.addEventListener( 'click', launch_modal );
-        } );
-    };
+            button_open.addEventListener( 'click', launch_modal )
+        } )
+    }
 
-	let animating = false; 	// true when animation is in progress.
-	let active = false;		// true when modal is displayed.
-	let mobile = true;	 	// true when screen width is less than 768px (48em).
+	let animating = false 	// true when animation is in progress.
+	let active = false		// true when modal is displayed.
+	let mobile = true	 	// true when screen width is less than 768px (48em).
 
 	// Plugin-wide vars.
-	let overlay;
-	let dialog;
-	let button_close;
+	let overlay
+	let dialog
+	let button_close
 
 	/**
 	 * Open the model popup.
@@ -34,68 +34,68 @@ const modal = () => {
 	async function launch_modal( event ) {
 
 		// Get the modal elements
-		const modal_class = event.currentTarget.id;
-		overlay = document.querySelector( '.' + modal_class );
+		const modal_class = event.currentTarget.id
+		overlay = document.querySelector( '.' + modal_class )
 
-		dialog = overlay.querySelector( '.modal_dialog' );
-		button_close = overlay.querySelector( '.modal_control-close' );
+		dialog = overlay.querySelector( '.modal_dialog' )
+		button_close = overlay.querySelector( '.modal_control-close' )
 
 		button_close.onclick = () => {
-			closeModal();
+			closeModal()
 		}
 
 		// If a click event is not on dialog
 		window.onclick = function( event ) {
-			if ( dialog !== !event.target && !dialog.contains(event.target) ) {
-				closeModal();
+			if ( dialog !== !event.target && !dialog.contains( event.target ) ) {
+				closeModal()
 			}
 		}
 
 		await Promise.all( [
 			set_modal_device_size(),
 			get_scrollbar_width()
-		] );
-		openModal();
+		] )
+		openModal()
 	}
 
 
 	async function set_modal_device_size() {
 
-		let pageWidth = parseInt( document.querySelector("html").getBoundingClientRect().width, 10 );
+		let pageWidth = parseInt( document.querySelector( "html" ).getBoundingClientRect().width, 10 )
 
 		if ( pageWidth <= 768 ) {
-			mobile = true;
+			mobile = true
 		} else {
-			mobile = false;
+			mobile = false
 		}
 
 		if ( mobile && active && !animating ) {
-			dialog.style.left = '0';
-			dialog.style.transform = 'scale(1)';
-			dialog.style.opacity = '1';
-			overlay.style.display = 'contents';
-			overlay.style.opacity = '1';
+			dialog.style.left = '0'
+			dialog.style.transform = 'scale(1)'
+			dialog.style.opacity = '1'
+			overlay.style.display = 'contents'
+			overlay.style.opacity = '1'
 
 		} else if ( mobile && !active && !animating ) {
-			dialog.style.left = '-768px';
-			dialog.style.transform = 'scale(1)';
-			dialog.style.opacity = '1';
-			overlay.style.display = 'contents';
-			overlay.style.opacity = '1';
+			dialog.style.left = '-768px'
+			dialog.style.transform = 'scale(1)'
+			dialog.style.opacity = '1'
+			overlay.style.display = 'contents'
+			overlay.style.opacity = '1'
 
 		} else if ( !mobile && active && !animating ) {
-			dialog.style.left = '0';
-			dialog.style.transform = 'scale(1)';
-			dialog.style.opacity = '1';
-			overlay.style.display = 'flex';
-			overlay.style.opacity = '1';
+			dialog.style.left = '0'
+			dialog.style.transform = 'scale(1)'
+			dialog.style.opacity = '1'
+			overlay.style.display = 'flex'
+			overlay.style.opacity = '1'
 
 		} else if ( !mobile && !active && !animating ) {
-			dialog.style.left = '0';
-			dialog.style.transform = 'scale(0)';
-			dialog.style.opacity = '0';
-			overlay.style.display = 'none';
-			overlay.style.opacity = '0';
+			dialog.style.left = '0'
+			dialog.style.transform = 'scale(0)'
+			dialog.style.opacity = '0'
+			overlay.style.display = 'none'
+			overlay.style.opacity = '0'
 
 		}
 	}
@@ -111,47 +111,47 @@ const modal = () => {
 	 * 
 	 */
     function set_browser_resize_listener() {
-        let resizeTimer;
+        let resizeTimer
         let resize_listener = ( event ) => {
-            if ( resizeTimer !== null ) window.clearTimeout( resizeTimer );
+            if ( resizeTimer !== null ) window.clearTimeout( resizeTimer )
             resizeTimer = window.setTimeout( function() {
                 if ( !active ) {
-                    window.removeEventListener( 'resize', resize_listener );
-                    return;
+                    window.removeEventListener( 'resize', resize_listener )
+                    return
                 }
-                set_modal_device_size();
-            }, 20 );
-        };
-        window.addEventListener( 'resize', resize_listener );
+                set_modal_device_size()
+            }, 20 )
+        }
+        window.addEventListener( 'resize', resize_listener )
     }
 
 
 	// Open the modal
 	async function openModal() {
 		if ( !active && !animating ) {
-			active = true;
-			animating = true;
-			disableScroll();
-            set_browser_resize_listener();
+			active = true
+			animating = true
+			disableScroll()
+            set_browser_resize_listener()
 
 			if ( mobile ) {
-				dialog.style.left = '-768px';
-				dialog.style.transform = 'scale(1)';
-				dialog.style.opacity = '1';
-				overlay.style.display = 'contents';
-				overlay.style.opacity = '1';
-				await animate( dialog, 'left', 'easeInOutCirc', -768, 0, 800);
-				animating = false;
+				dialog.style.left = '-768px'
+				dialog.style.transform = 'scale(1)'
+				dialog.style.opacity = '1'
+				overlay.style.display = 'contents'
+				overlay.style.opacity = '1'
+				await animate( dialog, 'left', 'easeInOutCirc', -768, 0, 800 )
+				animating = false
 
 			} else {
-				dialog.style.left = '0';
-				dialog.style.transform = 'scale(0)';
-				dialog.style.opacity = '0';
-				overlay.style.display = 'flex';
-				overlay.style.opacity = '0';
-				fadeIn( overlay );
-				await animate( dialog, 'scale', 'easeInOutCirc', 0, 1, 800);
-				animating = false;
+				dialog.style.left = '0'
+				dialog.style.transform = 'scale(0)'
+				dialog.style.opacity = '0'
+				overlay.style.display = 'flex'
+				overlay.style.opacity = '0'
+				fadeIn( overlay )
+				await animate( dialog, 'scale', 'easeInOutCirc', 0, 1, 800 )
+				animating = false
 			}
 		}
 	}
@@ -160,29 +160,29 @@ const modal = () => {
 	// Close the modal
 	async function closeModal() {
 		if ( active && !animating ) {
-			active = false;
-			animating = true;
-			enableScroll();
+			active = false
+			animating = true
+			enableScroll()
 
 			if ( mobile ) {
-				dialog.style.left = '0';
-				dialog.style.transform = 'scale(1)';
-				dialog.style.opacity = '1';
-				overlay.style.display = 'contents';
-				overlay.style.opacity = '1';
-				await animate( dialog, 'left', 'easeInOutCirc', 0, -768, 800);
-				animating = false;
+				dialog.style.left = '0'
+				dialog.style.transform = 'scale(1)'
+				dialog.style.opacity = '1'
+				overlay.style.display = 'contents'
+				overlay.style.opacity = '1'
+				await animate( dialog, 'left', 'easeInOutCirc', 0, -768, 800 )
+				animating = false
 
 			} else {
-				dialog.style.left = '0';
-				dialog.style.transform = 'scale(1)';
-				dialog.style.opacity = '1';
-				overlay.style.display = 'flex';
-				overlay.style.opacity = '1';
-				fadeOut(overlay);
-				await animate( dialog, 'scale', 'easeInOutCirc', 1, 0, 800);
-				overlay.style.display = 'none';
-				animating = false;
+				dialog.style.left = '0'
+				dialog.style.transform = 'scale(1)'
+				dialog.style.opacity = '1'
+				overlay.style.display = 'flex'
+				overlay.style.opacity = '1'
+				fadeOut( overlay )
+				await animate( dialog, 'scale', 'easeInOutCirc', 1, 0, 800 )
+				overlay.style.display = 'none'
+				animating = false
 			}
 		}
 	}
@@ -190,71 +190,71 @@ const modal = () => {
 
 	// Moody overlay - fadeout
 	function fadeOut( overlay ) {
-		let p = 100;  // 0.5 x 100 to escape floating point problem
+		let p = 100 // 0.5 x 100 to escape floating point problem
 		let animateFilterOut = setInterval( function() {
 			if ( p <= 0 ){
-				clearInterval( animateFilterOut );
+				clearInterval( animateFilterOut )
 			}
-			overlay.style.opacity = p / 100;
-			p -= 2; // 1 represents 0.01 in css output
-		}, 16 ); // 10ms x 25 for 0.25sec animation
+			overlay.style.opacity = p / 100
+			p -= 2 // 1 represents 0.01 in css output
+		}, 16 ) // 10ms x 25 for 0.25sec animation
 	}
 
 
 	// Moody overlay - fadein
 	function fadeIn( overlay ) {
-		let p = 4;  // 0.01 x 100 to escape floating point problem
+		let p = 4 // 0.01 x 100 to escape floating point problem
 		let animateFilterIn = setInterval( function() {
 			if ( p >= 100 ){ // 100 (/100) represents 0.5 in css output
-				clearInterval( animateFilterIn );
+				clearInterval( animateFilterIn )
 			}
-			overlay.style.opacity = p / 100;
-			p += 2; // 1 represents 0.01 in css output
-		}, 16 ); // 10ms x 25 for 0.25sec animation
+			overlay.style.opacity = p / 100
+			p += 2 // 1 represents 0.01 in css output
+		}, 16 ) // 10ms x 25 for 0.25sec animation
 	}
 
 
-	let scrollbarWidth;
+	let scrollbarWidth
 	async function get_scrollbar_width() {
 		// Get window width inc scrollbar
-		const widthWithScrollBar = window.innerWidth;
+		const widthWithScrollBar = window.innerWidth
 		// Get window width exc scrollbar
-		const widthWithoutScrollBar = document.querySelector( "html" ).getBoundingClientRect().width;
+		const widthWithoutScrollBar = document.querySelector( "html" ).getBoundingClientRect().width
 		// Calc the scrollbar width
-		scrollbarWidth = parseInt( (widthWithScrollBar - widthWithoutScrollBar), 10 ) + 'px';
-		return scrollbarWidth;
+		scrollbarWidth = parseInt( ( widthWithScrollBar - widthWithoutScrollBar ), 10 ) + 'px'
+		return scrollbarWidth
 	}
 
 
 	function disableScroll() {
 		// Cover the missing scrollbar gap with a black div
-		let elemExists = document.getElementById( "js_psuedoScrollBar" );
+		let elemExists = document.getElementById( "js_psuedoScrollBar" )
 
 		if ( elemExists !== null ) {
-			document.getElementById( "js_psuedoScrollBar" ).style.display = 'block';
+			document.getElementById( "js_psuedoScrollBar" ).style.display = 'block'
 		} else {
-			let psuedoScrollBar = document.createElement( "div" );
-			psuedoScrollBar.setAttribute( "id", "js_psuedoScrollBar" );
-			psuedoScrollBar.style.position = 'fixed';
-			psuedoScrollBar.style.right = '0';
-			psuedoScrollBar.style.top = '0';
-			psuedoScrollBar.style.width = scrollbarWidth;
-			psuedoScrollBar.style.height = '100vh';
-			psuedoScrollBar.style.background = '#333';
-			psuedoScrollBar.style.zIndex = '9';
-			document.body.appendChild( psuedoScrollBar );
+			let psuedoScrollBar = document.createElement( "div" )
+			psuedoScrollBar.setAttribute( "id", "js_psuedoScrollBar" )
+			psuedoScrollBar.style.position = 'fixed'
+			psuedoScrollBar.style.right = '0'
+			psuedoScrollBar.style.top = '0'
+			psuedoScrollBar.style.width = scrollbarWidth
+			psuedoScrollBar.style.height = '100vh'
+			psuedoScrollBar.style.background = '#333'
+			psuedoScrollBar.style.zIndex = '9'
+			document.body.appendChild( psuedoScrollBar )
 		}
-		document.querySelector( "body" ).style.overflow = 'hidden';
-		document.querySelector( "html" ).style.paddingRight = scrollbarWidth;
+		document.querySelector( "body" ).style.overflow = 'hidden'
+		document.querySelector( "html" ).style.paddingRight = scrollbarWidth
 	}
 
 
 	function enableScroll() {
-		let elemExists = document.getElementById("js_psuedoScrollBar");
+		let elemExists = document.getElementById( "js_psuedoScrollBar" )
 		if ( elemExists !== null ) {
-			document.getElementById("js_psuedoScrollBar").style.display = 'none';
-			document.querySelector("body").style.overflow = 'visible';
-			document.querySelector("html").style.paddingRight = '0';
+			document.getElementById( "js_psuedoScrollBar" ).style.display = 'none'
+			document.querySelector( "body" ).style.overflow = 'visible'
+			document.querySelector( "html" ).style.paddingRight = '0'
 		}
 	}
 
@@ -262,11 +262,11 @@ const modal = () => {
 	// Poll for doc ready state
 	let docLoaded = setInterval( function() {
 		if( document.readyState === 'complete' ) {
-			clearInterval( docLoaded );
-			modal_init();
+			clearInterval( docLoaded )
+			modal_init()
 		}
-	}, 100);
+	}, 100 )
 
-};
+}
 
-export { modal };
+export { modal }
