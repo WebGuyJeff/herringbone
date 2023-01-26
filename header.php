@@ -64,6 +64,7 @@ namespace Jefferson\Herringbone;
 					)
 				);
 				?>
+
 			</div>
 
 			<div class="header_content header_content-right header_content-third">

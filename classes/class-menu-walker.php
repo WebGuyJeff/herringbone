@@ -266,6 +266,10 @@ class Menu_Walker extends Walker_Nav_Menu {
 		// Get CSS Classes.
 		if ( $is_parent ) {
 			$item_classes = 'dropdown_primary';
+			// Add top level item class(es) if provided.
+			if ( 0 === $depth && ! empty( $this->top_level_classes ) ) {
+				$item_classes .= ' ' . $this->top_level_classes;
+			}
 		} else {
 			$item_classes = $this->build_class_string( $item, $depth, $args );
 		}
@@ -334,18 +338,20 @@ class Menu_Walker extends Walker_Nav_Menu {
 	 */
 	public function end_el( &$output, $item, $depth = 0, $args = null ) {
 
-		$item = $this->item;
-		$icon = self::$icon;
-
-		// Passed from display_element.
-		$is_parent = $item->hb__is_parent;
-		$title     = $item->title;
+		$item  = $this->item;
+		$icon  = self::$icon;
+		$title = $item->title;
 
 		// Button aria attributes.
-		$aria_attributes  = ( $is_parent ) ? 'aria-pressed="false" aria-expanded="false" aria-haspopup="menu"' : '';
-		$aria_attributes .= ' aria-label="' . $title . '"';
+		$aria_attributes = 'aria-label="Open menu" aria-pressed="false" aria-expanded="false" aria-haspopup="menu"';
 
-		$output .= "{$this->n}{$this->i(0)}<button class=\"dropdown_toggle\" {$aria_attributes}>";
+		$toggle_classes = 'dropdown-toggle';
+		// Add top level item class(es) if provided.
+		if ( 0 === $depth && ! empty( $this->top_level_classes ) ) {
+			$toggle_classes .= ' ' . $this->top_level_classes;
+		}
+
+		$output .= "{$this->n}{$this->i(0)}<button class=\"{$toggle_classes}\" {$aria_attributes}>";
 		$output .= "{$this->n}{$this->i(1)}<span class=\"dropdown_toggleIcon\">{$icon}</span>";
 		$output .= "{$this->n}{$this->i(1)}<span class=\"screen-reader-text\">{$title}</span>";
 		$output .= "{$this->n}{$this->i(0)}</button>";
@@ -653,20 +659,10 @@ TEMPLATE;
 		);
 
 		// Classes.
-		$class_array     = array();
-		$menu_class      = $this->menu_class;
-		$top_class_array = explode( ' ', $this->top_level_classes );
+		$class_array       = array();
+		$menu_class        = $this->menu_class;
 
 		array_push( $class_array, $menu_class );
-
-		// Adds top level item classes if provded.
-		if ( 0 === $depth && ! empty( $top_class_array ) ) {
-			foreach ( $top_class_array as $top_class ) {
-				if ( ! empty( $top_class ) ) {
-					array_push( $class_array, $top_class );
-				}
-			}
-		}
 
 		// Adds a dropdown class to dropdown children.
 		if ( 0 < $depth ) {
@@ -689,6 +685,11 @@ TEMPLATE;
 			$class_string = ( $is_parent ) ? $class_string . ' ' . $css_block . $css_element . $css_modifier['parent'] : $class_string;
 			$class_string = ( $is_active ) ? $class_string . ' ' . $css_block . $css_element . $css_modifier['active'] : $class_string;
 			$class_string = ( $has_active ) ? $class_string . ' ' . $css_block . $css_element . $css_modifier['has_active'] : $class_string;
+		}
+
+		// Adds top level item class(es) if provided.
+		if ( 0 === $depth && ! empty( $this->top_level_classes ) && ! $is_parent ) {
+			$class_string .= ' ' . $this->top_level_classes;
 		}
 
 		return trim( $class_string );

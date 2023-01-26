@@ -24,7 +24,7 @@ namespace Jefferson\Herringbone;
 					'top_level_classes' => 'button button-noback',
 				)
 			);
-		?>
+			?>
 
 
 		<div class="footer_legalLinks">
@@ -39,8 +39,8 @@ namespace Jefferson\Herringbone;
 					)
 				);
 
-			echo "<p class=\"footer_label\">&copy; " . date("Y") . " Hello, my name is Jeff</p>";
-			?>
+				echo '<p class="footer_label">&copy; ' . date( 'Y' ) . ' Hello, my name is Jeff</p>';
+				?>
 		</div>
 
 	</div>

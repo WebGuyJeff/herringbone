@@ -147,9 +147,12 @@ const dropdownControl = {
 	 * @param {Event} event - The event object.
 	 */
 	hoverHandler: function ( event ) {
-		const button = event.target
-			.closest( '.dropdown-hover' )
-			.getElementsByClassName( 'dropdown_toggle' )[ 0 ]
+		const button = event.target.closest( '.dropdown-hover' ).getElementsByClassName( 'dropdown_toggle' )[ 0 ]
+
+console.log( event.target )
+console.log( button )
+
+
 
 		if ( event.type === 'mouseenter' ) {
 			// Open it.
@@ -160,7 +163,7 @@ const dropdownControl = {
 
 			// If this menu branch isn't hover-locked.
 			if (
-				!!button.closest( '[data-hover-lock="true"]' ) === false &&
+				!! button.closest( '[data-hover-lock="true"]' ) === false &&
 				button.classList.contains( 'dropdown_toggle-active' )
 			) {
 				/**
@@ -259,7 +262,7 @@ const dropdownControl = {
 	 */
 	registerHover: function ( dropdown ) {
 		// Only attach hover listeners to non-mobile menu.
-		if ( !!dropdown.closest( '.fullscreenMenu' ) === false ) {
+		if ( !! dropdown.closest( '.fullscreenMenu' ) === false ) {
 			dropdown.addEventListener(
 				'mouseenter',
 				dropdownControl.hoverHandler
@@ -307,8 +310,8 @@ const dropdownControl = {
 	menuClickHandler: function ( event ) {
 		// If click is on a dropdown toggle button or dropdown primary element.
 		if (
-			!!event.target.closest( '.dropdown_toggle' ) === true ||
-			!!event.target.closest( '.dropdown_primary' ) === true
+			!! event.target.closest( '.dropdown_toggle' ) === true ||
+			!! event.target.closest( '.dropdown_primary' ) === true
 		) {
 			// Find the toggle button inside the parent dropdown element.
 			const button = event.target
@@ -318,7 +321,7 @@ const dropdownControl = {
 			// If active and unlocked.
 			if (
 				button.classList.contains( 'dropdown_toggle-active' ) &&
-				!!button.closest( '[data-hover-lock="true"]' ) === false
+				!! button.closest( '[data-hover-lock="true"]' ) === false
 			) {
 				// Lock it.
 				button
@@ -328,7 +331,7 @@ const dropdownControl = {
 				// If active and locked.
 			} else if (
 				button.classList.contains( 'dropdown_toggle-active' ) &&
-				!!button.closest( '[data-hover-lock="true"]' ) === true
+				!! button.closest( '[data-hover-lock="true"]' ) === true
 			) {
 				// If it's the top level dropdown, unlock it.
 				if ( button.parentElement.classList.contains( 'dropdown-hover' ) ) {
@@ -376,6 +379,11 @@ const dropdownControl = {
 	 * @param {HTMLElement} button The dropdown button toggle element.
 	 */
 	open: function ( button ) {
+
+
+console.log( button )
+
+
 		const dropdown = button.parentElement
 
 		// Set dropdown swing direction on smaller screens.

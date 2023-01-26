@@ -1,9 +1,3 @@
-/*
- * Trying to setup browser refresh etc... see:
- * https://carrieforde.com/webpack-wordpress/.
- */
-
-
 const webpack              = require( 'webpack' )
 const path                 = require( 'path' )
 const MiniCssExtractPlugin = require( "mini-css-extract-plugin" )
@@ -41,8 +35,11 @@ module.exports = {
 		path: path.resolve( __dirname, 'js' ), // js output dir.
 	},
 	optimization: {
-		minimize: true,
-		minimizer: [ new CssMinimizerPlugin(), new TerserWebpackPlugin() ],
+		minimizer: [
+			new CssMinimizerPlugin(),
+			new TerserWebpackPlugin()
+		],
+		minimize: false
 	},
 	plugins: [
 		new MiniCssExtractPlugin( {
@@ -55,24 +52,34 @@ module.exports = {
 			include: /\.(js|css|scss)$/,
 		} ),
 		new BrowserSyncPlugin ( {
-			files: "**/*(php|js|css|scss)",
-			// browse to http://localhost:3000/ during development
-			host: 'localhost',
-			port: 8001,
+			// browse to http://localhost:3000/ during development.
+			port: 3000,
+			files: [
+				'**/*.php',
+				'**/*.(js|css|scss)',
+				'!./node_modules',
+				'!./vendor',
+				'!./dist',
+				'!./src'
+			],
 			/*
-			 * proxy the Webpack Dev Server endpoint
-			 * (which should be serving on http://localhost:3100/)
-			 * through BrowserSync
+			 * 'proxy' is the address where your WordPress site runs on locally. WordPress settings
+			 * site URL must be set to 'localhost:port' for this to work.
 			 */
-			proxy: 'http://localhost:8001/',
-			injectCss: true
+			proxy: 'localhost:8001',
+			ui: { port: 3001 }, // BrowserSync UI.
+			/*
+			 * injectChanges: true,
+			 * reloadDelay: 0,
+			 * cors: true
+			 */
 		} )
 	],
 	module: {
 		rules: [
 			{
 				test: /\.(css|scss)$/,
-				use: [ MiniCssExtractPlugin.loader, "css-loader", "sass-loader" ],
+				use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
 			},
 		],
 	},
