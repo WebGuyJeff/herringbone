@@ -1561,7 +1561,10 @@ a img.aligncenter {
 }
 	.dropdown_primary {
 		flex-grow: 1;
-		padding: 16px 8px 16px 16px;
+		margin-right: 0;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		padding-right: 0;
 		text-decoration: none;
 		color: inherit;
 	}
@@ -1570,10 +1573,11 @@ a img.aligncenter {
 		align-items: center;
 		justify-content: center;
 		transition: all var(--hb_slideTime) ease-in;
+		margin-left: 0;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
 		cursor: pointer;
-		padding-right: 16px;
-		padding-left: 16px;
-		width: 42px;
+		padding-left: 0;
 		color: inherit;
 	}
 	button.dropdown_toggle {
