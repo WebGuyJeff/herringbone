@@ -6,7 +6,7 @@ const TerserWebpackPlugin  = require( "terser-webpack-plugin" )
 const BrowserSyncPlugin    = require( "browser-sync-webpack-plugin" )
 const THEME                = require( './wp-theme-meta.json' )
 
-const banner =
+const wpThemeBanner =
 '/**\n' +
 ' * Theme Name: ' + THEME.themeName + '\n' +
 ' * Theme URI: ' + THEME.themeUri + '\n' +
@@ -24,14 +24,18 @@ const banner =
 ' */'
 
 module.exports = {
-	mode: "development", // "production" | "development".
+	cache: false,
+	stats: {
+		all: true,
+	},
 	devtool: "source-map",
 	entry: {
-		frontend: './src/frontend.js',
-		customizer: './src/customizer.js',
+		frontend: './src/js/frontend.js',
+		customizer: './src/js/customizer.js',
+		style: './src/css/style.js',
 	},
 	output: {
-		filename: '[name]-bundle.js', // js output filename.
+		filename: '[name].js', // js output filename.
 		path: path.resolve( __dirname, 'js' ), // js output dir.
 	},
 	optimization: {
@@ -43,36 +47,34 @@ module.exports = {
 	},
 	plugins: [
 		new MiniCssExtractPlugin( {
-			filename: "../style.css", // css output.
+			filename: "../[name].css", // css output relative to 'output' path.
 		} ),
 		new webpack.BannerPlugin( {
-			banner: banner, // the banner as string.
+			banner: wpThemeBanner, // the banner as string.
 			raw: true, // if true, banner will not be wrapped in a comment.
-			entryOnly: false,
-			include: /\.(js|css|scss)$/,
+			entryOnly: true,
+			include: /style\.(css|scss)$/
 		} ),
 		new BrowserSyncPlugin ( {
-			// browse to http://localhost:3000/ during development.
-			port: 3000,
 			files: [
 				'**/*.php',
-				'**/*.(js|css|scss)',
+				'./js/*.(js|jsx)',
+				'./style.css',
 				'!./node_modules',
-				'!./vendor',
+				'!./vendor*',
 				'!./dist',
-				'!./src'
+				'!./src',
+				'!./webpack.config.js',
+				'!./webpack.zip.config.js',
+				'!./package.json',
+				'!./package-lock.json',
+				'!./composer.json',
+				'!./composer.lock'
 			],
-			/*
-			 * 'proxy' is the address where your WordPress site runs on locally. WordPress settings
-			 * site URL must be set to 'localhost:port' for this to work.
-			 */
-			proxy: 'localhost:8001',
+			proxy: 'localhost:8001', // Live WordPress site. WordPress site URL must be set to 'localhost:port'.
 			ui: { port: 3001 }, // BrowserSync UI.
-			/*
-			 * injectChanges: true,
-			 * reloadDelay: 0,
-			 * cors: true
-			 */
+			port: 3000, // browse to http://localhost:3000/ during development.
+			logLevel: "debug"
 		} )
 	],
 	module: {

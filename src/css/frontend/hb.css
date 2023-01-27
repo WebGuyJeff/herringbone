@@ -1,15 +1,4 @@
 /*
-Theme Name: Herringbone
-Theme URI: https://jeffersonreal.uk
-Author: Jefferson Real
-Author URI: https://jeffersonreal.uk
-Description: The Herringbone theme adapted for WordPress
-Version: 0.6.2
-License: GNU General Public License v3.0
-License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
-*/
-
-/*
 
 ## NAMING CONVENTION
 
@@ -1537,7 +1526,6 @@ a img.aligncenter {
 	.dropdown_primary:hover,
 	.dropdown_primary:focus-visible {
 		outline: 0;
-		background-color: var(--hb_lightGreen);
 	}
 
 	.mainMenu_item-active {
@@ -1577,6 +1565,7 @@ a img.aligncenter {
 		transition: all var(--hb_slideTime) ease-in;
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
+		background-color: transparent;
 		cursor: pointer;
 		padding-left: 0;
 		color: inherit;
@@ -1596,7 +1585,7 @@ a img.aligncenter {
 	.dropdown_contents {
 		display: flex;
 		position: absolute;
-		top: 100%;
+		top: calc( 100% + 0.5em );
 		right: 0;
 		left: unset;
 		flex-flow: column nowrap;
@@ -1605,27 +1594,30 @@ a img.aligncenter {
 		z-index: 10;
 		background-color: var(--hb_white);
 		width: calc( 100% - 8px );
-		min-width: fit-content;
+		min-width: max-content;
 		max-height: 0;
 		overflow: hidden;
 		text-align: left;
 		color: var(--hb_black);
 		font-size: inherit;
 	}
-	@media ( min-width: 768px ) {
-		.dropdown_contents {
-			min-width: max-content;
-		}
-	}
-	.dropdown-hover > .dropdown_contents {
-		border-bottom-left-radius: 0.25em;
-		border-bottom-right-radius: 0.25em;
+
+	.dropdown_contents:not( .dropdown_contents .dropdown_contents ) {
+		border-radius: 0.5em;
 	}
 		.dropdown_item {
 			display: inline-flex;
 			background-color: transparent;
 			width: 100%;
+		}
+		.dropdown_contents a {
+			background-color: transparent;
+			width: 100%;
 			text-decoration: none;
+			padding: 0.25em 1em;
+		}
+		.dropdown_contents a:hover {
+			background: var(--hb_lightGrey);
 		}
 
 .dropdown_toggle-active > .dropdown_toggleIcon > svg {
@@ -1633,7 +1625,10 @@ a img.aligncenter {
 }
 	.dropdown_toggle-active + .dropdown_contents {
 		max-height: 500px; /*auto*/
-		padding-top: 3px;
+	}
+	.dropdown_toggle-active + .dropdown_contents:not( .dropdown_contents .dropdown_contents ) {
+		padding-top: 0.25em;
+		padding-bottom: 0.25em;
 	}
 	.dropdown:not( .dropdown-inMenu ):not( .fullscreenMenu .dropdown ) > .dropdown_toggle-active + .dropdown_contents {
 		box-shadow: 0px 4px 4px 0px #0008;
@@ -1659,6 +1654,9 @@ a img.aligncenter {
 		align-items: center;
 		align-self: stretch;
 		justify-content: center;
+		padding-left: 0.4em;
+		border: none;
+		border-left: solid 1px var(--hb_grey);
 	}
 	.dropdown-inMenu > .dropdown_contents {
 		position: static;
@@ -1667,24 +1665,13 @@ a img.aligncenter {
 		justify-content: center;
 		background-color: transparent;
 	}
-
-.dropdown-inMenu > .dropdown_toggle-active {
-	box-shadow: -2px -1px 4px -2px #0008;
-	border-top-left-radius: 0.5em;
-}
+	.dropdown-inMenu > .dropdown_toggle-active {
+		background-color: var(--hb_lightGrey);
+	}
 	.dropdown-inMenu > .dropdown_toggle-active + .dropdown_contents {
 		margin-left: 8px;
 		border-left: solid 4px;
 	}
-
-/* 'Tab' shadows */
-.dropdown-inMenu > .dropdown_toggle-active {
-	box-shadow: -3px -2px 4px -2px #0008;
-	border-top-left-radius: 0.5em;
-}
-.dropdown-inMenu > .dropdown_toggle-active + .dropdown_contents {
-	box-shadow: -20px -23px 4px -23px #0008;
-}
 
 
 /*----------------------------------------------------- 3.2 MOBILE >= 0em ----*/

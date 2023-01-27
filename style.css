@@ -18,16 +18,6 @@
   \******************************************************************************************************************/
 @charset "UTF-8";
 /*
-Theme Name: Herringbone
-Theme URI: https://jeffersonreal.uk
-Author: Jefferson Real
-Author URI: https://jeffersonreal.uk
-Description: The Herringbone theme adapted for WordPress
-Version: 0.6.2
-License: GNU General Public License v3.0
-License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
-*/
-/*
 
 ## NAMING CONVENTION
 
@@ -1504,7 +1494,6 @@ button.mainMenu_item:hover,
 .dropdown_primary:hover,
 .dropdown_primary:focus-visible {
   outline: 0;
-  background-color: var(--hb_lightGreen);
 }
 
 .mainMenu_item-active {
@@ -1543,6 +1532,7 @@ button.mainMenu_item:hover,
   transition: all var(--hb_slideTime) ease-in;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  background-color: transparent;
   cursor: pointer;
   padding-left: 0;
   color: inherit;
@@ -1566,7 +1556,7 @@ button.mainMenu_item:hover,
 .dropdown_contents {
   display: flex;
   position: absolute;
-  top: 100%;
+  top: calc(100% + 0.5em);
   right: 0;
   left: unset;
   flex-flow: column nowrap;
@@ -1575,7 +1565,7 @@ button.mainMenu_item:hover,
   z-index: 10;
   background-color: var(--hb_white);
   width: calc(100% - 8px);
-  min-width: fit-content;
+  min-width: max-content;
   max-height: 0;
   overflow: hidden;
   text-align: left;
@@ -1583,21 +1573,25 @@ button.mainMenu_item:hover,
   font-size: inherit;
 }
 
-@media (min-width: 768px) {
-  .dropdown_contents {
-    min-width: max-content;
-  }
-}
-.dropdown-hover > .dropdown_contents {
-  border-bottom-left-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
+.dropdown_contents:not(.dropdown_contents .dropdown_contents) {
+  border-radius: 0.5em;
 }
 
 .dropdown_item {
   display: inline-flex;
   background-color: transparent;
   width: 100%;
+}
+
+.dropdown_contents a {
+  background-color: transparent;
+  width: 100%;
   text-decoration: none;
+  padding: 0.25em 1em;
+}
+
+.dropdown_contents a:hover {
+  background: var(--hb_lightGrey);
 }
 
 .dropdown_toggle-active > .dropdown_toggleIcon > svg {
@@ -1606,7 +1600,11 @@ button.mainMenu_item:hover,
 
 .dropdown_toggle-active + .dropdown_contents {
   max-height: 500px; /*auto*/
-  padding-top: 3px;
+}
+
+.dropdown_toggle-active + .dropdown_contents:not(.dropdown_contents .dropdown_contents) {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
 }
 
 .dropdown:not(.dropdown-inMenu):not(.fullscreenMenu .dropdown) > .dropdown_toggle-active + .dropdown_contents {
@@ -1635,6 +1633,9 @@ button.mainMenu_item:hover,
   align-items: center;
   align-self: stretch;
   justify-content: center;
+  padding-left: 0.4em;
+  border: none;
+  border-left: solid 1px var(--hb_grey);
 }
 
 .dropdown-inMenu > .dropdown_contents {
@@ -1646,23 +1647,12 @@ button.mainMenu_item:hover,
 }
 
 .dropdown-inMenu > .dropdown_toggle-active {
-  box-shadow: -2px -1px 4px -2px rgba(0, 0, 0, 0.5333333333);
-  border-top-left-radius: 0.5em;
+  background-color: var(--hb_lightGrey);
 }
 
 .dropdown-inMenu > .dropdown_toggle-active + .dropdown_contents {
   margin-left: 8px;
   border-left: solid 4px;
-}
-
-/* 'Tab' shadows */
-.dropdown-inMenu > .dropdown_toggle-active {
-  box-shadow: -3px -2px 4px -2px rgba(0, 0, 0, 0.5333333333);
-  border-top-left-radius: 0.5em;
-}
-
-.dropdown-inMenu > .dropdown_toggle-active + .dropdown_contents {
-  box-shadow: -20px -23px 4px -23px rgba(0, 0, 0, 0.5333333333);
 }
 
 /*----------------------------------------------------- 3.2 MOBILE >= 0em ----*/
@@ -1942,10 +1932,9 @@ overflow hidden
 /*!*********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/css/frontend/fonts.css ***!
   \*********************************************************************************************************************/
-/*
-# Fonts CSS INDEX
+/* INDEX
 
-o 1. Fonts
+1. Fonts
 	1.1 Sans Serif
 		1.1.1 Google Fonts - Inter
 		1.1.2 Google Fonts - Open Sans
@@ -1956,7 +1945,6 @@ o 1. Fonts
 		1.3.2 CDN Fonts - Jokerman
 	1.4 Handwriting
 		1.4.1 Google Fonts - Kalam
-
 */
 /*============================================================== 1. Fonts ====*/
 /*------------------------------------------------------------ 1.1 Sans Serif */
@@ -2176,20 +2164,7 @@ o 1. Fonts
 /*!***********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/css/frontend/landing.css ***!
   \***********************************************************************************************************************/
-/*~~~~~~~~~~oOo~~~~~~~~~~o~
-~o DOCUMENT  INFORMATION o~
-
-o Document  Herringbone Theme - Global Landing Page CSS
-o Version   v0.1
-o Author	Jefferson Real
-o Contact   me@jeffersonreal.uk
-
-This style sheet must only contain styles for the landing pages. It will ONLY be
-loaded on landing pages. Styles specific to a single landing page should go in
-that pages dedicated css file.
-
-~o~~~~oOo~~~~o~
-~o CSS INDEX o~
+/* INDEX
 
 1. GLOBAL
 	1.1 GLOBAL - ROOT STUFF
@@ -2917,21 +2892,7 @@ h6 {
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/css/frontend/landing-dev.css ***!
   \***************************************************************************************************************************/
 @charset "UTF-8";
-/*~~~~~~~~~~oOo~~~~~~~~~~o~
-~o DOCUMENT  INFORMATION o~
-
-o Document  Herringbone Theme - Developer Landing Page CSS
-o Version   v0.1
-o Author	Jefferson Real
-o Contact   me@jeffersonreal.uk
-
-This style sheet must only contain styles specific to the developer landing
-page. It will ONLY be loaded for this single page. Any styles to be reused on
-multiple landing pages should go in landing.css.
-
-
-~o~~~~oOo~~~~o~
-~o CSS INDEX o~
+/* INDEX
 
 1. PAGE
 	*empty*

@@ -1,69 +1,6 @@
-/**
- * Theme Name: Herringbone
- * Theme URI: https://github.com/wordpressjeff/herringbone#readme
- * Author: Jefferson Real
- * Author URI: https://jeffersonreal.uk
- * Description: A WordPress theme for my developer site and blog.
- * Tags: blog, sidebar, 2-column, 3-column, custom-logo, sidebar-widgets
- * Version: 0.6.2
- * Requires at least: 5.0
- * Tested up to: 6.1.1
- * Requires PHP: 8.0
- * License: GPL-3.0-or-later
- * License URI: https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain: herringbone
- */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
-
-/***/ "./src/css/frontend/fonts.css":
-/*!************************************!*\
-  !*** ./src/css/frontend/fonts.css ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./src/css/frontend/hb.css":
-/*!*********************************!*\
-  !*** ./src/css/frontend/hb.css ***!
-  \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./src/css/frontend/landing-dev.css":
-/*!******************************************!*\
-  !*** ./src/css/frontend/landing-dev.css ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./src/css/frontend/landing.css":
-/*!**************************************!*\
-  !*** ./src/css/frontend/landing.css ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
 
 /***/ "./src/js/frontend/css-animator.js":
 /*!*****************************************!*\
@@ -1458,24 +1395,18 @@ const uspSection = () => {
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!*************************!*\
-  !*** ./src/frontend.js ***!
-  \*************************/
+/*!****************************!*\
+  !*** ./src/js/frontend.js ***!
+  \****************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _css_frontend_hb_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/frontend/hb.css */ "./src/css/frontend/hb.css");
-/* harmony import */ var _css_frontend_fonts_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/frontend/fonts.css */ "./src/css/frontend/fonts.css");
-/* harmony import */ var _css_frontend_landing_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/frontend/landing.css */ "./src/css/frontend/landing.css");
-/* harmony import */ var _css_frontend_landing_dev_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./css/frontend/landing-dev.css */ "./src/css/frontend/landing-dev.css");
-/* harmony import */ var _js_frontend_dropdown_control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/frontend/dropdown-control */ "./src/js/frontend/dropdown-control.js");
-/* harmony import */ var _js_frontend_hideheader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/frontend/hideheader */ "./src/js/frontend/hideheader.js");
-/* harmony import */ var _js_frontend_mobile_popup_menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/frontend/mobile-popup-menu */ "./src/js/frontend/mobile-popup-menu.js");
-/* harmony import */ var _js_frontend_modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/frontend/modal */ "./src/js/frontend/modal.js");
-/* harmony import */ var _js_frontend_screenclass__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./js/frontend/screenclass */ "./src/js/frontend/screenclass.js");
-/* harmony import */ var _js_frontend_usp_section__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./js/frontend/usp-section */ "./src/js/frontend/usp-section.js");
+/* harmony import */ var _frontend_dropdown_control__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./frontend/dropdown-control */ "./src/js/frontend/dropdown-control.js");
+/* harmony import */ var _frontend_hideheader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./frontend/hideheader */ "./src/js/frontend/hideheader.js");
+/* harmony import */ var _frontend_mobile_popup_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./frontend/mobile-popup-menu */ "./src/js/frontend/mobile-popup-menu.js");
+/* harmony import */ var _frontend_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./frontend/modal */ "./src/js/frontend/modal.js");
+/* harmony import */ var _frontend_screenclass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./frontend/screenclass */ "./src/js/frontend/screenclass.js");
+/* harmony import */ var _frontend_usp_section__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./frontend/usp-section */ "./src/js/frontend/usp-section.js");
 /**
- * Index file for js modules.
- * 
- * This file is used to import JS modules providing an entry point for Webpack bundling.
+ * Webpack entry point.
  * 
  * @link https://metabox.io/modernizing-javascript-code-in-wordpress/
  */
@@ -1487,20 +1418,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-_js_frontend_dropdown_control__WEBPACK_IMPORTED_MODULE_4__.dropdownControl.initialise()
-;(0,_js_frontend_hideheader__WEBPACK_IMPORTED_MODULE_5__.hideHeader)()
-;(0,_js_frontend_mobile_popup_menu__WEBPACK_IMPORTED_MODULE_6__.mobilePopupMenu)()
-;(0,_js_frontend_modal__WEBPACK_IMPORTED_MODULE_7__.modal)()
-;(0,_js_frontend_screenclass__WEBPACK_IMPORTED_MODULE_8__.screenClass)()
-;(0,_js_frontend_usp_section__WEBPACK_IMPORTED_MODULE_9__.uspSection)()
+_frontend_dropdown_control__WEBPACK_IMPORTED_MODULE_0__.dropdownControl.initialise()
+;(0,_frontend_hideheader__WEBPACK_IMPORTED_MODULE_1__.hideHeader)()
+;(0,_frontend_mobile_popup_menu__WEBPACK_IMPORTED_MODULE_2__.mobilePopupMenu)()
+;(0,_frontend_modal__WEBPACK_IMPORTED_MODULE_3__.modal)()
+;(0,_frontend_screenclass__WEBPACK_IMPORTED_MODULE_4__.screenClass)()
+;(0,_frontend_usp_section__WEBPACK_IMPORTED_MODULE_5__.uspSection)()
 
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=frontend-bundle.js.map
+//# sourceMappingURL=frontend.js.map

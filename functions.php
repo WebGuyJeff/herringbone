@@ -28,11 +28,11 @@ function enqueue_scripts_and_styles() {
 	wp_enqueue_style( 'style_css', get_template_directory_uri() . '/style.css', array(), filemtime( get_template_directory() . '/style.css' ), 'all' );
 	// If the site is being previewed in the Customizer.
 	if ( is_customize_preview() ) {
-		wp_enqueue_script( 'hb_customizer-bundle_js', get_template_directory_uri() . '/js/customizer-bundle.js', array(), '0.1', true );
+		wp_enqueue_script( 'hb_customizer_js', get_template_directory_uri() . '/js/customizer.js', array(), filemtime( get_template_directory() . '/js/customizer.js' ), true );
 	}
 	// If not in admin area.
 	if ( ! is_admin() && $GLOBALS['pagenow'] !== 'wp-login.php' ) {
-		wp_enqueue_script( 'hb_frontend-bundle_js', get_template_directory_uri() . '/js/frontend-bundle.js', array(), '0.1', true );
+		wp_enqueue_script( 'hb_frontend_js', get_template_directory_uri() . '/js/frontend.js', array(), filemtime( get_template_directory() . '/js/frontend.js' ), true );
 		// De-register wp jquery and use CDN.
 		wp_deregister_script( 'jquery' );
 		wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js', array(), '3.6.0', true );
@@ -41,22 +41,22 @@ function enqueue_scripts_and_styles() {
 		// CSSRule this is part of core but there's a separate CDN?
 		wp_register_script( 'gsap_cssrule', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/CSSRulePlugin.min.js', array( 'gsap' ), '3.9.1', true );
 		wp_register_script( 'gsap_scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js', array( 'gsap' ), '3.9.1', true );
-		wp_register_script( 'svgWheel_js', get_template_directory_uri() . '/animation/svgWheel/svgWheel.js', array( 'gsap_cssrule' ), '1.0', true );
-		// wp_enqueue_style( 'jetbrains', 'https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap', array(), time() , 'all');.
+		wp_register_script( 'svgWheel_js', get_template_directory_uri() . '/animation/svgWheel/svgWheel.js', array( 'gsap_cssrule' ), filemtime( get_template_directory() . '/animation/svgWheel/svgWheel.js' ), true );
 	}
 	global $template;
-	if ( ! is_admin() && basename( $template ) == 'landing-page.php' ) {
+	if ( ! is_admin() && basename( $template ) === 'landing-page.php' ) {
 		bigup_remove_wp_block_library_css();
 	}
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts_and_styles' );
 
+/**
+ * Remove gutenburg CSS.
+ */
 function bigup_remove_wp_block_library_css() {
-	wp_dequeue_style( 'wp-block-library' );       // Gutenburg CSS
-	wp_dequeue_style( 'wp-block-library-theme' ); // Gutenburg CSS
-	wp_dequeue_style( 'wc-blocks-style' );        // WooCommerce block CSS
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'wp-block-library-theme' );
 }
-
 
 // ======================================================= Basic WordPress setup
 

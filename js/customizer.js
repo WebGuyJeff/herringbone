@@ -1,18 +1,3 @@
-/**
- * Theme Name: Herringbone
- * Theme URI: https://github.com/wordpressjeff/herringbone#readme
- * Author: Jefferson Real
- * Author URI: https://jeffersonreal.uk
- * Description: A WordPress theme for my developer site and blog.
- * Tags: blog, sidebar, 2-column, 3-column, custom-logo, sidebar-widgets
- * Version: 0.6.2
- * Requires at least: 5.0
- * Tested up to: 6.1.1
- * Requires PHP: 8.0
- * License: GPL-3.0-or-later
- * License URI: https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain: herringbone
- */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -107,25 +92,23 @@ console.log( 'This module will contain customizer JS' )
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!***************************!*\
-  !*** ./src/customizer.js ***!
-  \***************************/
+/*!******************************!*\
+  !*** ./src/js/customizer.js ***!
+  \******************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_customizer_customizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/customizer/customizer.js */ "./src/js/customizer/customizer.js");
+/* harmony import */ var _customizer_customizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./customizer/customizer.js */ "./src/js/customizer/customizer.js");
 /**
- * Index file for js modules.
- * 
- * This file is used to import JS modules providing an entry point for Webpack bundling.
+ * Webpack entry point.
  * 
  * @link https://metabox.io/modernizing-javascript-code-in-wordpress/
  */
 
 
 
-(0,_js_customizer_customizer_js__WEBPACK_IMPORTED_MODULE_0__.customizer)()
+(0,_customizer_customizer_js__WEBPACK_IMPORTED_MODULE_0__.customizer)()
 
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=customizer-bundle.js.map
+//# sourceMappingURL=customizer.js.map
