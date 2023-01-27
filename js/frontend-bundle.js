@@ -464,11 +464,6 @@ const dropdownControl = {
 	hoverHandler: function ( event ) {
 		const button = event.target.closest( '.dropdown-hover' ).getElementsByClassName( 'dropdown_toggle' )[ 0 ]
 
-console.log( event.target )
-console.log( button )
-
-
-
 		if ( event.type === 'mouseenter' ) {
 			// Open it.
 			dropdownControl.open( button )
@@ -694,10 +689,6 @@ console.log( button )
 	 * @param {HTMLElement} button The dropdown button toggle element.
 	 */
 	open: function ( button ) {
-
-
-console.log( button )
-
 
 		const dropdown = button.parentElement
 

@@ -345,7 +345,7 @@ class Menu_Walker extends Walker_Nav_Menu {
 		// Button aria attributes.
 		$aria_attributes = 'aria-label="Open menu" aria-pressed="false" aria-expanded="false" aria-haspopup="menu"';
 
-		$toggle_classes = 'dropdown-toggle';
+		$toggle_classes = 'dropdown_toggle';
 		// Add top level item class(es) if provided.
 		if ( 0 === $depth && ! empty( $this->top_level_classes ) ) {
 			$toggle_classes .= ' ' . $this->top_level_classes;
@@ -659,8 +659,8 @@ TEMPLATE;
 		);
 
 		// Classes.
-		$class_array       = array();
-		$menu_class        = $this->menu_class;
+		$class_array = array();
+		$menu_class  = $this->menu_class;
 
 		array_push( $class_array, $menu_class );
 
