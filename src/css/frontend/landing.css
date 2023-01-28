@@ -111,22 +111,22 @@
 
 /*--------------------------------------- 1.4 GLOBAL - MASONFLOP LAYOUT ----*/
 
-/* Masonry + FlipFlop = MasonFlop */
+/* Masonry + FlipFlop = MasonFlop obvz */
 
 
 .masonFlop {
-    padding: 2em;
     width: 100%;
+	margin: 0.5em;
 }
 	.masonFlop_card {
-		gap: 2em;
+		gap: 0.5em;
 		display: flex;
 		flex: 1 1 auto;
 		flex-flow: column;
-		margin-bottom: 2em;
-		border-radius: 2em;
+		margin-bottom: 0.5em;
+		border-radius: 0.5em;
 		background: #fff3d4;
-		padding: 2em;
+		padding: 1em;
 	}
 		.masonFlop_content-left,
 		.masonFlop_content-right {
@@ -140,15 +140,16 @@
                 border-radius: 1em;
             }
 
-@media (max-width: 320px) {
+@media (min-width: 320px) {
 	.masonFlop {
-		margin: 0.5em;
+		padding: 2em;
+		margin: 0;
 	}
 	.masonFlop_card {
-		gap: 0.5em;
-		margin-bottom: 0.5em;
-		border-radius: 0.5em;
-		padding: 1em;
+		gap: 2em;
+		margin-bottom: 2em;
+		border-radius: 2em;
+		padding: 2em;
 	}
 }
 

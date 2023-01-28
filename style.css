@@ -1127,7 +1127,7 @@ form.wp-block-search {
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - 2.5.8 MENU TOGGLE - - */
 .menuToggle {
   display: flex;
-  position: absolute;
+  position: fixed;
   top: 1.5em;
   right: 1.5em;
   border: none;
@@ -1468,6 +1468,10 @@ form.wp-block-search {
   white-space: normal;
 }
 
+.mainMenu_item a {
+  color: inherit;
+}
+
 @media (min-width: 600px) {
   .mainMenu_item {
     white-space: nowrap;
@@ -1510,6 +1514,7 @@ button.mainMenu_item:hover,
   min-height: fit-content;
   grid-template-areas: "a b" "c c";
   grid-template-columns: 1fr auto;
+  color: inherit;
 }
 
 .dropdown_primary {
@@ -1638,13 +1643,20 @@ button.mainMenu_item:hover,
   line-height: 1.4;
 }
 
+.dropdown-inMenu > .dropdown_primary > *:first-child {
+  padding: 0;
+}
+
 .dropdown-inMenu > .dropdown_toggle {
   align-items: center;
   align-self: stretch;
   justify-content: center;
-  padding-left: 0.4em;
   border: none;
-  /*border-left: solid 1px var(--hb_grey);*/
+  padding: 0;
+}
+
+.dropdown-inMenu > .dropdown_toggle > *:first-child {
+  padding: 0 1em;
 }
 
 .dropdown-inMenu > .dropdown_toggle:before {
@@ -2277,21 +2289,21 @@ overflow hidden
   }
 }
 /*--------------------------------------- 1.4 GLOBAL - MASONFLOP LAYOUT ----*/
-/* Masonry + FlipFlop = MasonFlop */
+/* Masonry + FlipFlop = MasonFlop obvz */
 .masonFlop {
-  padding: 2em;
   width: 100%;
+  margin: 0.5em;
 }
 
 .masonFlop_card {
-  gap: 2em;
+  gap: 0.5em;
   display: flex;
   flex: 1 1 auto;
   flex-flow: column;
-  margin-bottom: 2em;
-  border-radius: 2em;
+  margin-bottom: 0.5em;
+  border-radius: 0.5em;
   background: #fff3d4;
-  padding: 2em;
+  padding: 1em;
 }
 
 .masonFlop_content-left,
@@ -2308,15 +2320,16 @@ overflow hidden
   border-radius: 1em;
 }
 
-@media (max-width: 320px) {
+@media (min-width: 320px) {
   .masonFlop {
-    margin: 0.5em;
+    padding: 2em;
+    margin: 0;
   }
   .masonFlop_card {
-    gap: 0.5em;
-    margin-bottom: 0.5em;
-    border-radius: 0.5em;
-    padding: 1em;
+    gap: 2em;
+    margin-bottom: 2em;
+    border-radius: 2em;
+    padding: 2em;
   }
 }
 /* flip-flop */

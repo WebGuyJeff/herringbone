@@ -1172,7 +1172,7 @@ a img.aligncenter {
 
 .menuToggle {
 	display: flex;
-	position: absolute;
+	position: fixed;
     top: 1.5em;
     right: 1.5em;
 	border: none;
@@ -1499,6 +1499,9 @@ a img.aligncenter {
 		text-decoration: none;
 		white-space: normal;
 	}
+	.mainMenu_item a {
+		color: inherit;
+	}
 	@media (min-width: 600px) {
 		.mainMenu_item {
 			white-space: nowrap;
@@ -1546,6 +1549,7 @@ a img.aligncenter {
 		"a b"
 		"c c";
 	grid-template-columns: 1fr auto;
+	color: inherit;
 }
 	.dropdown_primary {
 		flex-grow: 1;
@@ -1660,14 +1664,19 @@ a img.aligncenter {
 	justify-content: space-between;
 	line-height: 1.4;
 }
+	.dropdown-inMenu > .dropdown_primary > *:first-child {
+		padding: 0;
+	}
 	.dropdown-inMenu > .dropdown_toggle {
 		align-items: center;
 		align-self: stretch;
 		justify-content: center;
-		padding-left: 0.4em;
 		border: none;
-		/*border-left: solid 1px var(--hb_grey);*/
+		padding: 0;
 	}
+		.dropdown-inMenu > .dropdown_toggle > *:first-child  {
+			padding: 0 1em;
+		}
 	.dropdown-inMenu > .dropdown_toggle:before {
 		content: '';
 		display: block;
@@ -1675,7 +1684,6 @@ a img.aligncenter {
 		height: 80%;
 		border-left: solid 1px var(--hb_grey);
 	}
-
 	.dropdown-inMenu > .dropdown_toggle:hover,
 	.dropdown-inMenu > .dropdown_toggle-active {
 		border-top: solid 1px var(--hb_grey);

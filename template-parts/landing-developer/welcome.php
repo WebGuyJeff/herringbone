@@ -13,10 +13,10 @@
 <div class="landing_content" style="--row: 1 / -1; --col: narrow-l / narrow-r;">
 	<div class="chalkboard ">
 
-        <div class="chalkboard_pinChalkboardTop">
-            <?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-left.svg' ) ); ?>
+		<div class="chalkboard_pinChalkboardTop">
+			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-left.svg' ) ); ?>
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-right.svg' ) ); ?>
-        </div>
+		</div>
 
 		<div class="copy">
 
@@ -38,40 +38,28 @@
 
 			<ul class="chalkboard_list" style="list-style:none; margin:1em 0; padding:0;">
 				<li>
-                    <a href="#web%2Ddesign" class="chalkboard_link">
-                        <?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-design.svg' ) ); ?>
-                        Web Design
-                    </a>
+					<a href="#web%2Ddesign" class="chalkboard_link">
+						<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-design.svg' ) ); ?>
+						Web Design
+					</a>
 				</li>
 				<li>
-                    <a href="#web%2Ddevelopment" class="chalkboard_link">
-                        <?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-develop.svg' ) ); ?>
-                        Web Development
-                    </a>
-				</li>
-                <li>
-                    <a href="#wordpress%2Dexpert" class="chalkboard_link">
-                        <?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-wordpress.svg' ) ); ?>
-                        WordPress Expert
-                    </a>
+					<a href="#web%2Ddevelopment" class="chalkboard_link">
+						<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-develop.svg' ) ); ?>
+						Web Development
+					</a>
 				</li>
 				<li>
-                    <a href="#hosting%2Dand%2Dsupport" class="chalkboard_link">
-                        <?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-support.svg' ) ); ?>
-                        Hosting &amp; Support
-                    </a>
+					<a href="#hosting%2Dand%2Dsupport" class="chalkboard_link">
+						<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-support.svg' ) ); ?>
+						Hosting &amp; Support
+					</a>
 				</li>
 				<li>
-                    <a href="#search%2Dengine%2Doptimisation" class="chalkboard_link">
-                        <?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-seo.svg' ) ); ?>
-                        Search Engine Optimisation
-                    </a>
-				</li>
-				<li>
-                    <a href="#digital%2Dmarketing" class="chalkboard_link">
-                        <?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-digital-marketing.svg' ) ); ?>
-                        Digital Marketing
-                    </a>
+					<a href="#search%2Dengine%2Doptimisation" class="chalkboard_link">
+						<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-seo.svg' ) ); ?>
+						Search Engine Optimisation
+					</a>
 				</li>
 			</ul>
 
@@ -85,35 +73,35 @@
 				one Zoom call away from being anywhere in the world.
 			</p>
 
-            <div class="textAlignCenter">
-                <button
-                    aria-label="Send Me a Message"
-                    title="Send Me a Message"
-                    type="button"
-                    id="modal_contactForm"
-                    class="button aligncenter modal_control-open"
-                >
-                    <span>
-                        Message Me
-                    </span>
-                </button>
-            </div>
+			<div class="textAlignCenter">
+				<button
+					aria-label="Send Me a Message"
+					title="Send Me a Message"
+					type="button"
+					id="modal_contactForm"
+					class="button aligncenter modal_control-open"
+				>
+					<span>
+						Message Me
+					</span>
+				</button>
+			</div>
 		</div>
 	</div>
-    <div class="chalkboard_pinChalkboardRight">
-        <div class="svg_dimensionsBox">
-            <?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/me.svg' ) ); ?>
-        </div>
-    </div>
+	<div class="chalkboard_pinChalkboardRight">
+		<div class="svg_dimensionsBox">
+			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/me.svg' ) ); ?>
+		</div>
+	</div>
 </div>
 <div class="landing_backdrop">
 	<?php
-        echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-fills.svg' ) );
+		echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-fills.svg' ) );
 		echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/sun.svg' ) );
 		echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/clouds.svg' ) );
 	?>
 	<div class="desert_terrain">
-        <?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-sand.svg' ) ); ?>
-        <?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-furniture.svg' ) ); ?>
+		<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-sand.svg' ) ); ?>
+		<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/desert-furniture.svg' ) ); ?>
 	</div>
 </div>
