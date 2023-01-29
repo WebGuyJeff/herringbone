@@ -1168,16 +1168,12 @@ form.wp-block-search {
 
 .menuToggle .line {
   fill: none;
-  stroke: var(--hb_white);
+  stroke: var(--hb_black);
   stroke-width: 11px;
 }
 
 .menuToggle:hover .line {
   cursor: pointer;
-}
-
-.menu_active .menuToggle .line {
-  stroke: var(--hb_black);
 }
 
 .menu_active .menuToggle_x {
@@ -2899,28 +2895,28 @@ h4.screen_title > span:nth-of-type(3) {
 }
 /*============================================================ 3. THEMES =====*/
 /*--------------------------------------------------- 3.1 THEMES - MEXICO ----*/
+/*
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: "wellfleet";
-  font-weight: 400;
-  letter-spacing: normal;
+	font-family: 'wellfleet';
+	font-weight: 400;
+	letter-spacing: normal;
 }
 
 .title-hype {
-  color: var(--hb_darkGreen);
-  font-weight: 900;
-  white-space: nowrap;
+	color: var(--hb_darkGreen);
+	font-weight: 900;
+	white-space: nowrap;
 }
-
 @media (max-width: 500px) {
-  .title-hype {
-    font-size: clamp(100%, 8vmin, 250%);
-  }
-}
+	.title-hype {
+		font-size: clamp(100%, 8vmin, 250%);
+	}
+}*/
 /*!***************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/css/frontend/landing-dev.css ***!
   \***************************************************************************************************************************/

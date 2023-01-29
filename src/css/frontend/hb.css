@@ -1207,15 +1207,12 @@ a img.aligncenter {
 		}
 		.menuToggle .line {
 			fill: none;
-			stroke: var(--hb_white);
+			stroke: var(--hb_black);
 			stroke-width: 11px;
 		}
 			.menuToggle:hover .line {
 				cursor: pointer;
 			}
-				.menu_active .menuToggle .line {
-					stroke: var(--hb_black);
-				}
 				.menu_active .menuToggle_x {
 					transform: scale(1);
 				}

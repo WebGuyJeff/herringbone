@@ -50,15 +50,15 @@
 					</a>
 				</li>
 				<li>
-					<a href="#hosting%2Dand%2Dsupport" class="chalkboard_link">
-						<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-support.svg' ) ); ?>
-						Hosting &amp; Support
-					</a>
-				</li>
-				<li>
 					<a href="#search%2Dengine%2Doptimisation" class="chalkboard_link">
 						<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-seo.svg' ) ); ?>
 						Search Engine Optimisation
+					</a>
+				</li>
+				<li>
+					<a href="#hosting%2Dand%2Dsupport" class="chalkboard_link">
+						<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-support.svg' ) ); ?>
+						Hosting &amp; Support
 					</a>
 				</li>
 			</ul>
