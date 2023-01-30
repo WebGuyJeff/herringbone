@@ -36,33 +36,6 @@
 				support.
 			</p>
 
-			<ul class="chalkboard_list" style="list-style:none; margin:1em 0; padding:0;">
-				<li>
-					<a href="#web%2Ddesign" class="chalkboard_link">
-						<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-design.svg' ) ); ?>
-						Web Design
-					</a>
-				</li>
-				<li>
-					<a href="#web%2Ddevelopment" class="chalkboard_link">
-						<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-develop.svg' ) ); ?>
-						Web Development
-					</a>
-				</li>
-				<li>
-					<a href="#search%2Dengine%2Doptimisation" class="chalkboard_link">
-						<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-seo.svg' ) ); ?>
-						Search Engine Optimisation
-					</a>
-				</li>
-				<li>
-					<a href="#hosting%2Dand%2Dsupport" class="chalkboard_link">
-						<?php echo file_get_contents( get_theme_file_path( 'imagery/icons_services/icon-support.svg' ) ); ?>
-						Hosting &amp; Support
-					</a>
-				</li>
-			</ul>
-
 			<h2 class="chalkboard_cta">
 				Need Website Help?
 			</h2>

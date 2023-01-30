@@ -1700,6 +1700,84 @@ a img.aligncenter {
 	}
 
 
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - 3.1.8 LILCARDS - - */
+
+
+.lilCards {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	width: 100%;
+	max-width: calc( 100% - 2em);
+	margin: 0 auto;
+	gap: 1em;
+	padding: 3em 1em;
+
+	.lilCards_card {
+		display: flex;
+		flex: 0 1 22em;
+		flex-flow: column;
+		align-items: center;
+		justify-content: center;
+		border-radius: 1em;
+		box-shadow: 0 0 2em 0 #0004;
+		background: #fff;
+		padding: 2em 0.5em;
+		width: 33.333%;
+		text-decoration: none;
+		color: inherit;
+		
+		&:last-child {
+			flex-flow: row wrap;
+			flex: 0 0 100%;
+			max-width: 68em;
+		}
+	}
+
+	.lilCards_content {
+		display: flex;
+		flex: 0 1 22em;
+		flex-flow: column;
+		align-items: center;
+		justify-content: center;
+		padding: 2em 0.5em;
+		width: 50%;
+	}
+
+	.lilCards_icon {
+		aspect-ratio: 1/1;
+		flex: 1 1 30%;
+		background-image: var(--hb_iconBackground);
+		background-position: top;
+		background-repeat: no-repeat;
+		background-size: 100%;
+		padding: 0.5em;
+		width: 3.5em;
+		overflow: visible;
+	}
+
+	.lilCards_title {
+		font-size: 150%;
+	}
+
+	.lilCards_list {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		line-height: 1.8;
+
+		li {
+			margin-block-end: .3em;
+			text-transform: capitalize;
+			font-size: var(--hb_font-s);
+		}
+	}
+}
+
+
 /*----------------------------------------------------- 3.2 MOBILE >= 0em ----*/
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - -  3.2.1 THUMBNAV - - */
 
@@ -1951,6 +2029,29 @@ overflow hidden
 	background: radial-gradient(at center top, #0061ffa3, #ffffff2e),
 				radial-gradient(at center bottom, #ff8f00, #000000d4);
 	height: 80vmin;
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 4.2 ROLLBY - - */
+
+
+.rollByAnim_container {
+    display: flex;
+    position: relative;
+    justify-content: left;
+    align-items: flex-start;
+    overflow: hidden;
+    box-sizing: border-box;
+	height: fit-content;
+    width: 100%;
+	
+	#svg_tumbleweed {
+		position: absolute;
+		top: 15%;
+		height: clamp( 200px, 40vmin, 80% );
+		width: auto;
+		right: 100%;
+	}
 }
 
 
