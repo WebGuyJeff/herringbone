@@ -26,7 +26,7 @@ const wpThemeBanner =
 module.exports = {
 	cache: false,
 	stats: {
-		all: true,
+		// all: true,
 	},
 	devtool: "source-map",
 	entry: {

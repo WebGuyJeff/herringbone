@@ -178,6 +178,14 @@ Font Size		 Line Height
 	/* Scrollbar width updated by js function */
 	--scrollbar: 0px;
 
+	/* SVG border images */
+	--hb_triBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cdefs%3E%3Cpattern patternUnits='userSpaceOnUse' width='12' height='12' id='trings'%3E%3Cpath fill='%23de7c61' d='M 1.4,1.3 1,9.4 9.1,1.4 Z' id='path2' /%3E%3Cpath fill='%23e2e542' d='M 2.5,11 11,2.7 10.5,10.8 Z' id='path4' /%3E%3Crect fill='none' opacity='0' width='12' height='12' x='0' y='0' /%3E%3C/pattern%3E%3C/defs%3E%3Crect style='fill:url(%23trings);' width='36' height='36' x='0' y='0' /%3E%3C/svg%3E") 12 round;
+	--hb_arrowBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='36' height='36'%3E%3Cg id='arws' stroke-width='1.2'%3E%3Cpath fill='%23f79c40' d='m1 17 5-5 5 5-1 1-4-4-4 4Z'/%3E%3Cpath fill='%2361af76' d='m1 23 5-5 5 5-1 1-4-4-4 4Z'/%3E%3C/g%3E%3Cpath id='crnr' fill='%2361af76' stroke-width='1' d='M11 11H1V5h8V3H1V1h10v6H3v2h8Z'/%3E%3Cuse xlink:href='%23crnr' transform='rotate(-90 18 -6)'/%3E%3Cuse xlink:href='%23crnr' transform='rotate(180 18 18)'/%3E%3Cuse xlink:href='%23arws' transform='rotate(90 18 18)'/%3E%3Cuse xlink:href='%23arws' transform='rotate(180 18 18)'/%3E%3Cuse xlink:href='%23arws' transform='rotate(-90 18 18)'/%3E%3Cuse xlink:href='%23crnr' transform='rotate(90 -6 18)'/%3E%3C/svg%3E%0A") 12 round;
+	--hb_eggsBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cdefs%3E%3Cpattern id='eggs' width='12' height='12' patternUnits='userSpaceOnUse'%3E%3Cpath fill='%23de7c61' d='M0 0h12v12H0z'/%3E%3Cellipse cx='5.7' cy='5.8' fill='%23fff3d4' rx='3.8' ry='4'/%3E%3Cellipse cx='5.7' cy='5.8' fill='%23e2e542' rx='1.5' ry='1.7'/%3E%3C/pattern%3E%3C/defs%3E%3Cpath fill='url(%23eggs)' d='M0 0h36v36H0z'/%3E%3C/svg%3E%0A") 12 round;
+	--hb_squareDotBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cdefs%3E%3Cpattern id='sqdot' width='12' height='12' patternUnits='userSpaceOnUse'%3E%3Cpath fill='%236175af' d='M3 0 0 4v4l3 4h6l3-4V4L9 0Z'/%3E%3Ccircle cx='6' cy='6' r='3.1' fill='%23f79c40'/%3E%3C/pattern%3E%3C/defs%3E%3Cpath fill='url(%23sqdot)' d='M0 0h36v36H0z'/%3E%3C/svg%3E%0A") 12 round;
+	--hb_aztecBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cdefs%3E%3Cpattern id='aztec' width='12' height='12' patternUnits='userSpaceOnUse'%3E%3Cpath fill='%23e2e542' d='M3 9V7H1V5h2V3h2V1h2v2h2v2h2v2H9v2H7v2H5V9Z'/%3E%3Cpath fill='%2361af76' d='M5 3h2v2h2v2H7v2H5V7H3V5h2Z'/%3E%3C/pattern%3E%3C/defs%3E%3Cpath fill='url(%23aztec)' d='M0 0h36v36H0z'/%3E%3C/svg%3E%0A") 12 round;
+	--hb_iconBackground: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath fill='%23cff9e9' d='M20 11c-32 15-23 72 8 85 30 14 76-11 72-58S51-5 20 11z'/%3E%3C/svg%3E");
+
 } /* ROOT END */
 
 
@@ -1718,20 +1726,34 @@ a img.aligncenter {
 		flex: 0 1 22em;
 		flex-flow: column;
 		align-items: center;
-		justify-content: center;
-		border-radius: 1em;
+		justify-content: flex-start;
+		border: solid 20px;
+		border-radius: 3px;
 		box-shadow: 0 0 2em 0 #0004;
 		background: #fff;
 		padding: 2em 0.5em;
 		width: 33.333%;
 		text-decoration: none;
 		color: inherit;
-		
+
 		&:last-child {
 			flex-flow: row wrap;
 			flex: 0 0 100%;
 			max-width: 68em;
 		}
+
+		&:nth-child(1n+1):hover {
+			border-image: var(--hb_aztecBorder);
+			border-image-slice: 12;
+			border-image-repeat: round;
+			transform: scale( 1.05 ) rotateX( 2deg );
+			animation: borderJazz 0.5s infinite linear;
+		}
+
+		&:nth-child(1) { border-image: var(--hb_eggsBorder); }
+		&:nth-child(2) { border-image: var(--hb_arrowBorder); }
+		&:nth-child(3) { border-image: var(--hb_squareDotBorder); }
+		&:nth-child(4) { border-image: var(--hb_triBorder); }
 	}
 
 	.lilCards_content {
@@ -1746,7 +1768,6 @@ a img.aligncenter {
 
 	.lilCards_icon {
 		aspect-ratio: 1/1;
-		flex: 1 1 30%;
 		background-image: var(--hb_iconBackground);
 		background-position: top;
 		background-repeat: no-repeat;
@@ -1754,10 +1775,6 @@ a img.aligncenter {
 		padding: 0.5em;
 		width: 3.5em;
 		overflow: visible;
-	}
-
-	.lilCards_title {
-		font-size: 150%;
 	}
 
 	.lilCards_list {
@@ -1775,6 +1792,13 @@ a img.aligncenter {
 			font-size: var(--hb_font-s);
 		}
 	}
+}
+
+@keyframes borderJazz {
+	0% { border-image-slice: 12; }
+	49% { border-image-slice: 12; }
+	50% { border-image-slice: 8; }
+	100% { border-image-slice: 8; }
 }
 
 
