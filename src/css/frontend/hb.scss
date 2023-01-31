@@ -1712,14 +1712,17 @@ a img.aligncenter {
 
 
 .lilCards {
+	gap: 1em;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
+	perspective: 2000px;
+	perspective-origin: center;
+	margin: 0 auto;
+	padding: 3em 1em;
 	width: 100%;
 	max-width: calc( 100% - 2em);
-	margin: 0 auto;
-	gap: 1em;
-	padding: 3em 1em;
+	overflow: visible;
 
 	.lilCards_card {
 		display: flex;
@@ -2059,14 +2062,14 @@ overflow hidden
 
 
 .rollByAnim_container {
+    box-sizing: border-box;
     display: flex;
     position: relative;
-    justify-content: left;
     align-items: flex-start;
-    overflow: hidden;
-    box-sizing: border-box;
-	height: fit-content;
+    justify-content: left;
     width: 100%;
+	height: fit-content;
+	overflow-y: visible;
 	
 	#svg_tumbleweed {
 		position: absolute;
