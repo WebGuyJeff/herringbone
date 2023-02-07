@@ -80,8 +80,8 @@
 					<li>On-page SEO</li>
 				</ul>
 			</a>
-			<div class="lilCards_card">
-				<div class="lilCards_content">
+			<div class="lilCards_card lilCards_card-wide">
+				<div class="lilCards_child lilCards_child-left">
 					<div class="lilCards_icon">
 						<svg class="lilCards_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
 							<path fill="#333" d="M37.5 40.6c0-3.4-2.8-6.2-6.3-6.2h-3c-7 0-12.6 5.6-12.6 12.5v9.3c0 7 5.6 12.5 12.5 12.5h3.1c3.5 0 6.3-2.7 6.3-6.2zm34.4 28.1c6.9 0 12.5-5.5 12.5-12.5V47c0-7-5.6-12.5-12.5-12.5h-3.2a6.3 6.3 0 00-6.2 6.2v21.9c0 3.5 2.8 6.3 6.3 6.3zM50 0A51 51 0 000 50v3.1c0 1.8 1.4 3.1 3.1 3.1h3.1c1.8 0 3.2-1.3 3.2-3V50a40.7 40.7 0 0181.2 0v32.4c0 4.5-3.7 8.2-8.2 8.2H62.5c0-5.2-4.2-9.3-9.4-9.3H47a9.4 9.4 0 100 18.7h35.5c9.7 0 17.6-7.9 17.6-17.6V50A51 51 0 0050 0z"></path>
@@ -98,12 +98,21 @@
 						<li>Website maintenance</li>
 					</ul>
 				</div>
-				<div class="lilCards_content">
+				<div class="lilCards_child lilCards_child-right">
+					<p>
+						I run my own hosting (<a href="https://my.bigupweb.uk">my.bigupweb.uk</a>)
+						where I can deploy your new website quickly with complete control over web
+						server performance and addon services such as email, SSL, domain names, DNS
+						and more!
+					</p>
 					<h3 class="lilCards_title">
-						Register a Domain
+						Register a Domain Now!
 					</h3>
 					<form action="https://my.bigupweb.uk/cart.php?a=add&domain=register" method="post">
-					Find your Domain: <input type="text" name="query" size="20" />
+					<label>
+						Search for your domain name:
+						<input type="text" name="query" size="20" />
+					</label>
 					<input type="submit" value="Go" />
 					</form>
 				</div>

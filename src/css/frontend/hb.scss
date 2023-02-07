@@ -1739,12 +1739,6 @@ a img.aligncenter {
 		text-decoration: none;
 		color: inherit;
 
-		&:last-child {
-			flex-flow: row wrap;
-			flex: 0 0 100%;
-			max-width: 68em;
-		}
-
 		&:nth-child(1n+1):hover {
 			border-image: var(--hb_aztecBorder);
 			border-image-slice: 12;
@@ -1756,16 +1750,28 @@ a img.aligncenter {
 		&:nth-child(2) { border-image: var(--hb_arrowBorder); }
 		&:nth-child(3) { border-image: var(--hb_squareDotBorder); }
 		&:nth-child(4) { border-image: var(--hb_triBorder); }
-	}
 
-	.lilCards_content {
-		display: flex;
-		flex: 0 1 22em;
-		flex-flow: column;
-		align-items: center;
-		justify-content: center;
-		padding: 2em 0.5em;
-		width: 50%;
+		&.lilCards_card-wide {
+			flex-flow: row wrap;
+			flex: 0 0 100%;
+			max-width: 68em;
+
+			.lilCards_child {
+				display: flex;
+				flex-flow: column;
+				align-items: center;
+				justify-content: center;
+				padding: 2em 0.5em;
+			}
+
+			.lilCards_child-left {
+				flex: 1 1 22em;
+			}
+
+			.lilCards_child-right {
+				flex: 1 1 50%;
+			}
+		}
 	}
 
 	.lilCards_icon {

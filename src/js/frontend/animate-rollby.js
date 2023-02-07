@@ -18,8 +18,8 @@ const animateRollBy = () => {
 		const container = target.parentElement
 	
 		// Setup hover effect with GSAP to avoid CSS conflict.
-		const hoverIn = ( e ) => gsap.to( e.target, { scale: 1.05, duration: 0.15 } )
-		const hoverOut = ( e ) => gsap.to( e.target, { scale: 1, duration: 0.15 } )
+		const hoverIn = ( e ) => gsap.to( e.target.closest( '.lilCards_card' ), { scale: 1.05, duration: 0.15 } )
+		const hoverOut = ( e ) => gsap.to( e.target.closest( '.lilCards_card' ), { scale: 1, duration: 0.15 } )
 		const addListeners = () => {
 			cards.forEach( ( card ) => {
 				card.addEventListener( 'mouseover', hoverIn )
