@@ -55,11 +55,11 @@
 
 				<div class="lilCards_back">
 					<p>
-						As a web designer, I deal with the research and idea stages of
-						a development project. Working with stakeholders through a structured
-						process to combine research data, branding and project goals to produce
-						visual blueprints of the final product. Every aspect of the target-users
-						needs must be considered to successfully inform the designs.
+						As a skilled web designer, I take pride in creating visually stunning and
+						user-friendly websites that reflect my clients' unique brand identities.
+						With a keen eye for detail and a passion for innovation, I strive to deliver
+						results that exceed expectations. Let's work together to bring your online
+						presence to the next level!
 					</p>
 				</div>
 
@@ -92,13 +92,12 @@
 
 				<div class="lilCards_back">
 					<p>
-						As a web developer I code websites and web apps. 
-						Coding with an array of web programming languages, the components
-						required to serve content and functionality are constructed. I 
-						engineer a web hosting environment to serve the website and manage
-						site traffic, security and performance. The front end is built and
-						styled with a continuous develop and test cycle to ensure the interface
-						is on-spec with the intended experience.
+						As a web developer, I am committed to delivering high-quality, responsive,
+						and scalable web solutions that meet my clients' needs. With extensive
+						experience in various programming languages and frameworks, I pride myself
+						on creating clean and efficient code that optimises website performance and
+						enhances user experience. Let's work together to bring your digital vision
+						to life!
 					</p>
 				</div>
 
@@ -131,13 +130,12 @@
 
 				<div class="lilCards_back">
 					<p>
-						The way a website is built determines how Google ranks your website in
-						search results. I analyse the SEO performance of your website and compile a
-						plan to boost your website ranking.
-					</p>
-					<p>
-						From here I can either provide a report for your consideration, or perform
-						all changes on your behalf.
+						As an SEO expert, I develop and implement comprehensive strategies that
+						increase online visibility and drive organic traffic. With a data-driven
+						approach and expertise in various SEO tools and techniques, I offer
+						customized and effective solutions that deliver tangible results. Let me
+						help your business reach new heights with targeted and sustainable search
+						engine optimisation!
 					</p>
 				</div>
 
