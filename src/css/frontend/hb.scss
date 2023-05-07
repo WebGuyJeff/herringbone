@@ -1913,7 +1913,7 @@ a img.aligncenter {
 			max-width: 68em;
 
 			.lilCards_front {
-				gap: 1em;
+				gap: 3em;
 				flex-flow: row wrap;
 
 				.lilCards_child {
@@ -1929,6 +1929,19 @@ a img.aligncenter {
 	
 				.lilCards_child-right {
 					flex: 1 1 50%;
+
+					.form {
+						padding: 0;
+
+						.lilCards_logo {
+							padding: 1em;
+							height: 5em;
+						}
+
+						.lilCards_title {
+							margin: 0;
+						}
+					}
 				}
 			}
 		}
@@ -1990,10 +2003,6 @@ a img.aligncenter {
 			text-transform: capitalize;
 			font-size: var( --hb_font-s );
 		}
-	}
-
-	.lilCards_logo {
-		height: 50px;
 	}
 }
 

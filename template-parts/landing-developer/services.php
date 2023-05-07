@@ -92,7 +92,7 @@
 
 				<div class="lilCards_back">
 					<p>
-						As a web developer, I write website and web app core systems. 
+						As a web developer I code websites and web apps. 
 						Coding with an array of web programming languages, the components
 						required to serve content and functionality are constructed. I 
 						engineer a web hosting environment to serve the website and manage
@@ -108,7 +108,7 @@
 				<div class="lilCards_front">
 					<div class="lilCards_icon">
 						<svg class="lilCards_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-							<path fill="#333" d="M50 0a50 50 0 10.1 100.1A50 50 0 0050 0zM5 50c0-6.5 1.4-12.7 4-18.3l21.4 58.8A45 45 0 015 50zm45 45c-4.4 0-8.7-.7-12.7-1.9L50.8 54l13.8 37.9.3.6A45 45 0 0150 95zm6.2-66l5.1-.5c2.5-.3 2.2-3.8-.3-3.7 0 0-7.2.6-12 .6-4.3 0-11.8-.6-11.8-.6-2.4-.1-2.7 3.6-.2 3.7 0 0 2.3.3 4.7.4l7 19.2-9.9 29.5L22.5 29c2.7-.1 5.1-.4 5.1-.4 2.4-.3 2.1-3.8-.3-3.7 0 0-7.3.6-12 .6l-2.9-.1a45 45 0 0168-8.5h-.6c-4.4 0-7.6 3.8-7.6 8 0 3.7 2.2 6.8 4.5 10.5 1.7 3 3.7 6.9 3.7 12.4 0 3.9-1.5 8.3-3.5 14.6l-4.4 15zm16.4 59.9l13.7-39.7a42.5 42.5 0 003.2-20.8A44.8 44.8 0 0172.6 89z"></path>
+							<path fill="#333" d="M43 0A43 43 0 0 0 0 43a43 43 0 0 0 43 43 43 43 0 0 0 22.5-6.4L82.9 97a10 10 0 0 0 7.1 3 10 10 0 0 0 10-10 10 10 0 0 0-3-7.1L79.6 65.5A43 43 0 0 0 86 43a43 43 0 0 0-4.4-19l6.6-6.6 3.9-4 2.3 2.4 2.3 2.3.2-.9c1-4.6 3.3-17.1 3-17.2-.2-.1-17.2 4.2-17.5 4.5l2 2.2 2 2.1-8.8 8.6A43 43 0 0 0 43 0Zm0 10a33 33 0 0 1 27.3 14.5 38433.8 38433.8 0 0 0-20.8 20c-.6.5-1.5-.2-9.1-7.8l-8.6-8.4-16 16-5.1 5.2A33 33 0 0 1 10 43a33 33 0 0 1 33-33Zm31 21.8A33 33 0 0 1 76 43a33 33 0 0 1-33 33 33 33 0 0 1-29.3-18l4.5-4.4 13-13 2.6 2.4a876.2 876.2 0 0 0 13.4 12.5l1.8 1.7 17.7-18 7.3-7.4z"></path>
 						</svg>
 					</div>
 					<h3 class="lilCards_title">
@@ -131,26 +131,13 @@
 
 				<div class="lilCards_back">
 					<p>
-						Whether building from scratch, or improving the performance of an existing
-						site, search engine optimisation (SEO) is a vital consideration.
-					</p>
-					<p>
-						The way a website is presented to search engines determines how a search
-						engine such as Google or Bing, ranks your website in its search results.
-						It doesn't matter if you have pages and pages of juicy content if your
-						potential customers aren't being shown your website when they search for
-						services you might provide.
-					</p>
-					<p>
-						By comparing your goals with the market landscape and the measured SEO
-						performance of any existing sites, I compile an SEO plan to push your
-						website under the noses of search engine users.
+						The way a website is built determines how Google ranks your website in
+						search results. I analyse the SEO performance of your website and compile a
+						plan to boost your website ranking.
 					</p>
 					<p>
 						From here I can either provide a report for your consideration, or perform
-						all changes on your behalf. This will likely involve improvements to your
-						website template markup (code), your content both written and visual and
-						other domain-affecting assets e.g. email campaigns.
+						all changes on your behalf.
 					</p>
 				</div>
 
@@ -176,22 +163,22 @@
 						</ul>
 					</div>
 					<div class="lilCards_child lilCards_child-right">
-						<p>
-							I run my own hosting (<a href="https://my.bigupweb.uk">my.bigupweb.uk</a>)
-							where I can deploy your new website quickly with complete control over web
-							server performance and addon services such as email, SSL, domain names, DNS
-							and more!
-						</p>
-						<div class="lilCards_logo">
-							<svg xmlns="http://www.w3.org/2000/svg" height="100%" width="100%" viewBox="0 0 1024 390" preserveAspectRatio="xMidYMid meet">
-								<path fill="#f8f801" d="M0 0h1024v390H0z"/>
-								<path d="M50 50v289h78v-98c0-12 0-25 3-36 2-6 10-9 16-9h76c6 0 15 0 18 3 4 4 4 16 4 23 1 11 2 31-1 34-7 8-6 10-20 23-4 3-13-2-12-10s8-21 8-25-5 2-6 0a10 10 0 0 1-2-3c-2-6 11-17 9-20s-10 16-14 11l-6-11c-2 0 4 10 2 17-2 5-8 7-12 7-5 1-29-22-31-21-1 2 24 24 28 31 3 5 4 16 4 18-2 1-25-9-20-4 3 6 21 7 29 9 3 0 7 0 10 6l-12-3-12-2c-2 1 5 7 5 8 3 1 26-2 28-2l9-4c13-15 21-20 21-27 0-6-1-28 5-32s12 0 14 12 8 13 10 24c2 12-7 35-12 48s-17 16-23 21a73 73 0 0 1-24 10l-22 2h141V50H195l25 3c9 2 16 5 24 10 6 4 18 8 23 21s14 36 12 48c-2 11-7 11-10 23s-8 17-14 13-5-25-5-32-8-12-21-27l-10-4c-1 0-24-3-27-2-1 0-7 6-5 7 1 1 7-1 12-2l12-1c-3 4-7 4-10 5-8 1-26 3-29 8-4 6 18-5 20-3 1 2-1 13-4 18-4 7-30 29-28 30s26-22 31-21 10 3 12 7c2 7-4 18-2 17l6-10c5-5 12 14 14 11s-11-15-9-20l2-3c1-2 6 4 6 0s-6-17-8-25c-1-8 8-13 12-10l20 22c3 4 2 24 1 34 0 8 0 20-4 24-5 3-20 2-27 2h-67c-6 0-14-2-16-8-3-11-3-24-3-37V50zm803 0v164h37v-56h24c19 0 33-5 44-15a49 49 0 0 0 16-37c0-11-2-21-7-30a49 49 0 0 0-21-19c-9-5-20-7-31-7zm-466 0v164h62c19 0 32-4 42-13 10-7 15-20 15-36 0-8-3-16-7-22a32 32 0 0 0-19-13 32 32 0 0 0 16-13 41 41 0 0 0 6-22c0-14-5-25-15-33a74 74 0 0 0-45-12h-55zm135 0v164h37V50zm118 0a61 61 0 0 0-58 37 97 97 0 0 0-7 41v14c1 22 7 40 19 53a63 63 0 0 0 48 19c13 0 25-2 36-6s19-10 25-16v-66h-63v27h26v25c-5 4-12 6-21 6-11 0-20-4-25-12s-8-19-8-35v-10c0-15 3-27 8-35a24 24 0 0 1 21-12c8 0 14 2 18 6 4 3 7 9 8 19h36a58 58 0 0 0-19-41 66 66 0 0 0-44-14zm77 0v107c0 18 6 32 17 42 10 10 25 15 44 15 12 0 22-2 32-7s16-11 21-19c4-10 7-20 7-32V50h-37v106c0 9-2 17-6 21-4 5-10 7-17 7-15 0-23-9-24-26V50zm174 31h24a19 19 0 0 1 16 7c4 4 6 10 6 18 0 7-2 12-6 16-3 4-9 6-16 6h-24zm-467 0h18c9 0 15 1 18 5 4 3 6 7 6 14 0 6-2 10-5 14-4 3-10 5-18 5h-19V80zm0 63h26c13 0 19 7 19 21 0 6-2 10-5 13-4 4-9 5-16 5h-24v-39zm-37 114 22 82h11l19-60 1-6 2 6 18 60h11l22-83h-12l-14 57-2 11-3-10-17-57h-9l-18 57-3 10-2-11-14-56zm153 0v82h57v-9h-45v-29h39v-9h-39v-26h44v-9h-56zm105 0v82h31a34 34 0 0 0 23-6c5-5 8-11 8-18 0-5-2-9-5-13a21 21 0 0 0-11-6l10-7c3-3 3-6 3-10 0-8-2-13-7-17s-12-5-22-5h-29zm12 8h18c6 0 10 1 13 3 3 3 4 6 4 10s-2 8-4 10a19 19 0 0 1-13 4h-18zm0 36h20c12 0 18 4 18 14 0 5-2 8-5 11s-8 4-13 4h-20z"/>
-							</svg>
-						</div>
-						<h3 class="lilCards_title">
-							Get Your Domain Name Now!
-						</h3>
 						<form class="form form-dark domainSearchForm" action="https://my.bigupweb.uk/cart.php?a=add&domain=register" method="post">
+							<div class="lilCards_logo">
+								<svg id="bigupWebLogo" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1024 320" preserveAspectRatio="xMidYMid meet">
+									<path fill="#333" d="M0 0v319h86V211c0-14 0-28 4-40 2-7 11-10 18-10h84c6 0 16 0 20 3 4 5 4 18 4 26 1 12 2 34-1 37-8 9-7 11-22 26-5 3-15-3-13-11 1-9 8-24 8-28s-5 2-6 0a11 11 0 0 1-2-3c-3-7 12-19 10-22-3-4-12 17-16 12l-7-12c-2 0 5 11 3 18-3 6-9 8-14 8-5 1-32-24-34-23-1 2 27 26 31 34 3 6 4 18 4 20-2 1-27-10-22-4 4 6 23 7 32 9 4 0 8 0 11 7l-13-3-13-2c-2 1 5 7 5 8 4 1 29-2 31-2l10-4c15-17 24-22 24-30 0-7-1-31 5-35 7-5 13 0 16 13 2 13 9 14 11 26 2 14-8 39-14 53-5 15-18 18-25 23a81 80 0 0 1-27 11l-24 3h156V0H161l27 3c10 3 18 6 27 11 7 5 20 9 25 24 6 14 16 39 14 53-2 12-8 12-11 25-4 13-9 19-16 14-6-4-5-27-5-35s-9-13-24-30l-11-4c-1 0-26-4-30-2-1 0-7 6-5 7 1 1 8-1 13-2l13-1c-3 4-7 4-11 5-9 2-28 4-32 9-4 7 20-5 22-3 1 2-1 14-4 20-4 8-33 32-31 33s29-24 34-23c6 1 11 3 14 7 2 8-5 20-3 19l7-11c6-5 13 16 16 12 2-3-13-16-10-22l2-3c1-2 6 4 6 0s-6-19-8-28c-2-8 8-14 13-11l22 25c3 4 2 26 1 37 0 9 0 22-4 27-6 3-22 2-30 2h-74c-7 0-16-2-18-9-4-12-4-27-4-41V0Zm890 0v181h41v-62h27c21 0 36-5 48-16a54 54 0 0 0 18-41c0-12-2-23-8-33a54 54 0 0 0-23-21c-10-6-22-8-34-8ZM373 0v181h69c21 0 36-4 47-14 11-8 16-22 16-40 0-9-3-18-7-24a35 35 0 0 0-21-15 35 35 0 0 0 17-14 45 45 0 0 0 7-24c0-16-6-28-17-37a82 82 0 0 0-50-13Zm150 0v181h41V0Zm131 0a68 67 0 0 0-64 41 107 107 0 0 0-8 45v16c1 24 8 44 21 58a70 69 0 0 0 53 21c14 0 28-2 40-7 12-4 21-11 28-17V84h-70v30h29v27c-6 5-14 7-24 7-12 0-22-5-27-13-6-9-9-21-9-39V85c0-17 3-30 9-39a27 26 0 0 1 23-13c9 0 15 2 20 7 4 3 8 10 9 21h40a64 64 0 0 0-21-45 73 73 0 0 0-49-16Zm85 0v118c0 20 7 35 19 46 11 11 28 17 49 17 13 0 24-2 35-8 11-5 18-12 24-21 4-11 7-22 7-35V0h-41v117c0 10-2 19-6 23-5 6-11 8-19 8-17 0-26-10-27-29V0Zm193 34h27a21 21 0 0 1 17 8c5 4 7 11 7 20 0 8-2 13-7 18-3 4-10 6-17 6h-27Zm-518 0h20c10 0 17 1 20 6 5 3 7 8 7 15s-2 11-6 16c-4 3-11 5-19 5h-22V33Zm0 70h29c15 0 21 7 21 23 0 7-2 11-5 14-5 5-10 6-18 6h-27Zm-41 125 25 91h12l21-66 1-7 2 7 20 66h13l24-92h-13l-16 63-2 12-3-11-19-63h-10l-20 63-3 11-3-12-15-62Zm170 0v91h63v-10h-50v-32h44v-10h-44v-29h49v-10Zm116 0v91h35a38 37 0 0 0 25-7c6-5 9-12 9-20 0-5-2-10-5-14a23 23 0 0 0-13-7l11-7c4-4 4-7 4-11 0-9-2-15-8-19s-13-6-24-6h-32Zm14 9h20c6 0 11 1 14 4s4 6 4 11c0 4-2 8-4 11a21 21 0 0 1-14 4h-20Zm0 40h22c13 0 20 4 20 15 0 6-2 9-6 12-3 4-9 5-14 5h-22Z"/>
+								</svg>
+							</div>
+							<p>
+								I provide 
+								<a href="https://my.bigupweb.uk" target="_blank">web hosting</a>
+								to deploy your new website quickly with complete control over web
+								server performance and addon services such as email, SSL, domain
+								names, DNS and more!
+							</p>
+							<h3 class="lilCards_title">
+								Claim Your Domain Now!
+							</h3>
 							<div class="form_inputWrap">
 								<input
 									class="form_input"
@@ -201,9 +188,9 @@
 									title="Domain Name"
 									required="true"
 									aria-label="Domain Name"
-									placeholder="Type a domain name..."
+									placeholder="mywebsite.com"
 									onfocus="this.placeholder=''"
-									onblur="this.placeholder='Type a domain name...'"
+									onblur="this.placeholder='mywebsite.com'"
 								>
 								<span class="form_flag form_flag-hover"></span>
 								<span class="form_flag form_flag-focus"></span>
@@ -217,9 +204,7 @@
 					</div>
 				</div>
 
-				<div class="lilCards_back">
-					Hosting and Support BACK
-				</div>
+				<div class="lilCards_back"></div>
 
 			</div>
 		</div>
