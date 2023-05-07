@@ -117,26 +117,8 @@
 	margin: 0;
 	padding: 0;
 	min-height: 80vh;
+	margin-bottom: 6em;
 }
-
-.graphicContainer {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin: auto 0;
-	padding: 10%;
-	font-size: 80%;
-}
-	@media (min-width: 48em) {
-		.graphicContainer {
-			font-size: 60%;
-		}
-	}
-	@media (min-width: 70em) {
-		.graphicContainer {
-			font-size: 80%;
-		}
-	}
 
 
 /*-------------------------------------------------  2.3 SECTION - TICKLE --- */

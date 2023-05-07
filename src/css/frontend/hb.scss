@@ -89,6 +89,8 @@ Font Size		 Line Height
 		3.1.5 MODAL
         3.1.6 MAIN MENU
 		3.1.7 DROPDOWN
+		3.1.8 LILCARDS 
+		3.1.9 DOMAINSEARCHFORM
 	3.2 MOBILE
 		3.2.1 THUMBNAV
 
@@ -110,7 +112,7 @@ Font Size		 Line Height
 :root {
 
   --hb_black: #333;
-  --hb_darkGreen: #63CFA7;
+  --hb_green: #63CFA7;
   --hb_lightGreen: #b1e7d3;
   --hb_darkGreen: #3f8369;
   --hb_blue: #b1e8f2;
@@ -230,15 +232,23 @@ body {
 * { 
 	box-sizing: border-box;
 }
+
+a {
+	word-break: break-all;
+}
+
 :focus-visible {
 	outline: -webkit-focus-ring-color auto 1px;
 }
+
 select {
 	text-transform: none;
 }
+
 input {
 	overflow: visible;
 }
+
 input,
 optgroup,
 select,
@@ -247,6 +257,7 @@ textarea {
 	font-family: inherit;
 	font-size: inherit;
 }
+
 input:hover:not(:disabled):not(.disabled),
 optgroup:hover:not(:disabled):not(.disabled),
 select:hover:not(:disabled):not(.disabled),
@@ -968,6 +979,156 @@ a img.aligncenter {
 	form.wp-block-search {
 		max-width: 100%;
 	}
+
+
+	.form {
+		position: relative;
+		width: clamp(10em, 100%, 34em);
+		text-align: inherit;
+		font: inherit;
+		max-width: 96vw;
+		margin: 0 auto;
+	}
+			.form_section {
+				margin: 0;
+				border: none;
+				padding: 0;
+				width: 100%;
+			}
+			.form_section:disabled {
+				transition: opacity 150ms ease-in-out;
+				opacity: 0.5;
+			}
+				.form_message {
+					margin: 1em 0 1.688em 0;
+				}
+				.form_inputWrap {
+					position: relative;
+					transition: 0.2s;
+					margin: 0.5em auto 0.5em 0;
+					border: var( --hb_border );
+					min-width: 8em;
+					min-height: fit-content;
+					overflow: hidden;
+					resize: none;
+					width: 100%;
+				}
+				.form_inputWrap-short {
+					max-width: 22em;
+				}
+					.form_input {
+						display: block;
+						outline: none;
+						border: none;
+						background: #0000;
+						padding: 0.5em;
+						width: 100%;
+						height: 100%;
+						resize: vertical;
+						color: inherit;
+					}
+					.form_input:not(.form_section:disabled > .form_input):hover {
+						cursor: text;
+					}
+						.form_flag {
+							display: flex;
+							position: absolute;
+							top: -1.5em;
+							right: 0.2em;
+							align-items: center;
+							justify-content: center;
+							transition: top 0.15s;
+							border-radius: 0 0 0 2em;
+							width: 1.5em;
+							height: 1.5em;
+						}
+						.form_flag-hover {
+							background: var(--hb_orange);
+						}
+						.form_flag-focus {
+							background: var(--hb_green);
+						}
+						.form_inputWrap:not(.form_section:disabled > .form_inputWrap):hover .form_flag-hover,
+						.form_inputWrap:not(.form_section:disabled > .form_inputWrap):focus-within .form_flag-focus {
+							top: 0.2em;
+						}
+						.customFileUpload {
+							display: block;
+							margin: 0.5em auto 0.5em 0;
+						}
+							.customFileUpload_label {
+								display: block;
+								border: 1px solid #ccc;
+								cursor: pointer;
+								padding: 6px 12px;
+								width: fit-content;
+							}
+							.customFileUpload_label:hover {
+								text-decoration: underline;
+							}
+								.customFileUpload_input {
+									display: none;
+								}
+								.customFileUpload_icon {
+									vertical-align: middle;
+								}
+							.customFileUpload_fileList ul {
+								margin-left: 0;
+							}
+						.form_output {
+							position: absolute;
+							top: 0;
+							right: 0;
+							bottom: 0;
+							left: 0;
+							flex-flow: column nowrap;
+							align-items: center;
+							justify-content: center;
+							transition: opacity 150ms ease-in-out;
+						}
+							.form-popout {
+								box-shadow: 1px 3px 6px 1px #000a;
+							}
+
+	/* Theme overrides */
+	.form_section:disabled button:hover,
+	.form_section:disabled .button:hover,
+	.form_section:disabled .btn:hover {
+		pointer-events: none !important;
+	}
+	
+
+	/*- - - - - - - - - - - - - - - - - - - - - - - - -2.4.1 FORMS DARK THEME - - */
+	
+	
+	.form.form-dark  {
+		--hb_border: solid 0.2em var(--hb_lightGrey);
+		padding: 1em;
+		text-align: center;
+	}
+		.form-dark .form_inputWrap {
+			border: var( --hb_border );
+			border-radius: var( --hb_radius-small );
+			box-shadow: var( --hb_shadow-inset );
+			background: var( --hb_black );
+		}
+		.form-dark .form_inputWrap-wide {
+			width: 100%;
+		}
+			.form-dark .form_input {
+				text-shadow: 0 0 white;
+				color: var(--hb_white);
+			}
+				.form-dark .form_flag {
+					right: 0;
+					border-radius: 0 0 0 1em;
+					box-shadow: inset -0.3em 0.4em 0.5em 0 #000c;
+				}
+				.form-dark .form_inputWrap:not(.form_section:disabled > .form_inputWrap):hover .form_flag-hover,
+				.form-dark .form_inputWrap:not(.form_section:disabled > .form_inputWrap):focus-within .form_flag-focus {
+					top: 0;
+				}
+
 
 /*----------------------------------------------------------- 2.5 BUTTONS ----*/
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - 2.5.1 BASE BUTTON - - */
@@ -1719,70 +1880,100 @@ a img.aligncenter {
 	perspective: 2000px;
 	perspective-origin: center;
 	margin: 0 auto;
-	padding: 3em 1em;
 	width: 100%;
-	max-width: calc( 100% - 2em);
 	overflow: visible;
+
+	.lilCards_flip {
+		cursor: pointer;
+	}
 
 	.lilCards_card {
 		display: flex;
+		position: relative;
 		flex: 0 1 22em;
 		flex-flow: column;
 		align-items: center;
 		justify-content: flex-start;
+		transform-style: preserve-3d;
 		border: solid 20px;
 		border-radius: 3px;
 		box-shadow: 0 0 2em 0 #0004;
 		background: #fff;
-		padding: 2em 0.5em;
 		width: 33.333%;
 		text-decoration: none;
 		color: inherit;
 
-		&:nth-child(1n+1):hover {
-			border-image: var(--hb_aztecBorder);
-			border-image-slice: 12;
-			border-image-repeat: round;
-			animation: borderJazz 0.5s infinite linear;
-		}
-
-		&:nth-child(1) { border-image: var(--hb_eggsBorder); }
-		&:nth-child(2) { border-image: var(--hb_arrowBorder); }
-		&:nth-child(3) { border-image: var(--hb_squareDotBorder); }
-		&:nth-child(4) { border-image: var(--hb_triBorder); }
+		&:nth-child(1) { border-image: var( --hb_eggsBorder ); }
+		&:nth-child(2) { border-image: var( --hb_arrowBorder ); }
+		&:nth-child(3) { border-image: var( --hb_squareDotBorder ); }
+		&:nth-child(4) { border-image: var( --hb_triBorder ); }
 
 		&.lilCards_card-wide {
-			flex-flow: row wrap;
 			flex: 0 0 100%;
 			max-width: 68em;
 
-			.lilCards_child {
-				display: flex;
-				flex-flow: column;
-				align-items: center;
-				justify-content: center;
-				padding: 2em 0.5em;
-			}
+			.lilCards_front {
+				gap: 1em;
+				flex-flow: row wrap;
 
-			.lilCards_child-left {
-				flex: 1 1 22em;
-			}
-
-			.lilCards_child-right {
-				flex: 1 1 50%;
+				.lilCards_child {
+					display: flex;
+					flex-flow: column;
+					align-items: center;
+					justify-content: center;
+				}
+	
+				.lilCards_child-left {
+					flex: 1 1 22em;
+				}
+	
+				.lilCards_child-right {
+					flex: 1 1 50%;
+				}
 			}
 		}
 	}
 
+	.lilCards_front,
+	.lilCards_back {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		backface-visibility: hidden;
+		background: #fff;
+		padding: 2em 0.5em;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.lilCards_back {
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: rotateY( 180deg );
+	}
+
 	.lilCards_icon {
 		aspect-ratio: 1/1;
-		background-image: var(--hb_iconBackground);
+		background-image: var( --hb_iconBackground );
 		background-position: top;
 		background-repeat: no-repeat;
 		background-size: 100%;
 		padding: 0.5em;
 		width: 3.5em;
 		overflow: visible;
+	}
+
+	.lilCards_tapIcon {
+		aspect-ratio: 1 / 1;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		opacity: 0.5;
+		border-radius: 100%;
+		background: radial-gradient( #fff 0%, #0000 75% );
+		padding: 0.5em;
+		height: 3.5em;
 	}
 
 	.lilCards_list {
@@ -1797,16 +1988,24 @@ a img.aligncenter {
 		li {
 			margin-block-end: .3em;
 			text-transform: capitalize;
-			font-size: var(--hb_font-s);
+			font-size: var( --hb_font-s );
 		}
+	}
+
+	.lilCards_logo {
+		height: 50px;
 	}
 }
 
-@keyframes borderJazz {
-	0% { border-image-slice: 12; }
-	49% { border-image-slice: 12; }
-	50% { border-image-slice: 8; }
-	100% { border-image-slice: 8; }
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - 3.1.9 DOMAINSEARCHFORM - - */
+
+
+.domainSearchForm {
+
+		input[type="text"] {
+			width: 100%;
+		}
 }
 
 

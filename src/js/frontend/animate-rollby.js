@@ -13,26 +13,76 @@ const animateRollBy = () => {
 	
 	window.onload = () => {
 	
-		const target    = document.querySelector( '#svg_tumbleweed' )
-		const cards     = document.querySelectorAll( '.lilCards_card' )
+		const tumbleweedID = '#svg_tumbleweed'
+		const cardClass    = '.lilCards_card'
+		const flipClass    = '.lilCards_flip'
+		const iconClass    = '.lilCards_tapIcon'
+		
+		const target    = document.querySelector( tumbleweedID )
+		const cards     = document.querySelectorAll( cardClass )
+		const flipCards = document.querySelectorAll( flipClass )
 		const container = target.parentElement
 	
-		// Setup hover effect with GSAP to avoid CSS conflict.
-		const hoverIn = ( e ) => gsap.to( e.target.closest( '.lilCards_card' ), { scale: 1.05, duration: 0.15 } )
-		const hoverOut = ( e ) => gsap.to( e.target.closest( '.lilCards_card' ), { scale: 1, duration: 0.15 } )
-		const addListeners = () => {
-			cards.forEach( ( card ) => {
-				card.addEventListener( 'mouseover', hoverIn )
-				card.addEventListener( 'mouseleave', hoverOut )
-			} )
+		// Setup card interactivity.
+		
+		const pulseAnimation = ( elem ) => {
+			const tl = gsap.timeline()
+				tl.set( elem.closest( cardClass ), { zIndex: 10 } )
+				tl.set( elem, { scale: 0.75, boxShadow: '0 0 0 0 #3335', opacity: 1 } )
+				   .to( elem, { scale: 1, boxShadow: '0 0 0 25px #0000', duration: 1 } )
+				tl.set( elem.closest( cardClass ), { zIndex: 0 } )
+			return tl
 		}
-		const removeListeners = () => {
-			cards.forEach( ( card ) => {
-				card.removeEventListener( 'mouseover', hoverIn )
-				card.removeEventListener( 'mouseleave', hoverOut )
+		
+		const hoverIn  = ( e ) => pulseAnimation( e.target.closest( cardClass ).querySelector( iconClass ) ).play()
+		
+		const hoverOut = ( e ) => {
+			gsap.set( e.target.closest( cardClass ), { zIndex: 0 } )
+			gsap.to( e.target.closest( cardClass ).querySelector( iconClass ), { opacity: 0.5, duration: 0.15 } )
+		}
+		
+		const click    = ( e ) => {
+			const elem = e.target.closest( flipClass )
+			const deg  = elem.style.transform.includes( 'rotateY(180deg)' ) ? 0 : 180
+			gsap.to( elem, { rotationY: deg, duration: 0.15 } )
+		}
+		
+		const addListeners = () => {
+			flipCards.forEach( ( card ) => {
+				card.addEventListener( 'mouseenter', hoverIn )
+				card.addEventListener( 'mouseleave', hoverOut )
+				card.addEventListener( 'click', click )
 			} )
 		}
 		addListeners()
+		
+		const removeListeners = () => {
+			flipCards.forEach( ( card ) => {
+				card.removeEventListener( 'mouseover', hoverIn )
+				card.removeEventListener( 'mouseleave', hoverOut )
+				card.removeEventListener( 'click', click )
+			} )
+		}
+		
+		flipCards.forEach( ( card ) => {
+			const icon = card.querySelector( iconClass )
+			gsap.timeline( {
+				defaults: { force3D:true },
+				scrollTrigger: {
+					trigger: card,
+					/*
+					 * toggleActions*: [onEnter] [onLeave] [onEnterBack] [onLeaveBack].
+					 * *OPTIONS: play | pause | resume | reset | restart | complete | reverse | none.
+					 */
+					toggleActions: "play reset play reset",
+					// start: [trigger element position] [viewport position].
+					start: 'bottom bottom'
+				} } )
+				.add( pulseAnimation( icon ) )
+				.to( icon, { opacity: 0.5, duration: 0.15 } )
+		} )
+		
+		// Setup tumbleweed animation.
 	
 		const getRollTime = () => {
 			const w = window.innerWidth
@@ -56,8 +106,8 @@ const animateRollBy = () => {
 				const tl = gsap.timeline( { repeat: 1 } )
 				tl.fromTo( card, { rotateY: 0 }, { rotateY: 360, duration: 0.8, ease: "none" } )
 				  .fromTo( card, { background: '#fff', rotateX: 0 }, { background: '#e9e9e9', rotateX: 6, duration: 0.2 }, 0 )
-					  .to( card, { background: '#fff', rotateX: 10,duration: 0.2 }, 0.2 )
-					  .to( card, { background: '#e9e9e9', rotateX: 6,duration: 0.2 }, 0.4 )
+					  .to( card, { background: '#fff', rotateX: 10, duration: 0.2 }, 0.2 )
+					  .to( card, { background: '#e9e9e9', rotateX: 6, duration: 0.2 }, 0.4 )
 					  .to( card, { background: '#fff', rotateX: 0, duration: 0.2, clearProps: 'transform' }, 0.6 )
 				return tl
 			}
@@ -101,6 +151,7 @@ const animateRollBy = () => {
 			master.kill()
 			master = newMaster()
 		} )
+
 	}
 
 }
