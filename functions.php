@@ -15,10 +15,28 @@ require_once get_template_directory() . '/classes/autoload.php';
 
 
 /**
+ * Setup theme settings and custom post types.
+ */
+use Jefferson\Herringbone\Settings_Admin;
+use Jefferson\Herringbone\Register_Projects_CPT;
+if ( is_admin() ) {
+	new Settings_Admin();
+}
+add_action( 'init', [ new Register_Projects_CPT, 'create_cpt' ] );
+
+
+/**
  * WordPress hooks for this theme.
  */
 use Jefferson\Herringbone\Hooks;
 $hooks = new Hooks();
+
+
+/**
+ * Turn off theme and plugin auto-updates.
+ */
+add_filter( 'auto_update_plugin', '__return_false' );
+add_filter( 'auto_update_theme', '__return_false' );
 
 
 /**
@@ -50,6 +68,7 @@ function enqueue_scripts_and_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts_and_styles' );
 
+
 /**
  * Remove gutenburg CSS.
  */
@@ -58,21 +77,9 @@ function bigup_remove_wp_block_library_css() {
 	wp_dequeue_style( 'wp-block-library-theme' );
 }
 
-// ======================================================= Basic WordPress setup
-
 
 /**
- * Disable plugin auto updates
- */
-add_filter( 'auto_update_plugin', '__return_false' );
-
-/**
- * Disable theme auto updates
- */
-add_filter( 'auto_update_theme', '__return_false' );
-
-/**
- * Register widget area.
+ * Register widget areas.
  */
 function herringbone_widgets_init() {
 	register_sidebar(
@@ -298,131 +305,3 @@ add_filter(
 	10,
 	2
 );
-
-// ================================================== Herringbone admin settings
-
-
-/**
- * Add Herringbone admin menu option to sidebar
- */
-function herringbone_settings_add_menu() {
-
-	$hb__icon = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMzIgMTMyIj48cGF0aCBmaWxsPSIjMDAwIiBkPSJNMCAwdjEzYzAgNSAwIDEwIDggMTNsNTggMjcgNTgtMjdjOC0zIDgtOCA4LTEzVjBMNzQgMjZjLTggNC04IDktOCAxNCAwLTUgMC0xMC04LTE0em0wIDQwdjEzYzAgNCAwIDEwIDggMTNsNTggMjcgNTgtMjdjOC0zIDgtOSA4LTEzVjQwTDc0IDY2Yy04IDQtOCA5LTggMTMgMC00IDAtOS04LTEzem0wIDM5djE0YzAgNCAwIDkgOCAxM2w1OCAyNiA1OC0yNmM4LTQgOC05IDgtMTNWNzlsLTU4IDI3Yy04IDMtOCA5LTggMTMgMC00IDAtMTAtOC0xM3oiPjwvcGF0aD48L3N2Zz4=';
-
-	add_menu_page(
-		'Herringbone Theme Settings', // page_title
-		'Herringbone',               // menu_title
-		'manage_options',            // capability
-		'herringbone-settings',      // menu_slug
-		'',                          // function
-		$hb__icon,                   // icon_url
-		4                            // position
-	);
-
-	add_submenu_page(
-		'herringbone-settings',      // parent_slug
-		'Herringbone Theme Settings', // page_title
-		'Theme Settings',            // menu_title
-		'manage_options',            // capability
-		'herringbone-settings',      // menu_slug
-		'herringbone_settings_page', // function
-		1                            // position
-	);
-
-}
-add_action( 'admin_menu', 'herringbone_settings_add_menu' );
-
-
-/**
- * Create Herringbone Global Settings Page
- */
-function herringbone_settings_page() {
-
-	$hb__icon = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMzIgMTMyIj48cGF0aCBmaWxsPSIjMDAwIiBkPSJNMCAwdjEzYzAgNSAwIDEwIDggMTNsNTggMjcgNTgtMjdjOC0zIDgtOCA4LTEzVjBMNzQgMjZjLTggNC04IDktOCAxNCAwLTUgMC0xMC04LTE0em0wIDQwdjEzYzAgNCAwIDEwIDggMTNsNTggMjcgNTgtMjdjOC0zIDgtOSA4LTEzVjQwTDc0IDY2Yy04IDQtOCA5LTggMTMgMC00IDAtOS04LTEzem0wIDM5djE0YzAgNCAwIDkgOCAxM2w1OCAyNiA1OC0yNmM4LTQgOC05IDgtMTNWNzlsLTU4IDI3Yy04IDMtOCA5LTggMTMgMC00IDAtMTAtOC0xM3oiPjwvcGF0aD48L3N2Zz4=';
-
-	?>
-	  <div class="wrap">
-		  <h1>
-			<span>
-				<img style="max-height: 1em;margin-right: 0.5em;vertical-align: middle;" src="
-					<?php echo $hb__icon; ?>" 
-				 />
-			</span>
-			Herringbone Settings
-		</h1>
-			<form method="post" action="options.php">
-					<?php
-							settings_fields( 'section' );
-							do_settings_sections( 'theme-options' );
-							submit_button();
-					?>
-			</form>
-	  </div>
-	<?php
-}
-
-/*
- * Add options fields to the admin page
- *
-// Codepen
-function setting_codepen() { ?>
-	  <input type="text" name="codepen" id="codepen" value="<?php echo get_option( 'codepen' ); ?>" />
-<?php }
-// Instagram
-function setting_instagram() { ?>
-	<input type="text" name="instagram" id="instagram" value="<?php echo get_option('instagram'); ?>" />
-<?php }
-// Facebook
-function setting_facebook() { ?>
-	<input type="text" name="facebook" id="facebook" value="<?php echo get_option('facebook'); ?>" />
-<?php }
-*/
-
-
-/*
- * Tell WordPress to build the admin page
- *
-function herringbone_settings_page_setup() {
-	  add_settings_section( 'section', 'Social Links', null, 'theme-options' );
-	  add_settings_field( 'codepen', 'Codepen URL', 'setting_codepen', 'theme-options', 'section' );
-	add_settings_field( 'instagram', 'Instagram URL', 'setting_instagram', 'theme-options', 'section' );
-	add_settings_field( 'facebook', 'Facebook URL', 'setting_facebook', 'theme-options', 'section' );
-
-	  register_setting( 'section', 'codepen' );
-	register_setting( 'section', 'instagram' );
-	register_setting( 'section', 'facebook' );
-}
-add_action( 'admin_init', 'herringbone_settings_page_setup' );
-*/
-
-// =========================================================== Custom Post Types
-
-
-/*
- Custom Post Type
-function create_my_custom_post() {
-	register_post_type( 'my-custom-post',
-		array(
-			'labels' => array(
-				'name' => __( 'My Custom Post' ),
-				'singular_name' => __( 'My Custom Post' ),
-			),
-			'public' => true,
-			'has_archive' => true,
-			'supports' => array(		 // Define post elements
-				'title',				 // the_title()
-				'editor',				// the_content()
-				'thumbnail',			 // the_post_thumbnail()
-				'custom-fields'
-			),
-			'taxonomies' => array(	   // Add ways to group posts
-				'post_tag',			  // Tags
-				'category',			  // Categories
-			)
-		)
-	);
-	register_taxonomy_for_object_type( 'category', 'my-custom-post' );
-	register_taxonomy_for_object_type( 'post_tag', 'my-custom-post' );
-}
-add_action( 'init', 'create_my_custom_post' );
-*/
