@@ -8,6 +8,8 @@
  * @author Jefferson Real <me@jeffersonreal.uk>
  * @copyright Copyright (c) 2023, Jefferson Real
  */
+
+$theme = get_option( 'hb_dev_landing_settings' );
 ?>
 
 <div class="landing_content" style="--row: 1 / -1; --col: narrow-l / narrow-r;">
@@ -21,30 +23,26 @@
 		<div class="copy">
 
 			<h1 class="chalkboard_title title">
-				Hi I’m Jeff, a
-				<span class="title-hype">
-					Web Developer
-				</span>
+				<?php echo esc_html( ( $theme['welcome_title'] ) ? $theme['welcome_title'] : get_bloginfo( 'name' ) ); ?>
 			</h1>
 
+			<?php if ( $theme['welcome_intro'] ) : ?>
 			<p>
-				I help businesses, individuals and start-ups by providing website
-				development and website design services. I'm a complete one-man web
-				design company delivering more punch per pound and a higher
-				attention to detail. With my own planet-friendly web hosting
-				service, I also look after you on the road ahead with one-to-one web
-				support.
+				<?php echo esc_html( $theme['welcome_intro'] ); ?>
 			</p>
+			<?php endif ?>
 
+			<?php if ( $theme['welcome_cta_title'] ) : ?>
 			<h2 class="chalkboard_cta">
-				Need Website Help?
+				<?php echo esc_html( $theme['welcome_cta_title'] ); ?>
 			</h2>
+			<?php endif ?>
 
+			<?php if ( $theme['welcome_cta_text'] ) : ?>
 			<p>
-				I’m available to discuss, plan and quote for your project and
-				my advice is always free! I’m based in Hampshire (South UK) but only
-				one Zoom call away from being anywhere in the world.
+				<?php echo esc_html( $theme['welcome_cta_text'] ); ?>
 			</p>
+			<?php endif ?>
 
 			<div class="textAlignCenter">
 				<button

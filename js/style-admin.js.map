@@ -1,0 +1,1 @@
+{"version":3,"file":"style-admin.js","mappings":";;;AAAA;AACA;AACA;AACA;AACA;;AAE2B","sources":["webpack:///./src/css/style-admin.js"],"sourcesContent":["/**\n * Webpack entry point.\n * \n * @link https://metabox.io/modernizing-javascript-code-in-wordpress/\n */\n\nimport './admin/admin.scss'\n"],"names":[],"sourceRoot":""}

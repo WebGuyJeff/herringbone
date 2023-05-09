@@ -9,18 +9,22 @@
  * @copyright Copyright (c) 2023, Jefferson Real
  */
 
+$theme = get_option( 'hb_dev_landing_settings' );
 ?>
 
 <div class="landing_content" style="--row: 1 / -1; --col: full-l / full-r;">
 
 	<div class="copy">
 		<h2 class="title">
-			Services
+			<?php echo esc_html( ( $theme['services_title'] ) ? $theme['services_title'] : 'Services' ); ?>
 		</h2>
+
+		<?php if ( $theme['services_intro'] ) : ?>
 		<p>
-			I do all sorts of weird and wonderful things with the web, but these are some of the
-			more common services I provide for clients.
+			<?php echo esc_html( $theme['services_intro'] ); ?>
 		</p>
+		<?php endif ?>
+
 	</div>
 
 	<div class="rollByAnim_container">
@@ -37,15 +41,17 @@
 					<h3 class="lilCards_title">
 						Web Design
 					</h3>
+
+					<?php if ( $theme['service1_bullets'] ) : ?>
 					<ul class="lilCards_list">
-						<li>WordPress design</li>
-						<li>Website redesign</li>
-						<li>Landing page design</li>
-						<li>Professional website design</li>
-						<li>E-commerce design</li>
-						<li>Fully responsive design</li>
-						<li>Branding and identity</li>
+						<?php
+						foreach ( explode( "\n", $theme['service1_bullets'] ) as $bullet ) :
+							echo '<li>' . esc_html( trim( $bullet ) ) . '</li>';
+						endforeach
+						?>
 					</ul>
+					<?php endif ?>
+
 					<div class="lilCards_tapIcon">
 						<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 58 90">
 							<path id="tapIcon" fill="#333" d="M17 0C8 0 0 8 0 17c0 3 4 3 4 0C4 9.8203 9.8203 4 17 4s13 5.8203 13 13c0 3 4 3 4 0 0-9-8-17-17-17zm0 12c-4 0-7 3-7 7v27l-3 3c-5 4-6 12-2 17l10 13v6c0 3 3 5 6 5h26c3 0 5-2 5-5v-5c4-5 6-10 6-15V45c0-5-5-7-8-7l-3 1c-1-4-6-6-8-6l-3 1c-3-5-5-5-8-5l-3 1V19c0-4-3-7-7-7zm0 4h1c2 0 3 1 3 3v32l2 2 2-2V36c0-2 1-3 3-3s4 2 4 3v15l2 2 2-2V40c0-2 2-3 3-3 2 0 4 1 4 3v11l2 2 2-2v-6c0-2 2-3 3-3 2 0 4 1 4 3v20c0 4-2 9-5 13l-1 1v6l-1 1H21l-2-1v-8L8 64c-3-3-3-9 1-12l1-1v7c0 3 4 3 4 0V19c0-2 2-3 3-3z" />
@@ -54,13 +60,13 @@
 				</div>
 
 				<div class="lilCards_back">
+
+					<?php if ( $theme['service1_text'] ) : ?>
 					<p>
-						As a skilled web designer, I take pride in creating visually stunning and
-						user-friendly websites that reflect my clients' unique brand identities.
-						With a keen eye for detail and a passion for innovation, I strive to deliver
-						results that exceed expectations. Let's work together to bring your online
-						presence to the next level!
+						<?php echo esc_html( $theme['service1_text'] ); ?>
 					</p>
+					<?php endif ?>
+
 				</div>
 
 			</div>
@@ -75,14 +81,17 @@
 					<h3 class="lilCards_title">
 						Web Development
 					</h3>
+
+					<?php if ( $theme['service2_bullets'] ) : ?>
 					<ul class="lilCards_list">
-						<li>WordPress Theme development</li>
-						<li>Migrate a website to WordPress</li>
-						<li>WordPress plugin development</li>
-						<li>E-commerce development</li>
-						<li>Frontend Development</li>
-						<li>Backend Development</li>
+						<?php
+						foreach ( explode( "\n", $theme['service2_bullets'] ) as $bullet ) :
+							echo '<li>' . esc_html( trim( $bullet ) ) . '</li>';
+						endforeach
+						?>
 					</ul>
+					<?php endif ?>
+
 					<div class="lilCards_tapIcon">
 						<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 58 90">
 							<use href="#tapIcon"/>
@@ -91,14 +100,11 @@
 				</div>
 
 				<div class="lilCards_back">
+					<?php if ( $theme['service2_text'] ) : ?>
 					<p>
-						As a web developer, I am committed to delivering high-quality, responsive,
-						and scalable web solutions that meet my clients' needs. With extensive
-						experience in various programming languages and frameworks, I pride myself
-						on creating clean and efficient code that optimises website performance and
-						enhances user experience. Let's work together to bring your digital vision
-						to life!
+						<?php echo esc_html( $theme['service2_text'] ); ?>
 					</p>
+					<?php endif ?>
 				</div>
 
 			</div>
@@ -113,14 +119,17 @@
 					<h3 class="lilCards_title">
 						Search Engine Optimisation
 					</h3>
+
+					<?php if ( $theme['service3_bullets'] ) : ?>
 					<ul class="lilCards_list">
-						<li>SEO audit</li>
-						<li>Local SEO</li>
-						<li>Technical SEO</li>
-						<li>WordPress SEO</li>
-						<li>E-commerce SEO</li>
-						<li>On-page SEO</li>
+						<?php
+						foreach ( explode( "\n", $theme['service3_bullets'] ) as $bullet ) :
+							echo '<li>' . esc_html( trim( $bullet ) ) . '</li>';
+						endforeach
+						?>
 					</ul>
+					<?php endif ?>
+
 					<div class="lilCards_tapIcon">
 						<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 58 90">
 							<use href="#tapIcon"/>
@@ -129,14 +138,11 @@
 				</div>
 
 				<div class="lilCards_back">
+					<?php if ( $theme['service3_text'] ) : ?>
 					<p>
-						As an SEO expert, I develop and implement comprehensive strategies that
-						increase online visibility and drive organic traffic. With a data-driven
-						approach and expertise in various SEO tools and techniques, I offer
-						customized and effective solutions that deliver tangible results. Let me
-						help your business reach new heights with targeted and sustainable search
-						engine optimisation!
+						<?php echo esc_html( $theme['service3_text'] ); ?>
 					</p>
+					<?php endif ?>
 				</div>
 
 			</div>
@@ -152,28 +158,30 @@
 						<h3 class="lilCards_title">
 							Hosting and Support
 						</h3>
+
+						<?php if ( $theme['service4_bullets'] ) : ?>
 						<ul class="lilCards_list">
-							<li>Domain names</li>
-							<li>Web hosting</li>
-							<li>WordPress hosting</li>
-							<li>Emails</li>
-							<li>Website maintenance</li>
+							<?php
+							foreach ( explode( "\n", $theme['service4_bullets'] ) as $bullet ) :
+								echo '<li>' . esc_html( trim( $bullet ) ) . '</li>';
+							endforeach
+							?>
 						</ul>
+						<?php endif ?>
+
 					</div>
 					<div class="lilCards_child lilCards_child-right">
 						<form class="form form-dark domainSearchForm" action="https://my.bigupweb.uk/cart.php?a=add&domain=register" method="post">
-							<div class="lilCards_logo">
+							<a href="https://my.bigupweb.uk" target="_blank" class="lilCards_logo">
 								<svg id="bigupWebLogo" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1024 320" preserveAspectRatio="xMidYMid meet">
 									<path fill="#333" d="M0 0v319h86V211c0-14 0-28 4-40 2-7 11-10 18-10h84c6 0 16 0 20 3 4 5 4 18 4 26 1 12 2 34-1 37-8 9-7 11-22 26-5 3-15-3-13-11 1-9 8-24 8-28s-5 2-6 0a11 11 0 0 1-2-3c-3-7 12-19 10-22-3-4-12 17-16 12l-7-12c-2 0 5 11 3 18-3 6-9 8-14 8-5 1-32-24-34-23-1 2 27 26 31 34 3 6 4 18 4 20-2 1-27-10-22-4 4 6 23 7 32 9 4 0 8 0 11 7l-13-3-13-2c-2 1 5 7 5 8 4 1 29-2 31-2l10-4c15-17 24-22 24-30 0-7-1-31 5-35 7-5 13 0 16 13 2 13 9 14 11 26 2 14-8 39-14 53-5 15-18 18-25 23a81 80 0 0 1-27 11l-24 3h156V0H161l27 3c10 3 18 6 27 11 7 5 20 9 25 24 6 14 16 39 14 53-2 12-8 12-11 25-4 13-9 19-16 14-6-4-5-27-5-35s-9-13-24-30l-11-4c-1 0-26-4-30-2-1 0-7 6-5 7 1 1 8-1 13-2l13-1c-3 4-7 4-11 5-9 2-28 4-32 9-4 7 20-5 22-3 1 2-1 14-4 20-4 8-33 32-31 33s29-24 34-23c6 1 11 3 14 7 2 8-5 20-3 19l7-11c6-5 13 16 16 12 2-3-13-16-10-22l2-3c1-2 6 4 6 0s-6-19-8-28c-2-8 8-14 13-11l22 25c3 4 2 26 1 37 0 9 0 22-4 27-6 3-22 2-30 2h-74c-7 0-16-2-18-9-4-12-4-27-4-41V0Zm890 0v181h41v-62h27c21 0 36-5 48-16a54 54 0 0 0 18-41c0-12-2-23-8-33a54 54 0 0 0-23-21c-10-6-22-8-34-8ZM373 0v181h69c21 0 36-4 47-14 11-8 16-22 16-40 0-9-3-18-7-24a35 35 0 0 0-21-15 35 35 0 0 0 17-14 45 45 0 0 0 7-24c0-16-6-28-17-37a82 82 0 0 0-50-13Zm150 0v181h41V0Zm131 0a68 67 0 0 0-64 41 107 107 0 0 0-8 45v16c1 24 8 44 21 58a70 69 0 0 0 53 21c14 0 28-2 40-7 12-4 21-11 28-17V84h-70v30h29v27c-6 5-14 7-24 7-12 0-22-5-27-13-6-9-9-21-9-39V85c0-17 3-30 9-39a27 26 0 0 1 23-13c9 0 15 2 20 7 4 3 8 10 9 21h40a64 64 0 0 0-21-45 73 73 0 0 0-49-16Zm85 0v118c0 20 7 35 19 46 11 11 28 17 49 17 13 0 24-2 35-8 11-5 18-12 24-21 4-11 7-22 7-35V0h-41v117c0 10-2 19-6 23-5 6-11 8-19 8-17 0-26-10-27-29V0Zm193 34h27a21 21 0 0 1 17 8c5 4 7 11 7 20 0 8-2 13-7 18-3 4-10 6-17 6h-27Zm-518 0h20c10 0 17 1 20 6 5 3 7 8 7 15s-2 11-6 16c-4 3-11 5-19 5h-22V33Zm0 70h29c15 0 21 7 21 23 0 7-2 11-5 14-5 5-10 6-18 6h-27Zm-41 125 25 91h12l21-66 1-7 2 7 20 66h13l24-92h-13l-16 63-2 12-3-11-19-63h-10l-20 63-3 11-3-12-15-62Zm170 0v91h63v-10h-50v-32h44v-10h-44v-29h49v-10Zm116 0v91h35a38 37 0 0 0 25-7c6-5 9-12 9-20 0-5-2-10-5-14a23 23 0 0 0-13-7l11-7c4-4 4-7 4-11 0-9-2-15-8-19s-13-6-24-6h-32Zm14 9h20c6 0 11 1 14 4s4 6 4 11c0 4-2 8-4 11a21 21 0 0 1-14 4h-20Zm0 40h22c13 0 20 4 20 15 0 6-2 9-6 12-3 4-9 5-14 5h-22Z"/>
 								</svg>
-							</div>
+							</a>
+							<?php if ( $theme['service4_text'] ) : ?>
 							<p>
-								I provide 
-								<a href="https://my.bigupweb.uk" target="_blank">web hosting</a>
-								to deploy your new website quickly with complete control over web
-								server performance and addon services such as email, SSL, domain
-								names, DNS and more!
+								<?php echo esc_html( $theme['service4_text'] ); ?>
 							</p>
+							<?php endif ?>
 							<h3 class="lilCards_title">
 								Claim Your Domain Now!
 							</h3>

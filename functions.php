@@ -40,14 +40,14 @@ add_filter( 'auto_update_theme', '__return_false' );
 
 
 /**
- * Enqueue scripts and styles
+ * Enqueue scripts and styles.
  */
 function enqueue_scripts_and_styles() {
-	// If the site is being previewed in the Customizer.
+	// Customizer preview.
 	if ( is_customize_preview() ) {
 		wp_enqueue_script( 'hb_customizer_js', get_template_directory_uri() . '/js/customizer.js', array(), filemtime( get_template_directory() . '/js/customizer.js' ), true );
 	}
-	// If not in admin area.
+	// Front end.
 	if ( ! is_admin() && $GLOBALS['pagenow'] !== 'wp-login.php' ) {
 		wp_enqueue_style( 'style_css', get_template_directory_uri() . '/style.css', array(), filemtime( get_template_directory() . '/style.css' ), 'all' );
 		// De-register wp jquery and use CDN.
@@ -62,17 +62,30 @@ function enqueue_scripts_and_styles() {
 		wp_enqueue_script( 'hb_frontend_js', get_template_directory_uri() . '/js/frontend.js', array( 'gsap', 'gsap_scrolltrigger' ), filemtime( get_template_directory() . '/js/frontend.js' ), true );
 	}
 	global $template;
+	// Landing pages.
 	if ( ! is_admin() && basename( $template ) === 'landing-page.php' ) {
-		bigup_remove_wp_block_library_css();
+		hb_remove_gutenburg_css();
 	}
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts_and_styles' );
 
 
 /**
+ * Enqueue admin scripts and styles.
+ */
+function enqueue_admin_scripts_and_styles() {
+	// Admin area.
+	if ( is_admin() && $GLOBALS['pagenow'] !== 'wp-login.php' ) {
+		wp_enqueue_style( 'admin_css', get_template_directory_uri() . '/style-admin.css', array(), filemtime( get_template_directory() . '/style-admin.css' ), 'all' );
+	}
+}
+add_action( 'admin_enqueue_scripts', 'enqueue_admin_scripts_and_styles' );
+
+
+/**
  * Remove gutenburg CSS.
  */
-function bigup_remove_wp_block_library_css() {
+function hb_remove_gutenburg_css() {
 	wp_dequeue_style( 'wp-block-library' );
 	wp_dequeue_style( 'wp-block-library-theme' );
 }
@@ -294,6 +307,7 @@ remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
  */
 remove_action( 'wp_head', '_wp_render_title_tag', 1 );
 
+
 /**
  * Remove USERS from sitemap
  */
@@ -305,3 +319,9 @@ add_filter(
 	10,
 	2
 );
+
+
+/**
+ * Enable WP custom fields even if ACF is installed.
+ */
+add_filter( 'acf/settings/remove_wp_meta_box', '__return_false' );

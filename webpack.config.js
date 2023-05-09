@@ -33,6 +33,7 @@ module.exports = {
 		frontend: './src/js/frontend.js',
 		customizer: './src/js/customizer.js',
 		style: './src/css/style.js',
+		'style-admin': './src/css/style-admin.js',
 	},
 	output: {
 		filename: '[name].js', // js output filename.

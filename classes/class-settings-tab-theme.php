@@ -7,13 +7,13 @@ namespace Jefferson\Herringbone;
  * Settings Index
  * ==============/
  *
- * $hb_settings['hb_email_address'];           // Email Address
- * $hb_settings['hb_phone_number'];            // Phone Number
- * $hb_settings['hb_gmaps_api_key'];           // Google Maps API Key
- * $hb_settings['hb_facebook_url'];            // Facebook URL
- * $hb_settings['hb_instagram_url'];           // Instagram URL
- * $hb_settings['hb_twitter_url'];             // Twitter URL
- * $hb_settings['hb_github_url'];              // Github URL
+ * $hb_theme_settings['hb_email_address']; // Email Address
+ * $hb_theme_settings['hb_phone_number'];  // Phone Number
+ * $hb_theme_settings['hb_gmaps_api_key']; // Google Maps API Key
+ * $hb_theme_settings['hb_facebook_url'];  // Facebook URL
+ * $hb_theme_settings['hb_instagram_url']; // Instagram URL
+ * $hb_theme_settings['hb_twitter_url'];   // Twitter URL
+ * $hb_theme_settings['hb_github_url'];    // Github URL
  *
  * @package herringbone
  */

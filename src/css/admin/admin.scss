@@ -1,0 +1,63 @@
+/* INDEX
+
+1. ELEMENTS
+2. BLOCKS
+	1.1 DASHTILES
+*/
+
+
+/*=========================================================== 1. ELEMENTS ====*/
+
+
+section {
+	margin-top: 2em;
+}
+
+table {
+	border-collapse: collapse;
+
+	td {
+		padding: 0.1em 0;
+
+		&:nth-child(1n+2) {
+			padding-left: 2em;
+		}
+	}
+}
+
+
+/*============================================================= 2. BLOCKS ====*/
+/*------------------------------------------------------------- 2.1 DASHTILES */
+
+
+.dashTiles {
+	display: grid;
+	grid-auto-rows: 10em;
+	grid-auto-columns: 10em;
+	grid-auto-flow: column;
+	grid-gap: 10px;
+	margin-top: 2em;
+	color: #444;
+
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all .15s;
+		border-radius: 5px;
+		box-shadow: 0px 0px 20px 0px #0003;
+		background-color: #fff;
+		padding: 10px;
+		text-align: center;
+		text-decoration: none;
+		color: #555;
+		font-size: 120%;
+		font-weight: 500;
+
+		&:hover {
+			box-shadow: 0px 0px 20px 0px #0008;
+			text-decoration: underline;
+			color: #333;
+		}
+	}
+}
