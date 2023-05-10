@@ -1,3 +1,6 @@
+@import "../common/fonts";
+@import "../common/variables";
+
 /*
 
 ## NAMING CONVENTION
@@ -16,6 +19,7 @@ o Tablet	   >= 48em	768px
 o Laptop	   >= 80em	1280px
 o Desktop	   >= 100em	1600px
 o XL devices   >= 120em	1920px
+
 
 ## GOLDEN  RATIO
 
@@ -42,17 +46,17 @@ Font Size		 Line Height
 13  |  0.813  ||  23  |  1.769
 
 
-## CSS INDEX
+## INDEX
 
-!! Landing Page CSS in separate sheets
+NOTE: Landing page CSS in separate files.
+NOTE: SASS & CSS variables in separate file.
 
 1. [BASE]
-	1.1 DEFAULTS AND THEME VARIABLES
+	1.1 DOCUMENT SETUP
 	1.2 BROWSER SCROLLBAR
 	1.3 ELEMENT BASE
-		1.3.1 DOCUMENT SETUP
-		1.3.2 ELEMENT RESETS
-		1.3.3 INPUT PLACEHOLDER
+		1.3.1 ELEMENT RESETS
+		1.3.2 INPUT PLACEHOLDER
 	1.4 TYPOGRAPHY
 	1.5 WIDGETS
 	1.6 WORDPRESS CORE CLASSES
@@ -105,96 +109,22 @@ Font Size		 Line Height
 
 
 /*=============================================================== 1. BASE ====*/
-/*-------------------------------------- 1.1 DEFAULTS AND THEME VARIABLES ----*/
-
-// SASS VARIABLES (To be moved to serparate file)
-$mobileWidth: 300px;
-$tabletWidth: 768px;
-$laptopWidth: 1280px;
-$desktopWidth: 1600px;
-$xlWidth: 1920px;
+/*--------------------------------------------------- 1.1 DOCUMENT SETUP  ----*/
 
 
-:root {
+html, body {
+    margin: 0;
+    min-height: 100vh;
+}
 
-  --hb_black: #333;
-  --hb_green: #63CFA7;
-  --hb_lightGreen: #b1e7d3;
-  --hb_darkGreen: #3f8369;
-  --hb_blue: #b1e8f2;
-  --hb_red: #fd6a42;
-  --hb_orange: #ffb908;
-  --hb_white: #fff;
-  --hb_lightGrey: #eee;
-  --hb_grey: #bbb;
-  --hb_darkGrey: #888;
+body {
+    display: flex;
+    flex-flow: column nowrap;
+}
 
-  --hb_background-gradient: radial-gradient(at 50% 100%, #63CFA7 40%, #3AB09E);
-	/* Gradient must be in same background-image rule AFTER the svg pattern */
-  --hb_hover: 0 0 0 0.25em #63CFA7;
-  --hb_shadow: 0 0.25em 0.5em 0.25em #0006,0 0.125em 0.25em 0.125em #0006;
-  --hb_shadow-inset: inset -0.1em 0.2em 0.5em 0.2em #000c;
-
-  --hb_slideTime: 0.25s;
-  --hb_hoverTime: 0.15s;
-
-	/* layout variables */
-  --hb_radius-tiny: 0.15em;
-  --hb_radius-small: 0.6em;
-  --hb_radius: 1.2em;
-  --hb_background: var(--hb_white);
-  --hb_border: solid 0.3em var(--hb_lightGrey);
-  --hb_gutters: 0.5em;
-
-	/* font stacks */
-  --hb_font-secondary: 'Open Sans', Arial, sans-serif;
-  --hb_font-primary: Inter, Helvetica, 'Helvetica Neue', Frutiger, Arial, sans-serif;
-  --hb_font-fancy: 'Berkshire Swash', 'Brush Script MT', 'Brush Script Std', cursive;
-
-	/* font sizes */
-	--hb_font-xxxl: 2.625rem;
-	--hb_font-xxl: 2.063rem;
-	--hb_font-xl: 1.625rem;
-	--hb_font-l: 1.25rem;
-	--hb_font-base: 1rem;
-	--hb_font-s: 0.813rem;
-	--hb_font-xs: 0.7rem;
-
-	/* other font custom props */
-	--hb_letterSpacingInterBold: -0.04em;
-
-	/* landing page hidden header offset */
-	--hb_landingHeaderOffset: 7.1em;
-
-	/* browser scroll behaviour */
-	-ms-scroll-snap-type: y proximity;
-	    scroll-snap-type: y proximity;
-	scroll-behavior: smooth;
-
-	/* font defaults */
-	/* Font dims set on root don't get scaled by component level font size, apart from font. */
-	/* I don't know why, but that's the behaviour in Chrome currently. */
-	/* Only set styles here, no dimensional props like line-height, or letter-spacing. */
-
-	color: var(--hb_black);
-	font-weight: 400;
-	font-family: var(--hb_font-primary);
-
-	/* fluid root units (14px @ 768 - 18px @ 1920) */
-	font-size: clamp(0.875rem, calc(0.875rem + ((1vw - 0.48rem) * 0.3534)), 1.125rem);
-
-	/* Scrollbar width updated by js function */
-	--scrollbar: 0px;
-
-	/* SVG border images */
-	--hb_triBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cdefs%3E%3Cpattern patternUnits='userSpaceOnUse' width='12' height='12' id='trings'%3E%3Cpath fill='%23de7c61' d='M 1.4,1.3 1,9.4 9.1,1.4 Z' id='path2' /%3E%3Cpath fill='%23e2e542' d='M 2.5,11 11,2.7 10.5,10.8 Z' id='path4' /%3E%3Crect fill='none' opacity='0' width='12' height='12' x='0' y='0' /%3E%3C/pattern%3E%3C/defs%3E%3Crect style='fill:url(%23trings);' width='36' height='36' x='0' y='0' /%3E%3C/svg%3E") 12 round;
-	--hb_arrowBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='36' height='36'%3E%3Cg id='arws' stroke-width='1.2'%3E%3Cpath fill='%23f79c40' d='m1 17 5-5 5 5-1 1-4-4-4 4Z'/%3E%3Cpath fill='%2361af76' d='m1 23 5-5 5 5-1 1-4-4-4 4Z'/%3E%3C/g%3E%3Cpath id='crnr' fill='%2361af76' stroke-width='1' d='M11 11H1V5h8V3H1V1h10v6H3v2h8Z'/%3E%3Cuse xlink:href='%23crnr' transform='rotate(-90 18 -6)'/%3E%3Cuse xlink:href='%23crnr' transform='rotate(180 18 18)'/%3E%3Cuse xlink:href='%23arws' transform='rotate(90 18 18)'/%3E%3Cuse xlink:href='%23arws' transform='rotate(180 18 18)'/%3E%3Cuse xlink:href='%23arws' transform='rotate(-90 18 18)'/%3E%3Cuse xlink:href='%23crnr' transform='rotate(90 -6 18)'/%3E%3C/svg%3E%0A") 12 round;
-	--hb_eggsBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cdefs%3E%3Cpattern id='eggs' width='12' height='12' patternUnits='userSpaceOnUse'%3E%3Cpath fill='%23de7c61' d='M0 0h12v12H0z'/%3E%3Cellipse cx='5.7' cy='5.8' fill='%23fff3d4' rx='3.8' ry='4'/%3E%3Cellipse cx='5.7' cy='5.8' fill='%23e2e542' rx='1.5' ry='1.7'/%3E%3C/pattern%3E%3C/defs%3E%3Cpath fill='url(%23eggs)' d='M0 0h36v36H0z'/%3E%3C/svg%3E%0A") 12 round;
-	--hb_squareDotBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cdefs%3E%3Cpattern id='sqdot' width='12' height='12' patternUnits='userSpaceOnUse'%3E%3Cpath fill='%236175af' d='M3 0 0 4v4l3 4h6l3-4V4L9 0Z'/%3E%3Ccircle cx='6' cy='6' r='3.1' fill='%23f79c40'/%3E%3C/pattern%3E%3C/defs%3E%3Cpath fill='url(%23sqdot)' d='M0 0h36v36H0z'/%3E%3C/svg%3E%0A") 12 round;
-	--hb_aztecBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cdefs%3E%3Cpattern id='aztec' width='12' height='12' patternUnits='userSpaceOnUse'%3E%3Cpath fill='%23e2e542' d='M3 9V7H1V5h2V3h2V1h2v2h2v2h2v2H9v2H7v2H5V9Z'/%3E%3Cpath fill='%2361af76' d='M5 3h2v2h2v2H7v2H5V7H3V5h2Z'/%3E%3C/pattern%3E%3C/defs%3E%3Cpath fill='url(%23aztec)' d='M0 0h36v36H0z'/%3E%3C/svg%3E%0A") 12 round;
-	--hb_iconBackground: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath fill='%23cff9e9' d='M20 11c-32 15-23 72 8 85 30 14 76-11 72-58S51-5 20 11z'/%3E%3C/svg%3E");
-
-} /* ROOT END */
+.footer {
+	margin-top: auto;
+}
 
 
 /*------------------------------------------------- 1.2 BROWSER SCROLLBAR ----*/
@@ -214,25 +144,7 @@ body::-webkit-scrollbar {
 
 
 /*------------------------------------------------------ 1.3 ELEMENT BASE ----*/
-/*- - - - - - - - - - - - - - - - - - - - - - - - -  1.3.1 DOCUMENT SETUP ----*/
-
-
-html, body {
-    margin: 0;
-    min-height: 100vh;
-}
-
-body {
-    display: flex;
-    flex-flow: column nowrap;
-}
-
-.footer {
-	margin-top: auto;
-}
-
-
-/*- - - - - - - - - - - - - - - - - - - - - - - - -  1.3.2 ELEMENT RESETS - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - -  1.3.1 ELEMENT RESETS - - */
 
 
 * { 
@@ -272,30 +184,30 @@ textarea:hover:not(:disabled):not(.disabled) {
 }
 
 
-/*- - - - - - - - - - - - - - - - - - - - - - - - 1.3.3 INPUT PLACEHOLDER - - */
+/*- - - - - - - - - - - - - - - - - - - - - - - - 1.3.2 INPUT PLACEHOLDER - - */
 
 
 ::-moz-placeholder {
 	opacity: 1; /* Chrome, Firefox, Opera, Safari 10.1+ */ /* Firefox */
-	color: var(--hb_grey);
+	color: var(--hb_grey-light);
   }
 
 
 :-ms-input-placeholder {
 	opacity: 1; /* Chrome, Firefox, Opera, Safari 10.1+ */ /* Firefox */
-	color: var(--hb_grey);
+	color: var(--hb_grey-light);
   }
 
 
 ::placeholder {
 	opacity: 1; /* Chrome, Firefox, Opera, Safari 10.1+ */ /* Firefox */
-	color: var(--hb_grey);
+	color: var(--hb_grey-light);
   }
 	  :-ms-input-placeholder {
-	  color: var(--hb_grey) /* Internet Explorer 10-11 */
+	  color: var(--hb_grey-light) /* Internet Explorer 10-11 */
 	  }
 	  ::-ms-input-placeholder {
-	  color: var(--hb_grey); /* Microsoft Edge */
+	  color: var(--hb_grey-light); /* Microsoft Edge */
 	  }
 
 
@@ -476,7 +388,7 @@ blockquote {
 	border-width: 0 0 0 0.4em;
 	border-style: solid;
 	border-color: #0004;
-	background: var(--hb_lightGrey);
+	background: var(--hb_grey-light-lightest);
 	padding: 0.1em 1.1em;
 	font-style: italic;
 	quotes: "\201C""\201D""\2018""\2019";
@@ -497,12 +409,12 @@ blockquote {
 	margin-block-end: 1.688em;
 	border: var(--hb_border);
 	border-radius: var(--hb_radius-small);
-	background: var(--hb_lightGrey);
+	background: var(--hb_grey-light-lightest);
 	padding: 0.8em;
 	text-align: center;
 	line-height: 1.688em;
 	letter-spacing: var(--hb_letterSpacingInterBold);
-	color: var(--hb_black);
+	color: var(--hb_grey-darkest);
 	font-weight: bold;
 }
 	.alert::before {
@@ -516,20 +428,20 @@ blockquote {
 			box-shadow: 1px 3px 6px 1px #000a;
 		}
 			.alert-danger {
-				background: var(--hb_red);
-				color: #fff;
+				background: var(--hb_red-light);
+				color: var(--hb_white);
 			}
 			.alert-success {
-				background: var(--hb_darkGreen);
-				color: #fff;
+				background: var(--hb_green-dark);
+				color: var(--hb_white);
 			}
 			.alert-info {
-				background: var(--hb_blue);
-				color: #fff;
+				background: var(--hb_blue-lightest);
+				color: var(--hb_white);
 			}
 			.alert-warning {
 				background: var(--hb_orange);
-				color: #fff;
+				color: var(--hb_white);
 			}
 
 strong {
@@ -550,10 +462,10 @@ strong {
 	margin-inline-start: 1.2em;
 	display: block;
 	margin: 0 1.2em 2.6em 1.2em;
-	background: var(--hb_lightGrey);
+	background: var(--hb_grey-light-lightest);
 	padding: 0 0.5em 0 0.5em;
 	line-height: 2;
-	color: var(--hb_black);
+	color: var(--hb_grey-darkest);
 	font-size: var(--hb_font-xs);
 }
 
@@ -585,12 +497,12 @@ strong {
 		.widget ul li {
 			margin: 0.8em 0;
 			border-radius: 0.3em;
-			background: var(--hb_lightGrey);
+			background: var(--hb_grey-light-lightest);
 			padding: 0 0.3em;
 		}
 			.widget ul li:hover {
 				cursor: pointer;
-				background: var(--hb_darkGreen);
+				background: var(--hb_green-dark);
 				color: var(--hb_white);
 			}
 
@@ -854,7 +766,7 @@ a img.aligncenter {
 			.header_inner.sauce,
 			.footer_inner.sauce {
 				--hb_border: solid 0.3em var(--hb_white);
-				--hb_background: var(--hb_lightGrey);
+				--hb_background: var(--hb_grey-light-lightest);
 				border: var(--hb_border);
 				background: var(--hb_background);
 			}
@@ -973,7 +885,7 @@ a img.aligncenter {
 		width: 100%;
 		max-width: 100%;
 		height: 100%;
-		color: var(--hb_black);
+		color: var(--hb_grey-darkest);
 	}
 
 	form.wp-block-search {
@@ -1046,7 +958,7 @@ a img.aligncenter {
 							background: var(--hb_orange);
 						}
 						.form_flag-focus {
-							background: var(--hb_green);
+							background: var(--hb_green-light-light);
 						}
 						.form_inputWrap:not(.form_section:disabled > .form_inputWrap):hover .form_flag-hover,
 						.form_inputWrap:not(.form_section:disabled > .form_inputWrap):focus-within .form_flag-focus {
@@ -1102,7 +1014,7 @@ a img.aligncenter {
 	
 	
 	.form.form-dark  {
-		--hb_border: solid 0.2em var(--hb_lightGrey);
+		--hb_border: solid 0.2em var(--hb_grey-light-lightest);
 		padding: 1em;
 		text-align: center;
 	}
@@ -1110,7 +1022,7 @@ a img.aligncenter {
 			border: var( --hb_border );
 			border-radius: var( --hb_radius-small );
 			box-shadow: var( --hb_shadow-inset );
-			background: var( --hb_black );
+			background: var( --hb_grey-darkest );
 		}
 		.form-dark .form_inputWrap-wide {
 			width: 100%;
@@ -1157,8 +1069,8 @@ a img.aligncenter {
         transition: inherit;
         border: solid 0.2em #0000;
         border-radius: inherit;
-        background: var(--hb_black);
-        padding: 0.25em 1em;
+        background: var(--hb_grey-darkest);
+        padding: 0.26em 1em;
         width: max-content;
         max-width: 100%;
         height: 100%;
@@ -1174,7 +1086,7 @@ a img.aligncenter {
 			cursor: pointer;
 		}
 		.button:hover > *:first-child {
-            color: var(--hb_black);
+            color: var(--hb_grey-darkest);
 			background: #0000;
             border: solid 0.2em;
 		}
@@ -1182,7 +1094,7 @@ a img.aligncenter {
 		.button:focus-visible {
 			z-index: 1;
 			outline: 0;
-			box-shadow: 0 0 0 0.25em var(--hb_darkGreen);
+			box-shadow: 0 0 0 0.25em var(--hb_green-dark);
 		}
 
 
@@ -1195,11 +1107,11 @@ a img.aligncenter {
     .button-border > *:first-child {
 		border: solid 0.2em;
     	background: transparent;
-		color: var(--hb_black);
+		color: var(--hb_grey-darkest);
     }
     .button-border:hover > *:first-child {
-		border: solid 0.2em var(--hb_black);
-    	background: var(--hb_black);
+		border: solid 0.2em var(--hb_grey-darkest);
+    	background: var(--hb_grey-darkest);
 		color: var(--hb_white);
     }
 
@@ -1211,7 +1123,7 @@ a img.aligncenter {
 }
 	.button-noback > *:first-child {
 		background: transparent;
-		color: var(--hb_black);
+		color: var(--hb_grey-darkest);
 	}
 
 
@@ -1230,7 +1142,7 @@ a img.aligncenter {
 		width: 100%;
 		min-width: inherit;
 		height: 2.0em;
-		color: var(--hb_black);
+		color: var(--hb_grey-darkest);
 		font-family: var(--hb_font-primary);
 		font-size: var(--hb_font-l);
 		font-weight: 800;
@@ -1256,7 +1168,7 @@ a img.aligncenter {
 						0 0 0 0 #0000,
 					inset 0 0 0 0 #0000;
 			background: linear-gradient(#0000, #0000);
-			color: var(--hb_black);
+			color: var(--hb_grey-darkest);
 		}
 
 
@@ -1322,7 +1234,7 @@ a img.aligncenter {
 
 
 	.button-cta.spinny > *:first-child {
-		background: var(--hb_darkGreen);
+		background: var(--hb_green-dark);
 		color: var(--hb_white);
 	}
 
@@ -1375,7 +1287,7 @@ a img.aligncenter {
 		}
 		.menuToggle .line {
 			fill: none;
-			stroke: var(--hb_black);
+			stroke: var(--hb_grey-darkest);
 			stroke-width: 11px;
 		}
 			.menuToggle:hover .line {
@@ -1499,7 +1411,7 @@ a img.aligncenter {
 		padding-top: 1em;
 		width: auto;
         max-width: 100vw;
-		color: var(--hb_black);
+		color: var(--hb_grey-darkest);
 	}
 		.footer_nav {
 			display: flex;
@@ -1542,7 +1454,7 @@ a img.aligncenter {
 	flex-wrap: nowrap;
 	align-items: center;
 	justify-content: flex-start;
-	color: var(--hb_black);
+	color: var(--hb_grey-darkest);
 	text-decoration: none;
 }
 	.siteTitle_logo {
@@ -1610,7 +1522,7 @@ a img.aligncenter {
 			.modal_control-close {
 				border: none;
 				border-radius: var(--hb_radius-tiny);
-				background: var(--hb_red);
+				background: var(--hb_red-light);
 				padding: 0.15em 0.6em;
 				color: var(--hb_white);
 				font-family: inherit;
@@ -1773,7 +1685,7 @@ a img.aligncenter {
 		max-height: 0;
 		overflow: hidden;
 		text-align: left;
-		color: var(--hb_black);
+		color: var(--hb_grey-darkest);
 		font-size: inherit;
 	}
 
@@ -1791,12 +1703,12 @@ a img.aligncenter {
 			border-bottom: solid 1px transparent;
 			width: 100%;
 			text-decoration: none;
-			padding: 0.25em 1em;
+			padding: 0.26em 1em;
 		}
 		.dropdown_contents a:hover {
-			border-top: solid 1px var(--hb_grey);
-			border-bottom: solid 1px var(--hb_grey);
-			background: var(--hb_lightGrey);
+			border-top: solid 1px var(--hb_grey-light);
+			border-bottom: solid 1px var(--hb_grey-light);
+			background: var(--hb_grey-light-lightest);
 		}
 
 .dropdown_toggle-active > .dropdown_toggleIcon > svg {
@@ -1847,13 +1759,13 @@ a img.aligncenter {
 		display: block;
 		width: 0;
 		height: 80%;
-		border-left: solid 1px var(--hb_grey);
+		border-left: solid 1px var(--hb_grey-light);
 	}
 	.dropdown-inMenu > .dropdown_toggle:hover,
 	.dropdown-inMenu > .dropdown_toggle-active {
-		border-top: solid 1px var(--hb_grey);
-		border-bottom: solid 1px var(--hb_grey);
-		background: var(--hb_lightGrey);
+		border-top: solid 1px var(--hb_grey-light);
+		border-bottom: solid 1px var(--hb_grey-light);
+		background: var(--hb_grey-light-lightest);
 	}
 	.dropdown-inMenu > .dropdown_contents {
 		position: static;
@@ -2035,10 +1947,29 @@ a img.aligncenter {
 	li {
 		display: inline-block;
 		border-radius: 10em;
-		background: var(--hb_red);
-		padding: 0.25em 1em;
+		background: var(--hb_red-light);
+		padding: 0.26em 1em;
 		letter-spacing: -0.04em;
-		font-weight: 500;
+		font-weight: bold;
+
+		&.tagCloud_css {
+			color: var(--hb_white);
+			background: var(--hb_blue);
+		}
+
+		&.tagCloud_html {
+			color: var(--hb_white);
+			background: var(--hb_orange-dark);
+		}
+
+		&.tagCloud_php {
+			color: var(--hb_white);
+			background: var(--hb_blue-dark);
+		}
+
+		&.tagCloud_javascript {
+			background: var(--hb_yellow);
+		}
 	}
 }
 
@@ -2058,7 +1989,7 @@ a img.aligncenter {
 	transition: all ease-in-out 500ms;
 	box-shadow: 0 0.25em 1.25em 0.25em #00000075, 0 0 0.42em -0.1em #000;
 	border-radius: 3em 3em 0 0;
-	background: var(--hb_lightGrey);
+	background: var(--hb_grey-light-lightest);
 	width: 6em;
 	height: 6em;
 
@@ -2074,11 +2005,11 @@ a img.aligncenter {
 		box-shadow: 0 0.05em 0.2em 0.01em #000000a8, 0 0.325em 0.55em 0 #000000b5;
 		border-radius: 2.5em;
 		background: radial-gradient(at 50% 45%, #0000 53%, #000000b5),
-					radial-gradient(at 50% 60%, var(--hb_lightGrey) 48%, #fff);
+					radial-gradient(at 50% 60%, var(--hb_grey-light-lightest) 48%, #fff);
 		padding: 0.5em;
 		width: 5em;
 		height: 5em;
-		color: var(--hb_lightGrey);
+		color: var(--hb_grey-light-lightest);
 		text-decoration: none;
 	}
 	.thumbNav_button-hover:hover {
@@ -2088,7 +2019,7 @@ a img.aligncenter {
 		box-shadow: inset 0 -0.25em 0.25em -0.15em #ffffff,
 					inset 0 0.35em 0.5em 0 #00000099;
 		background: radial-gradient(at 50% 45%, #0000 53%, #fff),
-					radial-gradient(at 50% 60%, var(--hb_lightGrey) 48%, #000000b5);
+					radial-gradient(at 50% 60%, var(--hb_grey-light-lightest) 48%, #000000b5);
 	}
 	.thumbNav_toggle {
 		z-index: 1;
@@ -2101,7 +2032,7 @@ a img.aligncenter {
 			opacity: 0;
 			transition: all ease-out 200ms;
 			border-radius: 3em;
-			background: var(--hb_lightGrey);
+			background: var(--hb_grey-light-lightest);
 			width: 6em;
 			height: 6em
 		}
@@ -2112,7 +2043,7 @@ a img.aligncenter {
 			box-shadow: inset 0 -0.25em 0.25em -0.15em var(--hb_white),
 						inset 0 0.35em 0.5em 0 #00000099;
 			background: radial-gradient(at 50% 45%, #63cfa700 53%, var(--hb_white)),
-						radial-gradient(at 50% 60%, var(--hb_lightGrey) 48%, #000000b5);
+						radial-gradient(at 50% 60%, var(--hb_grey-light-lightest) 48%, #000000b5);
 		}
 		.thumbNav_checkbox:checked ~ .thumbNav_child {
 			opacity: 1;
@@ -2282,7 +2213,7 @@ overflow hidden
 	left: -2%;
 	transform: rotate(-20deg);
 	margin: 0;
-	color: #fff;
+	color: var(--hb_white);
 	font-size: 4em;
 	font-weight: 900;
 	letter-spacing: -0.05em;

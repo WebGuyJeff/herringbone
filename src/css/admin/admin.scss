@@ -1,3 +1,5 @@
+@import "../common/variables";
+
 /* INDEX
 
 1. ELEMENTS
@@ -46,7 +48,7 @@ table {
 		transition: all .15s;
 		border-radius: 5px;
 		box-shadow: 0px 0px 20px 0px #0003;
-		background-color: #fff;
+		background-color: var(--hb_white);
 		padding: 10px;
 		text-align: center;
 		text-decoration: none;

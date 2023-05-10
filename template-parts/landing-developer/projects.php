@@ -65,7 +65,7 @@
 							<?php if ( $post_tags ) : ?>
 								<ul class="tagCloud">
 								<?php foreach ( $post_tags as $post_tag ) : ?>
-									<li><?php echo $post_tag->name; ?></li>
+									<li class="tagCloud_<?php echo esc_attr( sanitize_title( $post_tag->name ) ); ?>"><?php echo $post_tag->name; ?></li>
 								<?php endforeach ?>
 								</ul>
 							<?php endif ?>

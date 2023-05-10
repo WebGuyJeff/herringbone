@@ -30,7 +30,7 @@
 .hb__pag-landing .header {
     position: fixed;
     background: var(--hb_white);
-    border-bottom: solid 0.3em var(--hb_black);
+    border-bottom: solid 0.3em var(--hb_grey-darkest);
 }
 
 @media (max-width: 44.999em) {
@@ -108,43 +108,65 @@
 
 
 .masonFlop {
+	margin: 0.5em 0;
+	padding: 0.5em;
     width: 100%;
-	margin: 0.5em;
-}
+
 	.masonFlop_card {
-		gap: 0.5em;
+		gap: 1em;
 		display: flex;
 		flex: 1 1 auto;
 		flex-flow: column;
-		margin-bottom: 0.5em;
-		border-radius: 0.5em;
-		background: #fff3d4;
+		margin-bottom: 1em;
+		border-radius: var(--hb_radius-tiny);
+		background: var(--hb_blue-lightest);
 		padding: 1em;
-	}
+
 		.masonFlop_content-left,
 		.masonFlop_content-right {
             flex: 1 1 50%;
 		}
-            .masonFlop_heading {
-                font-size: 125%;
+
+		.masonFlop_content-left {
+			figure {
+				margin: 0;
+
+				img {
+					object-fit: cover;
+					border-radius: var(--hb_radius-tiny);
+					max-width: 100%;
+					height: auto;
+				}
+			}
+		}
+
+		.masonFlop_content-right {
+            h3 {
+				margin-bottom: 0;
+                font-size: var(--hb_font-xl);
             }
-            .masonFlop_card img {
-				object-fit: cover;
-                border-radius: 1em;
-                max-width: 100%;
-				height: auto;
-            }
+
+			span.masonFlop_moustache {
+				border-radius: var(--hb_radius-tiny);
+				background: var(--hb_grey-lightest);
+				padding: 0.1em 0.4em;
+				color: var(--hb_grey-dark);
+				font-style: italic;
+			}
+		}
+	}
+}
 
 @media (min-width: 320px) {
 	.masonFlop {
-		padding: 2em;
-		margin: 0;
-	}
-	.masonFlop_card {
-		gap: 2em;
-		margin-bottom: 2em;
-		border-radius: 2em;
-		padding: 2em;
+		margin: 2em 0;
+		padding: 1em;
+
+		.masonFlop_card {
+			margin-bottom: 2em;
+			border-radius: var(--hb_radius-tiny);
+			padding: 1em;
+		}
 	}
 }
 
@@ -162,13 +184,14 @@
 @media (min-width: 1024px) {
 	.masonFlop {
 		columns: 28em;
-		column-gap: 2em;
-	}
-	.masonFlop_card {
-        flex-flow: column nowrap;
-        break-inside: avoid-column;
-        page-break-inside: avoid;
-        overflow: hidden; /* fix for firefox */
+		column-gap: 1em;
+
+		.masonFlop_card {
+			break-inside: avoid-column;
+			flex-flow: column nowrap;
+			overflow: hidden; /* fix for firefox */
+			page-break-inside: avoid;
+		}
 	}
 }
 
@@ -227,7 +250,7 @@
 		margin-block-end: 1em;
 		margin-block-start: 1.75em;
 		line-height: 2em;
-		font-family: 'wellfleet';
+		font-family: var(--hb_font-display);
 		font-size: var(--hb_font-xxl);
 	}
 		@media (max-width: 500px) {
@@ -262,12 +285,12 @@
                     align-items: center;
                     text-align: center;
                     letter-spacing: -0.25px;
-                    color: var(--hb_black);
-                    font-family: 'wellfleet';
+                    color: var(--hb_grey-darkest);
+                    font-family: var(--hb_font-display);
                 }
         .chalkboard_cta {
-            color: var(--hb_darkGreen);
-            font-family: 'wellfleet';
+            color: var(--hb_green-dark);
+            font-family: var(--hb_font-display);
             font-size: var(--hb_font-xl);
             font-weight: 900;
         }
@@ -410,11 +433,11 @@
 .screen_row.a > .screen_column {
 	-webkit-animation: screen_row-a 6s ease-in-out alternate infinite;
 	        animation: screen_row-a 6s ease-in-out alternate infinite;
-	background: var(--hb_blue);
+	background: var(--hb_blue-lightest);
 }
 
 .screen_row.b > .screen_column {
-	background: var(--hb_red);
+	background: var(--hb_red-light);
 }
 
 .screen_row.c > .screen_column {
@@ -426,7 +449,7 @@
 .screen_row.d > .screen_column {
 	-webkit-animation: screen_row-d 6s ease-in-out alternate infinite;
 	        animation: screen_row-d 6s ease-in-out alternate infinite;
-	background: var(--hb_darkGreen);
+	background: var(--hb_green-dark);
 }
 
 
@@ -535,13 +558,13 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'wellfleet';
+	font-family: var(--hb_font-display);
 	font-weight: 400;
 	letter-spacing: normal;
 }
 
 .title-hype {
-	color: var(--hb_darkGreen);
+	color: var(--hb_green-dark);
 	font-weight: 900;
 	white-space: nowrap;
 }

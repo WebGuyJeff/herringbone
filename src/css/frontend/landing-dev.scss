@@ -168,7 +168,7 @@
 						 "d e f";
 }
 	.usp_title {
-		font-family: 'Wellfleet';
+		font-family: var(--hb_font-display);
 		font-size: var(--hb_font-xxxl);
 		font-weight: 400;
 		margin-block-end: 0;
@@ -256,8 +256,8 @@
 						width: -webkit-fit-content;
 						width: -moz-fit-content;
 						width: fit-content;
-						color: #fff;
-						font-family: 'Wellfleet';
+						color: var(--hb_white);
+						font-family: var(--hb_font-display);
 						font-weight: 400;
 					}
 						.usp_button.red {
@@ -388,7 +388,7 @@
 				opacity: revert;
 				margin: 0;
 				max-height: revert;
-				font-family: 'Wellfleet';
+				font-family: var(--hb_font-display);
 				font-size: revert;
 				font-weight: 400;
 			}
