@@ -22,6 +22,10 @@ get_header( 'landing' );
 		<?php get_template_part( 'template-parts/landing-developer/services' ); ?>
 	</section>
 
+	<section class="projects" id="section-projects">
+		<?php get_template_part( 'template-parts/landing-developer/projects' ); ?>
+	</section>
+
 	<section class="usp" id="working-with-me">
 		<?php get_template_part( 'template-parts/landing-developer/usp' ); ?>
 	</section>

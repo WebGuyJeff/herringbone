@@ -12,10 +12,10 @@ namespace Jefferson\Herringbone;
 class Register_Projects_CPT {
 
 	// Custom post type ID.
-	private const CPTID = 'projects';
+	private const CPTID = 'project';
 
 	// Custom post type slug.
-	public const PROJECTSLUG = 'edit.php?post_type=projects';
+	public const PROJECTSLUG = 'edit.php?post_type=project';
 
 	// Prefix for storing custom fields in the postmeta table.
 	private const PREFIX = '_hbpr_';
@@ -25,6 +25,18 @@ class Register_Projects_CPT {
 
 	// Define custom meta fields.
 	private const CUSTOMFIELDS = array(
+		array(
+			'name'        => '_project_url',
+			'title'       => 'Project URL',
+			'description' => 'Link to learn more. E.g the live project or a full blog post',
+			'type'        => 'url',
+		),
+		array(
+			'name'        => '_repository_url',
+			'title'       => 'Repository URL',
+			'description' => 'Link to the project repository',
+			'type'        => 'url',
+		),
 		array(
 			'name'        => '_display_order',
 			'title'       => 'Display Order',
@@ -125,6 +137,10 @@ class Register_Projects_CPT {
 							}
 							case 'textarea': {
 								echo '<textarea name="' . self::PREFIX . $field['name'] . '" id="' . self::PREFIX . $field['name'] . '" columns="30" rows="3">' . htmlspecialchars( get_post_meta( $post->ID, self::PREFIX . $field['name'], true ) ) . '</textarea>';
+								break;
+							}
+							case 'url': {
+								echo '<input type="url" name="' . self::PREFIX . $field['name'] . '" id="' . self::PREFIX . $field['name'] . '" value="' . htmlspecialchars( get_post_meta( $post->ID, self::PREFIX . $field['name'], true ) ) . '" class="regular-text" />';
 								break;
 							}
 							case 'number': {

@@ -89,6 +89,7 @@ Font Size		 Line Height
 		3.1.7 DROPDOWN
 		3.1.8 LILCARDS 
 		3.1.9 DOMAINSEARCHFORM
+		3.1.10 TAGCLOUD
 	3.2 MOBILE
 		3.2.1 THUMBNAV
 
@@ -1175,7 +1176,7 @@ a img.aligncenter {
 		.button:hover > *:first-child {
             color: var(--hb_black);
 			background: #0000;
-            border: solid 0.2em #333333;
+            border: solid 0.2em;
 		}
 		.button:focus,
 		.button:focus-visible {
@@ -1191,16 +1192,15 @@ a img.aligncenter {
 .button-border {
 	background: transparent;
 }
-
     .button-border > *:first-child {
+		border: solid 0.2em;
     	background: transparent;
 		color: var(--hb_black);
-		border: dashed 1px var(--hb_darkGrey);
     }
     .button-border:hover > *:first-child {
+		border: solid 0.2em var(--hb_black);
     	background: var(--hb_black);
 		color: var(--hb_white);
-		border: solid 1px var(--hb_black);
     }
 
 /*- - - - - - - - - - - - - - - - - - - - - - - -  2.5.3 BUTTONS - NOBACK - - */
@@ -2020,6 +2020,25 @@ a img.aligncenter {
 .domainSearchForm {
 	input[type="text"] {
 		width: 100%;
+	}
+}
+
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - -  3.1.10 TAGCLOUD - - */
+
+
+.tagCloud {
+	margin: 1em 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		display: inline-block;
+		border-radius: 10em;
+		background: var(--hb_red);
+		padding: 0.25em 1em;
+		letter-spacing: -0.04em;
+		font-weight: 500;
 	}
 }
 
