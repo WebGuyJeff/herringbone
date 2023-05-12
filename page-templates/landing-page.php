@@ -41,4 +41,4 @@ get_header( 'landing' );
 	get_template_part( 'template-parts/modal', 'contact' );
 ?>
 
-<!--<script> console.log( 'wp-template: landing-page.php' );</script>-->
+<!--<script> console.log( 'wp-template: landing-page.php' );</script>--> 

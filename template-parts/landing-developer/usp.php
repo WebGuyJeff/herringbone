@@ -10,6 +10,39 @@
  */
 
 $theme = get_option( 'hb_dev_landing_settings' );
+
+$cacti_complete = ( file_exists( get_theme_file_path( 'imagery/usp_cacti/cacti_complete.svg' ) ) )
+	? file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_complete.svg' ) )
+	: '<h3>Complete Solution</h3>';
+
+$cacti_personal = ( file_exists( get_theme_file_path( 'imagery/usp_cacti/cacti_personal.svg' ) ) )
+	? file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_personal.svg' ) )
+	: '<h3>Personal Service</h3>';
+
+$cacti_flexibility = ( file_exists( get_theme_file_path( 'imagery/usp_cacti/cacti_flexibility.svg' ) ) )
+	? file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_flexibility.svg' ) )
+	: '<h3>Flexibility</h3>';
+
+$cacti_experience = ( file_exists( get_theme_file_path( 'imagery/usp_cacti/cacti_experience.svg' ) ) )
+	? file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_experience.svg' ) )
+	: '<h3>Experience</h3>';
+
+$cacti_value = ( file_exists( get_theme_file_path( 'imagery/usp_cacti/cacti_value.svg' ) ) )
+	? file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_value.svg' ) )
+	: '<h3>Value for Money</h3>';
+
+$cacti_aftercare = ( file_exists( get_theme_file_path( 'imagery/usp_cacti/cacti_aftercare.svg' ) ) )
+	? file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_aftercare.svg' ) )
+	: '<h3>Aftercare</h3>';
+
+$cacti_shadow = ( file_exists( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) ) )
+	? file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) )
+	: '';
+
+$cacti_wall = ( file_exists( get_theme_file_path( 'imagery/usp_cacti/wall.svg' ) ) )
+	? file_get_contents( get_theme_file_path( 'imagery/usp_cacti/wall.svg' ) )
+	: '';
+
 ?>
 
 <div class="landing_content " style="--row: 1 / -1; --col: full-l / full-r;">
@@ -39,15 +72,13 @@ $theme = get_option( 'hb_dev_landing_settings' );
 	<div class="usp_card" style="--grid_area: a;">
 		<label for="usp_complete" style="--grid_area: a;" class="usp_graphicWrap" role="button">
 			<?php get_template_part( 'views/landing-developer/parts/plumbob' ); ?>
-			<div class="usp_cactiBox">
-				<img
-					class="usp_cacti"
-					alt="Complete Start to Finish Website Solution"
-					title="Complete Start to Finish Website Solution"
-					src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_complete.svg'; ?>"
-				>
+			<div class="usp_cactiBox" title="Complete Start to Finish Website Solution">
+				<span class="screen-reader-text">
+					Complete Start to Finish Website Solution
+				</span>
+				<?php echo $cacti_complete; ?>
 			</div>
-			<?php echo file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) ); ?>
+			<?php echo $cacti_shadow; ?>
 		</label>
 		<div class="usp_blurb">
 			<div class="copy">
@@ -69,15 +100,13 @@ $theme = get_option( 'hb_dev_landing_settings' );
 	<div class="usp_card" style="--grid_area: b;">
 		<label for="usp_personal" class="usp_graphicWrap" role="button">
 			<?php get_template_part( 'views/landing-developer/parts/plumbob' ); ?>
-			<div class="usp_cactiBox">
-				<img
-					class="usp_cacti"
-					alt="Personal Service from a Dedicated Professional"
-					title="Personal Service from a Dedicated Professional"
-					src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_personal.svg'; ?>"
-				>
+			<div class="usp_cactiBox" title="Personal Service from a Dedicated Professional">
+				<span class="screen-reader-text">
+					Personal Service from a Dedicated Professional
+				</span>
+				<?php echo $cacti_personal; ?>
 			</div>
-			<?php echo file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) ); ?>
+			<?php echo $cacti_shadow; ?>
 		</label>
 		<div class="usp_blurb">
 			<div class="copy">
@@ -99,15 +128,13 @@ $theme = get_option( 'hb_dev_landing_settings' );
 	<div class="usp_card" style="--grid_area: c;">
 		<label for="usp_flexibility" class="usp_graphicWrap" role="button">
 			<?php get_template_part( 'views/landing-developer/parts/plumbob' ); ?>
-			<div class="usp_cactiBox">
-				<img
-					class="usp_cacti"
-					alt="Flexible to Fit Your Working Style"
-					title="Flexible to Fit Your Working Style"
-					src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_flexibility.svg'; ?>"
-				>
+			<div class="usp_cactiBox" title="Flexible to Fit Your Working Style">
+				<span class="screen-reader-text">
+					Flexible to Fit Your Working Style
+				</span>
+				<?php echo $cacti_flexibility; ?>
 			</div>
-			<?php echo file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) ); ?>
+			<?php echo $cacti_shadow; ?>
 		</label>
 		<div class="usp_blurb">
 			<div class="copy">
@@ -129,15 +156,13 @@ $theme = get_option( 'hb_dev_landing_settings' );
 	<div class="usp_card" style="--grid_area: d;">
 		<label for="usp_experience" class="usp_graphicWrap" role="button">
 			<?php get_template_part( 'views/landing-developer/parts/plumbob' ); ?>
-			<div class="usp_cactiBox">
-				<img
-					class="usp_cacti"
-					alt="Diverse Experience"
-					title="Diverse Experience"
-					src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_experience.svg'; ?>"
-				>
+			<div class="usp_cactiBox" title="Diverse Experience">
+				<span class="screen-reader-text">
+					Diverse Experience
+				</span>
+				<?php echo $cacti_experience; ?>
 			</div>
-			<?php echo file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) ); ?>
+			<?php echo $cacti_shadow; ?>
 		</label>
 		<div class="usp_blurb">
 			<div class="copy">
@@ -159,15 +184,13 @@ $theme = get_option( 'hb_dev_landing_settings' );
 	<div class="usp_card" style="--grid_area: e;">
 		<label for="usp_value" class="usp_graphicWrap" role="button">
 			<?php get_template_part( 'views/landing-developer/parts/plumbob' ); ?>
-			<div class="usp_cactiBox">
-				<img
-					class="usp_cacti"
-					alt="Value for Money"
-					title="Value for Money"
-					src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_value.svg'; ?>"
-				>
+			<div class="usp_cactiBox" title="Value for Money">
+				<span class="screen-reader-text">
+					Value for Money
+				</span>
+				<?php echo $cacti_value; ?>
 			</div>
-			<?php echo file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) ); ?>
+			<?php echo $cacti_shadow; ?>
 		</label>
 		<div class="usp_blurb">
 			<div class="copy">
@@ -189,15 +212,13 @@ $theme = get_option( 'hb_dev_landing_settings' );
 	<div class="usp_card" style="--grid_area: f;">
 		<label for="usp_aftercare" class="usp_graphicWrap" role="button">
 			<?php get_template_part( 'views/landing-developer/parts/plumbob' ); ?>
-			<div class="usp_cactiBox">
-				<img
-					class="usp_cacti"
-					alt="Aftercare and Support"
-					title="Aftercare and Support"
-					src="<?php echo get_template_directory_uri() . '/imagery/usp_cacti/cacti_aftercare.svg'; ?>"
-				>
+			<div class="usp_cactiBox" title="Aftercare and Support">
+				<span class="screen-reader-text">
+					Aftercare and Support
+				</span>
+				<?php echo $cacti_aftercare; ?>
 			</div>
-			<?php echo file_get_contents( get_theme_file_path( 'imagery/usp_cacti/cacti_shadow.svg' ) ); ?>
+			<?php echo $cacti_shadow; ?>
 		</label>
 		<div class="usp_blurb">
 			<div class="copy">
@@ -217,5 +238,5 @@ $theme = get_option( 'hb_dev_landing_settings' );
 
 
 <div class="landing_backdrop">
-	<img class="usp_wall" alt="SVG background image of rustic spanish bricks in a simple cartoon style" src="<?php echo get_bloginfo('template_url') ?>/imagery/usp_cacti/wall.svg"/>
+	<?php echo $cacti_wall; ?>
 </div>

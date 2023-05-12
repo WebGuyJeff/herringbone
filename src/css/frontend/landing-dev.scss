@@ -28,6 +28,7 @@
 		flex-flow: row nowrap;
         justify-content: center;
         margin-bottom: 200px;
+		min-height: 100vh;
 	}
     .welcome > .landing_backdrop {
         background:
@@ -37,12 +38,12 @@
                 #fff0 30%
             ),
             linear-gradient(
-                #66d4ff 0%,
-                #ccf1ff 20%,
-                #fce889 55%,
-                #fcd762 60%,
-                #fff 61%
-            );
+				var(--hb_blue-light) 0%,
+				var(--hb_blue-lightest) 20%,
+				var(--hb_yellow-light) 55%,
+				var(--hb_orange-light) 60%,
+				#fff 61%
+			);
     }
         .desert_clouds {
             position: absolute;
@@ -86,6 +87,17 @@
             .desert_furniture {
                 width: clamp(100%, 1920px, 177.777%);
                 height: 100%;
+
+				.desert_grass,
+				.desert_rock,
+				.desert_cactus {
+					overflow: visible;
+
+					.desert_shadow {
+						transform-origin: center;
+						transform: skewX(55deg) scaleY(0.3);
+					}
+				}
             }
             .desert_sand {
                 position: absolute;
@@ -143,7 +155,7 @@
 
 
 .usp > .landing_backdrop {
-	background: #fff3d4;
+	background: var(--hb_yellow-lightest);
 }
 	.usp_wall {
 		height: 100%;
@@ -470,7 +482,7 @@
 			transform: rotateX( 180deg );
 		}
 			.plumbob_face {
-				color: #e2e542;
+				color: var(--hb_yellow-light);
 				position:absolute;
 				transform: rotateY( var( --rotateY ) )
 						   rotateX( 23deg );

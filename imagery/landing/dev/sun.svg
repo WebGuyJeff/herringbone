@@ -50,10 +50,12 @@
 			<stop
 				offset=".5"
 				stop-color="#feffe8"
+				style="stop-color:var(--hb_yellow-lightest);"
 				id="stop8" />
 			<stop
 				offset=".6"
 				stop-color="#fedea0"
+				style="stop-color:var(--hb_orange-lightest);"
 				id="stop10" />
 			<stop
 				offset="1"
@@ -70,10 +72,12 @@
 			<stop
 				offset=".5"
 				stop-color="#feffe8"
+				style="stop-color:var(--hb_yellow-lightest);"
 				id="stop17" />
 			<stop
 				offset=".6"
 				stop-color="#fbff9f"
+				style="stop-color:var(--hb_yellow-light);"
 				id="stop19" />
 			<stop
 				offset="1"

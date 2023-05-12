@@ -135,11 +135,11 @@ body::-webkit-scrollbar {
 	width: 0.5em;
 }
 	body::-webkit-scrollbar-track {
-		background: #262422;
+		background: var(--hb_grey-darkest);
 	}
 	body::-webkit-scrollbar-thumb {
 		border-radius: 0.25em;
-		background-color: #8d8d8d;
+		background-color: var(--hb_grey);
 	}
 
 
@@ -387,8 +387,8 @@ blockquote p:last-child {
 blockquote {
 	border-width: 0 0 0 0.4em;
 	border-style: solid;
-	border-color: #0004;
-	background: var(--hb_grey-light-lightest);
+	border-color: var(--hb_grey);
+	background: var(--hb_grey-lightest);
 	padding: 0.1em 1.1em;
 	font-style: italic;
 	quotes: "\201C""\201D""\2018""\2019";
@@ -397,7 +397,7 @@ blockquote {
 		margin-inline-end: 0.15em;
 		vertical-align: -0.4em;
 		line-height: 0.1em;
-		color: #ccc;
+		color: var(--hb_grey-light);
 		font-size: var(--hb_font-xxxl);
 		content: open-quote;
 	}
@@ -409,7 +409,7 @@ blockquote {
 	margin-block-end: 1.688em;
 	border: var(--hb_border);
 	border-radius: var(--hb_radius-small);
-	background: var(--hb_grey-light-lightest);
+	background: var(--hb_grey-lightest);
 	padding: 0.8em;
 	text-align: center;
 	line-height: 1.688em;
@@ -462,7 +462,7 @@ strong {
 	margin-inline-start: 1.2em;
 	display: block;
 	margin: 0 1.2em 2.6em 1.2em;
-	background: var(--hb_grey-light-lightest);
+	background: var(--hb_grey-lightest);
 	padding: 0 0.5em 0 0.5em;
 	line-height: 2;
 	color: var(--hb_grey-darkest);
@@ -497,7 +497,7 @@ strong {
 		.widget ul li {
 			margin: 0.8em 0;
 			border-radius: 0.3em;
-			background: var(--hb_grey-light-lightest);
+			background: var(--hb_grey-lightest);
 			padding: 0 0.3em;
 		}
 			.widget ul li:hover {
@@ -570,7 +570,7 @@ a img.aligncenter {
 }
 
 .wp-caption {
-    background: #fff;
+    background: var(--hb_white);
     border: 1px solid #f0f0f0;
     max-width: 96%; /* Image does not overflow the content area */
     padding: 5px 3px 10px;
@@ -620,10 +620,10 @@ a img.aligncenter {
 }
 
 .screen-reader-text:focus {
-	background-color: #eee;
+	background-color: var(--hb_grey-lightest);
 	clip: auto !important;
 	clip-path: none;
-	color: #444;
+	color: var(--hb_grey-darkest);
 	display: block;
 	font-size: 1em;
 	height: auto;
@@ -766,7 +766,7 @@ a img.aligncenter {
 			.header_inner.sauce,
 			.footer_inner.sauce {
 				--hb_border: solid 0.3em var(--hb_white);
-				--hb_background: var(--hb_grey-light-lightest);
+				--hb_background: var(--hb_grey-lightest);
 				border: var(--hb_border);
 				background: var(--hb_background);
 			}
@@ -955,10 +955,10 @@ a img.aligncenter {
 							height: 1.5em;
 						}
 						.form_flag-hover {
-							background: var(--hb_orange);
+							background: var(--hb_yellow);
 						}
 						.form_flag-focus {
-							background: var(--hb_green-light-light);
+							background: var(--hb_green-light);
 						}
 						.form_inputWrap:not(.form_section:disabled > .form_inputWrap):hover .form_flag-hover,
 						.form_inputWrap:not(.form_section:disabled > .form_inputWrap):focus-within .form_flag-focus {
@@ -1014,7 +1014,7 @@ a img.aligncenter {
 	
 	
 	.form.form-dark  {
-		--hb_border: solid 0.2em var(--hb_grey-light-lightest);
+		--hb_border: solid 0.2em var(--hb_grey-lightest);
 		padding: 1em;
 		text-align: center;
 	}
@@ -1160,7 +1160,7 @@ a img.aligncenter {
 						0 0.4em 0.1em 0 #000a,
 					inset 0 -0.3em 0.1em -0.1em #fff;
 			background: linear-gradient( #0000, #fff 90%);
-			color: #555;
+			color: var(--hb_grey-dark);
 		}
 		.button.flappy:active > *:first-child {
 			transform: scale(1, 1);
@@ -1177,7 +1177,7 @@ a img.aligncenter {
 
 .button.spinny {
     border-radius: 10em;
-    background: #000;
+    background: var(--hb_black);
     padding: 0;
     width: 8em;
     height: 2.5em;
@@ -1708,7 +1708,7 @@ a img.aligncenter {
 		.dropdown_contents a:hover {
 			border-top: solid 1px var(--hb_grey-light);
 			border-bottom: solid 1px var(--hb_grey-light);
-			background: var(--hb_grey-light-lightest);
+			background: var(--hb_grey-lightest);
 		}
 
 .dropdown_toggle-active > .dropdown_toggleIcon > svg {
@@ -1765,7 +1765,7 @@ a img.aligncenter {
 	.dropdown-inMenu > .dropdown_toggle-active {
 		border-top: solid 1px var(--hb_grey-light);
 		border-bottom: solid 1px var(--hb_grey-light);
-		background: var(--hb_grey-light-lightest);
+		background: var(--hb_grey-lightest);
 	}
 	.dropdown-inMenu > .dropdown_contents {
 		position: static;
@@ -1813,7 +1813,7 @@ a img.aligncenter {
 		border: solid 20px;
 		border-radius: 3px;
 		box-shadow: 0 0 2em 0 #0004;
-		background: #fff;
+		background: var(--hb_white);
 		width: 33.333%;
 		text-decoration: none;
 		color: inherit;
@@ -1868,7 +1868,7 @@ a img.aligncenter {
 		flex-flow: column;
 		align-items: center;
 		backface-visibility: hidden;
-		background: #fff;
+		background: var(--hb_white);
 		padding: 3em 0.5em;
 		width: 100%;
 		height: 100%;
@@ -1989,7 +1989,7 @@ a img.aligncenter {
 	transition: all ease-in-out 500ms;
 	box-shadow: 0 0.25em 1.25em 0.25em #00000075, 0 0 0.42em -0.1em #000;
 	border-radius: 3em 3em 0 0;
-	background: var(--hb_grey-light-lightest);
+	background: var(--hb_grey-lightest);
 	width: 6em;
 	height: 6em;
 
@@ -2005,11 +2005,11 @@ a img.aligncenter {
 		box-shadow: 0 0.05em 0.2em 0.01em #000000a8, 0 0.325em 0.55em 0 #000000b5;
 		border-radius: 2.5em;
 		background: radial-gradient(at 50% 45%, #0000 53%, #000000b5),
-					radial-gradient(at 50% 60%, var(--hb_grey-light-lightest) 48%, #fff);
+					radial-gradient(at 50% 60%, var(--hb_grey-lightest) 48%, #fff);
 		padding: 0.5em;
 		width: 5em;
 		height: 5em;
-		color: var(--hb_grey-light-lightest);
+		color: var(--hb_grey-lightest);
 		text-decoration: none;
 	}
 	.thumbNav_button-hover:hover {
@@ -2019,7 +2019,7 @@ a img.aligncenter {
 		box-shadow: inset 0 -0.25em 0.25em -0.15em #ffffff,
 					inset 0 0.35em 0.5em 0 #00000099;
 		background: radial-gradient(at 50% 45%, #0000 53%, #fff),
-					radial-gradient(at 50% 60%, var(--hb_grey-light-lightest) 48%, #000000b5);
+					radial-gradient(at 50% 60%, var(--hb_grey-lightest) 48%, #000000b5);
 	}
 	.thumbNav_toggle {
 		z-index: 1;
@@ -2032,7 +2032,7 @@ a img.aligncenter {
 			opacity: 0;
 			transition: all ease-out 200ms;
 			border-radius: 3em;
-			background: var(--hb_grey-light-lightest);
+			background: var(--hb_grey-lightest);
 			width: 6em;
 			height: 6em
 		}
@@ -2043,7 +2043,7 @@ a img.aligncenter {
 			box-shadow: inset 0 -0.25em 0.25em -0.15em var(--hb_white),
 						inset 0 0.35em 0.5em 0 #00000099;
 			background: radial-gradient(at 50% 45%, #63cfa700 53%, var(--hb_white)),
-						radial-gradient(at 50% 60%, var(--hb_grey-light-lightest) 48%, #000000b5);
+						radial-gradient(at 50% 60%, var(--hb_grey-lightest) 48%, #000000b5);
 		}
 		.thumbNav_checkbox:checked ~ .thumbNav_child {
 			opacity: 1;

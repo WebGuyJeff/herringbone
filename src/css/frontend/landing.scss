@@ -209,7 +209,7 @@
 	border-radius: 3px;
 	-o-border-image: var(--hb_triBorder);
 	   border-image: var(--hb_triBorder);
-	background: #fff;
+	background: var(--hb_white);
 	padding: 3em;
     max-width: 100%;
 	height: -webkit-fit-content;
@@ -374,7 +374,7 @@
 	        animation: squish 6s ease-in-out alternate infinite;
 	border: solid 0.5em #333;
 	border-radius: 1.5em;
-	background: #333;
+	background: var(--hb_grey-darkest);
 	width: 100%;
 	height: 100%;
 }
@@ -382,7 +382,7 @@
 		display: flex;
 		flex-flow: column nowrap;
 		border-radius: 1em;
-		background: #fff;
+		background: var(--hb_white);
 		padding: .25em;
 		width: 100%;
 		height: 100%;

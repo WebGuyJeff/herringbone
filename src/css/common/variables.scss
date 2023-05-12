@@ -11,11 +11,11 @@
 /*===================================================== 1. SASS VARIABLES ====*/
 
 
-$mobileWidth: 300px;
-$tabletWidth: 768px;
-$laptopWidth: 1280px;
+$mobileWidth:  300px;
+$tabletWidth:  768px;
+$laptopWidth:  1280px;
 $desktopWidth: 1600px;
-$xlWidth: 1920px;
+$xlWidth:      1920px;
 
 
 /*====================================================== 2. CSS VARIABLES ====*/
@@ -23,37 +23,37 @@ $xlWidth: 1920px;
 
 :root {
 
-	--hb_pink-lightest:   hsl(303, 53%, 80%);
+	--hb_pink-lightest:   hsl(303, 53%, 88%);
 	--hb_pink-light:      hsl(303, 53%, 60%);
 	--hb_pink:            hsl(303, 53%, 50%);
 	--hb_pink-dark:       hsl(303, 53%, 40%);
 	--hb_pink-darkest:    hsl(302, 53%, 20%);
-	--hb_purple-lightest: hsl(263, 53%, 80%);
+	--hb_purple-lightest: hsl(263, 53%, 88%);
 	--hb_purple-light:    hsl(264, 53%, 60%);
 	--hb_purple:          hsl(264, 53%, 50%);
 	--hb_purple-dark:     hsl(264, 53%, 40%);
 	--hb_purple-darkest:  hsl(263, 53%, 20%);
-	--hb_blue-lightest:   hsl(207, 53%, 80%);
+	--hb_blue-lightest:   hsl(207, 53%, 88%);
 	--hb_blue-light:      hsl(207, 53%, 60%);
 	--hb_blue:            hsl(207, 53%, 50%);
 	--hb_blue-dark:       hsl(207, 53%, 40%);
 	--hb_blue-darkest:    hsl(207, 53%, 20%);
-	--hb_green-lightest:  hsl(136, 53%, 80%);
+	--hb_green-lightest:  hsl(136, 53%, 88%);
 	--hb_green-light:     hsl(136, 53%, 60%);
 	--hb_green:           hsl(136, 53%, 50%);
 	--hb_green-dark:      hsl(136, 53%, 40%);
 	--hb_green-darkest:   hsl(136, 53%, 20%);
-	--hb_yellow-lightest: hsl(62, 76%, 80%);
+	--hb_yellow-lightest: hsl(62, 76%, 88%);
 	--hb_yellow-light:    hsl(61, 75%, 60%);
 	--hb_yellow:          hsl(61, 76%, 50%);
 	--hb_yellow-dark:     hsl(61, 75%, 40%);
 	--hb_yellow-darkest:  hsl(62, 76%, 20%);
-	--hb_orange-lightest: hsl(30, 76%, 80%);
+	--hb_orange-lightest: hsl(30, 76%, 88%);
 	--hb_orange-light:    hsl(30, 75%, 60%);
 	--hb_orange:          hsl(30, 76%, 50%);
 	--hb_orange-dark:     hsl(30, 75%, 40%);
 	--hb_orange-darkest:  hsl(30, 76%, 20%);
-	--hb_red-lightest:    hsl(0, 76%, 80%);
+	--hb_red-lightest:    hsl(0, 76%, 88%);
 	--hb_red-light:       hsl(0, 75%, 60%);
 	--hb_red:             hsl(0, 76%, 50%);
 	--hb_red-dark:        hsl(0, 75%, 40%);
@@ -68,62 +68,59 @@ $xlWidth: 1920px;
 
 	--hb_background-gradient: radial-gradient(at 50% 100%, #63CFA7 40%, #3AB09E);
 	/* Gradient must be in same background-image rule AFTER the svg pattern */
-	--hb_hover: 0 0 0 0.25em #63CFA7;
-	--hb_shadow: 0 0.25em 0.5em 0.25em #0006,0 0.125em 0.25em 0.125em #0006;
+	--hb_hover:        0 0 0 0.25em #63CFA7;
+	--hb_shadow:       0 0.25em 0.5em 0.25em #0006,0 0.125em 0.25em 0.125em #0006;
 	--hb_shadow-inset: inset -0.1em 0.2em 0.5em 0.2em #000c;
 
 	--hb_slideTime: 0.25s;
 	--hb_hoverTime: 0.15s;
 
 	/* layout variables */
-	--hb_radius-tiny: 0.15em;
+	--hb_radius-tiny:  0.15em;
 	--hb_radius-small: 0.6em;
-	--hb_radius: 1.2em;
-	--hb_background: var(--hb_white);
-	--hb_border: solid 0.3em var(--hb_grey-light-lightest);
-	--hb_gutters: 0.5em;
+	--hb_radius:       1.2em;
+	--hb_background:   var(--hb_white);
+	--hb_border:       solid 0.3em var(--hb_grey-lightest);
+	--hb_gutters:      0.5em;
 
 	/* font stacks */
 	--hb_font-secondary: 'Open Sans', 'Arial', sans-serif;
-	--hb_font-primary: 'Inter', 'Helvetica', 'Open Sans', 'Arial', sans-serif;
-	--hb_font-display: 'Wellfleet', 'Rockwell Extra Bold', 'Palatino', serif;
+	--hb_font-primary:   'Inter', 'Helvetica', 'Open Sans', 'Arial', sans-serif;
+	--hb_font-display:   'Wellfleet', 'Rockwell Extra Bold', 'Palatino', serif;
 
 	/* font sizes */
 	--hb_font-xxxl: 2.625rem;
-	--hb_font-xxl: 2.063rem;
-	--hb_font-xl: 1.625rem;
-	--hb_font-l: 1.25rem;
+	--hb_font-xxl:  2.063rem;
+	--hb_font-xl:   1.625rem;
+	--hb_font-l:    1.25rem;
 	--hb_font-base: 1rem;
-	--hb_font-s: 0.813rem;
-	--hb_font-xs: 0.7rem;
+	--hb_font-s:    0.813rem;
+	--hb_font-xs:   0.7rem;
 
 	/* other font custom props */
 	--hb_letterSpacingInterBold: -0.04em;
 
-	/* landing page hidden header offset */
-	--hb_landingHeaderOffset: 7.1em;
-
 	/* browser scroll behaviour */
 	-ms-scroll-snap-type: y proximity;
 	    scroll-snap-type: y proximity;
-	scroll-behavior: smooth;
+	scroll-behavior:      smooth;
 
 	/* font defaults */
-	color: var(--hb_grey-darkest);
+	color:       var(--hb_grey-darkest);
 	font-weight: 400;
 	font-family: var(--hb_font-primary);
 	/* fluid root units (14px @ 768 - 18px @ 1920) */
-	font-size: clamp(0.875rem, calc(0.875rem + ((1vw - 0.48rem) * 0.3534)), 1.125rem);
+	font-size:   clamp(0.875rem, calc(0.875rem + ((1vw - 0.48rem) * 0.3534)), 1.125rem);
 
-	/* Scrollbar width updated by js function */
+	/* Scrollbar width updated by screenclass.js */
 	--scrollbar: 0px;
 
-	/* SVG borders and backgrounds */
-	--hb_triBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cdefs%3E%3Cpattern patternUnits='userSpaceOnUse' width='12' height='12' id='trings'%3E%3Cpath fill='%23de7c61' d='M 1.4,1.3 1,9.4 9.1,1.4 Z' id='path2' /%3E%3Cpath fill='%23e2e542' d='M 2.5,11 11,2.7 10.5,10.8 Z' id='path4' /%3E%3Crect fill='none' opacity='0' width='12' height='12' x='0' y='0' /%3E%3C/pattern%3E%3C/defs%3E%3Crect style='fill:url(%23trings);' width='36' height='36' x='0' y='0' /%3E%3C/svg%3E") 12 round;
-	--hb_arrowBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='36' height='36'%3E%3Cg id='arws' stroke-width='1.2'%3E%3Cpath fill='%23f79c40' d='m1 17 5-5 5 5-1 1-4-4-4 4Z'/%3E%3Cpath fill='%2361af76' d='m1 23 5-5 5 5-1 1-4-4-4 4Z'/%3E%3C/g%3E%3Cpath id='crnr' fill='%2361af76' stroke-width='1' d='M11 11H1V5h8V3H1V1h10v6H3v2h8Z'/%3E%3Cuse xlink:href='%23crnr' transform='rotate(-90 18 -6)'/%3E%3Cuse xlink:href='%23crnr' transform='rotate(180 18 18)'/%3E%3Cuse xlink:href='%23arws' transform='rotate(90 18 18)'/%3E%3Cuse xlink:href='%23arws' transform='rotate(180 18 18)'/%3E%3Cuse xlink:href='%23arws' transform='rotate(-90 18 18)'/%3E%3Cuse xlink:href='%23crnr' transform='rotate(90 -6 18)'/%3E%3C/svg%3E%0A") 12 round;
-	--hb_eggsBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cdefs%3E%3Cpattern id='eggs' width='12' height='12' patternUnits='userSpaceOnUse'%3E%3Cpath fill='%23de7c61' d='M0 0h12v12H0z'/%3E%3Cellipse cx='5.7' cy='5.8' fill='%23fff3d4' rx='3.8' ry='4'/%3E%3Cellipse cx='5.7' cy='5.8' fill='%23e2e542' rx='1.5' ry='1.7'/%3E%3C/pattern%3E%3C/defs%3E%3Cpath fill='url(%23eggs)' d='M0 0h36v36H0z'/%3E%3C/svg%3E%0A") 12 round;
-	--hb_squareDotBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cdefs%3E%3Cpattern id='sqdot' width='12' height='12' patternUnits='userSpaceOnUse'%3E%3Cpath fill='%236175af' d='M3 0 0 4v4l3 4h6l3-4V4L9 0Z'/%3E%3Ccircle cx='6' cy='6' r='3.1' fill='%23f79c40'/%3E%3C/pattern%3E%3C/defs%3E%3Cpath fill='url(%23sqdot)' d='M0 0h36v36H0z'/%3E%3C/svg%3E%0A") 12 round;
-	--hb_aztecBorder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cdefs%3E%3Cpattern id='aztec' width='12' height='12' patternUnits='userSpaceOnUse'%3E%3Cpath fill='%23e2e542' d='M3 9V7H1V5h2V3h2V1h2v2h2v2h2v2H9v2H7v2H5V9Z'/%3E%3Cpath fill='%2361af76' d='M5 3h2v2h2v2H7v2H5V7H3V5h2Z'/%3E%3C/pattern%3E%3C/defs%3E%3Cpath fill='url(%23aztec)' d='M0 0h36v36H0z'/%3E%3C/svg%3E%0A") 12 round;
-	--hb_iconBackground: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath fill='%23cff9e9' d='M20 11c-32 15-23 72 8 85 30 14 76-11 72-58S51-5 20 11z'/%3E%3C/svg%3E");
+	/* SVG borders and backgrounds | NOTE: border-image-repeat and border-image-slice props (12 round) must be included in shorthand string */
+	--hb_triBorder:       url("data:image/svg+xml,%3Csvg width='36' height='36' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='trings' width='12' height='12' patternUnits='userSpaceOnUse'%3E%3Cpath fill='hsl(0, 75%25, 60%25)' d='M 1.4,1.3 1,9.4 9.1,1.4 Z' /%3E%3Cpath fill='hsl(61, 76%25, 50%25)' d='M 2.5,11 11,2.7 10.5,10.8 Z' /%3E%3Crect fill='none' width='12' height='12' x='0' y='0' /%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23trings)' width='36' height='36' x='0' y='0' /%3E%3C/svg%3E") 12 round;
+	--hb_arrowBorder:     url("data:image/svg+xml,%3Csvg width='36' height='36' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='arrows' width='36' height='36' patternUnits='userSpaceOnUse'%3E%3Crect fill='%230000' width='36' height='36' x='0' y='0' /%3E%3Cg id='arws'%3E%3Cpath fill='hsl(30, 75%25, 60%25)' d='M 1,17 6,12 11,17 10,18 6,14 2,18 Z' id='path2' /%3E%3Cpath fill='hsl(136, 53%25, 50%25)' d='M 1,23 6,18 11,23 10,24 6,20 2,24 Z' id='path4' /%3E%3C/g%3E%3Cpath id='crnr' fill='hsl(136, 53%25, 50%25)' stroke-width='1' d='M 11,11 H 1 V 5 H 9 V 3 H 1 V 1 H 11 V 7 H 3 V 9 H 11 Z' /%3E%3Cuse href='%23crnr' transform='rotate(-90,18,-6)' /%3E%3Cuse href='%23crnr' transform='rotate(180,18,18)' /%3E%3Cuse href='%23crnr' transform='rotate(90,-6,18)' /%3E%3Cuse href='%23arws' transform='rotate(90,18,18)' /%3E%3Cuse href='%23arws' transform='rotate(180,18,18)' /%3E%3Cuse href='%23arws' transform='rotate(-90,18,18)' /%3E%3C/pattern%3E%3C/defs%3E%3Crect style='fill:url(%23arrows);' width='36' height='36' x='0' y='0' /%3E%3C/svg%3E%0A") 12 round;
+	--hb_eggsBorder:      url("data:image/svg+xml,%3Csvg width='36' height='36' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='eggs' width='12' height='12' patternUnits='userSpaceOnUse'%3E%3Cpath fill='hsl(0, 75%25, 60%25)' d='M0 0h12v12H0z' /%3E%3Cellipse fill='hsl(0, 0%25, 100%25)' cx='5.7' cy='5.8' rx='3.8' ry='4' /%3E%3Cellipse fill='hsl(61, 75%25, 60%25)' cx='5.7' cy='5.8' rx='1.5' ry='1.7' /%3E%3C/pattern%3E%3C/defs%3E%3Crect style='fill:url(%23eggs);' width='36' height='36' x='0' y='0' /%3E%3C/svg%3E") 12 round;
+	--hb_squareDotBorder: url("data:image/svg+xml,%3Csvg width='36' height='36' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='sqdot' width='12' height='12' patternUnits='userSpaceOnUse'%3E%3Cpath fill='hsl(207, 53%25, 50%25)' d='M3 0 0 4v4l3 4h6l3-4V4L9 0Z' /%3E%3Ccircle fill='hsl(30, 76%25, 50%25)' cx='6' cy='6' r='3.1' /%3E%3C/pattern%3E%3C/defs%3E%3Crect style='fill:url(%23sqdot);' width='36' height='36' x='0' y='0' /%3E%3C/svg%3E") 12 round;
+	--hb_aztecBorder:     url("data:image/svg+xml,%3Csvg width='36' height='36' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='aztec' width='12' height='12' patternUnits='userSpaceOnUse'%3E%3Cpath fill='hsl(61, 75%25, 60%25)' d='M3 9V7H1V5h2V3h2V1h2v2h2v2h2v2H9v2H7v2H5V9Z' /%3E%3Cpath fill='hsl(136, 53%25, 50%25)' d='M5 3h2v2h2v2H7v2H5V7H3V5h2Z' /%3E%3C/pattern%3E%3C/defs%3E%3Crect style='fill:url(%23aztec);' width='36' height='36' x='0' y='0' /%3E%3C/svg%3E%0A") 12 round;
+	--hb_iconBackground:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath fill='%23cff9e9' d='M20 11c-32 15-23 72 8 85 30 14 76-11 72-58S51-5 20 11z'/%3E%3C/svg%3E");
 
 }
