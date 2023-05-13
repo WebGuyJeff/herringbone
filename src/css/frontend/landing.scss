@@ -225,24 +225,24 @@
         width: 100%;
         height: 0;
     }
-        .svg_grabhand-left,
-        .svg_grabhand-right {
+        .grabhand-left,
+        .grabhand-right {
             --handWidth: calc( 80px + 2% );
             filter: drop-shadow(1px 2px 1px #0008);
             z-index: 1;
-            margin-top: 10px;
+            margin-top: 20px;
             width: var(--handWidth);
             max-width: 37%;
         }
-        .svg_grabhand-left {
+        .grabhand-left {
             left: 0;
             margin-left: clamp( 0px, calc(-151px + calc( 0.9 * 48vw) ), calc( 100% - var(--handWidth) ) );
         }
-        .svg_grabhand-right {
+        .grabhand-right {
             margin-left: auto;
         }
         @media (min-width: 48em) {
-            .svg_grabhand-right {
+            .grabhand-right {
                 display: none;
             }
         }
@@ -307,34 +307,49 @@
         height: 100%;
     }
         .svg_me {
-            filter: drop-shadow(1px 2px 1px #0008);
             display: block;
             transform: translateX( clamp( 0px, calc( 28vw - 64% ), 78%) );
             width: clamp(0px,24em,100vw);
             height: 100%;
         }
-            .svg_me #head_eyelids {
-                animation: svg_me-blinking 10s infinite;
+            .svg_me #eye-r_topLid,
+			.svg_me #eye-l_topLid {
+                animation: eye_blink-top 10s infinite;
             }
-            .svg_me #head_eye-right,
-            .svg_me #head_eye-left {
+			.svg_me #eye-r_bottomLid,
+			.svg_me #eye-l_bottomLid {
+                animation: eye_blink-bottom 10s infinite;
+            }
+            .svg_me #eye-r_pupil,
+            .svg_me #eye-l_pupil {
                 animation: svg_me-lookingdown 12s infinite;
             }
             @media (min-width: 48em) {
-                .svg_me #head_eye-right,
-                .svg_me #head_eye-left {
+                .svg_me #eye-r_pupil,
+                .svg_me #eye-l_pupil {
                 animation: svg_me-looking 12s infinite; }
             }
-            @keyframes svg_me-blinking {
-                20% { opacity: 0; }
-                21% { opacity: 1; }
-                22% { opacity: 0; }
-                75% { opacity: 0; }
-                76% { opacity: 1; }
-                77% { opacity: 0; }
-                82% { opacity: 0; }
-                83% { opacity: 1; }
-                84% { opacity: 0; }
+            @keyframes eye_blink-top {
+                20% { transform: translateX( 0    ) translateY( 0   ); }
+                21% { transform: translateX( -1px ) translateY( 7px ); }
+                22% { transform: translateX( 0    ) translateY( 0   ); }
+                75% { transform: translateX( 0    ) translateY( 0   ); }
+                76% { transform: translateX( -1px ) translateY( 7px ); }
+                77% { transform: translateX( 0    ) translateY( 0   ); }
+                82% { transform: translateX( 0    ) translateY( 0   ); }
+                83% { transform: translateX( -1px ) translateY( 7px ); }
+                84% { transform: translateX( 0    ) translateY( 0   ); }
+            }
+			@keyframes eye_blink-bottom {
+                20% { transform: translateY( 0    ); }
+                21% { transform: translateY( -8px ); }
+                22% { transform: translateY( 0    ); }
+                75% { transform: translateY( 0    ); }
+                76% { transform: translateY( -8px ); }
+                77% { transform: translateY( 0    ); }
+                82% { transform: translateY( 0    ); }
+                83% { transform: translateY( -8px ); }
+                84% { transform: translateY( 0    ); }
             }
             @keyframes svg_me-looking {
                 8%   { transform: translateX( 0  ) translateY( 0  ); }

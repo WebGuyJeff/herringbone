@@ -61,7 +61,7 @@ $theme = get_option( 'hb_dev_landing_settings' );
 	</div>
 	<div class="chalkboard_pinChalkboardRight">
 		<div class="svg_dimensionsBox">
-			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/me.svg' ) ); ?>
+			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/meToon_idle.svg' ) ); ?>
 		</div>
 	</div>
 </div>
