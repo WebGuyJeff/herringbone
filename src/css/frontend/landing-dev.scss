@@ -21,16 +21,23 @@
 
 
 .welcome {
-	/*min-height: 100vh;*/
-}
-	.welcome > .landing_content {
+
+	.landing_content {
 		display: flex;
 		flex-flow: row nowrap;
         justify-content: center;
-        margin-bottom: 200px;
+        margin-bottom: 15vh;
 		min-height: 100vh;
+
+		.twinkle_container {
+			position: absolute;
+			visibility: hidden;
+			width: 0;
+			height: 0;
+		}
 	}
-    .welcome > .landing_backdrop {
+
+    .landing_backdrop {
         background:
             radial-gradient(
                 at 9% 9%,
@@ -45,6 +52,7 @@
 				#fff 61%
 			);
     }
+}
         .desert_clouds {
             position: absolute;
             /* dimensions are inline */
@@ -68,10 +76,7 @@
             top: 0;
             left: 0;
             z-index: -1;
-            margin-top: 15px;
-            margin-left: 2%;
-            height: 20%;
-            max-height: 25vw;
+            margin: 3vw;
         }
         .desert_terrain {
             display: flex;

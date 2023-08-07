@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Herringbone Theme Template Part - Dev Landing Page - Welcome Section.
  *
@@ -13,16 +12,14 @@ $theme = get_option( 'hb_dev_landing_settings' );
 ?>
 
 <div class="landing_content" style="--row: 1 / -1; --col: narrow-l / narrow-r;">
-	<div class="chalkboard ">
 
-		<div class="chalkboard_pinChalkboardTop">
+	<div class="sign ">
+		<div class="sign_pinSignTop">
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-left.svg' ) ); ?>
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/grabhand-right.svg' ) ); ?>
 		</div>
-
 		<div class="copy">
-
-			<h1 class="chalkboard_title title">
+			<h1 class="sign_title title">
 				<?php echo esc_html( ( $theme['welcome_title'] ) ? $theme['welcome_title'] : get_bloginfo( 'name' ) ); ?>
 			</h1>
 
@@ -33,7 +30,7 @@ $theme = get_option( 'hb_dev_landing_settings' );
 			<?php endif ?>
 
 			<?php if ( $theme['welcome_cta_title'] ) : ?>
-			<h2 class="chalkboard_cta">
+			<h2 class="sign_cta">
 				<?php echo esc_html( $theme['welcome_cta_title'] ); ?>
 			</h2>
 			<?php endif ?>
@@ -59,11 +56,26 @@ $theme = get_option( 'hb_dev_landing_settings' );
 			</div>
 		</div>
 	</div>
-	<div class="chalkboard_pinChalkboardRight">
-		<div class="svg_dimensionsBox">
+
+	<div class="sign_pinSignRight">
+		<div class="svgMe_container">
 			<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/meToon_idle.svg' ) ); ?>
 		</div>
 	</div>
+
+	<div class="fist_container">
+		<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/fist.svg' ) ); ?>
+	</div>
+
+	<div class="twinkle_container star1">
+		<?php echo file_get_contents( get_theme_file_path( 'imagery/landing/dev/twinkle.svg' ) ); ?>
+	</div>
+	<div class="twinkle_container star2">
+		<svg class="twinkle" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100">
+			<use href="#star"/>
+		</svg>
+	</div>
+
 </div>
 <div class="landing_backdrop">
 	<?php
