@@ -91,7 +91,7 @@ class Register_Projects_CPT {
 		add_action( 'admin_menu', array( &$this, 'create_custom_fields' ) );
 		add_action( 'save_post', array( &$this, 'save_custom_fields' ), 1, 2 );
 		add_action( 'do_meta_boxes', array( &$this, 'remove_default_custom_fields' ), 10, 3 );
-		add_action( 'below_parent_settings_page_heading', array( &$this, 'echo_projects_link_callback' ) );
+		add_action( 'bigup_theme_settings_dashboard_entry', array( &$this, 'echo_projects_link_callback' ) );
 	}
 
 

@@ -51,7 +51,7 @@ class Settings_Admin {
 		add_action( 'admin_menu', array( $this, 'add_settings_menu' ), 9 );
 		add_action( 'admin_init', array( new Settings_Tab_Theme(), 'init' ) );
 		add_action( 'admin_init', array( new Settings_Tab_Dev_Landing(), 'init' ) );
-		add_action( 'below_parent_settings_page_heading', array( &$this, 'echo_settings_link_callback' ) );
+		add_action( 'bigup_theme_settings_dashboard_entry', array( &$this, 'echo_settings_link_callback' ) );
 	}
 
 	public function add_settings_menu() {
@@ -99,8 +99,8 @@ class Settings_Admin {
 	/**
 	 * Do Action Hook
 	 */
-	public function below_parent_settings_page_heading() {
-		do_action( 'below_parent_settings_page_heading' );
+	public function bigup_theme_settings_dashboard_entry() {
+		do_action( 'bigup_theme_settings_dashboard_entry' );
 	}
 
 
@@ -164,7 +164,7 @@ class Settings_Admin {
 					Management
 				</h2>
 				<div class="dashTiles">
-					<?php $this->below_parent_settings_page_heading(); ?>
+					<?php $this->bigup_theme_settings_dashboard_entry(); ?>
 				</div>
 			</section>
 		</div>
