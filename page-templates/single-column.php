@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Full Width Page
+ * Template Name: Single Column
  *
  * @package herringbone
  * @author Jefferson Real <me@jeffersonreal.uk>
