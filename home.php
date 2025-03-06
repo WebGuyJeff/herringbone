@@ -8,7 +8,7 @@
  * page, this template would normally be used, for example, as /blog.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jeff@webguyjeff.com>
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 

@@ -1,4 +1,6 @@
-# Herringbone
+# Herringbone (deprecated)
+
+Note: This theme is deprecated and will receive no further updates.
 
 ## A WordPress theme for my developer site and blog.
 

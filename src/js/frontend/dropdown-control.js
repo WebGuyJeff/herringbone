@@ -5,7 +5,7 @@
  * landing pages where the main header isn't required.
  * 
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jeff@webguyjeff.com>
  * @copyright Copyright (c) 2023, Jefferson Real
  */
 

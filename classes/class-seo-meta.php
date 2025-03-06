@@ -5,7 +5,7 @@
  * Note to self: This would be better suited to a function in functions.php or a standalone plugin.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jeff@webguyjeff.com>
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 

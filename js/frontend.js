@@ -10,7 +10,7 @@ var __webpack_exports__ = {};
  * landing pages where the main header isn't required.
  * 
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jeff@webguyjeff.com>
  * @copyright Copyright (c) 2023, Jefferson Real
  */
 
@@ -509,7 +509,7 @@ const dropdownControl = {
  * Handle header hide and reveal animation on button click and scroll events.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jefwebguyjeff.com>
  * @copyright Copyright (c) 2023, Jefferson Real
  */
 
@@ -611,7 +611,7 @@ const mobilePopupMenu = () => {
  * Animate CSS properties using preset eases.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jefwebguyjeff.com>
  * @copyright Copyright (c) 2023, Jefferson Real
  */
 
@@ -837,7 +837,7 @@ const animate = async ( element, property, ease, startValue, endValue, duration 
  * Handle modal animation and mechanics.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jefwebguyjeff.com>
  * @copyright Copyright (c) 2023, Jefferson Real
  */
 
@@ -1112,7 +1112,7 @@ const modal = () => {
  * These can be accessed using CSS as a global alternative to media queries.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jefwebguyjeff.com>
  * @copyright Copyright (c) 2023, Jefferson Real
  */
 
@@ -1217,7 +1217,7 @@ const modal = () => {
  * USP section auto scroll and checkbox clearing.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jefwebguyjeff.com>
  * @copyright Copyright (c) 2023, Jefferson Real
  */
 

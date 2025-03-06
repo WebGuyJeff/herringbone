@@ -18,7 +18,7 @@ namespace Jefferson\Herringbone;
  * Walker_Nav_Menu::end_lvl - Close tags for a dropdown component and menu branch.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jeff@webguyjeff.com>
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 

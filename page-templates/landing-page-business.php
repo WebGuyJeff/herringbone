@@ -3,7 +3,7 @@
  * Template Name: Landing Page - Business Web Development
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jeff@webguyjeff.com>
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 

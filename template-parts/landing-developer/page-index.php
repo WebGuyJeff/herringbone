@@ -4,7 +4,7 @@
  * Herringbone Theme Template Part - Content index.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jeff@webguyjeff.com>
  * @copyright Copyright (c) 2024, Jefferson Real
  */
 ?>

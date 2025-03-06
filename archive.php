@@ -14,7 +14,7 @@
  * @link https://codex.wordpress.org/Creating_an_Archive_Index#The_Archives_Page
  * 
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jeff@webguyjeff.com>
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 

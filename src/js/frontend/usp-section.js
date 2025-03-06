@@ -4,7 +4,7 @@
  * USP section auto scroll and checkbox clearing.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jeff@webguyjeff.com>
  * @copyright Copyright (c) 2023, Jefferson Real
  */
 

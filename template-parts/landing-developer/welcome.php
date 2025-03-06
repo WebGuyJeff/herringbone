@@ -5,7 +5,7 @@
  * Herringbone Theme Template Part - Dev Landing Page - Welcome Section.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jeff@webguyjeff.com>
  * @copyright Copyright (c) 2022, Jefferson Real
  */
 ?>
@@ -21,19 +21,15 @@
 		<div class="copy">
 
 			<h1 class="chalkboard_title title">
-				Hi I’m Jeff, a
+				Hi, I'm a
 				<span class="title-hype">
 					Web Developer
 				</span>
 			</h1>
 
 			<p>
-				I help businesses, individuals and start-ups by providing website
-				development and website design services. I'm a complete one-man web
-				design company delivering more punch per pound and a higher
-				attention to detail. With my own planet-friendly web hosting
-				service, I also look after you on the road ahead with one-to-one web
-				support.
+				I build websites and upload them to servers. Then by pressing magic buttons on your
+				device, you can see that website. I'm qualified in magic.
 			</p>
 
 			<ul class="chalkboard_list" style="list-style:none; margin:1em 0; padding:0;">
@@ -80,9 +76,8 @@
 			</h2>
 
 			<p>
-				I’m available to discuss, plan and quote for your project and
-				my advice is always free! I’m based in Hampshire (South UK) but only
-				one Zoom call away from being anywhere in the world.
+				Let's get together and talk about the weather and joke about meaningless rubbish
+				before discussing your web project.
 			</p>
 
             <div class="textAlignCenter">

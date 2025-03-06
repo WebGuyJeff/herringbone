@@ -4,7 +4,7 @@
  * Auto-generate a sticky index drawer.
  *
  * @package herringbone
- * @author Jefferson Real <me@jeffersonreal.uk>
+ * @author Jefferson Real <jeff@webguyjeff.com>
  * @copyright Copyright (c) 2024, Jefferson Real
  */
 
